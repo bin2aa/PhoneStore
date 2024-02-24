@@ -1,0 +1,115 @@
+<?php
+include(__DIR__ . '/../../lib/database.php');
+
+class WarehouseModel
+{
+    private $db;
+
+    public function __construct()
+    {
+        $this->db = new Database();
+    }
+
+    public function getAllWarehouseReceipts()
+    {
+        $query = "SELECT nhap_kho.*,nha_cung_cap.ten AS ten_ncc
+        FROM nhap_kho
+        JOIN nha_cung_cap ON nhap_kho.id_nha_cung_cap = nha_cung_cap.id";
+        return $this->db->select($query);
+    }
+
+    public function getWarehouseReceiptById($id)
+    {
+        $query = "SELECT * FROM nhap_kho WHERE id = $id";
+        $result = $this->db->select($query);
+        return $result[0];
+    }
+
+    public function addWarehouseReceipt($id_nha_cung_cap, $ngay, $ghi_chu, $details)
+    {
+        // Thêm mới phiếu nhập kho
+        $query_add_receipt = "INSERT INTO nhap_kho (id_nha_cung_cap, ngay, tong_tien, ghi_chu) 
+                              VALUES ('$id_nha_cung_cap', '$ngay', 0, '$ghi_chu')";
+        $this->db->execute($query_add_receipt);
+
+        // Lấy ID vừa thêm mới
+        $query_last_insert_id = "SELECT LAST_INSERT_ID() AS last_id";
+        $result = $this->db->select($query_last_insert_id);
+        $id_nhap_kho = $result[0]['last_id'];
+
+        // Thêm chi tiết các sản phẩm nhập kho
+        foreach ($details as $detail) {
+            $id_san_pham = $detail['id_san_pham'];
+            $so_luong = $detail['so_luong'];
+            $gia = $detail['gia'];
+
+            $query_insert_detail = "INSERT INTO chi_tiet_nhap_kho (id_nhap_kho, id_san_pham, so_luong, gia)
+                                    VALUES ($id_nhap_kho, $id_san_pham, $so_luong, $gia)";
+            $this->db->execute($query_insert_detail);
+        }
+
+        // Cập nhật số lượng tồn kho cho các sản phẩm
+        foreach ($details as $detail) {
+            $id_san_pham = $detail['id_san_pham'];
+            $so_luong = $detail['so_luong'];
+
+            $query_update_inventory = "UPDATE san_pham 
+                                       SET so_luong = so_luong + $so_luong 
+                                       WHERE id = $id_san_pham";
+            $this->db->execute($query_update_inventory);
+        }
+
+        // Cập nhật tổng tiền cho phiếu nhập kho
+        $query_update_total = "UPDATE nhap_kho 
+                               SET tong_tien = (
+                                   SELECT SUM(so_luong * gia) 
+                                   FROM chi_tiet_nhap_kho 
+                                   WHERE id_nhap_kho = $id_nhap_kho
+                               )
+                               WHERE id = $id_nhap_kho";
+        $this->db->execute($query_update_total);
+    }
+
+    public function deleteWarehouseReceipt($id)
+    {
+        $query = "DELETE FROM nhap_kho WHERE id = $id";
+        return $this->db->execute($query);
+    }
+
+    public function updateWarehouseReceipt($id, $id_nha_cung_cap, $ngay, $tong_tien, $ghi_chu)
+    {
+        $query = "UPDATE nhap_kho SET id_nha_cung_cap = '$id_nha_cung_cap', ngay = '$ngay', 
+        tong_tien = '$tong_tien', ghi_chu = '$ghi_chu' WHERE id = $id";
+        return $this->db->execute($query);
+    }
+
+
+    //Hiển thị tên select tên danh mục khi thêm mới NCC theo id
+    public function getAllSupplierSelect()
+    {
+        $query = "SELECT * FROM nha_cung_cap";
+        return $this->db->select($query);
+    }
+    //Hiển thị tên select tên sản phẩm khi thêm mới CT nhập kho theo id
+    public function getAllProductSelect()
+    {
+        $query = "SELECT * FROM san_pham";
+        return $this->db->select($query);
+    }
+
+
+
+    //------------------------------------
+    //Chi tiết
+    public function getOrderDetailsByWarehouseId($id_nhap_kho)
+    {
+        $query = "SELECT * FROM chi_tiet_nhap_kho WHERE id_nhap_kho = $id_nhap_kho";
+        return $this->db->select($query);
+    }
+    public function getWarehouseDetailById($id)
+    {
+        $query = "SELECT * FROM nhap_kho_chi_tiet WHERE id = $id";
+        $result = $this->db->select($query);
+        return $result[0];
+    }
+}

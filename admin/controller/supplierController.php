@@ -17,7 +17,7 @@ class supplierController
 
     public function showAddSupplierForm()
     {
-        include __DIR__ . '/../view/addsupplier.php';
+        include __DIR__ . '/../view/addSupplier.php';
     }
 
     public function addSupplier()
@@ -49,10 +49,10 @@ class supplierController
         if (isset($_GET['id'])) {
             $supplier_id = $_GET['id'];
             $supplier = $this->supplierModel->getSupplierById($supplier_id);
-            include __DIR__ . '/../view/updatesupplier.php';
+            include __DIR__ . '/../view/updateSupplier.php';
         }
     }
-
+    
     public function updateSupplier()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -86,19 +86,19 @@ switch ($action) {
     case 'index':
         $supplierController->showSupplierList();
         break;
-    case 'viewAddsupplier':
+    case 'viewAddSupplier':
         $supplierController->showAddSupplierForm();
         break;
-    case 'addsupplier':
+    case 'addSupplier':
         $supplierController->addSupplier();
         break;
-    case 'deletesupplier':
+    case 'deleteSupplier':
         $supplierController->deleteSupplier();
         break;
-    case 'updatesupplierView':
+    case 'updateSupplierView':
         $supplierController->showUpdateSupplierForm();
         break;
-    case 'updatesupplier':
+    case 'updateSupplier':
         $supplierController->updateSupplier();
         break;
     default:

@@ -25,7 +25,7 @@ class SupplierModel
         return $result[0];
     }
 
-    public function createSupplier($ten, $anh, $id_danh_muc, $gia, $so_luong, $mo_ta)
+    public function createSupplier($ten, $so_dien_thoai, $email, $dia_chi)
     {
         $query = "INSERT INTO nha_cung_cap(ten, so_dien_thoai, email, dia_chi)
         VALUE ('$ten','$so_dien_thoai','$email','$dia_chi')";
@@ -45,7 +45,7 @@ class SupplierModel
         ten = '$ten', 
         so_dien_thoai = '$so_dien_thoai',
         email = '$email',
-        dia_chi = '$dia_chi',
+        dia_chi = '$dia_chi'
         WHERE id = $id";
         return $this->db->execute($query);
     }

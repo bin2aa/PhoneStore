@@ -51,6 +51,7 @@
                         <td>
                             <a href="index.php?ctrl=orderController&action=deleteOrder&id=<?php echo $order['id']; ?>">Xóa</a>
                             <a href="index.php?ctrl=orderController&action=updateOrderView&id=<?php echo $order['id']; ?>">Sửa</a>
+                            <a href="index.php?ctrl=orderController&action=viewOrderDetail&id=<?php echo $order['id']; ?>">Xem chi tiết</a>
                         </td>
 
                     </tr>

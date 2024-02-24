@@ -74,6 +74,16 @@ class orderController
             }
         }
     }
+
+    public function viewOrderDetail()
+    {
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $orderDetails = $this->orderModel->getOrderDetailsByOrderId($id);
+            include __DIR__ . '/../view/orderDetailView.php';
+        }
+    }
+    
 }
 
 $action = 'index';
@@ -103,6 +113,9 @@ switch ($action) {
     case 'updateOrder':
         $orderController->updateOrder();
         break;
+    case 'viewOrderDetail':
+        $orderController->viewOrderDetail();
+        // break;
     default:
         $orderController->showOrderList();
 }

@@ -18,7 +18,8 @@
                 <li><a href="index.php?ctrl=orderController">Danh sách đơn hàng</a></li>
                 <li><a href="index.php?ctrl=customerController">Khách hàng</a></li>
                 <li><a href="index.php?ctrl=userController">Người dùng</a></li>
-                <li><a href="index.php?ctrl=supplierController">Người dùng</a></li>
+                <li><a href="index.php?ctrl=supplierController">Nhà cung cấp</a></li>
+                <li><a href="index.php?ctrl=warehouseController">Nhập kho</a></li>
 
             </ul>
         </div>
@@ -26,7 +27,6 @@
     <div class="home">
         <?php
         if (isset($_GET['ctrl'])) {
-            echo $_GET['ctrl'];
             $ctrl = $_GET['ctrl'];
             include 'controller/' . $ctrl . '.php';
         }
