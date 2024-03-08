@@ -44,7 +44,7 @@
                     <label for="gia_nhap_1">Giá nhập:</label>
                     <input type="number" step="0.01" name="gia_nhap_1" required>
 
-                    <button type="button" onclick="xoaHang(this)">Xóa hàng</button>
+                    <button type="button" onclick="xoaHang()">Xóa hàng</button>
 
                 </div>
             </div>
@@ -57,14 +57,16 @@
         <script>
             // Hàm thêm hàng cho biểu mẫu
             function themHang() {
+                //lấy phần tử chi-tiet id = 'chi-tiet'
                 var chiTiet = document.getElementById("chi-tiet");
                 var soHang = chiTiet.childElementCount + 1;
+                // tạo mới div div class = "hang"
                 var hangMoi = document.createElement("div");
                 hangMoi.classList.add("hang");
 
                 var labelSanPham = document.createElement("label");
                 labelSanPham.setAttribute("for", "id_san_pham_" + soHang);
-                labelSanPham.textContent = "Chọn sản phẩm:";
+                labelSanPham.textContent = "Chọn sản phẩm: ";
                 hangMoi.appendChild(labelSanPham);
 
                 var selectSanPham = document.createElement("select");
@@ -80,7 +82,7 @@
 
                 var labelSoLuong = document.createElement("label");
                 labelSoLuong.setAttribute("for", "so_luong_" + soHang);
-                labelSoLuong.textContent = "Số lượng:";
+                labelSoLuong.textContent = " Số lượng: ";
                 hangMoi.appendChild(labelSoLuong);
 
                 var inputSoLuong = document.createElement("input");
@@ -91,7 +93,7 @@
 
                 var labelGiaNhap = document.createElement("label");
                 labelGiaNhap.setAttribute("for", "gia_nhap_" + soHang);
-                labelGiaNhap.textContent = "Giá nhập:";
+                labelGiaNhap.textContent = " Giá nhập: ";
                 hangMoi.appendChild(labelGiaNhap);
 
                 var inputGiaNhap = document.createElement("input");
@@ -99,21 +101,22 @@
                 inputGiaNhap.setAttribute("step", "0.01");
                 inputGiaNhap.setAttribute("name", "gia_nhap_" + soHang);
                 inputGiaNhap.setAttribute("required", "required");
+                
+                hangMoi.appendChild(inputGiaNhap);
 
                 var nutXoa = document.createElement("button");
-                nutXoa.setAttribute("type", "button");
+                nutXoa.setAttribute("type", "button"); 
+                
                 nutXoa.textContent = "Xóa hàng";
-                nutXoa.onclick = function() {
-                    xoaHang(this);
-                };
+                nutXoa.onclick = xoaHang;
 
-                hangMoi.appendChild(inputGiaNhap);
+                hangMoi.appendChild(nutXoa);
 
                 chiTiet.appendChild(hangMoi);
             }
 
-            function xoaHang(btn) {
-                var hang = btn.parentNode;
+            function xoaHang() {
+                var hang = this.parentNode;
                 hang.parentNode.removeChild(hang);
             }
         </script>

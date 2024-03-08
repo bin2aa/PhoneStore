@@ -1,5 +1,5 @@
 <?php
-// include __DIR__ . '/../model/orderDetailModel.php';
+include __DIR__ . '/../model/orderDetailModel.php';
 // class orderDetailController
 // {
 //     private $orderDetailModel;

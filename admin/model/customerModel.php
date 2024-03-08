@@ -47,7 +47,7 @@ class CustomerModel
         email = '$email',
         dia_chi = '$dia_chi' 
         WHERE id = $id";
-        return $this->db->execute($query);
+        return $this->db->execute($query);  
     }
 
     

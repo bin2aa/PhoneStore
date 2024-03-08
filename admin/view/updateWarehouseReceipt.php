@@ -27,7 +27,7 @@
             <input type="date" name="ngay" id="ngay" value="<?php echo $warehouseReceipt['ngay']; ?>" required><br>
 
             <label for="tong_tien">Tổng tiền:</label>
-            <input type="text" name="tong_tien" id="tong_tien" value="<?php echo $warehouseReceipt['tong_tien']; ?>" required><br>
+            <input type="text" name="tong_tien" id="tong_tien" value="<?php echo $warehouseReceipt['tong_tien']; ?>" readonly><br>
 
             <label for="ghi_chu">Ghi chú:</label><br>
             <textarea name="ghi_chu" id="ghi_chu" cols="30" rows="5"><?php echo $warehouseReceipt['ghi_chu']; ?></textarea><br>

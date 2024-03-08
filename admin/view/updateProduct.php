@@ -10,12 +10,13 @@
 
 <body>
     <h2>Cập nhật sản phẩm</h2>
-    <form action="index.php?ctrl=productController&action=updateProduct" method="post">
+    <form action="index.php?ctrl=productController&action=updateProduct" method="post" class="update-product-btn">
 
         <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
 
         <label for="ten">Tên:</label>
         <input type="text" name="ten" value="<?php echo $product['ten']; ?>" required><br>
+
 
         <!-- accept="image/*" chỉ cho sử dung tệp hình ảnh -->
         <label for="anh">Hình ảnh:</label>
@@ -26,10 +27,10 @@
         <label for="id_danh_muc">Chọn danh mục:</label>
         <select name="id_danh_muc" required>
             <?php
-foreach ($categorys as $category) {
-    echo '<option value="' . $category['id'] . '">' . $category['ten'] . '</option>';
-}
-?>
+            foreach ($categorys as $category) {
+                echo '<option value="' . $category['id'] . '">' . $category['ten'] . '</option>';
+            }
+            ?>
         </select><br>
 
         <label for="gia">Giá:</label>

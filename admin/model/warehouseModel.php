@@ -101,7 +101,7 @@ class WarehouseModel
 
     //------------------------------------
     //Chi tiết
-    public function getOrderDetailsByWarehouseId($id_nhap_kho)
+    public function getWarehouseDetailsById($id_nhap_kho)
     {
         $query = "SELECT * FROM chi_tiet_nhap_kho WHERE id_nhap_kho = $id_nhap_kho";
         return $this->db->select($query);
@@ -111,5 +111,38 @@ class WarehouseModel
         $query = "SELECT * FROM nhap_kho_chi_tiet WHERE id = $id";
         $result = $this->db->select($query);
         return $result[0];
+    }
+
+    public function deleteWarehouseDetail($detail_id)
+    {
+        // Lấy id của phiếu nhập kho
+        $query_get_receipt_id = "SELECT id_nhap_kho FROM chi_tiet_nhap_kho WHERE id = $detail_id";
+        $receipt = $this->db->select($query_get_receipt_id);
+
+        $receipt_id = $receipt[0]['id_nhap_kho'];
+
+        // Xóa chi tiết nhập kho
+        $query_delete_detail = "DELETE FROM chi_tiet_nhap_kho WHERE id = $detail_id";
+        $this->db->execute($query_delete_detail);
+
+        // Tính lại tổng tiền cho phiếu nhập kho
+        $query_calculate_total = "SELECT SUM(so_luong * gia) AS total 
+                              FROM chi_tiet_nhap_kho  
+                              WHERE id_nhap_kho = $receipt_id";
+        $total_result = $this->db->select($query_calculate_total);
+        $total = $total_result[0]['total'];
+
+        //Cập nhật tổng tiền mới
+        $query_update_total = "UPDATE nhap_kho SET tong_tien = $total WHERE id = $receipt_id";
+        return $this->db->execute($query_update_total);
+    }
+
+
+    public function updateWarehouseDetail($detail_id, $quantity, $price)
+    {
+        $query = "UPDATE chi_tiet_nhap_kho 
+                  SET so_luong = $quantity, gia = $price 
+                  WHERE id = $detail_id";
+        return $this->db->execute($query);
     }
 }

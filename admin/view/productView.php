@@ -11,6 +11,14 @@
 
     <h2>Danh sách sản phẩm</h2>
 
+    <form action="index.php" method="GET" class="search-form">
+        <label for="search">Tìm kiếm sản phẩm:</label>
+        <input type="hidden" name="ctrl" value="productController">
+        <input type="hidden" name="action" value="searchProducts">
+        <input type="text" id="search" name="search" placeholder="Nhập tên sản phẩm cần tìm kiếm">
+        <button type="submit">Tìm kiếm</button>
+    </form>
+
     <a href="index.php?ctrl=productController&action=viewAddProduct">Thêm sản phẩm</a>
 
     <table border="1">
@@ -38,8 +46,8 @@
                 <td><?php echo $product['so_luong']; ?></td>
                 <td><?php echo $product['mo_ta']; ?></td>
                 <td>
-                    <a href="index.php?ctrl=productController&action=deleteProduct&id=<?php echo $product['id']; ?>">Xóa</a>
-                    <a href="index.php?ctrl=productController&action=updateProductView&id=<?php echo $product['id']; ?>">Cập nhật</a>
+                    <a class="deleteProducts-form" href="index.php?ctrl=productController&action=deleteProduct&id=<?php echo $product['id']; ?>">Xóa</a>
+                    <a class="updateProducts-form" href="index.php?ctrl=productController&action=updateProductView&id=<?php echo $product['id']; ?>">Cập nhật</a>
                 </td>
             </tr>
         <?php endforeach; ?>

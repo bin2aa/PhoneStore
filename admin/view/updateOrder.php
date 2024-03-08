@@ -29,7 +29,7 @@ foreach ($customers as $customer) {
         <input type="date" name="ngay" value="<?php echo $order['ngay']; ?>" required><br>
 
         <label for="tong_tien">Tổng tiền:</label>
-        <input type="number" step="0.01" name="tong_tien" value="<?php echo $order['tong_tien']; ?>" required><br>
+        <input type="number" step="0.01" name="tong_tien" value="<?php echo $order['tong_tien']; ?>" readonly><br>
 
         <label for="ghi_chu">Ghi chú:</label>
         <textarea name="ghi_chu" rows="5"><?php echo $order['ghi_chu']; ?></textarea><br><br>

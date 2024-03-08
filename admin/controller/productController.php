@@ -33,12 +33,6 @@ class ProductController
             $mo_ta = $_POST['mo_ta'];
 
             $result = $this->productModel->createProduct($ten, $anh, $id_danh_muc, $gia, $so_luong, $mo_ta);
-
-            if ($result) {
-                echo "Thêm sản phẩm thành công!";
-            } else {
-                echo "Thêm sản phẩm không thành công.";
-            }
         }
     }
 
@@ -58,27 +52,46 @@ class ProductController
             $product = $this->productModel->getProductById($product_id);
             include __DIR__ . '/../view/updateProduct.php';
         }
-
     }
 
     public function updateProduct()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Nhận dữ liệu từ form
             $product_id = $_POST['product_id'];
             $ten = $_POST['ten'];
-            $anh = $_POST['anh'];
             $id_danh_muc = $_POST['id_danh_muc'];
             $gia = $_POST['gia'];
             $so_luong = $_POST['so_luong'];
             $mo_ta = $_POST['mo_ta'];
+            // Kiểm tra xem có tệp tin ảnh mới được tải lên không
+            if (isset($_FILES['anh']) && $_FILES['anh']['error'] == UPLOAD_ERR_OK) {
+                $anh = $_FILES['anh']['name']; // Tên tệp hình ảnh
+                $tmp_name = $_FILES['anh']['tmp_name']; // Đường dẫn tạm thời của tệp hình ảnh
+                $upload_dir = '../image/'; // Thư mục lưu trữ hình ảnh
 
-            $result = $this->productModel->updateProduct($product_id, $ten, $anh, $id_danh_muc, $gia, $so_luong, $mo_ta);
-
-            if ($result) {
-                echo "Cập nhật sản phẩm thành công!";
+                // Di chuyển tệp hình ảnh vào thư mục lưu trữ
+                if (move_uploaded_file($tmp_name, $upload_dir . $anh)) {
+                    $result = $this->productModel->updateProduct($product_id, $ten, $anh, $id_danh_muc, $gia, $so_luong, $mo_ta);
+                }
             } else {
-                echo "Cập nhật sản phẩm không thành công.";
+                // Nếu không có tệp hình ảnh mới được tải lên, sử dụng ảnh cũ từ cơ sở dữ liệu
+                $product = $this->productModel->getProductById($product_id);
+                $anh = $product['anh'];
+                // Gọi phương thức updateProduct từ model để cập nhật thông tin sản phẩm
+                $result = $this->productModel->updateProduct($product_id, $ten, $anh, $id_danh_muc, $gia, $so_luong, $mo_ta);
             }
+        }
+    }
+
+
+
+    public function searchProducts()
+    {
+        if (isset($_GET['search'])) {
+            $keyword = $_GET['search'];
+            $products = $this->productModel->searchProducts($keyword);
+            include(__DIR__ . '/../view/productView.php');
         }
     }
 }
@@ -109,6 +122,9 @@ switch ($action) {
         break;
     case 'updateProduct':
         $productController->updateProduct();
+        break;
+    case 'searchProducts':
+        $productController->searchProducts();
         break;
     default:
         $productController->showProductList();

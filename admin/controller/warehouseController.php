@@ -18,7 +18,7 @@ class WarehouseController
 
     public function showAddWarehouseReceiptForm()
     {
-        $products = $this -> warehouseModel->getAllProductSelect();
+        $products = $this->warehouseModel->getAllProductSelect();
         $suppliers = $this->warehouseModel->getAllSupplierSelect();
         include __DIR__ . '/../view/addWarehouseReceipt.php';
     }
@@ -92,8 +92,17 @@ class WarehouseController
     {
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
-            $orderDetails = $this->warehouseModel->getOrderDetailsByWarehouseId($id);
+            $warehousess = $this->warehouseModel->getWarehouseDetailsById($id);
             include __DIR__ . '/../view/warehouseDetailView.php';
+        }
+    }
+
+
+    public function deleteWarehouseDetail()
+    {
+        if (isset($_GET['id'])) {
+            $warehouseDetail_id = $_GET['id'];
+            $result = $this->warehouseModel->deleteWarehouseDetail($warehouseDetail_id);
         }
     }
 }
@@ -123,6 +132,9 @@ switch ($action) {
         break;
     case 'updateWarehouseReceipt':
         $warehouseController->updateWarehouseReceipt();
+        break;
+    case 'deleteWarehouseDetail':
+        $warehouseController->deleteWarehouseDetail();
         break;
     case 'viewWarehouseDetail':
         $warehouseController->viewWarehouseDetail();

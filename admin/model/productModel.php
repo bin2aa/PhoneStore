@@ -52,10 +52,19 @@ class ProductModel
         return $this->db->execute($query);
     }
 
+    public function searchProducts($keyword)
+    {
+        $query = "SELECT * FROM san_pham WHERE ten LIKE '%$keyword%' ";
+        return $this->db->select($query);
+    }
+
     //Hiển thị tên select tên danh mục khi thêm mới danh mục theo id
     public function getAllCategorySelect()
     {
         $query = "SELECT * FROM danh_muc_san_pham";
         return $this->db->select($query);
     }
+
+
+    
 }
