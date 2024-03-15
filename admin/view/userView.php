@@ -35,7 +35,6 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Tên</th>
                     <th>Tên đăng nhập</th>
                     <th>Mật khẩu</th>
                     <th>Vai trò</th>
@@ -46,7 +45,6 @@
                 <?php foreach ($users as $user) : ?>
                     <tr>
                         <td><?php echo $user['id']; ?></td>
-                        <td><?php echo $user['ten']; ?></td>
                         <td><?php echo $user['ten_dang_nhap']; ?></td>
                         <td><?php echo $user['mat_khau']; ?></td>
                         <td><?php echo $user['vai_tro']; ?></td>

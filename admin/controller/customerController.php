@@ -17,6 +17,7 @@ class customerController
 
     public function showAddCustomerForm()
     {
+        $users = $this->customerModel->getAllUserSelect();
         include __DIR__ . '/../view/addCustomer.php';
     }
 
@@ -46,6 +47,7 @@ class customerController
     }
     public function showUpdateCustomerForm()
     {
+        $users = $this->customerModel->getAllUserSelect();
         if (isset($_GET['id'])) {
             $customer_id = $_GET['id'];
             $customer = $this->customerModel->getCustomerById($customer_id);

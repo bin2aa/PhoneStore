@@ -19,4 +19,12 @@ class loginModel
             return null;
         }
     }
+
+    public function createUser($ten_dang_nhap, $mat_khau)
+    {   
+        $hashedPassword = md5($mat_khau); // Mã hóa mật khẩu
+        $vai_tro = 1; // Đặt vai trò mặc định là 1
+        $query = "INSERT INTO nguoi_dung(ten_dang_nhap, mat_khau, vai_tro) VALUES ('$ten_dang_nhap','$hashedPassword','$vai_tro')";
+        return $this->db->execute($query);
+    }
 }

@@ -50,5 +50,12 @@ class CustomerModel
         return $this->db->execute($query);  
     }
 
+
+    public function getAllUserSelect()
+    {
+        $query = "SELECT * FROM nguoi_dung";
+        return $this->db->select($query);
+    }
+
     
 }

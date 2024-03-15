@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -13,6 +12,14 @@
     <h2>Thêm khách hàng</h2>
 
     <form action="index.php?ctrl=customerController&action=addCustomer" method="post">
+
+
+        <label for="id_nguoi_dung">Chọn id người dùng:</label>
+        <select name="id_nguoi_dung" required>
+            <?php foreach ($users as $user) : ?>
+                <option value="<?php echo $user['id']; ?>"><?php echo $user['id']; ?></option>
+            <?php endforeach; ?>
+        </select><br>
 
         <label for="ten">Tên:</label>
         <input type="text" name="ten" required><br>

@@ -13,7 +13,6 @@
             <ul>
                 <li><a href="index.php">Trang chủ</a></li>
                 <li><a href="index.php?ctrl=productControllerUser">Sản phẩm</a></li>
-                
             </ul>
         </div>
     </div>

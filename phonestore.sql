@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 20, 2024 at 01:52 PM
+-- Generation Time: Mar 15, 2024 at 06:11 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -49,6 +49,27 @@ CREATE TABLE `chi_tiet_nhap_kho` (
   `gia` decimal(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `chi_tiet_nhap_kho`
+--
+
+INSERT INTO `chi_tiet_nhap_kho` (`id`, `id_nhap_kho`, `id_san_pham`, `so_luong`, `gia`) VALUES
+(1, 42, 16, 3, '3000.00'),
+(2, 42, 17, 131, '1313.00'),
+(3, 43, 16, 10, '3.00'),
+(4, 43, 17, 20, '4.00'),
+(5, 44, 16, 5, '3.00'),
+(6, 45, 17, 3, '3.00'),
+(7, 46, 16, 2, '2.00'),
+(8, 46, 17, 3, '3.00'),
+(9, 47, 16, 4, '1.00'),
+(10, 48, 17, 2, '2.00'),
+(11, 49, 16, 1, '1.00'),
+(12, 50, 16, 10, '3.00'),
+(13, 51, 16, 1000, '20.00'),
+(14, 52, 16, 1, '1.00'),
+(15, 52, 16, 1, '1.00');
+
 -- --------------------------------------------------------
 
 --
@@ -65,8 +86,7 @@ CREATE TABLE `danh_muc_san_pham` (
 --
 
 INSERT INTO `danh_muc_san_pham` (`id`, `ten`) VALUES
-(1, 'A'),
-(2, 'C');
+(3, 'a');
 
 -- --------------------------------------------------------
 
@@ -83,26 +103,6 @@ CREATE TABLE `don_dat_hang` (
   `tinh_trang` varchar(224) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `don_dat_hang`
---
-
-INSERT INTO `don_dat_hang` (`id`, `id_khach_hang`, `ngay`, `tong_tien`, `ghi_chu`, `tinh_trang`) VALUES
-(2, 1, '2024-01-31', '33.00', '', ''),
-(4, 1, '2024-01-31', '1.00', '', ''),
-(6, 1, '2024-02-13', '32.00', '', NULL),
-(7, 1, '2024-02-21', '3.00', '12312', ''),
-(8, 1, '2024-02-21', '300.00', '1', ''),
-(9, 1, '2024-02-07', '1.00', '1', ''),
-(10, 1, '2024-02-07', '33.00', '', ''),
-(11, 1, '2024-02-07', '1.00', '', ''),
-(12, 1, '2024-02-07', '1.00', '', ''),
-(13, 1, '2024-01-31', '1.00', '1', ''),
-(14, 1, '2024-02-12', '4.00', '', ''),
-(15, 1, '2024-02-01', '123.00', '', ''),
-(16, 1, '2024-02-01', '123.00', '', ''),
-(17, 1, '2024-02-01', '1.00', '3', '3');
-
 -- --------------------------------------------------------
 
 --
@@ -114,17 +114,16 @@ CREATE TABLE `khach_hang` (
   `ten` varchar(255) DEFAULT NULL,
   `so_dien_thoai` varchar(20) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
-  `dia_chi` varchar(255) DEFAULT NULL
+  `dia_chi` varchar(255) DEFAULT NULL,
+  `id_nguoi_dung` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `khach_hang`
 --
 
-INSERT INTO `khach_hang` (`id`, `ten`, `so_dien_thoai`, `email`, `dia_chi`) VALUES
-(1, 'Thịnh', '0337147684', 'asjdasdasdsd@gmail.com', '284/25 Lý Thường Kiệt'),
-(3, 'Thiện', '11', '1@gmail.com', '1'),
-(4, 'Thông', '0331231221', 'thongthathietthathioo@gmail.com', '283/34/41/GT/GTA');
+INSERT INTO `khach_hang` (`id`, `ten`, `so_dien_thoai`, `email`, `dia_chi`, `id_nguoi_dung`) VALUES
+(5, '1', '1', '123123123@gmail.com', '1', NULL);
 
 -- --------------------------------------------------------
 
@@ -134,7 +133,6 @@ INSERT INTO `khach_hang` (`id`, `ten`, `so_dien_thoai`, `email`, `dia_chi`) VALU
 
 CREATE TABLE `nguoi_dung` (
   `id` int(11) NOT NULL,
-  `ten` varchar(255) DEFAULT NULL,
   `ten_dang_nhap` varchar(255) DEFAULT NULL,
   `mat_khau` varchar(255) DEFAULT NULL,
   `vai_tro` varchar(20) DEFAULT NULL
@@ -144,11 +142,9 @@ CREATE TABLE `nguoi_dung` (
 -- Dumping data for table `nguoi_dung`
 --
 
-INSERT INTO `nguoi_dung` (`id`, `ten`, `ten_dang_nhap`, `mat_khau`, `vai_tro`) VALUES
-(1, 'Thinh', '1', '11', '1'),
-(3, '4', '4', '4', '4'),
-(10, 'hai', 'ba', 'bon', 'nam'),
-(11, '1', '2', '3', '21]');
+INSERT INTO `nguoi_dung` (`id`, `ten_dang_nhap`, `mat_khau`, `vai_tro`) VALUES
+(1, 'a', '0cc175b9c0f1b6a831c399e269772661', '1'),
+(5, 'b', '92eb5ffee6ae2fec3ad71c777531578f', '1');
 
 -- --------------------------------------------------------
 
@@ -164,6 +160,23 @@ CREATE TABLE `nhap_kho` (
   `ghi_chu` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `nhap_kho`
+--
+
+INSERT INTO `nhap_kho` (`id`, `id_nha_cung_cap`, `ngay`, `tong_tien`, `ghi_chu`) VALUES
+(42, 6, '2024-03-21', '181003.00', '123'),
+(43, 6, '2024-03-08', '110.00', '1'),
+(44, 6, '2024-03-14', '15.00', ''),
+(45, 6, '2024-03-14', '9.00', ''),
+(46, 6, '2024-03-14', '13.00', ''),
+(47, 6, '2024-03-01', '4.00', ''),
+(48, 6, '2024-03-15', '4.00', ''),
+(49, 6, '2024-02-29', '1.00', ''),
+(50, 6, '2024-03-22', '30.00', '3'),
+(51, 6, '2024-03-13', '20000.00', ''),
+(52, 6, '2024-03-15', '2.00', '');
+
 -- --------------------------------------------------------
 
 --
@@ -177,6 +190,13 @@ CREATE TABLE `nha_cung_cap` (
   `email` varchar(255) DEFAULT NULL,
   `dia_chi` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `nha_cung_cap`
+--
+
+INSERT INTO `nha_cung_cap` (`id`, `ten`, `so_dien_thoai`, `email`, `dia_chi`) VALUES
+(6, 'Thịnh', '0337147684', 'asjdasdasdsd@gmail.com', '333 Âu cơ');
 
 -- --------------------------------------------------------
 
@@ -199,13 +219,9 @@ CREATE TABLE `san_pham` (
 --
 
 INSERT INTO `san_pham` (`id`, `ten`, `anh`, `id_danh_muc`, `gia`, `so_luong`, `mo_ta`) VALUES
-(1, '1', 'abc.png', 2, '1.00', 1, '1'),
-(2, '1', '', 1, '1.00', 1, '1'),
-(3, '1', 'abc.png', 1, '1.00', 1, '1'),
-(4, '1', 'abc.png', 1, '1.00', 1, '1'),
-(5, '1', '', 1, '1.00', 1, '1'),
-(6, '2', '', 1, '2.00', 2, '2'),
-(7, '1', '', 1, '1.00', 1, '1');
+(16, 'a', 'abc.png', 3, '100.00', 1107, 'a'),
+(17, 'ád', 'abc.png', 3, '133.00', 156, '3'),
+(18, 'Aa', '', 3, '123.00', 1, 'a');
 
 --
 -- Indexes for dumped tables
@@ -216,16 +232,16 @@ INSERT INTO `san_pham` (`id`, `ten`, `anh`, `id_danh_muc`, `gia`, `so_luong`, `m
 --
 ALTER TABLE `chi_tiet_don_hang`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_don_hang` (`id_don_hang`),
-  ADD KEY `id_san_pham` (`id_san_pham`);
+  ADD KEY `chi_tiet_don_hang_ibfk_1` (`id_don_hang`),
+  ADD KEY `chi_tiet_don_hang_ibfk_2` (`id_san_pham`);
 
 --
 -- Indexes for table `chi_tiet_nhap_kho`
 --
 ALTER TABLE `chi_tiet_nhap_kho`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_nhap_kho` (`id_nhap_kho`),
-  ADD KEY `id_san_pham` (`id_san_pham`);
+  ADD KEY `chi_tiet_nhap_kho_ibfk_1` (`id_nhap_kho`),
+  ADD KEY `chi_tiet_nhap_kho_ibfk_2` (`id_san_pham`);
 
 --
 -- Indexes for table `danh_muc_san_pham`
@@ -244,13 +260,15 @@ ALTER TABLE `don_dat_hang`
 -- Indexes for table `khach_hang`
 --
 ALTER TABLE `khach_hang`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `khach_hang_ibfk_1` (`id_nguoi_dung`);
 
 --
 -- Indexes for table `nguoi_dung`
 --
 ALTER TABLE `nguoi_dung`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `ten_dang_nhap` (`ten_dang_nhap`);
 
 --
 -- Indexes for table `nhap_kho`
@@ -286,49 +304,49 @@ ALTER TABLE `chi_tiet_don_hang`
 -- AUTO_INCREMENT for table `chi_tiet_nhap_kho`
 --
 ALTER TABLE `chi_tiet_nhap_kho`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `danh_muc_san_pham`
 --
 ALTER TABLE `danh_muc_san_pham`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `don_dat_hang`
 --
 ALTER TABLE `don_dat_hang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `khach_hang`
 --
 ALTER TABLE `khach_hang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `nguoi_dung`
 --
 ALTER TABLE `nguoi_dung`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `nhap_kho`
 --
 ALTER TABLE `nhap_kho`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `nha_cung_cap`
 --
 ALTER TABLE `nha_cung_cap`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `san_pham`
 --
 ALTER TABLE `san_pham`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Constraints for dumped tables
@@ -338,21 +356,27 @@ ALTER TABLE `san_pham`
 -- Constraints for table `chi_tiet_don_hang`
 --
 ALTER TABLE `chi_tiet_don_hang`
-  ADD CONSTRAINT `chi_tiet_don_hang_ibfk_1` FOREIGN KEY (`id_don_hang`) REFERENCES `don_dat_hang` (`id`),
-  ADD CONSTRAINT `chi_tiet_don_hang_ibfk_2` FOREIGN KEY (`id_san_pham`) REFERENCES `san_pham` (`id`);
+  ADD CONSTRAINT `chi_tiet_don_hang_ibfk_1` FOREIGN KEY (`id_don_hang`) REFERENCES `don_dat_hang` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `chi_tiet_don_hang_ibfk_2` FOREIGN KEY (`id_san_pham`) REFERENCES `san_pham` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `chi_tiet_nhap_kho`
 --
 ALTER TABLE `chi_tiet_nhap_kho`
-  ADD CONSTRAINT `chi_tiet_nhap_kho_ibfk_1` FOREIGN KEY (`id_nhap_kho`) REFERENCES `nhap_kho` (`id`),
-  ADD CONSTRAINT `chi_tiet_nhap_kho_ibfk_2` FOREIGN KEY (`id_san_pham`) REFERENCES `san_pham` (`id`);
+  ADD CONSTRAINT `chi_tiet_nhap_kho_ibfk_1` FOREIGN KEY (`id_nhap_kho`) REFERENCES `nhap_kho` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `chi_tiet_nhap_kho_ibfk_2` FOREIGN KEY (`id_san_pham`) REFERENCES `san_pham` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `don_dat_hang`
 --
 ALTER TABLE `don_dat_hang`
   ADD CONSTRAINT `don_dat_hang_ibfk_1` FOREIGN KEY (`id_khach_hang`) REFERENCES `khach_hang` (`id`);
+
+--
+-- Constraints for table `khach_hang`
+--
+ALTER TABLE `khach_hang`
+  ADD CONSTRAINT `khach_hang_ibfk_1` FOREIGN KEY (`id_nguoi_dung`) REFERENCES `nguoi_dung` (`id`);
 
 --
 -- Constraints for table `nhap_kho`

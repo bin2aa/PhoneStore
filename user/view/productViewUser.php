@@ -1,3 +1,8 @@
+<?php
+// include(__DIR__ . '/../controller/cartController.php');
+// $cartController = new CartController();
+?>
+
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -7,6 +12,26 @@
     <title>Danh sách sản phẩm</title>
     <style>
         /* Thêm CSS tùy chỉnh cho hiển thị danh sách sản phẩm */
+        .product {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .product img {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .buy-button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -23,6 +48,7 @@
                     <p>Giá: <?php echo $product['gia']; ?> đ</p>
                     <p>Số lượng: <?php echo $product['so_luong']; ?></p>
                     <p>Mô tả: <?php echo $product['mo_ta']; ?></p>
+                    <a href="index.php?ctrl=cartController&action=addToCart&cart_id=<?php echo $product['id']; ?>&quantity=1" class="buy-button">Thêm vào giỏ hàng</a>
                 </div>
             <?php
             }
@@ -33,7 +59,6 @@
         }
         ?>
     </div>
-
 </body>
 
 </html>

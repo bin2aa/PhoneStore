@@ -14,9 +14,6 @@
 
         <input type="hidden" name="user_id" value="<?php echo $user['id']; ?>">
 
-        <label for="ten">Tên:</label>
-        <input type="text" name="ten" value="<?php echo $user['ten']; ?>" required><br>
-
         <label for="ten_dang_nhap">Tên đăng nhập:</label>
         <input type="text" name="ten_dang_nhap" value="<?php echo $user['ten_dang_nhap']; ?>" required><br>
 

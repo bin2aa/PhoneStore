@@ -39,6 +39,7 @@ class WarehouseModel
 
         // Thêm chi tiết các sản phẩm nhập kho
         foreach ($details as $detail) {
+            // Thêm chi tiết các sản phẩm nhập kho
             $id_san_pham = $detail['id_san_pham'];
             $so_luong = $detail['so_luong'];
             $gia = $detail['gia'];
@@ -46,10 +47,9 @@ class WarehouseModel
             $query_insert_detail = "INSERT INTO chi_tiet_nhap_kho (id_nhap_kho, id_san_pham, so_luong, gia)
                                     VALUES ($id_nhap_kho, $id_san_pham, $so_luong, $gia)";
             $this->db->execute($query_insert_detail);
-        }
 
-        // Cập nhật số lượng tồn kho cho các sản phẩm
-        foreach ($details as $detail) {
+
+            // Cập nhật số lượng tồn kho cho các sản phẩm
             $id_san_pham = $detail['id_san_pham'];
             $so_luong = $detail['so_luong'];
 
@@ -57,17 +57,18 @@ class WarehouseModel
                                        SET so_luong = so_luong + $so_luong 
                                        WHERE id = $id_san_pham";
             $this->db->execute($query_update_inventory);
-        }
 
-        // Cập nhật tổng tiền cho phiếu nhập kho
-        $query_update_total = "UPDATE nhap_kho 
-                               SET tong_tien = (
-                                   SELECT SUM(so_luong * gia) 
-                                   FROM chi_tiet_nhap_kho 
-                                   WHERE id_nhap_kho = $id_nhap_kho
-                               )
-                               WHERE id = $id_nhap_kho";
-        $this->db->execute($query_update_total);
+
+            // Cập nhật tổng tiền cho phiếu nhập kho
+            $query_update_total = "UPDATE nhap_kho 
+                                    SET tong_tien = (
+                                        SELECT SUM(so_luong * gia) 
+                                        FROM chi_tiet_nhap_kho 
+                                        WHERE id_nhap_kho = $id_nhap_kho
+                                    )
+                                    WHERE id = $id_nhap_kho";
+            $this->db->execute($query_update_total);
+        }
     }
 
     public function deleteWarehouseReceipt($id)

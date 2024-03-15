@@ -22,11 +22,12 @@ Session::startSession();
                 $ten_dang_nhap = Session::getSessionValue('ten_dang_nhap');
                 if ($ten_dang_nhap) {
                     echo 'Xin chào đồ ngu: ' . $ten_dang_nhap;
-                    echo '<li><a href="/logout.php">Đăng xuất</a></li>';
+                    echo '<li><a href="/login/index.php?ctrl=loginController&action=logout">Đăng xuất</a></li>';
                 } else {
                     echo '<li><a href="/login/index.php?ctrl=loginController">Đăng nhập</a></li>';
                 }
                 ?>
+                <li> <a href="index.php?ctrl=cartController&action=showCart">Giỏ hàng</a></li>
             </ul>
         </div>
     </div>

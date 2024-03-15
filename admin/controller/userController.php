@@ -23,12 +23,11 @@ class UserController
     public function addUser()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $ten = $_POST['ten'];
             $ten_dang_nhap = $_POST['ten_dang_nhap'];
             $mat_khau = $_POST['mat_khau'];
             $vai_tro = $_POST['vai_tro'];
 
-            $result = $this->userModel->createUser($ten, $ten_dang_nhap, $mat_khau, $vai_tro);
+            $result = $this->userModel->createUser($ten_dang_nhap, $mat_khau, $vai_tro);
 
             if ($result) {
                 echo "Thêm người dùng thành công!";
@@ -57,46 +56,16 @@ class UserController
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $user_id = $_POST['user_id'];
-            $ten = $_POST['ten'];
             $ten_dang_nhap = $_POST['ten_dang_nhap'];
             $mat_khau = $_POST['mat_khau'];
             $vai_tro = $_POST['vai_tro'];
 
-            $result = $this->userModel->updateUser($user_id, $ten, $ten_dang_nhap, $mat_khau, $vai_tro);
+            $result = $this->userModel->updateUser($user_id, $ten_dang_nhap, $mat_khau, $vai_tro);
 
             if ($result) {
                 echo "Cập nhật người dùng thành công!";
             } else {
                 echo "Cập nhật người dùng không thành công.";
-            }
-        }
-    }
-
-
-    public function loginView()
-    {
-        include __DIR__ . '/../view/loginView.php';
-    }
-
-    public function login()
-    {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $username = $_POST['username'];
-            $password = $_POST['password'];
-
-            $user = $this->userModel->getUserByUsernameAndPassword($username, $password);
-
-            if ($user) {
-                // Đăng nhập thành công, lưu thông tin người dùng vào session
-                Session::startSession();
-                Session::setSessionValue('user_id', $user['id']);
-                Session::setSessionValue('username', $user['ten_dang_nhap']);
-                // Chuyển hướng đến trang chính sau khi đăng nhập thành công
-                // header('Location: index.php');
-                echo '<script>alert("Đăng nhập thành công"); window.location.href = "index.php";</script>';
-            } else {
-                // Đăng nhập không thành công, hiển thị thông báo lỗi
-                echo "Tên đăng nhập hoặc mật khẩu không đúng.";
             }
         }
     }
@@ -113,12 +82,6 @@ $userController = new UserController();
 switch ($action) {
     case 'index':
         $userController->showUserList();
-        break;
-    case 'loginView':
-        $userController->loginView();
-        break;
-    case 'login':
-        $userController->login();
         break;
     case 'viewAddUser':
         $userController->showAddUserForm();

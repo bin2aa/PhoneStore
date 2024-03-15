@@ -14,6 +14,13 @@
 
         <input type="hidden" name="id" value="<?php echo $customer['id']; ?>">
 
+        <label for="id_nguoi_dung">Chọn id người dùng:</label>
+        <select name="id_nguoi_dung" required>
+            <?php foreach ($users as $user) : ?>
+                <option value="<?php echo $user['id']; ?>"><?php echo $user['id']; ?></option>
+            <?php endforeach; ?>
+        </select><br>
+
         <label for="ten">Tên:</label>
         <input type="text" name="ten" value="<?php echo $customer['ten']; ?>" required><br>
 

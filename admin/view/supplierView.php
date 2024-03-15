@@ -45,8 +45,8 @@
                         <td><?php echo $supplier['dia_chi']; ?></td>
 
                         <td>
-                            <a href="menu.php?ctrl=supplierController&action=deleteSupplier&id=<?php echo $supplier['id']; ?>">Xóa</a>
-                            <a href="menu.php?ctrl=supplierController&action=updateSupplierView&id=<?php echo $supplier['id']; ?>">Sửa</a>
+                            <a href="index.php?ctrl=supplierController&action=deleteSupplier&id=<?php echo $supplier['id']; ?>">Xóa</a>
+                            <a href="index.php?ctrl=supplierController&action=updateSupplierView&id=<?php echo $supplier['id']; ?>">Sửa</a>
                         </td>
 
                     </tr>

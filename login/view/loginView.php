@@ -49,14 +49,15 @@
         <input type="password" id="password" name="password" required>
 
         <button type="submit">Đăng nhập</button>
+        <a href="index.php?ctrl=loginController&action=registerView" class="register-btn">Đăng ký</a>
     </form>
-
     <?php
-        // if (isset($_GET['ctrl'])) {
-        //     $ctrl = $_GET['ctrl'];
-        //     include '/../controller/' . $ctrl . '.php';
-        // }
-        // ?>
+    // if (isset($_GET['ctrl'])) {
+    //     $ctrl = $_GET['ctrl'];
+    //     include '/../controller/' . $ctrl . '.php';
+    // }
+    // 
+    ?>
 </body>
 
 </html>
