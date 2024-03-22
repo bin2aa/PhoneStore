@@ -26,11 +26,11 @@ class CustomerModel
     }
 
     // DÙng password_hard để bảo mật hơn
-    public function createCustomer($ten, $so_dien_thoai, $email, $dia_chi)
+    public function createCustomer($ten, $so_dien_thoai, $email, $dia_chi, $id_nguoi_dung)
     {
         // $hashed_password = password_hash($mat_khau, PASSWORD_DEFAULT);
-        $query = "INSERT INTO khach_hang (ten, so_dien_thoai, email, dia_chi) 
-        VALUE ('$ten','$so_dien_thoai','$email','$dia_chi')";
+        $query = "INSERT INTO khach_hang (ten, so_dien_thoai, email, dia_chi, id_nguoi_dung) 
+        VALUE ('$ten','$so_dien_thoai','$email','$dia_chi','$id_nguoi_dung')";
         return $this->db->execute($query);
     }
 
@@ -40,12 +40,13 @@ class CustomerModel
         return $this->db->execute($query);
     }
 
-    public function updateCustomer($id, $ten, $so_dien_thoai, $email, $dia_chi)
+    public function updateCustomer($id, $ten, $so_dien_thoai, $email, $dia_chi, $id_nguoi_dung)
     {
         $query = "UPDATE khach_hang SET ten = '$ten', 
         so_dien_thoai = '$so_dien_thoai', 
         email = '$email',
-        dia_chi = '$dia_chi' 
+        dia_chi = '$dia_chi',
+        id_nguoi_dung = '$id_nguoi_dung'
         WHERE id = $id";
         return $this->db->execute($query);  
     }

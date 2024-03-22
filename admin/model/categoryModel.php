@@ -40,5 +40,11 @@ class CategoryModel
         $query = "UPDATE danh_muc_san_pham SET ten = '$ten' WHERE id = $id";
         return $this->db->execute($query);
     }
+
+    //Liệt kê sản phảm theo danh mục
+    public function getProductByCategory($id)
+    {
+        $query = "SELECT * FROM san_pham WHERE id_danh_muc = $id";
+        return $this->db->select($query);
+    }
 }
-?>

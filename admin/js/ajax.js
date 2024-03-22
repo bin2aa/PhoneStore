@@ -16,6 +16,7 @@ $(document).ready(function () {
 
     // Chuyển sang form cập nhật sản phẩm
     $('a.updateProducts-form').click(function (event) {
+        //productView.php
         event.preventDefault(); // Ngăn chặn hành động mặc định của liên kết
         var updateUrl = $(this).attr('href');
         $.ajax({

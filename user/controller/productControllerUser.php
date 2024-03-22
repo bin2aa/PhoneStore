@@ -1,6 +1,5 @@
 <?php
 include(__DIR__ . '/../../admin/model/productModel.php');
-
 class ProductControllerUser
 {
     private $productModel;
@@ -13,6 +12,12 @@ class ProductControllerUser
     public function showProductList()
     {
         $products = $this->productModel->getAllProducts();
+        $categories = $this->productModel->getAllCategoriesPR();
+
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $products = $this->productModel->getProductByCategory($id);
+        }
         include __DIR__ . '/../view/productViewUser.php';
     }
 }

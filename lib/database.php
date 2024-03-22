@@ -54,6 +54,11 @@ class Database
         }
     }
 
+    public function getLastInsertId()
+    {
+        return mysqli_insert_id($this->conn);
+    }
+
     // Phương thức đóng kết nối cơ sở dữ liệu
     public function close()
     {

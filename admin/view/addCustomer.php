@@ -33,6 +33,8 @@
         <label for="dia_chi">Địa chỉ:</label>
         <input type="text" name="dia_chi" required><br><br>
 
+        
+
         <button type="submit">Thêm khách hàng</button>
     </form>
 

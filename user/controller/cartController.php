@@ -16,6 +16,12 @@ class CartController
         $this->cartModel->addToCart($cart_id, $quantity);
     }
 
+    //decrease: giảm bớt
+    public function decreaseQuantity($cart_id, $quantity)
+    {
+        $this->cartModel->decreaseQuantity($cart_id, $quantity);
+    }
+
     public function updateQuantity($cart_id, $quantity)
     {
         $this->cartModel->updateQuantity($cart_id, $quantity);
@@ -71,12 +77,28 @@ switch ($action) {
         $cartController->addToCart($cart_id, $quantity);
         $cartController->showCart();
         break;
+    case 'decreaseQuantity':
+        $cart_id = $_GET['cart_id'];
+        $quantity = $_GET['quantity'];
+        $cartController->decreaseQuantity($cart_id, $quantity);
+        $cartController->showCart();
+        break;
+
         // case 'updateQuantity':
         //     $cart_id = $_GET['cart_id'];
         //     $quantity = $_GET['quantity'];
         //     $cartController->updateQuantity($cart_id, $quantity);
         //     $cartController->showCart();
         //     break;
+    case 'removeFromCart':
+        $cart_id = $_GET['cart_id'];
+        $cartController->removeFromCart($cart_id);
+        $cartController->showCart();
+        break;
+    case 'clearCart':
+        $cartController->clearCart();
+        $cartController->showCart();
+        break;
     default:
         $cartController->showCart();
 }

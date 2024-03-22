@@ -23,11 +23,16 @@ class loginController
 
             $login = $this->loginModel->getUserByUsernameAndPassword($username, $password);
 
+
             if ($login) {
                 // Đăng nhập thành công, lưu thông tin người dùng vào session
                 Session::startSession();
                 Session::setSessionValue('login_id', $login['id']);
                 Session::setSessionValue('ten_dang_nhap', $login['ten_dang_nhap']);
+                $customer = $this->loginModel->getCustomerById($login['id']);
+                if ($customer) {
+                    Session::setSessionValue('id_khach_hang', $customer['id']);
+                }
                 echo '<script>alert("Đăng nhập thành công"); window.location.href = "/user/index.php";</script>';
             } else {
                 // Đăng nhập không thành công, hiển thị thông báo lỗi
@@ -83,7 +88,6 @@ class loginController
             }
         }
     }
-
 }
 
 $action = 'index';

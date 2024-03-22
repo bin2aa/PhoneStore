@@ -65,6 +65,22 @@ class ProductModel
         return $this->db->select($query);
     }
 
+    // Danh mục cho sản phẩm
+    public function getAllCategoriesPR()
+    {
+        $query = "SELECT * FROM danh_muc_san_pham";
+        return $this->db->select($query);
+    }
 
-    
+    public function getProductByCategory($id)
+    {
+        $query = "SELECT * FROM san_pham WHERE id_danh_muc = $id";
+        return $this->db->select($query);
+    }
+
+    public function getAllCategories()
+    {
+        $query = "SELECT * FROM danh_muc_san_pham";
+        return $this->db->select($query);
+    }
 }

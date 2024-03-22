@@ -23,6 +23,24 @@ class CartModel
         }
     }
 
+    //Note: decrease - giảm bớt
+    public function decreaseQuantity($product_id, $quantity)
+    {
+        // Kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng chưa
+        if (isset($_SESSION['cart'][$product_id])) {
+            // Cập nhật số lượng mới sau khi giảm
+            $newQuantity = $_SESSION['cart'][$product_id] - abs($quantity);
+
+            // Nếu số lượng mới lớn hơn 0, cập nhật số lượng
+            if ($newQuantity > 0) {
+                $_SESSION['cart'][$product_id] = $newQuantity;
+            } else {
+                // Nếu số lượng mới bé hơn hoặc bằng 0, xóa sản phẩm khỏi giỏ hàng
+                unset($_SESSION['cart'][$product_id]);
+            }
+        }
+    }
+
     // Cập nhật số lượng sản phẩm trong giỏ hàng
     public function updateQuantity($product_id, $quantity)
     {
@@ -100,4 +118,6 @@ class CartModel
 
         return array();
     }
+
+    
 }

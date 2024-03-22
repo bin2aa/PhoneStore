@@ -28,8 +28,9 @@ class customerController
             $so_dien_thoai = $_POST['so_dien_thoai'];
             $email = $_POST['email'];
             $dia_chi = $_POST['dia_chi'];
+            $id_nguoi_dung = $_POST['id_nguoi_dung'];
 
-            $result = $this->customerModel->createCustomer($ten, $so_dien_thoai, $email, $dia_chi);
+            $result = $this->customerModel->createCustomer($ten, $so_dien_thoai, $email, $dia_chi, $id_nguoi_dung);
 
             if ($result) {
                 echo "Thêm khách hàng thành công!";
@@ -63,8 +64,9 @@ class customerController
             $so_dien_thoai = $_POST['so_dien_thoai'];
             $email = $_POST['email'];
             $dia_chi = $_POST['dia_chi'];
+            $id_nguoi_dung = $_POST['id_nguoi_dung'];
 
-            $result = $this->customerModel->updateCustomer($customer_id, $ten, $so_dien_thoai, $email, $dia_chi);
+            $result = $this->customerModel->updateCustomer($customer_id, $ten, $so_dien_thoai, $email, $dia_chi, $id_nguoi_dung);
 
             if ($result) {
                 echo "Cập nhật khách hàng thành công!";
