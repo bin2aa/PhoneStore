@@ -40,9 +40,11 @@ class UserModel
 
     public function updateUser($id, $ten_dang_nhap, $mat_khau, $vai_tro)
     {
+        $hashedPassword = md5($mat_khau);
         $query = "UPDATE nguoi_dung SET
         ten_dang_nhap = '$ten_dang_nhap',
-        mat_khau = '$mat_khau', vai_tro = '$vai_tro'
+        mat_khau = '$hashedPassword', 
+        vai_tro = '$vai_tro'
         WHERE id = $id";
         return $this->db->execute($query);
     }

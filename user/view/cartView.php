@@ -48,8 +48,11 @@
         <p>Tổng số lượng sản phẩm: <?php echo $totalQuantity; ?></p>
         <p>Tổng tiền: <?php echo number_format($totalPrice); ?> đ</p>
 
-        <form method="post" action="index.php?ctrl=orderUserController&action=createOrder">
-            <input type="hidden" name="id_khach_hang" value="<?php echo $_SESSION['id_khach_hang']; ?>">
+        <form method="post" action="index.php?ctrl=cartController&action=createOrder" onsubmit='return checkLoggedIn()'>
+            <?php if (isset($_SESSION['id_khach_hang'])) : ?>
+                <input type="hidden" name="id_khach_hang" value="<?php echo $_SESSION['id_khach_hang']; ?>">
+                <input type="hidden" name="tong_tien" value="<?php echo $totalPrice; ?>">
+            <?php endif; ?>
             <input type="text" name="ghi_chu" placeholder="Ghi chú">
             <button type="submit">Mua</button>
         </form>
@@ -69,6 +72,19 @@
         function decrease(productId, quantity) {
             var url = 'index.php?ctrl=cartController&action=decreaseQuantity&cart_id=' + productId + '&quantity=' + quantity;
             window.location.href = url;
+        }
+
+        function checkLoggedIn() {
+            var isLoggedIn = <?php echo isset($_SESSION['id_khach_hang']) ? 'true' : 'false'; ?>;
+            var totalQuantity = <?php echo $totalQuantity; ?>;
+            if (!isLoggedIn) {
+                alert('Vui lòng đăng nhập trước khi mua hàng.');
+                return false;
+            } else if (totalQuantity === 0) {
+                alert('Giỏ hàng của bạn đang trống. Vui lòng chọn sản phẩm trước khi mua.');
+                return false;
+            }
+            return true;
         }
 
         // function buyAll() {

@@ -54,6 +54,8 @@ class Database
         }
     }
 
+
+    // lấy giá trị id 
     public function getLastInsertId()
     {
         return mysqli_insert_id($this->conn);

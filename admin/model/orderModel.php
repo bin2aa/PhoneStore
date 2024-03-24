@@ -60,12 +60,8 @@ class OrderModel
     }
 
     public function getOrderDetailsByOrderId($id_don_hang)
-{
-    $query = "SELECT * FROM chi_tiet_don_hang WHERE id_don_hang = $id_don_hang";
-    return $this->db->select($query);
-}
-
-
-
-
+    {
+        $query = "SELECT * FROM chi_tiet_don_hang WHERE id_don_hang = $id_don_hang";
+        return $this->db->select($query);
+    }
 }

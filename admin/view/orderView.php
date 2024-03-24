@@ -44,7 +44,7 @@
                         <td><?php echo $order['id_khach_hang']; ?></td>
                         <td><?php echo $order['ten_khach_hang']; ?></td>
                         <td><?php echo $order['ngay']; ?></td>
-                        <td><?php echo $order['tong_tien']; ?></td>
+                        <td><?php echo number_format($order['tong_tien']);?></td>
                         <td><?php echo $order['ghi_chu']; ?></td>
                         <td><?php echo $order['tinh_trang']; ?></td>
 

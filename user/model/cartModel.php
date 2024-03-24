@@ -100,9 +100,16 @@ class CartModel
     private function getProductPrice($product_id)
     {
         // Thực hiện truy vấn cơ sở dữ liệu để lấy giá của sản phẩm dựa trên ID sản phẩm
-        // Trong trường hợp này, giả sử giá sản phẩm được cố định, bạn cần thay thế bằng cách thực hiện truy vấn cơ sở dữ liệu thực tế
-        // Trả về giá của sản phẩm
-        return 10000; // Giá sản phẩm cố định
+        $query = "SELECT gia FROM san_pham WHERE id = $product_id";
+        $result = $this->db->select($query);
+        if ($result) {
+            // Lấy giá sản phẩm từ kết quả truy vấn
+            $product_price = $result[0]['gia'];
+            return $product_price * 1000;
+        } else {
+            // Trong trường hợp không có kết quả, có thể xử lý bằng cách trả về một giá trị mặc định hoặc thông báo lỗi
+            return 0; // hoặc return null;
+        }
     }
 
     public function getProductInfo($productId)
@@ -118,6 +125,19 @@ class CartModel
 
         return array();
     }
+    public function createOrder($id_khach_hang, $ngay, $tong_tien, $ghi_chu, $tinh_trang)
+    {
 
-    
+        $query = "INSERT INTO don_dat_hang(id_khach_hang, ngay, tong_tien, ghi_chu, tinh_trang)
+                  VALUES ('$id_khach_hang','$ngay','$tong_tien','$ghi_chu','Chờ xác nhận')";
+        $this->db->execute($query);
+        return $this->db->getLastInsertId();
+    }
+
+    public function createOrderDetail($id_don_hang, $id_san_pham, $so_luong, $gia)
+    {
+        $query = "INSERT INTO chi_tiet_don_hang(id_don_hang, id_san_pham, so_luong, gia)
+                  VALUES ('$id_don_hang','$id_san_pham','$so_luong','$gia')";
+        return $this->db->execute($query);
+    }
 }

@@ -8,7 +8,6 @@ class CartController
     public function __construct()
     {
         $this->cartModel = new CartModel();
-        // Session::startSession();
     }
 
     public function addToCart($cart_id, $quantity)
@@ -54,9 +53,42 @@ class CartController
             $productImages[$productId] = $productInfo['anh'];
             $productPrices[$productId] = $productInfo['gia'];
         }
-
         include(__DIR__ . '/../view/cartView.php');
     }
+
+
+    public function createOrder()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['id_khach_hang'], $_POST['tong_tien'], $_POST['ghi_chu'])) {
+                $id_khach_hang = $_POST['id_khach_hang'];
+                $ngay = date('Y-m-d H:i:s');
+                $tong_tien = $_POST['tong_tien'];
+                $ghi_chu = $_POST['ghi_chu'];
+                $tinh_trang = 'Chờ xác nhận';
+
+                $id_don_hang = $this->cartModel->createOrder($id_khach_hang, $ngay, $tong_tien, $ghi_chu, $tinh_trang);
+                if ($id_don_hang) {
+                    echo "Tạo đơn hàng thành công";
+                    // Lấy danh sách sản phẩm trong giỏ hàng
+                    $cartItems = $this->cartModel->getCartItems();
+                    foreach ($cartItems as $productId => $quantity) {
+                        $productInfo = $this->cartModel->getProductInfo($productId);
+                        $gia = $productInfo['gia'];
+                        // Tạo chi tiết đơn hàng với thông tin sản phẩm
+                        $this->cartModel->createOrderDetail($id_don_hang, $productId, $quantity, $gia);
+                    }
+
+                    // Xóa giỏ hàng sau khi đã tạo đơn hàng
+                    $this->cartModel->clearCart();
+                }
+            }
+        } else {
+            echo "Yêu cầu không hợp lệ";
+        }
+    }
+
+    
 }
 
 
@@ -98,6 +130,9 @@ switch ($action) {
     case 'clearCart':
         $cartController->clearCart();
         $cartController->showCart();
+        break;
+    case 'createOrder':
+        $cartController->createOrder();
         break;
     default:
         $cartController->showCart();

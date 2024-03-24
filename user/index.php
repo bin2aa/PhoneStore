@@ -30,6 +30,7 @@ Session::startSession();
                     <br>
                 <?php
                     echo '<a href="index.php?ctrl=customerUserController">Thông tin cá nhân</a>';
+                    echo '<li><a href="/login/index.php?ctrl=loginController&action=viewChangePassword">Đổi mật khẩu</a></li>';
                     echo '<li><a href="/login/index.php?ctrl=loginController&action=logout">Đăng xuất</a></li>';
                 } else {
                     echo '<li><a href="/login/index.php?ctrl=loginController">Đăng nhập</a></li>';

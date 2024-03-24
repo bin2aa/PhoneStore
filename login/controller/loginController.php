@@ -67,27 +67,57 @@ class loginController
             $ten_dang_nhap = $_POST['ten_dang_nhap'];
             $mat_khau = $_POST['password'];
             $confirm_password = $_POST['confirm_password'];
+            $ho_ten = $_POST['ho_ten'];
+            $email = $_POST['email'];
+            $dia_chi = $_POST['dia_chi'];
+            $so_dien_thoai = $_POST['so_dien_thoai'];
 
             // Kiểm tra xem mật khẩu nhập lại có khớp với mật khẩu ban đầu hay không
             if ($mat_khau !== $confirm_password) {
                 echo '<script>alert("Nhập lại mật khẩu không khớp"); window.location.href = "index.php?ctrl=loginController&action=registerView";</script>';
                 exit; // Dừng việc thực thi tiếp nếu mật khẩu không khớp
             }
-
             try {
-                // Tạo người dùng mới
-                $result = $this->loginModel->createUser($ten_dang_nhap, $mat_khau);
+                // Tạo người dùng mới cùng thông tin khách hàng
+                $result = $this->loginModel->createUser($ten_dang_nhap, $mat_khau, $ho_ten, $email, $so_dien_thoai, $dia_chi);
                 if ($result) {
                     echo '<script>alert("Đăng ký thành công"); window.location.href = "index.php?ctrl=loginController";</script>';
                 } else {
                     echo '<script>alert("Đăng ký không thành công"); window.location.href = "index.php?ctrl=loginController&action=registerView";</script>';
                 }
             } catch (mysqli_sql_exception $e) {
-                // Xử lý khi tên tài khoản đã tồn tại
-                echo '<script>alert("Tên tài khoản đã tồn tại"); window.location.href = "index.php?ctrl=loginController&action=registerView";</script>';
+                // Xử lý khi tên tài khoản đã tồn tại hoặc có lỗi khác
+                echo '<script>alert("Đã xảy ra lỗi khi đăng ký"); window.location.href = "index.php?ctrl=loginController&action=registerView";</script>';
             }
         }
     }
+
+    public function viewChangePassword()
+    {
+        include __DIR__ . '/../view/changePassword.php';
+    }
+    public function changePassword()
+    {
+        Session::startSession();
+        $id_nguoi_dung = Session::getSessionValue('login_id');
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $mat_khau_moi = $_POST['new_password'];
+            $confirm_password = $_POST['confirm_password'];
+            // Kiểm tra xem mật khẩu mới và mật khẩu nhập lại có khớp nhau không
+            if ($mat_khau_moi !== $confirm_password) {
+                echo '<script>alert("Nhập lại mật khẩu không khớp"); window.location.href = "index.php?ctrl=loginController&action=viewChangePassword";</script>';
+                exit; // Dừng việc thực thi tiếp nếu mật khẩu không khớp
+            }
+            // $hashedPassword = md5($mat_khau_moi);
+            $result = $this->loginModel->changePassword($id_nguoi_dung, $mat_khau_moi);
+            if ($result) {
+                echo '<script>alert("Đổi mật khẩu thành công"); window.location.href = "/user/index.php?ctrl=productControllerUser";</script>';
+            } else {
+                echo '<script>alert("Đổi mật khẩu không thành công"); window.location.href = "index.php?ctrl=loginController";</script>';
+            }
+        }
+    }
+    
 }
 
 $action = 'index';
@@ -113,6 +143,12 @@ switch ($action) {
         break;
     case 'register':
         $loginController->register();
+        break;
+    case 'viewChangePassword':
+        $loginController->viewChangePassword();
+        break;
+    case 'changePassword':
+        $loginController->changePassword();
         break;
     default:
         $loginController->loginView();
