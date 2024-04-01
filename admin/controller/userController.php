@@ -17,8 +17,9 @@ class UserController
 
     public function showAddUserForm()
     {
+        $users = $this->userModel->getAllPermissionsSelect();
         include __DIR__ . '/../view/addUser.php';
-    }
+    }   
 
     public function addUser()
     {
@@ -48,6 +49,7 @@ class UserController
         if (isset($_GET['id'])) {
             $user_id = $_GET['id'];
             $user = $this->userModel->getUserById($user_id);
+            $permissions = $this->userModel->getAllPermissionsSelect();
             include __DIR__ . '/../view/updateUser.php';
         }
     }

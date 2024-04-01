@@ -115,7 +115,6 @@ class CartModel
     public function getProductInfo($productId)
     {
         // Thực hiện truy vấn cơ sở dữ liệu hoặc lấy thông tin từ nguồn dữ liệu khác
-        // Ví dụ:
         $query = "SELECT ten, anh, gia FROM san_pham WHERE id = $productId";
         $result = $this->db->select($query);
 
@@ -138,6 +137,12 @@ class CartModel
     {
         $query = "INSERT INTO chi_tiet_don_hang(id_don_hang, id_san_pham, so_luong, gia)
                   VALUES ('$id_don_hang','$id_san_pham','$so_luong','$gia')";
-        return $this->db->execute($query);
+        $this->db->execute($query);
+
+        //cập nhật lại số lượng sản phẩm
+        $queryUpdate = "UPDATE san_pham SET so_luong = so_luong - $so_luong WHERE id = $id_san_pham";
+        $this->db->execute($queryUpdate);
+
+        return true;
     }
 }

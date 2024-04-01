@@ -15,6 +15,7 @@ class UserModel
         return $this->db->select($query);
     }
 
+
     public function getUserById($id)
     {
         $query = "SELECT * FROM nguoi_dung WHERE id = $id";
@@ -40,7 +41,17 @@ class UserModel
 
     public function updateUser($id, $ten_dang_nhap, $mat_khau, $vai_tro)
     {
-        $hashedPassword = md5($mat_khau);
+        $user = $this->getUserById($id); // Lấy thông tin người dùng từ cơ sở dữ liệu
+        
+        // Kiểm tra xem mật khẩu có được thay đổi hay không
+        if (!empty($mat_khau)) {
+            // Nếu có, mã hóa mật khẩu mới
+            $hashedPassword = md5($mat_khau);
+        } else {
+            // Nếu không, giữ nguyên mật khẩu hiện tại trong cơ sở dữ liệu
+            $hashedPassword = $user['mat_khau'];
+        }
+        
         $query = "UPDATE nguoi_dung SET
         ten_dang_nhap = '$ten_dang_nhap',
         mat_khau = '$hashedPassword', 
@@ -48,6 +59,7 @@ class UserModel
         WHERE id = $id";
         return $this->db->execute($query);
     }
+    
 
 
 
@@ -61,5 +73,11 @@ class UserModel
         } else {
             return null;
         }
+    }
+
+    public function getAllPermissionsSelect()
+    {
+        $query = "SELECT * FROM phan_quyen";
+        return $this->db->select($query);
     }
 }

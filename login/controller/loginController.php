@@ -1,6 +1,7 @@
 <?php
 include(__DIR__ . '/../model/loginModel.php');
 include(__DIR__ . '/../../lib/session.php');
+
 class loginController
 {
     private $loginModel;
@@ -23,12 +24,23 @@ class loginController
 
             $login = $this->loginModel->getUserByUsernameAndPassword($username, $password);
 
-
             if ($login) {
                 // Đăng nhập thành công, lưu thông tin người dùng vào session
                 Session::startSession();
                 Session::setSessionValue('login_id', $login['id']);
                 Session::setSessionValue('ten_dang_nhap', $login['ten_dang_nhap']);
+                Session::setSessionValue('vai_tro', $login['vai_tro']);
+
+                // Lấy thông tin quyền từ bảng phan_quyen
+                $vai_tro = Session::getSessionValue('vai_tro');
+                $permission = $this->loginModel->getUserPermissionsByRole($vai_tro);
+                Session::setSessionValue('permission', $permission);
+
+                // Thiết lập giá trị cho các biến session tương ứng với các quyền
+                foreach ($permission as $key => $value) {
+                    Session::setSessionValue($key, $value);
+                }
+
                 $customer = $this->loginModel->getCustomerById($login['id']);
                 if ($customer) {
                     Session::setSessionValue('id_khach_hang', $customer['id']);
@@ -40,21 +52,13 @@ class loginController
             }
         }
     }
+
     public function logout()
     {
         Session::startSession();
         Session::destroySession();
         echo '<script>alert("Đăng xuất thành công"); window.location.href = "/user/index.php";</script>';
     }
-    // public function checkLogin()
-    // {
-    //     Session::startSession();
-    //     $ten_dang_nhap = Session::getSessionValue('ten_dang_nhap');
-    //     if (!$ten_dang_nhap) {
-    //         echo '<script>alert("Bạn chưa đăng nhập"); window.location.href = "/login/index.php?ctrl=loginController";</script>';
-    //     }
-    // }
-
 
     public function registerView()
     {
@@ -77,6 +81,7 @@ class loginController
                 echo '<script>alert("Nhập lại mật khẩu không khớp"); window.location.href = "index.php?ctrl=loginController&action=registerView";</script>';
                 exit; // Dừng việc thực thi tiếp nếu mật khẩu không khớp
             }
+
             try {
                 // Tạo người dùng mới cùng thông tin khách hàng
                 $result = $this->loginModel->createUser($ten_dang_nhap, $mat_khau, $ho_ten, $email, $so_dien_thoai, $dia_chi);
@@ -96,6 +101,7 @@ class loginController
     {
         include __DIR__ . '/../view/changePassword.php';
     }
+
     public function changePassword()
     {
         Session::startSession();
@@ -108,7 +114,6 @@ class loginController
                 echo '<script>alert("Nhập lại mật khẩu không khớp"); window.location.href = "index.php?ctrl=loginController&action=viewChangePassword";</script>';
                 exit; // Dừng việc thực thi tiếp nếu mật khẩu không khớp
             }
-            // $hashedPassword = md5($mat_khau_moi);
             $result = $this->loginModel->changePassword($id_nguoi_dung, $mat_khau_moi);
             if ($result) {
                 echo '<script>alert("Đổi mật khẩu thành công"); window.location.href = "/user/index.php?ctrl=productControllerUser";</script>';
@@ -117,7 +122,6 @@ class loginController
             }
         }
     }
-    
 }
 
 $action = 'index';

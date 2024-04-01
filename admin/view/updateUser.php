@@ -18,10 +18,24 @@
         <input type="text" name="ten_dang_nhap" value="<?php echo $user['ten_dang_nhap']; ?>" required><br>
 
         <label for="mat_khau">Mật khẩu:</label>
-        <input type="text" name="mat_khau" value="<?php echo $user['mat_khau']; ?>" required><br>
+        <input type="text" name="mat_khau" placeholder="Nhập mật khẩu mới nếu cần"><br>
+
+        <!-- <label for="vai_tro">Vai trò:</label>
+        <input type="text" name="vai_tro" value="<?php //echo $user['vai_tro']; 
+                                                    ?>" required><br><br> -->
+
 
         <label for="vai_tro">Vai trò:</label>
-        <input type="text" name="vai_tro" value="<?php echo $user['vai_tro']; ?>" required><br><br>
+        <select name="vai_tro" required>
+            <?php
+            foreach ($permissions as $permission) {
+                // echo '<option value="' . $permission['vai_tro'] . '">' . $permission['vai_tro'] . '</option>';
+
+                $selected = ($permission['vai_tro'] == $_GET['vai_tro']) ? 'selected' : '';
+                echo '<option value="' . $permission['vai_tro'] . '" ' . $selected . '>' . $permission['vai_tro'] . '</option>';
+            }
+            ?>
+        </select><br>
 
         <button type="submit">Cập nhật người dùng</button>
     </form>

@@ -21,7 +21,14 @@
         <input type="text" name="mat_khau" required><br>
 
         <label for="vai_tro">Vai trò:</label>
-        <input type="text" name="vai_tro" required><br><br>
+        <select name="vai_tro" required>
+            <?php
+            foreach ($users as $user) {
+                echo '<option value="' . $user['vai_tro'] . '">' . $user['vai_tro'] . '</option>';
+            }
+            ?>
+        </select><br>
+
 
         <button type="submit">Thêm người dùng</button>
     </form>

@@ -24,14 +24,24 @@ Session::startSession();
                 // Kiểm tra xem người dùng đã đăng nhập hay chưa
                 $ten_dang_nhap = Session::getSessionValue('ten_dang_nhap');
                 $id_khach_hang = Session::getSessionValue('id_khach_hang');
+                $vai_tro = Session::getSessionValue('vai_tro');
+
+                // Lấy danh sách quyền từ session
+                $permissions = Session::getSessionValue('permissions');
+
                 if ($ten_dang_nhap) {
-                    echo 'Xin chào đồ ngu: ' . $ten_dang_nhap . '  |  ';
-                    echo 'Id khách hàng: ' . $id_khach_hang; ?>
-                    <br>
-                <?php
-                    echo '<a href="index.php?ctrl=customerUserController">Thông tin cá nhân</a>';
+                    echo 'Id khách hàng: ' . $id_khach_hang . '<br>';
+                    echo 'Xin chào: ' . $ten_dang_nhap  . '<br>';
+                    echo 'Vai trò: ' . $vai_tro . '<br>';
+                    echo '<li><a href="index.php?ctrl=customerUserController">Thông tin cá nhân</a></li>';
                     echo '<li><a href="/login/index.php?ctrl=loginController&action=viewChangePassword">Đổi mật khẩu</a></li>';
                     echo '<li><a href="/login/index.php?ctrl=loginController&action=logout">Đăng xuất</a></li>';
+
+
+
+                    if ($vai_tro !== 'Khách hàng') {
+                        echo '<li><a href="/admin/index.php">Quản lý</a></li>';
+                    }
                 } else {
                     echo '<li><a href="/login/index.php?ctrl=loginController">Đăng nhập</a></li>';
                 }

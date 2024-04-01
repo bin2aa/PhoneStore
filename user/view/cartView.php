@@ -27,7 +27,7 @@
         <?php if (!empty($cartItems)) : ?>
             <?php foreach ($cartItems as $productId => $quantity) : ?>
                 <div class="cart-item">
-                    <img src="/image/<?php echo $productImages[$productId]; ?>" alt="Hình ảnh sản phẩm" width="100">
+                    <img src="/image/<?php echo $productImages[$productId]; ?>" alt="Hình ảnh sản phẩm" width="100"><br>
                     <span>Tên sản phẩm: <?php echo $productNames[$productId]; ?></span><br>
                     <span>Số lượng:
                         <div class="quantity-buttons">

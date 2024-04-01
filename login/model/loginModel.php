@@ -23,7 +23,7 @@ class loginModel
     public function createUser($ten_dang_nhap, $mat_khau, $ho_ten, $email, $so_dien_thoai, $dia_chi)
     {
         $hashedPassword = md5($mat_khau); // Mã hóa mật khẩu
-        $vai_tro = 1; // Đặt vai trò mặc định là 1
+        $vai_tro = "Khách hàng"; // Đặt vai trò mặc định là 1
         // Thêm người dùng vào bảng nguoi_dung
         $query = "INSERT INTO nguoi_dung(ten_dang_nhap, mat_khau, vai_tro) VALUES ('$ten_dang_nhap','$hashedPassword','$vai_tro')";
         $userInserted = $this->db->execute($query);
@@ -38,6 +38,13 @@ class loginModel
         }
     }
 
+    public function changePassword($id_nguoi_dung, $mat_khau_moi)
+    {
+        $hashedPassword = md5($mat_khau_moi);
+        $query = "UPDATE nguoi_dung SET mat_khau = '$hashedPassword' WHERE id = $id_nguoi_dung";
+        return $this->db->execute($query);
+    }
+
 
     public function getCustomerById($id_nguoi_dung)
     {
@@ -49,11 +56,25 @@ class loginModel
             return null;
         }
     }
+    // public function getPessionByRole($role)
+    // {
+    //     $query = "SELECT * FROM phan_quyen WHERE vai_tro = '$role'";
+    //     $result = $this->db->select($query);
+    //     return $result; // Trả về danh sách các quyền
+    // }
 
-    public function changePassword($id_nguoi_dung, $mat_khau_moi)
+    // Trong file model/loginModel.php
+
+    public function getUserPermissionsByRole($role)
     {
-        $hashedPassword = md5($mat_khau_moi);
-        $query = "UPDATE nguoi_dung SET mat_khau = '$hashedPassword' WHERE id = $id_nguoi_dung";
-        return $this->db->execute($query);
+        $query = "SELECT * FROM phan_quyen WHERE vai_tro = '$role'";
+        $result = $this->db->select($query);
+
+        if ($result) {
+            $permissions = $result[0]; // mỗi vai trò chỉ có một bản ghi trong bảng phan_quyen
+            return $permissions;
+        } else {
+            return false; // Trả về false nếu không có quyền nào được tìm thấy
+        }
     }
 }

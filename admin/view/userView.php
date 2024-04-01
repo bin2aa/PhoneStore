@@ -50,7 +50,7 @@
                         <td><?php echo $user['vai_tro']; ?></td>
                         <td>
                             <a href="index.php?ctrl=userController&action=deleteUser&id=<?php echo $user['id']; ?>">Xóa</a>
-                            <a href="index.php?ctrl=userController&action=updateUserView&id=<?php echo $user['id']; ?>">Sửa</a>
+                            <a href="index.php?ctrl=userController&action=updateUserView&id=<?php echo $user['id']; ?>&vai_tro=<?php echo $user['vai_tro']; ?>">Sửa</a>
                         </td>
 
                     </tr>

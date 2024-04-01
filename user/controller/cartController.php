@@ -87,8 +87,6 @@ class CartController
             echo "Yêu cầu không hợp lệ";
         }
     }
-
-    
 }
 
 
