@@ -38,54 +38,51 @@ $qldanh_muc = $_SESSION['qldanh_muc'];
     <div>
         <div class="menu">
             <ul>
+
+                <li><a href="/login/index.php?ctrl=loginController&action=logout">Đăng xuất</a></li>
                 <li><a href="/user/index.php">PhoneStore</a></li>
+
                 <?php
                 if ($qldanh_muc == 1) {
                     echo '<li><a href="index.php?ctrl=categoryController">Danh mục</a></li>';
                 } else {
-                    echo '<script> alert("Bạn không có quyền truy cập vào trang này")</script>';
+                    // echo '<script> alert("Bạn không có quyền truy cập vào trang này")</script>';
                     exit;
                 }
                 if ($qlsan_pham == 1) {
                     echo '<li><a href="index.php?ctrl=productController">Sản phẩm</a></li>';
-                }
-                else {
-                    echo '<script> alert("Bạn không có quyền truy cập vào trang này")</script>';
+                } else {
+                    // echo '<script> alert("Bạn không có quyền truy cập vào trang này")</script>';
                     exit;
                 }
                 if ($qldon_hang == 1) {
                     echo '<li><a href="index.php?ctrl=orderController">Danh sách đơn hàng</a></li>';
-                }
-                else {
-                    echo '<script> alert("Bạn không có quyền truy cập vào trang này")</script>';
+                } else {
+                    // echo '<script> alert("Bạn không có quyền truy cập vào trang này")</script>';
                     exit;
                 }
                 if ($qlkhach_hang == 1) {
                     echo '<li><a href="index.php?ctrl=customerController">Khách hàng</a></li>';
-                }
-                else {
-                    echo '<script> alert("Bạn không có quyền truy cập vào trang này")</script>';
+                } else {
+                    // echo '<script> alert("Bạn không có quyền truy cập vào trang này")</script>';
                     exit;
                 }
                 if ($qlnguoi_dung == 1) {
                     echo '<li><a href="index.php?ctrl=userController">Người dùng</a></li>';
-                }
-                else {
-                    echo '<script> alert("Bạn không có quyền truy cập vào trang này")</script>';
+                } else {
+                    // echo '<script> alert("Bạn không có quyền truy cập vào trang này")</script>';
                     exit;
                 }
                 if ($qlnha_cung_cap == 1) {
                     echo '<li><a href="index.php?ctrl=supplierController">Nhà cung cấp</a></li>';
-                }
-                else {
-                    echo '<script> alert("Bạn không có quyền truy cập vào trang này")</script>';
+                } else {
+                    // echo '<script> alert("Bạn không có quyền truy cập vào trang này")</script>';
                     exit;
                 }
                 if ($qlnhap_kho == 1) {
                     echo '<li><a href=" index.php?ctrl=warehouseController">Nhập kho</a></li>';
-                }
-                else {
-                    echo '<script> alert("Bạn không có quyền truy cập vào trang này")</script>';
+                } else {
+                    // echo '<script> alert("Bạn không có quyền truy cập vào trang này")</script>';
                     exit;
                 }
                 ?>
@@ -94,7 +91,7 @@ $qldanh_muc = $_SESSION['qldanh_muc'];
                     echo '<li><a href="index.php?ctrl=permissionController">Phân quyền</a></li>';
                 }
                 ?>
-                <li><a href="/login/index.php?ctrl=loginController&action=logout">Đăng xuất</a></li>
+
             </ul>
         </div>
     </div>
@@ -109,3 +106,4 @@ $qldanh_muc = $_SESSION['qldanh_muc'];
 </body>
 
 </html>
+

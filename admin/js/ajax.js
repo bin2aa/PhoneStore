@@ -69,6 +69,25 @@ $(document).ready(function () {
     });
 
 
+    // $(document).ready(function () {
+    //     $('form').submit(function (event) {
+    //         event.preventDefault();
+    //         var orderId = $(this).find('input[name="orderId"]').val();
+    //         $.ajax({
+    //             url: 'index.php?ctrl=orderController&action=toggleOrderStatus',
+    //             type: 'POST',
+    //             data: { orderId: orderId },
+    //             success: function (data) {
+    //                 var button = $('input[name="orderId"][value="' + orderId + '"]').siblings('button');
+    //                 button.text((button.text() === 'Chờ xác nhận') ? 'Xác nhận' : 'Chờ xác nhận');
+    //             },
+    //             error: function (xhr, status, error) {
+    //                 console.error('Đã có lỗi khi gửi yêu cầu.');
+    //             }
+    //         });
+    //     });
+    // });
+
 
 
 

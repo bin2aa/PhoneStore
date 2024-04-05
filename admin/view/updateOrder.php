@@ -18,10 +18,10 @@
         <label for="id_khach_hang">Chọn ID khách hàng:</label>
         <select name="id_khach_hang" required>
             <?php
-foreach ($customers as $customer) {
-    echo '<option value="' . $customer['id'] . '">' . $customer['id'] . '</option>';
-}
-?>
+            foreach ($customers as $customer) {
+                echo '<option value="' . $customer['id'] . '">' . $customer['id'] . '</option>';
+            }
+            ?>
         </select><br>
 
 
@@ -34,8 +34,21 @@ foreach ($customers as $customer) {
         <label for="ghi_chu">Ghi chú:</label>
         <textarea name="ghi_chu" rows="5"><?php echo $order['ghi_chu']; ?></textarea><br><br>
 
-        <label for="tinh_trang">tinh trang:</label>
-        <input type="text" name="tinh_trang" ><br><br>
+        <!-- <label for="tinh_trang">tinh trang:</label>
+        <input type="text" name="tinh_trang"><br><br> -->
+
+
+        <label for="tinh_trang">Tình trạng khách hàng:</label>
+        <select name="tinh_trang" required>
+            <?php
+            foreach ($status as $st) {
+                $select = ($st['tinh_trang'] == $_GET['tinh_trang']) ? 'selected' : '';
+                echo '<option value="' . $st['tinh_trang'] . '" ' . $select . '>' . $st['tinh_trang'] . '</option>';
+            }
+            ?>
+        </select><br>
+
+
 
         <button type="submit">Cập nhật đơn hàng</button>
     </form>

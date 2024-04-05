@@ -59,9 +59,23 @@ class OrderModel
         return $this->db->select($query);
     }
 
+    //Hiển thị select tình trạng đơn hàng 
+
+    public function getStatusSelect()
+    {
+        $query = "SELECT DISTINCT tinh_trang FROM don_dat_hang";
+        return $this->db->select($query);
+    }
+
     public function getOrderDetailsByOrderId($id_don_hang)
     {
         $query = "SELECT * FROM chi_tiet_don_hang WHERE id_don_hang = $id_don_hang";
         return $this->db->select($query);
+    }
+
+    public function updateOrderStatus($id, $newStatus)
+    {
+        $query = "UPDATE don_dat_hang SET tinh_trang = '$newStatus' WHERE id = $id";
+        return $this->db->execute($query);
     }
 }

@@ -33,6 +33,7 @@
         <input type="text" value="<?php echo $permission['vai_tro']; ?>" disabled>
 
         <label>Quyền quản lý:</label>
+        <h3>------------------------------------</h3>
         <input type="checkbox" id="qlnhap_kho" name="qlnhap_kho" value="1" <?php echo $permission['qlnhap_kho'] ? 'checked' : ''; ?>>
         <label for="qlnhap_kho">Quản lý nhập kho</label><br>
 

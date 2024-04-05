@@ -39,7 +39,7 @@
                     <td><?php echo $orderDetail['id_don_hang']; ?></td>
                     <td><?php echo $orderDetail['id_san_pham']; ?></td>
                     <td><?php echo $orderDetail['so_luong']; ?></td>
-                    <td><?php echo  number_format($orderDetail['gia']); ?></td>
+                    <td><?php echo  number_format($orderDetail['gia']) . ',000'; ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

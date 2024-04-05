@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Thêm quyền mới</title>
     <style>
@@ -7,11 +8,14 @@
             width: 400px;
             margin: 0 auto;
         }
+
         label {
             display: block;
             margin-bottom: 5px;
         }
-        input[type="text"], input[type="submit"] {
+
+        input[type="text"],
+        input[type="submit"] {
             width: 100%;
             padding: 8px;
             box-sizing: border-box;
@@ -19,13 +23,17 @@
         }
     </style>
 </head>
+
 <body>
     <h2>Thêm quyền mới</h2>
-    <form method="POST" action="index.php?ctrl=permissionController?action=addPermission">
+    <form method="POST" action="index.php?ctrl=permissionController&action=addPermission">
         <label for="role">Vai trò:</label>
         <input type="text" id="role" name="role" required>
 
         <label>Quyền quản lý:</label>
+        <h3>------------------------------------</h3>
+
+
         <input type="checkbox" id="qlnhap_kho" name="qlnhap_kho" value="1">
         <label for="qlnhap_kho">Quản lý nhập kho</label><br>
 
@@ -50,4 +58,5 @@
         <input type="submit" value="Thêm quyền">
     </form>
 </body>
+
 </html>

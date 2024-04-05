@@ -51,6 +51,7 @@ class orderController
             $order_id = $_GET['id'];
             $order = $this->orderModel->getOrderById($order_id);
             $customers = $this->orderModel->getAllCustomersSelect();
+            $status = $this->orderModel->getStatusSelect();
             include __DIR__ . '/../view/updateOrder.php';
         }
     }
@@ -83,7 +84,50 @@ class orderController
             include __DIR__ . '/../view/orderDetailView.php';
         }
     }
-    
+    // public function toggleOrderStatus()
+    // {
+    //     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['orderId'])) {
+    //         $orderId = $_POST['orderId'];
+    //         $order = $this->orderModel->getOrderById($orderId);
+    //         if ($order) {
+    //             $newStatus = ($order['tinh_trang'] == 'Chờ xác nhận') ? 'Giao thành công' : 'Chờ xác nhận';
+    //             $result = $this->orderModel->updateOrderStatus($orderId, $newStatus);
+    //             if ($result) {
+    //                 return header('Location: index.php?ctrl=orderController');
+    //             } else {
+    //                 echo 'error';
+    //             }
+    //         }
+    //     }
+    // }
+
+
+    public function toggleOrderStatus()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['orderId'])) {
+            $orderId = $_POST['orderId'];
+            $order = $this->orderModel->getOrderById($orderId);
+            if ($order) {
+                // $newStatus = ($order['tinh_trang'] == 'Chờ xác nhận') ? 'Giao thành công' : 'Chờ xác nhận';
+
+                if ($order['tinh_trang'] == 'Chờ xác nhận') {
+                    $newStatus = 'Đang giao';
+                } else if ($order['tinh_trang'] == 'Đang giao') {
+                    $newStatus = 'Đang xử lý';
+                } else if ($order['tinh_trang'] == 'Đang xử lý') {
+                    $newStatus = 'Thành công';
+                }
+
+
+                $result = $this->orderModel->updateOrderStatus($orderId, $newStatus);
+                if ($result) {
+                    return header('Location: index.php?ctrl=orderController');
+                } else {
+                    echo 'error';
+                }
+            }
+        }
+    }
 }
 
 $action = 'index';
@@ -112,6 +156,9 @@ switch ($action) {
         break;
     case 'updateOrder':
         $orderController->updateOrder();
+        break;
+    case 'toggleOrderStatus':
+        $orderController->toggleOrderStatus();
         break;
     case 'viewOrderDetail':
         $orderController->viewOrderDetail();
