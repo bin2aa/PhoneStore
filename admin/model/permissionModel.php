@@ -1,5 +1,5 @@
 <?php
-include(__DIR__ . '/../../lib/database.php');
+// include(__DIR__ . '/../../lib/database.php');
 
 class PermissionModel
 {
@@ -23,10 +23,10 @@ class PermissionModel
         return $result[0];
     }
 
-    public function createPermission($role, $qlnhap_kho, $qlnha_cung_cap, $qlnguoi_dung, $qlkhach_hang, $qldon_hang, $qlsan_pham, $qldanh_muc)
+    public function createPermission($role, $qlnhap_kho, $qlnha_cung_cap, $qlnguoi_dung, $qlkhach_hang, $qldon_hang, $qlsan_pham, $qldanh_muc, $qlbao_hanh, $qlbinh_luan)
     {
-        $query = "INSERT INTO phan_quyen(vai_tro, qlnhap_kho, qlnha_cung_cap, qlnguoi_dung, qlkhach_hang, qldon_hang, qlsan_pham, qldanh_muc) 
-                  VALUES ('$role', $qlnhap_kho, $qlnha_cung_cap, $qlnguoi_dung, $qlkhach_hang, $qldon_hang, $qlsan_pham, $qldanh_muc)";
+        $query = "INSERT INTO phan_quyen(vai_tro, qlnhap_kho, qlnha_cung_cap, qlnguoi_dung, qlkhach_hang, qldon_hang, qlsan_pham, qldanh_muc, qlbao_hanh, qlbinh_luan) 
+                  VALUES ('$role', $qlnhap_kho, $qlnha_cung_cap, $qlnguoi_dung, $qlkhach_hang, $qldon_hang, $qlsan_pham, $qldanh_muc, $qlbao_hanh, $qlbinh_luan)";
         return $this->db->execute($query);
     }
 
@@ -36,12 +36,18 @@ class PermissionModel
         return $this->db->execute($query);
     }
 
-    public function updatePermission($role, $qlnhap_kho, $qlnha_cung_cap, $qlnguoi_dung, $qlkhach_hang, $qldon_hang, $qlsan_pham, $qldanh_muc)
+    public function updatePermission($role, $qlnhap_kho, $qlnha_cung_cap, $qlnguoi_dung, $qlkhach_hang, $qldon_hang, $qlsan_pham, $qldanh_muc, $qlbao_hanh, $qlbinh_luan)
     {
-        $query = "UPDATE phan_quyen SET qlnhap_kho = $qlnhap_kho, qlnha_cung_cap = $qlnha_cung_cap, qlnguoi_dung = $qlnguoi_dung, 
-                  qlkhach_hang = $qlkhach_hang, qldon_hang = $qldon_hang, qlsan_pham = $qlsan_pham, qldanh_muc = $qldanh_muc 
-                  WHERE vai_tro = '$role'";
+        $query = "UPDATE phan_quyen SET qlnhap_kho = $qlnhap_kho, 
+        qlnha_cung_cap = $qlnha_cung_cap, 
+        qlnguoi_dung = $qlnguoi_dung, 
+        qlkhach_hang = $qlkhach_hang,
+        qldon_hang = $qldon_hang, 
+        qlsan_pham = $qlsan_pham, 
+        qldanh_muc = $qldanh_muc, 
+        qlbao_hanh = $qlbao_hanh, 
+        qlbinh_luan = $qlbinh_luan
+        WHERE vai_tro = '$role'";
         return $this->db->execute($query);
     }
-
 }

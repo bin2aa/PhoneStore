@@ -24,7 +24,7 @@
         </select><br>
 
             <label for="ngay">Ngày:</label>
-            <input type="date" name="ngay" id="ngay" value="<?php echo $warehouseReceipt['ngay']; ?>" required><br>
+            <input type="datetime-local" name="ngay" id="ngay" value="<?php echo $warehouseReceipt['ngay']; ?>" required><br>
 
             <label for="tong_tien">Tổng tiền:</label>
             <input type="text" name="tong_tien" id="tong_tien" value="<?php echo $warehouseReceipt['tong_tien']; ?>" readonly><br>

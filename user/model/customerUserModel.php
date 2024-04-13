@@ -1,5 +1,5 @@
 <?php
-include(__DIR__ . '/../../lib/database.php');
+// include(__DIR__ . '/../../lib/database.php');
 
 class customerUserModel
 {
@@ -35,7 +35,11 @@ class customerUserModel
 
     public function getOrderDetailsByOrderId($id_don_hang)
     {
-        $query = "SELECT * FROM chi_tiet_don_hang WHERE id_don_hang = $id_don_hang";
+
+        $query = "SELECT chi_tiet_don_hang.*,san_pham.ten AS ten_san_pham
+              FROM chi_tiet_don_hang
+              JOIN san_pham ON chi_tiet_don_hang.id_san_pham = san_pham.id
+              where id_don_hang = $id_don_hang";;
         return $this->db->select($query);
     }
 

@@ -1,12 +1,17 @@
 <?php
 include(__DIR__ . '/../model/customerUserModel.php');
+include(__DIR__ . '/../model/cartModel.php');
+
+
 class CustomerUserController
 {
     private $customerModel;
+    private $cartModel;
 
     public function __construct()
     {
         $this->customerModel = new customerUserModel();
+        $this->cartModel = new CartModel();
     }
 
 
@@ -54,12 +59,46 @@ class CustomerUserController
 
     public function viewOrderDetail()
     {
+
+
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
             $orderDetails = $this->customerModel->getOrderDetailsByOrderId($id);
+            $warrantyInfo = $this->cartModel->getWarrantyInfoByOrderId($id);
             include __DIR__ . '/../view/orderDetailUserView.php';
         }
     }
+
+
+
+
+    public function updateWarrantyInfo()
+{
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $id = $_GET['id'];
+        $warranty_id = $_POST['warranty_id'];
+        $ghi_chu = trim($_POST['ghi_chu']);
+        $tinh_trang = 'Chờ xử lý';
+
+        if ($ghi_chu == '') {
+            echo "<script>alert('Ghi chú không được để trống!')</script>";
+            
+        } else {
+            // Cập nhật thông tin bảo hành
+            $result = $this->cartModel->updateWarrantyInfo($warranty_id, $tinh_trang, $ghi_chu);
+            if ($result) {
+                echo "<script>alert('Cập nhật thông tin bảo hành thành công!')</script>";
+            } else {
+                echo "<script>alert('Cập nhật thông tin bảo hành không thành công.')</script>";
+            }
+        }
+
+        echo "<script>window.location.href = 'index.php?ctrl=customerUserController&action=viewOrderDetail&id=$id';</script>";
+    }
+}
+
+
+
 
     public function deleteOrder()
     {
@@ -91,6 +130,9 @@ switch ($action) {
         break;
     case 'viewOrderList':
         $customerUserController->viewOrderList();
+        break;
+    case 'updateWarrantyInfo':
+        $customerUserController->updateWarrantyInfo();
         break;
     case 'viewOrderDetail':
         $customerUserController->viewOrderDetail();

@@ -1,5 +1,5 @@
 <?php
-include(__DIR__ . '/../../lib/database.php');
+
 
 class ProductModel
 {
@@ -27,9 +27,13 @@ class ProductModel
 
     public function createProduct($ten, $anh, $id_danh_muc, $gia, $so_luong, $mo_ta)
     {
-        $query = "INSERT INTO san_pham(ten, anh, id_danh_muc, gia, so_luong, mo_ta)
+        if ($so_luong >= 0) {
+            $query = "INSERT INTO san_pham(ten, anh, id_danh_muc, gia, so_luong, mo_ta)
         VALUE ('$ten','$anh','$id_danh_muc','$gia','$so_luong','$mo_ta')";
-        return $this->db->execute($query);
+            return $this->db->execute($query);
+        } else {
+            return false; // Trả về false nếu số lượng sản phẩm nhỏ hơn 0
+        }
     }
 
 
@@ -41,7 +45,8 @@ class ProductModel
 
     public function updateProduct($id, $ten, $anh, $id_danh_muc, $gia, $so_luong, $mo_ta)
     {
-        $query = "UPDATE san_pham SET 
+        if ($so_luong >= 0) {
+            $query = "UPDATE san_pham SET 
         ten = '$ten', 
         anh = '$anh', 
         id_danh_muc = '$id_danh_muc', 
@@ -49,7 +54,10 @@ class ProductModel
         so_luong = '$so_luong', 
         mo_ta = '$mo_ta'
         WHERE id = $id";
-        return $this->db->execute($query);
+            return $this->db->execute($query);
+        } else {
+            return false; // Trả về false nếu số lượng sản phẩm nhỏ hơn 0
+        }
     }
 
     public function searchProducts($keyword)

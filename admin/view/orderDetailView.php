@@ -27,7 +27,7 @@
             <tr>
                 <th>ID</th>
                 <th>ID đơn hàng</th>
-                <th>ID sản phẩm</th>
+                <th>(ID): Tên sản phẩm</th>
                 <th>Số lượng</th>
                 <th>Đơn giá</th>
             </tr>
@@ -37,7 +37,7 @@
                 <tr>
                     <td><?php echo $orderDetail['id']; ?></td>
                     <td><?php echo $orderDetail['id_don_hang']; ?></td>
-                    <td><?php echo $orderDetail['id_san_pham']; ?></td>
+                    <td><?php echo '('.$orderDetail['id_san_pham'] .')'. ': ' . $orderDetail['ten_san_pham']; ?></td>
                     <td><?php echo $orderDetail['so_luong']; ?></td>
                     <td><?php echo  number_format($orderDetail['gia']) . ',000'; ?></td>
                 </tr>

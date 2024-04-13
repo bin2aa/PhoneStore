@@ -1,8 +1,12 @@
 <?php
 include __DIR__ . '/../model/orderModel.php';
+
 class orderController
 {
+
+
     private $orderModel;
+
 
     public function __construct()
     {
@@ -11,11 +15,15 @@ class orderController
     public function showOrderList()
     {
         $orders = $this->orderModel->getAllOrders();
+        if ($_SESSION['qldon_hang'] != 1) {
+            exit("Bạn không có quyền truy cập vào trang này!");
+        }
         include __DIR__ . '/../view/orderView.php';
     }
 
     public function showAddOrderForm()
     {
+
         $customers = $this->orderModel->getAllCustomersSelect();
         include __DIR__ . '/../view/addOrder.php';
     }
@@ -78,9 +86,12 @@ class orderController
 
     public function viewOrderDetail()
     {
+        if ($_SESSION['qldon_hang'] != 1) {
+            exit("Bạn không có quyền truy cập vào trang này!");
+        }
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
-            $orderDetails = $this->orderModel->getOrderDetailsByOrderId($id);
+            $orderDetails = $this->orderModel->getOderDetailsSelect($id);
             include __DIR__ . '/../view/orderDetailView.php';
         }
     }

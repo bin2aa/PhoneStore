@@ -26,7 +26,7 @@
 
 
         <label for="ngay">Ngày:</label>
-        <input type="date" name="ngay" value="<?php echo $order['ngay']; ?>" required><br>
+        <input type="datetime-local" name="ngay" value="<?php echo $order['ngay']; ?>" required><br>
 
         <label for="tong_tien">Tổng tiền:</label>
         <input type="number" step="0.01" name="tong_tien" value="<?php echo $order['tong_tien']; ?>" readonly><br>

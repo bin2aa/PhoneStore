@@ -28,6 +28,14 @@
             padding: 8px;
             text-align: left;
         }
+
+        .warranty-info {
+            margin-top: 20px;
+        }
+
+        .warranty-info h3 {
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -38,7 +46,7 @@
             <table>
                 <thead>
                     <tr>
-                        <th>ID Sản phẩm</th>
+                        <th>(ID): Tên sản phẩm</th>
                         <th>Số lượng</th>
                         <th>Giá</th>
                     </tr>
@@ -46,9 +54,9 @@
                 <tbody>
                     <?php foreach ($orderDetails as $orderDetail) : ?>
                         <tr>
-                            <td><?php echo $orderDetail['id_san_pham']; ?></td>
+                            <td><?php echo '(ID ' . $orderDetail['id_san_pham'] . "): " . $orderDetail['ten_san_pham']; ?></td>
                             <td><?php echo $orderDetail['so_luong']; ?></td>
-                            <td><?php echo number_format($orderDetail['gia']); ?></td>
+                            <td><?php echo $orderDetail['gia'] . ' đ'; ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -56,6 +64,58 @@
         <?php else : ?>
             <p>Không có chi tiết đơn hàng nào.</p>
         <?php endif; ?>
+
+        <div class="warranty-info">
+            <h3>Thông tin bảo hành</h3>
+            <p>Liên hệ để được tư vấn và hổ trợ: 113114115</p>
+            <?php if (!empty($warrantyInfo)) : ?>
+                <table>
+                    <thead>
+                        <tr>
+                            <th> ID sản phẩm </th>
+                            <th>Ngày kết thúc</th>
+                            <th>Tình trạng</th>
+                            <th>Ghi chú</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($warrantyInfo as $warranty) : ?>
+                            <tr>
+                                <td><?php echo $warranty['id_san_pham']; ?></td>
+                                <td><?php echo $warranty['ngay_het_han']; ?></td>
+                                <td><?php echo $warranty['tinh_trang']; ?></td>
+                                <td>
+                                    <form action="index.php?ctrl=customerUserController&action=updateWarrantyInfo&id=<?php echo $warranty['id_don_hang']; ?>" method="post">
+                                        <input type="hidden" name="warranty_id" value="<?php echo $warranty['id']; ?>">
+                                        <?php
+                                        // Kiểm tra nếu trạng thái là "Chờ xử lý" thì disabled trường Ghi chú và nút Gửi bảo hành
+                                        if ($warranty['tinh_trang'] == 'Chờ xử lý') {
+                                            echo '<input type="text" name="ghi_chu" value="' . $warranty['ghi_chu'] . '" required disabled>';
+                                        } else {
+                                            echo '<input type="text" name="ghi_chu" value="' . $warranty['ghi_chu'] . '" required>';
+                                        }
+                                        ?>
+                                </td>
+                                <td>
+                                    <?php
+                                    // Kiểm tra nếu trạng thái là "Chờ xử lý" thì disabled nút Gửi bảo hành
+                                    if ($warranty['tinh_trang'] == 'Chờ xử lý') {
+                                        echo '<input type="submit" value="Gửi bảo hành" disabled>';
+                                    } else {
+                                        echo '<input type="submit" value="Gửi bảo hành">';
+                                    }
+                                    ?>
+                                    </form>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            <?php else : ?>
+                <p>Không có thông tin bảo hành cho đơn hàng này.</p>
+            <?php endif; ?>
+        </div>
     </div>
 </body>
 

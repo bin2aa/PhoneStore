@@ -5,18 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Danh sách phiếu nhập kho</title>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
 
-        table,
-        th,
-        td {
-            border: 1px solid black;
-        }
-    </style>
 </head>
 
 <body>
@@ -42,7 +31,7 @@
                 <td><?php echo $warehouseReceipt['id_nha_cung_cap']; ?></td>
                 <td><?php echo $warehouseReceipt['ten_ncc']; ?></td>
                 <td><?php echo $warehouseReceipt['ngay']; ?></td>
-                <td><?php echo $warehouseReceipt['tong_tien']; ?></td>
+                <td><?php echo  number_format($warehouseReceipt['tong_tien']); ?></td>
                 <td><?php echo $warehouseReceipt['ghi_chu']; ?></td>
                 <td>
                     <a href="index.php?ctrl=warehouseController&action=deleteWarehouseReceipt&id=<?php echo $warehouseReceipt['id']; ?>">Xóa</a>

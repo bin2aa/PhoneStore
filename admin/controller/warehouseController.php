@@ -12,6 +12,9 @@ class WarehouseController
 
     public function showWarehouseReceiptList()
     {
+        if ($_SESSION['qlnhap_kho'] != 1) {
+            exit("Bạn không có quyền truy cập vào trang này!");
+        }
         $warehouseReceipts = $this->warehouseModel->getAllWarehouseReceipts();
         include __DIR__ . '/../view/warehouseView.php';
     }

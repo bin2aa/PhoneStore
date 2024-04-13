@@ -1,5 +1,5 @@
 <?php
-include(__DIR__ . '/../../lib/database.php');
+// include(__DIR__ . '/../../lib/database.php');
 
 class CustomerModel
 {
@@ -8,6 +8,14 @@ class CustomerModel
     public function __construct()
     {
         $this->db = new Database();
+    }
+
+    public function getCustomerByIdNguoiDung()
+    {
+        $id_nguoi_dung = Session::getSessionValue('login_id'); // Lấy ID người dùng từ session
+        $sql = "SELECT * FROM khach_hang WHERE id_nguoi_dung = $id_nguoi_dung";
+        $result = $this->db->select($sql);
+        return $result;
     }
 
     public function getAllCustomers()
@@ -48,7 +56,7 @@ class CustomerModel
         dia_chi = '$dia_chi',
         id_nguoi_dung = '$id_nguoi_dung'
         WHERE id = $id";
-        return $this->db->execute($query);  
+        return $this->db->execute($query);
     }
 
 
@@ -57,6 +65,4 @@ class CustomerModel
         $query = "SELECT * FROM nguoi_dung";
         return $this->db->select($query);
     }
-
-    
 }

@@ -10,8 +10,8 @@
 <body>
     <h2>Đăng ký</h2>
     <form action="index.php?ctrl=loginController&action=register" method="POST">
-        
-    
+
+
 
         <!-- Các trường đăng nhập -->
         <label for="ten_dang_nhap">Tên tài khoản:</label>
@@ -41,6 +41,10 @@
         <input type="text" id="dia_chi" name="dia_chi" required><br>
 
         <button type="submit">Đăng ký</button>
+        <div class='action-links'>
+            <a href="/user/index.php?ctrl=productControllerUser" class="cancel-btn">Hủy bỏ</a>
+            <a href="index.php?ctrl=loginController&action=loginView" class="login-btn">Đăng nhập</a>
+        </div>
     </form>
 </body>
 

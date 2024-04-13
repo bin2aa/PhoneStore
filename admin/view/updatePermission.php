@@ -55,6 +55,12 @@
         <input type="checkbox" id="qldanh_muc" name="qldanh_muc" value="1" <?php echo $permission['qldanh_muc'] ? 'checked' : ''; ?>>
         <label for="qldanh_muc">Quản lý danh mục</label><br>
 
+        <input type="checkbox" id="qlbao_hanh" name="qlbao_hanh" value="1" <?php echo $permission['qlbao_hanh'] ? 'checked' : ''; ?>>
+        <label for="qlbao_hanh">Quản lý bảo hành</label><br>
+
+        <input type="checkbox" id="qlbinh_luan" name="qlbinh_luan" value="1" <?php echo $permission['qlbinh_luan'] ? 'checked' : ''; ?>>
+        <label for="qlbinh_luan">Quản lý bình luận</label><br>
+
         <input type="submit" value="Cập nhật quyền">
     </form>
 </body>

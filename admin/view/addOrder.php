@@ -26,7 +26,7 @@
         </select><br>
 
         <label for="ngay">Ngày:</label>
-        <input type="date" name="ngay" required><br>
+        <input type="datetime-local" name="ngay" required><br>
 
         <label for="tong_tien">Tổng tiền:</label>
         <input type="number" name="tong_tien" required><br>
@@ -34,8 +34,7 @@
         <label for="ghi_chu">Ghi chú:</label>
         <textarea name="ghi_chu" rows="5"></textarea><br><br>
 
-        <label for="tinh_trang">tinh trang:</label>
-        <input type="text" name="tinh_trang"><br><br>
+        <input type="hidden" name="tinh_trang">
 
         <button type="submit">Thêm đơn hàng</button>
     </form>

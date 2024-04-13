@@ -8,17 +8,14 @@
 </head>
 
 <body>
-
-    <h2>Thêm danh mục sản phẩm</h2>
-
-    <form action="index.php?ctrl=categoryController&action=addCategory" method="post">
-
-        <label for="ten">Tên danh mục:</label>
-        <input type="text" name="ten" required><br><br>
-
-        <button type="submit">Thêm danh mục</button>
-    </form>
-
+    <div class="addCategory">
+        <h2>Thêm danh mục sản phẩm</h2>
+        <form action="index.php?ctrl=categoryController&action=addCategory" method="post">
+            <label for="ten">Tên danh mục:</label>
+            <input type="text" name="ten" required><br>
+            <button type="submit">Thêm danh mục</button>
+        </form>
+    </div>
 </body>
 
 </html>

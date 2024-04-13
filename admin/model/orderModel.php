@@ -1,5 +1,5 @@
 <?php
-include __DIR__ . '/../../lib/database.php';
+// include __DIR__ . '/../../lib/database.php';
 
 class OrderModel
 {
@@ -10,6 +10,8 @@ class OrderModel
         $this->db = new Database();
     }
 
+
+   
     public function getAllOrders()
     {
         $query = "SELECT don_dat_hang.*,khach_hang.ten AS ten_khach_hang
@@ -30,7 +32,7 @@ class OrderModel
     public function createOrder($id_khach_hang, $ngay, $tong_tien, $ghi_chu, $tinh_trang)
     {
         $query = "INSERT INTO don_dat_hang(id_khach_hang, ngay, tong_tien, ghi_chu, tinh_trang)
-        VALUE ('$id_khach_hang','$ngay','$tong_tien','$ghi_chu','$tinh_trang')";
+        VALUE ('$id_khach_hang','$ngay','$tong_tien','$ghi_chu','Chờ xác nhận')";
         return $this->db->execute($query);
     }
 
@@ -67,9 +69,18 @@ class OrderModel
         return $this->db->select($query);
     }
 
-    public function getOrderDetailsByOrderId($id_don_hang)
+    // public function getOrderDetailsByOrderId($id_don_hang)
+    // {
+    //     $query = "SELECT * FROM chi_tiet_don_hang WHERE id_don_hang = $id_don_hang";
+    //     return $this->db->select($query);
+    // }
+
+    public function getOderDetailsSelect($id_don_hang)
     {
-        $query = "SELECT * FROM chi_tiet_don_hang WHERE id_don_hang = $id_don_hang";
+        $query = "SELECT chi_tiet_don_hang.*,san_pham.ten AS ten_san_pham
+              FROM chi_tiet_don_hang
+              JOIN san_pham ON chi_tiet_don_hang.id_san_pham = san_pham.id
+              where id_don_hang = $id_don_hang";
         return $this->db->select($query);
     }
 

@@ -11,6 +11,9 @@ class supplierController
     }
     public function showSupplierList()
     {
+        if ($_SESSION['qlnha_cung_cap'] != 1) {
+            exit("Bạn không có quyền truy cập vào trang này!");
+        }
         $suppliers = $this->supplierModel->getAllSuppliers();
         include __DIR__ . '/../view/supplierView.php';
     }

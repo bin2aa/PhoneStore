@@ -34,7 +34,6 @@ class loginController
                 // Lấy thông tin quyền từ bảng phan_quyen
                 $vai_tro = Session::getSessionValue('vai_tro');
                 $permission = $this->loginModel->getUserPermissionsByRole($vai_tro);
-                Session::setSessionValue('permission', $permission);
 
                 // Thiết lập giá trị cho các biến session tương ứng với các quyền
                 foreach ($permission as $key => $value) {

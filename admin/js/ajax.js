@@ -1,4 +1,7 @@
 $(document).ready(function () {
+
+
+
     // Tìm kiếm sản phẩm
     $('form').submit(function (event) {
         if ($(this).hasClass('search-form')) {
@@ -69,25 +72,27 @@ $(document).ready(function () {
     });
 
 
-    // $(document).ready(function () {
-    //     $('form').submit(function (event) {
-    //         event.preventDefault();
-    //         var orderId = $(this).find('input[name="orderId"]').val();
-    //         $.ajax({
-    //             url: 'index.php?ctrl=orderController&action=toggleOrderStatus',
-    //             type: 'POST',
-    //             data: { orderId: orderId },
-    //             success: function (data) {
-    //                 var button = $('input[name="orderId"][value="' + orderId + '"]').siblings('button');
-    //                 button.text((button.text() === 'Chờ xác nhận') ? 'Xác nhận' : 'Chờ xác nhận');
-    //             },
-    //             error: function (xhr, status, error) {
-    //                 console.error('Đã có lỗi khi gửi yêu cầu.');
-    //             }
-    //         });
-    //     });
-    // });
+    //danh mục
 
+    $("a#addCategoryLink").click(function (e) {
+        e.preventDefault(); // Ngăn chặn hành động mặc định của thẻ a
+
+        $.ajax({
+            url: "index.php?ctrl=categoryController&action=viewAddCategory",
+            method: "GET",
+            success: function (data) {
+                // Lấy nội dung của phần tử có class "addCategory"
+                var addCategoryContent = $(data).find(".addCategory").html();
+                // Hiển thị nội dung trong một modal hoặc một phần tử mới
+                $("#addCategoryContainer").html(addCategoryContent).show();
+            }
+        });
+    });
+
+    // Đóng modal khi click vào nút đóng
+    $(document).on("click", "#addCategoryContainer .close-btn", function () {
+        $("#addCategoryContainer").hide();
+    });
 
 
 

@@ -23,7 +23,9 @@
 
 <body>
     <h1>Giỏ hàng</h1>
+    
     <div class="cart-items">
+    <a href="index.php?ctrl=cartController&action=clearCart">Xóa toàn bộ giỏ hàng</a>
         <?php if (!empty($cartItems)) : ?>
             <?php foreach ($cartItems as $productId => $quantity) : ?>
                 <div class="cart-item">
@@ -59,8 +61,13 @@
 
         <!-- <button onclick="buyAll()">Mua</button> <br><br> -->
 
-
-        <a href="index.php?ctrl=cartController&action=clearCart">Xóa toàn bộ giỏ hàng</a>
+        <h3>Ưu đải khi mua hàng: </h3>
+        <p>Giảm giá 10% cho đơn hàng từ 1.000.000đ trở lên</p>
+        <p>Giảm giá 20% cho đơn hàng từ 2.000.000đ trở lên</p>
+        <p>Giảm giá 30% cho đơn hàng từ 3.000.000đ trở lên</p>
+        <p>Giảm giá 40% cho đơn hàng từ 4.000.000đ trở lên</p>
+        <p>Giảm giá 50% cho đơn hàng từ 5.000.000đ trở lên</p>
+        <h4>Tất cả sản phẩm khi mua ỏ SGOP sẽ được bảo hành 3 tháng</h4>
     </div>
 
     <script>
@@ -87,42 +94,9 @@
             return true;
         }
 
-        // function buyAll() {
-        //     if (checkLoggedIn()) {
-
-        //         startSession();
-        //         var totalPrice = <?php //echo $totalPrice; 
-                                    ?>;
-        //         setSessionValue('totalPrice', totalPrice);
-
-        //         var url = 'index.php?ctrl=orderUserController&action=createOrder';
-        //         window.location.href = url;
-        //     } else {
-        //         alert('Vui lòng đăng nhập trước khi mua hàng.');
-        //     }
-        // }
-
-        // function checkLoggedIn() {
-        //     // Kiểm tra xem người dùng đã đăng nhập hay chưa bằng cách kiểm tra giá trị phiên 'ten_dang_nhap'
-        //     // Trả về true nếu đã đăng nhập và false nếu chưa
-        //     <?php
-                //     $ten_dang_nhap = Session::getSessionValue('ten_dang_nhap');
-                //     if ($ten_dang_nhap) {
-                //         echo 'return true;';
-                //     } else {
-                //         echo 'return false;';
-                //     }
-
-                //     
-                ?>
-        // }
     </script>
 </body>
 
 
-
-<!-- Thêm 1 input ghi chú ở cuối và nhập ghi chú trước khi mua hàng
-Lấy tổng tiên lưu vào biến session
--->
 
 </html>

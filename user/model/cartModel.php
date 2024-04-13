@@ -1,5 +1,5 @@
 <?php
-include(__DIR__ . '/../../lib/database.php');
+// include(__DIR__ . '/../../lib/database.php');
 
 class CartModel
 {
@@ -112,18 +112,23 @@ class CartModel
         }
     }
 
-    public function getProductInfo($productId)
-    {
-        // Thực hiện truy vấn cơ sở dữ liệu hoặc lấy thông tin từ nguồn dữ liệu khác
-        $query = "SELECT ten, anh, gia FROM san_pham WHERE id = $productId";
-        $result = $this->db->select($query);
 
-        if (!empty($result)) {
-            return $result[0];
-        }
-
-        return array();
+    public function getProductInfo($productId) {
+        $query = "SELECT * FROM san_pham WHERE id = $productId";
+        return $this->db->select($query)[0];
     }
+
+    // public function getProductInfos($productId)
+    // {
+    //     $query = "SELECT ten, anh, gia FROM san_pham WHERE id = $productId";
+    //     $result = $this->db->select($query);
+
+    //     if (!empty($result)) {
+    //         return $result[0];
+    //     }
+
+    //     return array();
+    // }
     public function createOrder($id_khach_hang, $ngay, $tong_tien, $ghi_chu, $tinh_trang)
     {
 
@@ -144,5 +149,39 @@ class CartModel
         $this->db->execute($queryUpdate);
 
         return true;
+    }
+
+    public function createWarrantyUser($id_san_pham, $id_don_hang, $ngay_lap, $ngay_het_han, $tinh_trang, $ghi_chu)
+    {
+        if (empty($ghi_chu)) {
+            $ghi_chu = null;
+        }
+        $query = "INSERT INTO phieu_bao_hanh(id_san_pham, id_don_hang, ngay_lap, ngay_het_han, tinh_trang, ghi_chu) 
+                  VALUES ($id_san_pham, $id_don_hang, '$ngay_lap', '$ngay_het_han', '$tinh_trang', '$ghi_chu')";
+        return $this->db->execute($query);
+    }
+
+    public function getWarrantyInfoByOrderId($id_don_hang)
+    {
+        $query = "SELECT * FROM phieu_bao_hanh WHERE id_don_hang = $id_don_hang";
+        $result = $this->db->select($query);
+        return $result;
+    }
+
+    public function getWarrantyInfoById($id)
+    {
+        $query = "SELECT * FROM phieu_bao_hanh WHERE id = $id";
+        $result = $this->db->select($query);
+        return $result[0];
+    }
+
+
+    public function updateWarrantyInfo($id, $tinh_trang, $ghi_chu)
+    {
+        $query = "UPDATE phieu_bao_hanh
+              SET tinh_trang = '$tinh_trang',
+                  ghi_chu = '$ghi_chu'
+              WHERE id = $id";
+        return $this->db->execute($query);
     }
 }

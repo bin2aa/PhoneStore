@@ -1,0 +1,77 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+}
+
+/* ---------------- index -------------- */
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Styling cho header với thanh điều hướng dọc */
+.header {
+    background-color: #19821d;
+    /* Set màu nền xanh dương */
+    width: 200px;
+    /* Chiều rộng cố định cho thanh điều hướng */
+    height: 100vh;
+    /* Chiều cao bằng với viewport */
+    position: fixed;
+    /* Định vị cố định thanh điều hướng */
+    top: 0;
+    /* Căn trên cùng */
+    left: 0;
+    /* Căn trái cùng */
+}
+
+/* Định dạng cho thanh điều hướng */
+nav {
+    width: 100%;
+}
+
+/* Định dạng cho danh sách bên trong thanh điều hướng */
+nav ul {
+    list-style-type: none;
+    width: 100%;
+}
+
+/* Định dạng hàng cho mỗi mục liên kết */
+nav ul li {
+    width: 100%;
+    /* Theo chiều rộng của thanh điều hướng */
+}
+
+/* Định dạng cho mỗi liên kết bên trong mục */
+nav ul li a {
+    text-decoration: none;
+    /* Xóa gạch chân trong liên kết */
+    color: white;
+    /* Set màu chữ thành trắng */
+    display: block;
+    /* Hiển thị như khối cho phép click toàn bộ liên kết */
+    padding: 10px 15px;
+    /* Đệm cho mỗi liên kết */
+    border-bottom: 1px solid #639fe0;
+    /* Tạo đường viền dưới cùng cho mỗi mục */
+    transition: background-color 0.3s;
+    /* Thêm hiệu ứng khi rê chuột */
+}
+
+/* Thay đổi màu nền khi rê chuột */
+nav ul li a:hover {
+    background-color: #639fe0;
+}
+
+.home {
+    padding-left: 220px;
+    /* Điều chỉnh giá trị này để phù hợp với chiều rộng của thanh nav của bạn */
+}

@@ -1,5 +1,5 @@
 <?php
-include(__DIR__ . '/../../lib/database.php');
+// include(__DIR__ . '/../../lib/database.php');
 
 class WarehouseModel
 {
@@ -30,46 +30,46 @@ class WarehouseModel
         // Thêm mới phiếu nhập kho
         $query_add_receipt = "INSERT INTO nhap_kho (id_nha_cung_cap, ngay, tong_tien, ghi_chu) 
                               VALUES ('$id_nha_cung_cap', '$ngay', 0, '$ghi_chu')";
-        $this->db->execute($query_add_receipt);
+        $result_add_receipt = $this->db->execute($query_add_receipt); // Sử dụng phương thức execute() của class Database
 
-        // Lấy ID vừa thêm mới
-        $query_last_insert_id = "SELECT LAST_INSERT_ID() AS last_id";
-        $result = $this->db->select($query_last_insert_id);
-        $id_nhap_kho = $result[0]['last_id'];
+        // Kiểm tra xem thêm phiếu nhập kho có thành công không
+        if ($result_add_receipt) {
+            // Lấy ID vừa thêm mới
+            $id_nhap_kho = $this->db->getLastInsertId();
 
-        // Thêm chi tiết các sản phẩm nhập kho
-        foreach ($details as $detail) {
             // Thêm chi tiết các sản phẩm nhập kho
-            $id_san_pham = $detail['id_san_pham'];
-            $so_luong = $detail['so_luong'];
-            $gia = $detail['gia'];
+            foreach ($details as $detail) {
+                // Thêm chi tiết các sản phẩm nhập kho
+                $id_san_pham = $detail['id_san_pham'];
+                $so_luong = $detail['so_luong'];
+                $gia = $detail['gia'];
+                $query_insert_detail = "INSERT INTO chi_tiet_nhap_kho (id_nhap_kho, id_san_pham, so_luong, gia) 
+                                        VALUES ($id_nhap_kho, $id_san_pham, $so_luong, $gia)";
+                $this->db->execute($query_insert_detail);
 
-            $query_insert_detail = "INSERT INTO chi_tiet_nhap_kho (id_nhap_kho, id_san_pham, so_luong, gia)
-                                    VALUES ($id_nhap_kho, $id_san_pham, $so_luong, $gia)";
-            $this->db->execute($query_insert_detail);
+                // Cập nhật số lượng tồn kho cho các sản phẩm
+                $query_update_inventory = "UPDATE san_pham 
+                                           SET so_luong = so_luong + $so_luong 
+                                           WHERE id = $id_san_pham";
+                $this->db->execute($query_update_inventory);
 
+                // Cập nhật tổng tiền cho phiếu nhập kho
+                $query_update_total = "UPDATE nhap_kho 
+                                       SET tong_tien = (
+                                           SELECT SUM(so_luong * gia) 
+                                           FROM chi_tiet_nhap_kho 
+                                           WHERE id_nhap_kho = $id_nhap_kho
+                                       )
+                                       WHERE id = $id_nhap_kho";
+                $this->db->execute($query_update_total);
+            }
 
-            // Cập nhật số lượng tồn kho cho các sản phẩm
-            $id_san_pham = $detail['id_san_pham'];
-            $so_luong = $detail['so_luong'];
-
-            $query_update_inventory = "UPDATE san_pham 
-                                       SET so_luong = so_luong + $so_luong 
-                                       WHERE id = $id_san_pham";
-            $this->db->execute($query_update_inventory);
-
-
-            // Cập nhật tổng tiền cho phiếu nhập kho
-            $query_update_total = "UPDATE nhap_kho 
-                                    SET tong_tien = (
-                                        SELECT SUM(so_luong * gia) 
-                                        FROM chi_tiet_nhap_kho 
-                                        WHERE id_nhap_kho = $id_nhap_kho
-                                    )
-                                    WHERE id = $id_nhap_kho";
-            $this->db->execute($query_update_total);
+            return true; // Trả về true nếu thêm phiếu nhập kho và các chi tiết thành công
+        } else {
+            return false; // Trả về false nếu thêm phiếu nhập kho không thành công
         }
     }
+
 
     public function deleteWarehouseReceipt($id)
     {

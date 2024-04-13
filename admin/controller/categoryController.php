@@ -12,6 +12,12 @@ class CategoryController
 
     public function showCategoryList()
     {
+
+
+        if ($_SESSION['qldanh_muc'] != 1) {
+            exit("Bạn không có quyền truy cập vào trang này!");
+        }
+
         $categories = $this->categoryModel->getAllCategories();
         include __DIR__ . '/../view/categoryView.php';
     }
@@ -98,4 +104,3 @@ switch ($action) {
     default:
         $categoryController->showCategoryList();
 }
-?>

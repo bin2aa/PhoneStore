@@ -51,7 +51,7 @@
 
     <div class="category-list">
         <ul>
-        <li><a href="index.php?ctrl=productControllerUser">tất cả</a></li>
+            <li><a href="index.php?ctrl=productControllerUser">tất cả</a></li>
             <?php
             if (!empty($categories)) {
                 foreach ($categories as $category) {
@@ -79,13 +79,17 @@
         ?>
                 <div class="product">
                     <h2><?php echo $product['ten']; ?></h2>
-                    <a href="product_detail.php?id=<?php echo $product['id']; ?>">
+                    <a href="index.php?ctrl=productControllerUser&action=detail&id=<?php echo $product['id']; ?>">
                         <img src="/image/<?php echo $product['anh']; ?>" alt="Hình ảnh sản phẩm" width="200"><br>
                     </a>
                     <p>Giá: <?php echo $product['gia']; ?> đ</p>
-                    <p>Số lượng: <?php echo $product['so_luong']; ?></p>
+                    <p>Còn lại: <?php echo $product['so_luong']; ?></p>
                     <p>Mô tả: <?php echo $product['mo_ta']; ?></p>
-                    <a href="index.php?ctrl=cartController&action=addToCart&cart_id=<?php echo $product['id']; ?>&quantity=1" class="buy-button">Thêm vào giỏ hàng</a>
+                    <?php if ($product['so_luong'] > 0) { ?>
+                        <a href="index.php?ctrl=cartController&action=addToCart&cart_id=<?php echo $product['id']; ?>&quantity=1" class="buy-button">Thêm vào giỏ hàng</a>
+                    <?php } else { ?>
+                        <a href="hethang.php" class="buy-button">Tạm hết hàng</a>
+                    <?php } ?>
                 </div>
             <?php
             }

@@ -33,7 +33,7 @@
         <input type="number" step="0.01" name="gia" required><br>
 
         <label for="so_luong">Số lượng:</label>
-        <input type="number" name="so_luong" required><br>
+        <input type="number" name="so_luong" value="0" disabled><br>
 
         <label for="mo_ta">Mô tả:</label>
         <textarea name="mo_ta" rows="5"></textarea><br>

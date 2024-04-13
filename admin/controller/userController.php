@@ -11,6 +11,9 @@ class UserController
     }
     public function showUserList()
     {
+        if ($_SESSION['qlnguoi_dung'] != 1) {
+            exit("Bạn không có quyền truy cập vào trang này!");
+        }
         $users = $this->userModel->getAllUsers();
         include __DIR__ . '/../view/userView.php';
     }

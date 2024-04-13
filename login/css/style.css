@@ -1,0 +1,99 @@
+@keyframes spin {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: spin 10s linear infinite;
+}
+
+form {
+    padding: 20px 40px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    max-width: 80%;
+}
+
+h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 1.5em;
+}
+
+label {
+    display: block;
+    margin: 0.5em 0;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 1.5em;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: none;
+    background-color: #23a6d5;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.5s;
+    margin-left: -10px;
+
+}
+
+button:hover {
+    background-color: #23d5ab;
+}
+
+.action-links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em;
+}
+
+.login-btn,
+.register-btn,
+.cancel-btn {
+    background: none;
+    border: none;
+    color: #e73c7e;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.login-btn,
+.register-btn {
+    text-align: right;
+}
+
+.cancel-btn {
+    text-align: left;
+}
+
+.login-btn:hover,
+.cancel-btn:hover,
+.register-btn:hover {
+    color: #2b0398;
+}

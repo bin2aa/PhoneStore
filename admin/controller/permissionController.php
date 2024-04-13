@@ -12,17 +12,31 @@ class PermissionController
 
     public function showPermissionList()
     {
+        if ($_SESSION['vai_tro'] != "Quản trị viên") {
+            exit("Bạn không có quyền truy cập vào trang này!");
+        }
         $permissions = $this->permissionModel->getAllPermissions();
         include(__DIR__ . '/../view/permissionView.php');
     }
 
     public function showAddPermissionForm()
     {
+
+
+        if ($_SESSION['vai_tro'] != "Quản trị viên") {
+            exit("Bạn không có quyền truy cập vào trang này!");
+        }
+
         include(__DIR__ . '/../view/addPermission.php');
     }
 
     public function addPermission()
     {
+
+        if ($_SESSION['vai_tro'] != "Quản trị viên") {
+            exit("Bạn không có quyền truy cập vào trang này!");
+        }
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $role = $_POST['role'];
             $qlnhap_kho = isset($_POST['qlnhap_kho']) ? 1 : 0;
@@ -32,8 +46,10 @@ class PermissionController
             $qldon_hang = isset($_POST['qldon_hang']) ? 1 : 0;
             $qlsan_pham = isset($_POST['qlsan_pham']) ? 1 : 0;
             $qldanh_muc = isset($_POST['qldanh_muc']) ? 1 : 0;
+            $qlbao_hanh = isset($_POST['qlbao_hanh']) ? 1 : 0;
+            $qlbinh_luan = isset($_POST['qlbinh_luan']) ? 1 : 0;
 
-            $result = $this->permissionModel->createPermission($role, $qlnhap_kho, $qlnha_cung_cap, $qlnguoi_dung, $qlkhach_hang, $qldon_hang, $qlsan_pham, $qldanh_muc);
+            $result = $this->permissionModel->createPermission($role, $qlnhap_kho, $qlnha_cung_cap, $qlnguoi_dung, $qlkhach_hang, $qldon_hang, $qlsan_pham, $qldanh_muc, $qlbao_hanh, $qlbinh_luan);
 
             if ($result) {
                 echo "Thêm quyền thành công!";
@@ -45,6 +61,12 @@ class PermissionController
 
     public function deletePermission()
     {
+
+
+        if ($_SESSION['vai_tro'] != "Quản trị viên") {
+            exit("Bạn không có quyền truy cập vào trang này!");
+        }
+
         if (isset($_GET['role'])) {
             $role = $_GET['role'];
             $result = $this->permissionModel->deletePermission($role);
@@ -53,6 +75,11 @@ class PermissionController
 
     public function showUpdatePermissionForm()
     {
+
+        if ($_SESSION['vai_tro'] != "Quản trị viên") {
+            exit("Bạn không có quyền truy cập vào trang này!");
+        }
+
         if (isset($_GET['role'])) {
             $role = $_GET['role'];
             $permission = $this->permissionModel->getPermissionByRole($role);
@@ -62,6 +89,12 @@ class PermissionController
 
     public function updatePermission()
     {
+
+
+        if ($_SESSION['vai_tro'] != "Quản trị viên") {
+            exit("Bạn không có quyền truy cập vào trang này!");
+        }
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $role = $_POST['role'];
             $qlnhap_kho = isset($_POST['qlnhap_kho']) ? 1 : 0;
@@ -71,8 +104,10 @@ class PermissionController
             $qldon_hang = isset($_POST['qldon_hang']) ? 1 : 0;
             $qlsan_pham = isset($_POST['qlsan_pham']) ? 1 : 0;
             $qldanh_muc = isset($_POST['qldanh_muc']) ? 1 : 0;
+            $qlbao_hanh = isset($_POST['qlbao_hanh']) ? 1 : 0;
+            $qlbinh_luan = isset($_POST['qlbinh_luan']) ? 1 : 0;
 
-            $result = $this->permissionModel->updatePermission($role, $qlnhap_kho, $qlnha_cung_cap, $qlnguoi_dung, $qlkhach_hang, $qldon_hang, $qlsan_pham, $qldanh_muc);
+            $result = $this->permissionModel->updatePermission($role, $qlnhap_kho, $qlnha_cung_cap, $qlnguoi_dung, $qlkhach_hang, $qldon_hang, $qlsan_pham, $qldanh_muc, $qlbao_hanh, $qlbinh_luan);
 
             if ($result) {
                 echo "Cập nhật quyền thành công!";

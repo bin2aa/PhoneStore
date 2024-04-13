@@ -47,6 +47,7 @@
                 echo '<label>ID Đơn hàng:</label> ' . $order['id'] . '<br>';
                 echo '<label>Ngày đặt hàng:</label> ' . $order['ngay'] . '<br>';
                 echo '<label>Tổng tiền:</label> ' . number_format($order['tong_tien']) . ' đ<br>';
+                echo '<label>Tình trạng:</label> ' . $order['tinh_trang'] . '<br>';
                 //delete không được sài
                 // echo '<a href="index.php?ctrl=customerUserController&action=deleteOrder&id=' . $order['id'] . '" class="delete-btn">Xóa</a>';
                 echo '<a href="index.php?ctrl=customerUserController&action=viewOrderDetail&id=' . $order['id'] . '">Xem chi tiết</a><br>';

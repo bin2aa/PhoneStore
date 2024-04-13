@@ -12,6 +12,9 @@ class ProductController
 
     public function showProductList()
     {
+        if ($_SESSION['qlsan_pham'] != 1) {
+            exit("Bạn không có quyền truy cập vào trang này!");
+        }
         $products = $this->productModel->getAllProducts();
         include __DIR__ . '/../view/productView.php';
     }
@@ -29,8 +32,11 @@ class ProductController
             $anh = $_POST['anh'];
             $id_danh_muc = $_POST['id_danh_muc'];
             $gia = $_POST['gia'];
-            $so_luong = $_POST['so_luong'];
+            // $so_luong = $_POST['so_luong'];
+            // Set số lượng mặc định là 0
+            $so_luong = 0;
             $mo_ta = $_POST['mo_ta'];
+
 
             $result = $this->productModel->createProduct($ten, $anh, $id_danh_muc, $gia, $so_luong, $mo_ta);
         }

@@ -11,6 +11,9 @@ class customerController
     }
     public function showCustomerList()
     {
+        if ($_SESSION['qlkhach_hang'] != 1) {
+            exit("Bạn không có quyền truy cập vào trang này!");
+        }
         $customers = $this->customerModel->getAllcustomers();
         include __DIR__ . '/../view/customerView.php';
     }
@@ -75,6 +78,7 @@ class customerController
             }
         }
     }
+
     
 }
 

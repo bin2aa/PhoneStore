@@ -1,7 +1,13 @@
 <?php
 // Bắt đầu session
 include(__DIR__ . '/../lib/session.php');
+include(__DIR__ . '/../lib/database.php');
 Session::startSession();
+
+//Đăt múi giờ Việt Nam cho các datetime
+date_default_timezone_set('Asia/Ho_Chi_Minh');
+
+
 ?>
 <!DOCTYPE html>
 <html lang="vi">
@@ -27,7 +33,6 @@ Session::startSession();
                 $vai_tro = Session::getSessionValue('vai_tro');
 
                 // Lấy danh sách quyền từ session
-                $permissions = Session::getSessionValue('permissions');
 
                 if ($ten_dang_nhap) {
                     echo 'Id khách hàng: ' . $id_khach_hang . '<br>';

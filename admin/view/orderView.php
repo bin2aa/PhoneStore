@@ -5,26 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Danh sách đơn đặt hàng</title>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
 
-        table,
-        th,
-        td {
-            border: 1px solid black;
-        }
-    </style>
 </head>
 
 <body>
 
     <h2>Danh sách đơn đặt hàng</h2>
-
+    <?php 
+    date_default_timezone_set('Asia/Ho_Chi_Minh');
+    echo date('Y-m-d H:i:s'); ?></p>
     <a href="index.php?ctrl=orderController&action=viewAddOrder">Thêm đơn đặt hàng</a>
     <table>
+        
         <thead>
             <tr>
                 <th>ID đơn hàng</th>

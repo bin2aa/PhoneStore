@@ -21,7 +21,7 @@
             </select><br>
 
             <label for="ngay">Ngày nhập kho:</label>
-            <input type="date" name="ngay" required><br>
+            <input type="datetime-local" name="ngay" required><br>
 
             <label for="ghi_chu">Ghi chú:</label>
             <textarea name="ghi_chu" rows="5"></textarea><br>
@@ -31,10 +31,10 @@
             <!-- Mục nhập chi tiết cho từng mặt hàng -->
             <div id="chi-tiet">
                 <div class="hang">
-                    <label for="id_san_pham_1">Chọn sản phẩm:</label>
+                    <label for="id_san_pham_1">(ID) - Chọn sản phẩm:</label>
                     <select name="id_san_pham_1" required>
                         <?php foreach ($products as $product) : ?>
-                            <option value="<?php echo $product['id']; ?>"><?php echo $product['ten']; ?></option>
+                            <option value="<?php echo $product['id']; ?>"><?php echo '(' . $product['id'] . ') - ' . $product['ten']; ?></option>
                         <?php endforeach; ?>
                     </select>
 
@@ -66,7 +66,7 @@
 
                 var labelSanPham = document.createElement("label");
                 labelSanPham.setAttribute("for", "id_san_pham_" + soHang);
-                labelSanPham.textContent = "Chọn sản phẩm: ";
+                labelSanPham.textContent = "(ID) - Chọn sản phẩm: ";
                 hangMoi.appendChild(labelSanPham);
 
                 var selectSanPham = document.createElement("select");
@@ -75,7 +75,7 @@
                 <?php foreach ($products as $product) : ?>
                     var option = document.createElement("option");
                     option.value = "<?php echo $product['id']; ?>";
-                    option.textContent = "<?php echo $product['ten']; ?>";
+                    option.textContent = "<?php echo '('. $product['id'] . ') - ' . $product['ten']; ?>"; // Hiển thị id và tên sản phẩm
                     selectSanPham.appendChild(option);
                 <?php endforeach; ?>
                 hangMoi.appendChild(selectSanPham);
@@ -101,12 +101,12 @@
                 inputGiaNhap.setAttribute("step", "0.01");
                 inputGiaNhap.setAttribute("name", "gia_nhap_" + soHang);
                 inputGiaNhap.setAttribute("required", "required");
-                
+
                 hangMoi.appendChild(inputGiaNhap);
 
                 var nutXoa = document.createElement("button");
-                nutXoa.setAttribute("type", "button"); 
-                
+                nutXoa.setAttribute("type", "button");
+
                 nutXoa.textContent = "Xóa hàng";
                 nutXoa.onclick = xoaHang;
 
