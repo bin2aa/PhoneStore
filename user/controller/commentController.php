@@ -23,7 +23,6 @@ class CommentProductController
                 $id_khach_hang = $_POST['id_khach_hang'];
                 $noi_dung = $_POST['noi_dung'];
                 $nguoi_dung = $_POST['nguoi_dung'];
-                date_default_timezone_set('Asia/Ho_Chi_Minh');
                 $ngay_gio_binh_luan = date('Y-m-d H:i:s');
                 $ngay_gio_binh_luan = $_POST['ngay_gio_binh_luan'];
                 $result = $this->commentModel->createComment($id_san_pham, $id_khach_hang, $noi_dung, $nguoi_dung, $ngay_gio_binh_luan);
@@ -85,12 +84,12 @@ $action = 'index';
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
 } else {
-    $action = 'showComments';
+   echo "huhu";
 }
 $commentController = new CommentProductController();
 
 switch ($action) {
-    case 'index':
+    case 'addComment':
         $commentController->addComment();
         break;
     case 'deleteComment':

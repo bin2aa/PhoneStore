@@ -46,6 +46,7 @@ $qlbao_hanh = $_SESSION['qlbao_hanh'];
         <div class="header">
             <nav>
                 <ul>
+                    <li><a href="index.php?ctrl=statsController">Nguyễn Thanh Thịnh</a></li>
                     <li><a href="/user/index.php">PhoneStore</a></li>
                     <?php
                     if ($qldanh_muc == 1) {
@@ -79,6 +80,7 @@ $qlbao_hanh = $_SESSION['qlbao_hanh'];
                     <li><a href="/login/index.php?ctrl=loginController&action=logout">Đăng xuất</a></li>
                 </ul>
             </nav>
+            
         </div>
     </div>
     <div class="home">

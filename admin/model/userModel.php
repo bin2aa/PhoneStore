@@ -42,7 +42,7 @@ class UserModel
     public function updateUser($id, $ten_dang_nhap, $mat_khau, $vai_tro)
     {
         $user = $this->getUserById($id); // Lấy thông tin người dùng từ cơ sở dữ liệu
-        
+
         // Kiểm tra xem mật khẩu có được thay đổi hay không
         if (!empty($mat_khau)) {
             // Nếu có, mã hóa mật khẩu mới
@@ -51,7 +51,7 @@ class UserModel
             // Nếu không, giữ nguyên mật khẩu hiện tại trong cơ sở dữ liệu
             $hashedPassword = $user['mat_khau'];
         }
-        
+
         $query = "UPDATE nguoi_dung SET
         ten_dang_nhap = '$ten_dang_nhap',
         mat_khau = '$hashedPassword', 
@@ -59,7 +59,7 @@ class UserModel
         WHERE id = $id";
         return $this->db->execute($query);
     }
-    
+
 
 
 

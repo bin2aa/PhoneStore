@@ -75,7 +75,7 @@
                 foreach ($comments as $comment) {
             ?>
                     <div class="comment">
-                        <p class="author"><?php echo $comment['id_khach_hang']; ?> - <?php echo $comment['ngay_gio_binh_luan']; ?></p>
+                        <p class="author"><?php echo "ID: ".$comment['id_khach_hang']; ?> - <?php echo "Tên: " .$comment['ten_khach_hang']; ?> - <?php echo $comment['ngay_gio_binh_luan']; ?></p>
                         <p><?php echo $comment['noi_dung']; ?></p>
                         <?php
                         // Kiểm tra xem người dùng đã đăng nhập và có quyền xóa bình luận không

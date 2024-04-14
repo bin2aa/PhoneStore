@@ -16,6 +16,7 @@ class ProductModel
         return $this->db->select($query);
     }
 
+
     public function getProductById($id)
     {
         $query = "SELECT * FROM san_pham WHERE id = $id";

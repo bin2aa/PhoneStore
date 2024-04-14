@@ -9,11 +9,18 @@ class CommentModel
         $this->db = new Database();
     }
 
+
+
+
+
     public function getAllComments()
     {
         $query = "SELECT * FROM binh_luan";
         return $this->db->select($query);
     }
+
+
+
 
     public function getCommentById($id)
     {
@@ -47,9 +54,13 @@ class CommentModel
         return $this->db->execute($query);
     }
 
+
     public function getCommentsByProductId($id_san_pham)
     {
-        $query = "SELECT * FROM binh_luan WHERE id_san_pham = $id_san_pham";
+        $query = "SELECT binh_luan.*, khach_hang.ten AS ten_khach_hang
+        FROM binh_luan
+        JOIN khach_hang ON binh_luan.id_khach_hang = khach_hang.id
+        WHERE id_san_pham = $id_san_pham";
         return $this->db->select($query);
     }
 }

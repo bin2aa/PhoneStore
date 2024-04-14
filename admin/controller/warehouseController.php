@@ -39,7 +39,7 @@ class WarehouseController
             while (isset($_POST['id_san_pham_' . $i])) {
                 $detail['id_san_pham'] = $_POST['id_san_pham_' . $i];
                 $detail['so_luong'] = $_POST['so_luong_' . $i];
-                $detail['gia'] = $_POST['gia_nhap_' . $i];
+                $detail['gia'] = $_POST['gia_nhap_' . $i];  
                 $details[] = $detail;
                 $i++;
             }
