@@ -13,6 +13,7 @@ class statsController
 
     public function showStats()
     {
+        
         $stats = $this->statsModel->getStats();
         $statsDate = $this->statsModel->getStatsByDate();
         include __DIR__ . '/../view/statsView.php';

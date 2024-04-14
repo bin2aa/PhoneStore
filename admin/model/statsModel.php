@@ -53,8 +53,7 @@ class statsModel
         SELECT
             DATE_FORMAT(don_dat_hang.ngay, '%Y-%m') AS month_year,
             COUNT(don_dat_hang.id) AS total_orders,
-
-                SUM(don_dat_hang.tong_tien) AS total_revenue,
+            SUM(don_dat_hang.tong_tien) AS total_revenue,
             (
                 SELECT SUM(nhap_kho.tong_tien) 
                 FROM nhap_kho 
