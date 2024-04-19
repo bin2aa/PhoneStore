@@ -18,6 +18,12 @@ class orderController
         if ($_SESSION['qldon_hang'] != 1) {
             exit("Bạn không có quyền truy cập vào trang này!");
         }
+
+        if (isset($_GET['search'])) {
+            $keyword = $_GET['search'];
+            $orders = $this->orderModel->searchOrder($keyword);
+        }
+
         include __DIR__ . '/../view/orderView.php';
     }
 

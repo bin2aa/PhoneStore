@@ -16,6 +16,10 @@ class WarehouseController
             exit("Bạn không có quyền truy cập vào trang này!");
         }
         $warehouseReceipts = $this->warehouseModel->getAllWarehouseReceipts();
+        if (isset($_GET['search'])) {
+            $keyword = $_GET['search'];
+            $warehouseReceipts = $this->warehouseModel->searchWarehouseReceipt($keyword);
+        }
         include __DIR__ . '/../view/warehouseView.php';
     }
 

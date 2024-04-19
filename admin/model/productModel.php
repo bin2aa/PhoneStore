@@ -61,9 +61,10 @@ class ProductModel
         }
     }
 
-    public function searchProducts($keyword)
+    public function searchProducts($keyword,)
     {
-        $query = "SELECT * FROM san_pham WHERE ten LIKE '%$keyword%' ";
+        $query = "SELECT * FROM san_pham WHERE ten LIKE '%$keyword%'";
+
         return $this->db->select($query);
     }
 
@@ -90,6 +91,25 @@ class ProductModel
     public function getAllCategories()
     {
         $query = "SELECT * FROM danh_muc_san_pham";
+        return $this->db->select($query);
+    }
+
+    public function sortProductsByPriceAsc()
+    {
+        $query = "SELECT * FROM san_pham ORDER BY gia ASC";
+        return $this->db->select($query);
+    }
+
+    public function sortProductsByPriceDesc()
+    {
+        $query = "SELECT * FROM san_pham ORDER BY gia DESC";
+        return $this->db->select($query);
+    }
+
+
+    public function sortProductsByPriceRange($minPrice, $maxPrice)
+    {
+        $query = "SELECT * FROM san_pham WHERE gia BETWEEN $minPrice AND $maxPrice ORDER BY gia ASC";
         return $this->db->select($query);
     }
 }

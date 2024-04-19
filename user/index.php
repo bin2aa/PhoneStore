@@ -16,8 +16,10 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang chủ</title>
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="js/ajax.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="js/ajax.js"></script>
 </head>
 
 <body>
@@ -54,6 +56,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                 <li> <a href="index.php?ctrl=cartController&action=showCart">Giỏ hàng</a></li>
             </ul>
         </div>
+
     </div>
 
     <div class="home">

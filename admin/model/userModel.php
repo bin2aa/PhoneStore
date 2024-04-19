@@ -80,4 +80,11 @@ class UserModel
         $query = "SELECT * FROM phan_quyen";
         return $this->db->select($query);
     }
+
+
+    public function searchUser($keyword)
+    {
+        $query = "SELECT * FROM nguoi_dung WHERE ten_dang_nhap LIKE '%$keyword%'";
+        return $this->db->select($query);
+    }
 }

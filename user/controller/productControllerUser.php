@@ -17,9 +17,27 @@ class ProductControllerUser
         $products = $this->productModel->getAllProducts();
         $categories = $this->productModel->getAllCategoriesPR();
 
+        //Sắp xếp sản phẩm theo giá tăng dần hoặc giảm dần
+        if (isset($_GET['action'])) {
+            if ($_GET['action'] == 'sortProductsByPriceAsc') {
+                $products = $this->productModel->sortProductsByPriceAsc();
+            } elseif ($_GET['action'] == 'sortProductsByPriceDesc') {
+                $products = $this->productModel->sortProductsByPriceDesc();
+            }
+        }
+
+        //Lọc theo danh mục
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
             $products = $this->productModel->getProductByCategory($id);
+        }
+
+
+        //Locc theo giá từ n đến m
+        if (isset($_GET['price_min']) && isset($_GET['price_max'])) {
+            $price_min = $_GET['price_min'] ? $_GET['price_min'] : 1;
+            $price_max = $_GET['price_max'] ? $_GET['price_max'] : 1000;
+            $products = $this->productModel->sortProductsByPriceRange($price_min, $price_max);
         }
         include __DIR__ . '/../view/productViewUser.php';
     }
