@@ -65,10 +65,4 @@ class CustomerModel
         $query = "SELECT * FROM nguoi_dung";
         return $this->db->select($query);
     }
-
-    public function searchCustomer($keyword)
-    {
-        $query = "SELECT * FROM khach_hang WHERE ten LIKE '%$keyword%' ";
-        return $this->db->select($query);
-    }
 }

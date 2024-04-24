@@ -5,57 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chi Tiết Sản Phẩm</title>
-    <style>
-        /* Thêm một số kiểu cơ bản */
-        .product-detail {
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        .product-detail img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        /* Kiểu cho phần bình luận */
-        .comment-section {
-            margin-top: 20px;
-        }
-
-        .comment {
-            margin-bottom: 10px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #ccc;
-        }
-
-        .comment p {
-            margin: 0;
-        }
-
-        .comment .author {
-            font-weight: bold;
-        }
-
-        .comment-form {
-            margin-top: 20px;
-        }
-
-        .comment-form textarea {
-            width: 100%;
-            height: 100px;
-            margin-bottom: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="style/product_detail.css">
 </head>
 
 <body>
     <div class="product-detail">
-
+        <div class="left-column">
+            <img src="/image/<?php echo $product['anh']; ?>" alt="<?php echo $product['ten']; ?>">
+        </div>
+        <div class="right-column">
         <h1><?php echo $product['ten']; ?></h1>
-        <img src="/image/<?php echo $product['anh']; ?>" alt="<?php echo $product['ten']; ?>">
         <p>Giá: <?php echo $product['gia']; ?> đ</p>
         <p>Số lượng còn lại: <?php echo $product['so_luong']; ?></p>
         <p><?php echo $product['mo_ta']; ?></p>
@@ -114,7 +73,8 @@
                 <button type="submit">Gửi bình luận</button>
             </form>
         </div>
-    </div>
+        </div>
+        
     </div>
 
 

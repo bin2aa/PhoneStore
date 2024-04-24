@@ -47,10 +47,4 @@ class CategoryModel
         $query = "SELECT * FROM san_pham WHERE id_danh_muc = $id";
         return $this->db->select($query);
     }
-
-    public function searchCategory($keyword)
-    {
-        $query = "SELECT * FROM danh_muc_san_pham WHERE ten LIKE '%$keyword%' ";
-        return $this->db->select($query);
-    }
 }

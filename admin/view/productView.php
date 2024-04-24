@@ -11,8 +11,10 @@
 
     <h2>Danh sách sản phẩm</h2>
 
-    <form class="search-form-product">
+    <form action="index.php" method="GET" class="search-form">
         <label for="search">Tìm kiếm sản phẩm:</label>
+        <input type="hidden" name="ctrl" value="productController">
+        <input type="hidden" name="action" value="searchProducts">
         <input type="text" id="search" name="search" placeholder="Nhập tên sản phẩm cần tìm kiếm">
         <button type="submit">Tìm kiếm</button>
     </form>

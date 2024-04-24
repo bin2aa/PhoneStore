@@ -146,14 +146,4 @@ class WarehouseModel
                   WHERE id = $detail_id";
         return $this->db->execute($query);
     }
-
-
-    public function searchWarehouseReceipt($search)
-    {
-        $query = "SELECT nhap_kho.*,nha_cung_cap.ten AS ten_ncc
-        FROM nhap_kho
-        JOIN nha_cung_cap ON nhap_kho.id_nha_cung_cap = nha_cung_cap.id
-        WHERE nha_cung_cap.ten LIKE '%$search%'";
-        return $this->db->select($query);
-    }
 }

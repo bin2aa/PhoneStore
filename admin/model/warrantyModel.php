@@ -58,10 +58,4 @@ class WarrantyModel
         $query = "SELECT * FROM don_dat_hang";
         return $this->db->select($query);
     }
-
-    public function searchWarranty($keyword)
-    {
-        $query = "SELECT * FROM phieu_bao_hanh WHERE tinh_trang LIKE '%$keyword%'";
-        return $this->db->select($query);
-    }
 }

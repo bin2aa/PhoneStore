@@ -184,5 +184,4 @@ class CartModel
               WHERE id = $id";
         return $this->db->execute($query);
     }
-    
 }

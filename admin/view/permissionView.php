@@ -3,7 +3,7 @@
 
 <head>
     <title>Danh sách quyền</title>
-    <!-- <style>
+    <style>
         table {
             border-collapse: collapse;
             width: 100%;
@@ -19,7 +19,7 @@
         th {
             background-color: #f2f2f2;
         }
-    </style> -->
+    </style>
 </head>
 
 <body>

@@ -1,7 +1,6 @@
 <?php
 include(__DIR__ . '/../model/productModel.php');
 
-
 class ProductController
 {
     private $productModel;
@@ -17,14 +16,6 @@ class ProductController
             exit("Bạn không có quyền truy cập vào trang này!");
         }
         $products = $this->productModel->getAllProducts();
-        $categorys = $this->productModel->getAllCategories();
-
-
-        if (isset($_GET['search'])) {
-            $keyword = $_GET['search'];
-            $products = $this->productModel->searchProducts($keyword);
-        }
-
         include __DIR__ . '/../view/productView.php';
     }
 
@@ -98,6 +89,17 @@ class ProductController
             }
         }
     }
+
+
+
+    public function searchProducts()
+    {
+        if (isset($_GET['search'])) {
+            $keyword = $_GET['search'];
+            $products = $this->productModel->searchProducts($keyword);
+            include(__DIR__ . '/../view/productView.php');
+        }
+    }
 }
 
 $action = 'index';
@@ -126,6 +128,9 @@ switch ($action) {
         break;
     case 'updateProduct':
         $productController->updateProduct();
+        break;
+    case 'searchProducts':
+        $productController->searchProducts();
         break;
     default:
         $productController->showProductList();

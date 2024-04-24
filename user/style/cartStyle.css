@@ -1,0 +1,126 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styles */
+.CartContent {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    padding: 20px;
+}
+
+/* Page Title */
+h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* Cart Items Container */
+.cart-item {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.item-image {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.item-image img {
+    border-radius: 5px;
+}
+
+.item-details {
+    flex: 3;
+}
+
+.item-name {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.quantity-section {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-buttons {
+    display: flex;
+}
+
+.quantity-buttons button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.quantity-buttons button:hover {
+    background-color: #0056b3;
+}
+
+.item-total {
+    flex: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item-total a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.item-total a:hover {
+    color: #0056b3;
+}
+
+
+/* Order Form */
+form {
+    margin-top: 20px;
+}
+
+form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Discount Information */
+h3 {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+h4 {
+    font-size: 18px;
+    margin-top: 10px;
+}

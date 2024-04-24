@@ -15,13 +15,7 @@ class supplierController
             exit("Bạn không có quyền truy cập vào trang này!");
         }
         $suppliers = $this->supplierModel->getAllSuppliers();
-
-        if (isset($_GET['search'])) {
-            $keyword = $_GET['search'];
-            $suppliers = $this->supplierModel->searchSupplier($keyword);
-        }
         include __DIR__ . '/../view/supplierView.php';
-        
     }
 
     public function showAddSupplierForm()

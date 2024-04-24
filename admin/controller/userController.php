@@ -15,13 +15,6 @@ class UserController
             exit("Bạn không có quyền truy cập vào trang này!");
         }
         $users = $this->userModel->getAllUsers();
-
-
-        if (isset($_GET['search'])) {
-            $keyword = $_GET['search'];
-            $users = $this->userModel->searchUser($keyword);
-        }
-
         include __DIR__ . '/../view/userView.php';
     }
 

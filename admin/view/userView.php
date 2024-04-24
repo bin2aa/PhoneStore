@@ -23,12 +23,12 @@
 
     <h2>Danh sách người dùng</h2>
 
+    <?php
+    // include_once('../model/userModel.php'); // Đảm bảo file này được require để có thể sử dụng class UserModel
+    // $userModel = new UserModel();
+    // $users = $userModel->getAllUsers(); // Lấy dữ liệu người dùng  
 
-    <form class="search-form-user">
-        <label for="search">Tìm kiếm người dùng:</label>
-        <input type="text" id="search" name="search" placeholder="Nhập tên người dùng cần tìm kiếm">
-        <button type="submit">Tìm kiếm</button> <br>
-
+    ?>
     <form action="index.php?ctrl=userController&action=viewAddUser" method="post">
         <button type="submit">Thêm người dùng</button>
         <table>

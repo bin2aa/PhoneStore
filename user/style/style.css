@@ -1,0 +1,44 @@
+
+header {
+    background-color: #333; /* Background color of the header */
+    padding: 20px; /* Padding around the content */
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Distribute space between logo and nav */
+    align-items: center; /* Align items vertically */
+  }
+  
+  .logo img {
+    max-width: 100px; /* Set maximum width for the logo */
+  }
+  
+  nav ul {
+    list-style-type: none; /* Remove bullet points from the list */
+    padding: 0;
+    margin: 0;
+  }
+  
+  nav ul li {
+    display: inline-block; /* Display list items horizontally */
+    margin-right: 20px; /* Margin between list items */
+  }
+  
+  nav ul li:last-child {
+    margin-right: 0; /* Remove margin from the last list item */
+  }
+  
+  nav ul li a {
+    color: #fff; /* Text color of navigation links */
+    text-decoration: none; /* Remove underline from links */
+    font-size: 18px; /* Font size of navigation links */
+  }
+  
+  .user-actions {
+    margin-left: auto; /* Push user actions to the right */
+  }
+  
+  .user-actions a {
+    color: #fff; /* Text color of user action links */
+    text-decoration: none; /* Remove underline from links */
+    margin-left: 20px; /* Margin between user action links */
+  }
+  

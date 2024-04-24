@@ -19,13 +19,8 @@ class CategoryController
         }
 
         $categories = $this->categoryModel->getAllCategories();
-        if (isset($_GET['search'])) {
-            $keyword = $_GET['search'];
-            $categories = $this->categoryModel->searchCategory($keyword);
-        }
         include __DIR__ . '/../view/categoryView.php';
     }
-
 
     public function showAddCategoryForm()
     {

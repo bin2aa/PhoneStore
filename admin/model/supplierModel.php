@@ -49,10 +49,4 @@ class SupplierModel
         WHERE id = $id";
         return $this->db->execute($query);
     }
-
-    public function searchSupplier($search)
-    {
-        $query = "SELECT * FROM nha_cung_cap WHERE ten LIKE '%$search%'";
-        return $this->db->select($query);
-    }
 }

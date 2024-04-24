@@ -22,15 +22,6 @@
 <body>
 
     <h2>Danh sách khách hàng</h2>
-
-    <form class="search-form-customer">
-        <label for="search">Tìm kiếm khách hàng:</label>
-        <input type="text" id="search" name="search" placeholder="Nhập tên khách hàng cần tìm kiếm">
-        <button type="submit">Tìm kiếm</button>
-    </form>
-
-
-
     <form action="index.php?ctrl=customerController&action=viewAddCustomer" method="post">
         <button type="submit">Thêm khách hàng</button>
         <table>

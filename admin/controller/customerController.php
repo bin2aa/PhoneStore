@@ -15,14 +15,6 @@ class customerController
             exit("Bạn không có quyền truy cập vào trang này!");
         }
         $customers = $this->customerModel->getAllcustomers();
-
-
-        if (isset($_GET['search'])) {
-            $keyword = $_GET['search'];
-            $customers = $this->customerModel->searchCustomer($keyword);
-        }
-
-
         include __DIR__ . '/../view/customerView.php';
     }
 

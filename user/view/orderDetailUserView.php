@@ -90,18 +90,17 @@
                                         <input type="hidden" name="warranty_id" value="<?php echo $warranty['id']; ?>">
                                         <?php
                                         // Kiểm tra nếu trạng thái là "Chờ xử lý" thì disabled trường Ghi chú và nút Gửi bảo hành
-                                        if ($warranty['tinh_trang'] == 'Chờ xử lý' || $warranty['tinh_trang'] == 'Hết hạn bảo hành') {
+                                        if ($warranty['tinh_trang'] == 'Chờ xử lý') {
                                             echo '<input type="text" name="ghi_chu" value="' . $warranty['ghi_chu'] . '" required disabled>';
                                         } else {
                                             echo '<input type="text" name="ghi_chu" value="' . $warranty['ghi_chu'] . '" required>';
                                         }
-                                        
                                         ?>
                                 </td>
                                 <td>
                                     <?php
                                     // Kiểm tra nếu trạng thái là "Chờ xử lý" thì disabled nút Gửi bảo hành
-                                    if ($warranty['tinh_trang'] == 'Chờ xử lý' ||  $warranty['tinh_trang'] == 'Hết hạn bảo hành') {
+                                    if ($warranty['tinh_trang'] == 'Chờ xử lý') {
                                         echo '<input type="submit" value="Gửi bảo hành" disabled>';
                                     } else {
                                         echo '<input type="submit" value="Gửi bảo hành">';

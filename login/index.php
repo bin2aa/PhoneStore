@@ -8,7 +8,7 @@
     <!-- <script src="/js/jquery.min.js"></script> -->
     <link rel="stylesheet" href="css/style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="jsLogin/ajaxLogin.js"></script>
+    <script src="js/ajax.js"></script>
 </head>
 <body>
     <div>
@@ -20,7 +20,7 @@
             </ul>
         </div>
     </div>
-    <div class="homeLogin">
+    <div class="home">
         <?php
         if (isset($_GET['ctrl'])) {
             $ctrl = $_GET['ctrl'];
