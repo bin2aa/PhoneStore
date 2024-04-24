@@ -1,22 +1,5 @@
 $(document).ready(function () {
 
-
-
-    // Tìm kiếm sản phẩm
-    $('form').submit(function (event) {
-        if ($(this).hasClass('search-form')) {
-            event.preventDefault();
-            var keyword = $('#search').val();
-            $.ajax({
-                url: 'index.php?ctrl=productController&action=searchProducts&search=' + keyword,
-                method: 'GET',
-                success: function (data) {
-                    $('table').html($(data).find('table').html());
-                }
-            });
-        }
-    });
-
     // Chuyển sang form cập nhật sản phẩm
     $('a.updateProducts-form').click(function (event) {
         //productView.php
@@ -73,8 +56,7 @@ $(document).ready(function () {
 
 
     //danh mục
-
-    $("a#addCategoryLink").click(function (e) {
+    $("a.addCategoryLink").click(function (e) {
         e.preventDefault(); // Ngăn chặn hành động mặc định của thẻ a
 
         $.ajax({
@@ -90,9 +72,9 @@ $(document).ready(function () {
     });
 
     // Đóng modal khi click vào nút đóng
-    $(document).on("click", "#addCategoryContainer .close-btn", function () {
-        $("#addCategoryContainer").hide();
-    });
+    // $(document).on("click", "#addCategoryContainer .close-btn", function () {
+    //     $("#addCategoryContainer").hide();
+    // });
 
 
 

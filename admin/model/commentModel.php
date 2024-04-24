@@ -54,13 +54,25 @@ class CommentModel
         return $this->db->execute($query);
     }
 
+    // Lấy số lượng bình luận của sản phẩm
+    public function getCommentCountByProductId($id_san_pham)
+    {
+        $query = "SELECT COUNT(*) as total FROM binh_luan WHERE id_san_pham = $id_san_pham";
+        $result = $this->db->select($query);
+        return $result[0]['total'];
+    }
 
-    public function getCommentsByProductId($id_san_pham)
+
+    // Lấy danh sách bình luận theo id sản phẩm
+    public function getCommentsByProductId($id_san_pham, $limit, $offset)
     {
         $query = "SELECT binh_luan.*, khach_hang.ten AS ten_khach_hang
         FROM binh_luan
         JOIN khach_hang ON binh_luan.id_khach_hang = khach_hang.id
-        WHERE id_san_pham = $id_san_pham";
+        WHERE id_san_pham = $id_san_pham
+        ORDER BY ngay_gio_binh_luan DESC
+        LIMIT $limit OFFSET $offset";
+
         return $this->db->select($query);
     }
 }

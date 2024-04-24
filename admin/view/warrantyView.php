@@ -6,13 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Danh sách phiếu bảo hành</title>
 </head>
+<p>Thời gian hiện tại:
+    <?php
+    date_default_timezone_set('Asia/Ho_Chi_Minh');
+    echo date('Y-m-d H:i:s');
+    ?>
+</p>
 
 <body>
     <h1>Danh sách phiếu bảo hành</h1>
+
+    <form class='search-form-warranty'>
+        <label for="search">Tìm tình trạng bảo hành:</label>
+        <select id="search" name="search">
+            <option value="">Tất cả</option>
+            <option value="Đang bảo hành">Đang bảo hành</option>
+            <option value="Chờ xử lý">Chờ xử lý</option>
+            <option value="Đã từ chối">Đã từ chối</option>
+            <option value="Đã hoàn thành">Đã hoàn thành</option>
+            <option value="Hết hạn bảo hành">Hết hạn bảo hành</option>
+        </select>
+        <button type="submit">Tìm kiếm</button>
+    </form>
+
+
+
+
+
     <a href="index.php?ctrl=warrantyController&action=viewAddWarranty">Thêm phiếu bảo hành</a>
-    <p>Thời gian hiện tại: <?php
-                            date_default_timezone_set('Asia/Ho_Chi_Minh');
-                            echo date('Y-m-d H:i:s'); ?></p>
     <table border="1">
         <thead>
             <tr>

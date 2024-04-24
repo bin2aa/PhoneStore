@@ -10,13 +10,25 @@
 
 <body>
 
+
+
+
     <h2>Danh sách đơn đặt hàng</h2>
-    <?php 
+    <?php
     date_default_timezone_set('Asia/Ho_Chi_Minh');
     echo date('Y-m-d H:i:s'); ?></p>
+
+
+
+    <form class="search-form-order">
+        <label for="search">Tìm đơn đặt hàng:</label>
+        <input type="text" id="search" name="search" placeholder="Nhập tên khách hàng cần tìm">
+        <button type="submit">Tìm kiếm</button>
+    </form>
+
     <a href="index.php?ctrl=orderController&action=viewAddOrder">Thêm đơn đặt hàng</a>
     <table>
-        
+
         <thead>
             <tr>
                 <th>ID đơn hàng</th>
@@ -43,8 +55,10 @@
                             <input type="hidden" name="orderId" value="<?php echo $order['id']; ?>">
 
                             <?php if ($order['tinh_trang'] == 'Chờ xác nhận') echo "<button type='submit'>Xác nhận</button>";
-                            else if ($order['tinh_trang'] == 'Đang giao') echo "<button type='submit'>Đang xử lý</button>";
-                            else if ($order['tinh_trang'] == 'Đang xử lý') echo "<button type='submit' disabled>Thành công</button>";
+                            else if ($order['tinh_trang'] == 'Đang xử lý') echo "<button type='submit'>Đang xử lý</button>";
+                            else if ($order['tinh_trang'] == 'Đang giao') echo "<button type='submit'>Hoàn tất</button>";
+                            else if ($order['tinh_trang'] == 'Thành công') echo "<button type='submit' disabled>Thành công</button>";
+                            
                             ?>
                         </form>
                     </td>

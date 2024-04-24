@@ -12,6 +12,13 @@
 
     <h2>Danh sách phiếu nhập kho</h2>
 
+
+    <form class="search-form-warehouse">
+        <label for="search">Tìm kiếm phiếu nhập kho:</label>
+        <input type="text" id="search" name="search" placeholder="Nhập tên phiếu nhập kho cần tìm kiếm">
+        <button type="submit">Tìm kiếm</button>
+    </form>
+
     <a href="index.php?ctrl=warehouseController&action=showAddWarehouseReceiptForm">Thêm hàng vào kho</a>
 
     <table>

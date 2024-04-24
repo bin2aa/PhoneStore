@@ -43,8 +43,8 @@
     <form action="index.php?ctrl=loginController&action=resetPassword" method="POST">
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required>
-
         <button type="submit">Gửi yêu cầu</button>
+        <a href="index.php?ctrl=loginController" class="cancel-btn">Hủy bỏ</a>
     </form>
 </body>
 

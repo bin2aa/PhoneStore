@@ -26,6 +26,12 @@ class ProductModel
         return $result[0];
     }
 
+    public function getProductsByPage($limit, $offset)
+    {
+        $query = "SELECT * FROM san_pham LIMIT $limit OFFSET $offset";
+        return $this->db->select($query);
+    }
+
     public function createProduct($ten, $anh, $id_danh_muc, $gia, $so_luong, $mo_ta)
     {
         if ($so_luong >= 0) {
@@ -61,9 +67,10 @@ class ProductModel
         }
     }
 
-    public function searchProducts($keyword)
+    public function searchProducts($keyword,)
     {
-        $query = "SELECT * FROM san_pham WHERE ten LIKE '%$keyword%' ";
+        $query = "SELECT * FROM san_pham WHERE ten LIKE '%$keyword%'";
+
         return $this->db->select($query);
     }
 
@@ -91,5 +98,30 @@ class ProductModel
     {
         $query = "SELECT * FROM danh_muc_san_pham";
         return $this->db->select($query);
+    }
+
+    public function sortProductsByPriceAsc()
+    {
+        $query = "SELECT * FROM san_pham ORDER BY gia ASC";
+        return $this->db->select($query);
+    }
+
+    public function sortProductsByPriceDesc()
+    {
+        $query = "SELECT * FROM san_pham ORDER BY gia DESC";
+        return $this->db->select($query);
+    }
+
+
+    public function sortProductsByPriceRange($minPrice, $maxPrice)
+    {
+        $query = "SELECT * FROM san_pham WHERE gia BETWEEN $minPrice AND $maxPrice ORDER BY gia ASC";
+        return $this->db->select($query);
+    }
+
+    public function getProductsPriceMax()
+    {
+        $query = "SELECT MAX(gia) as maxPrice FROM san_pham";
+        return $this->db->select($query)[0]['maxPrice'];
     }
 }

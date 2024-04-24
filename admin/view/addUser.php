@@ -29,6 +29,12 @@
             ?>
         </select><br>
 
+        <label for="trang_thai">Trạng thái</label>
+        <select name="trang_thai" required>
+            <option value="1">Hoạt động</option>
+            <option value="0">Khóa</option>
+        </select><br>
+
 
         <button type="submit">Thêm người dùng</button>
     </form>

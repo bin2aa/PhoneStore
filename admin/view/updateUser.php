@@ -37,6 +37,13 @@
             ?>
         </select><br>
 
+        <label for="trang_thai">Tình trạng:</label>
+        <select name="trang_thai" required>
+            <option value="1" <?php if ($user['trang_thai'] == 1) echo 'selected'; ?>>Hoạt động</option>
+            <option value="0" <?php if ($user['trang_thai'] == 0) echo 'selected'; ?>>Khóa</option>
+        </select><br>
+
+
         <button type="submit">Cập nhật người dùng</button>
     </form>
 </body>

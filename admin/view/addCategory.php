@@ -15,6 +15,9 @@
             <input type="text" name="ten" required><br>
             <button type="submit">Thêm danh mục</button>
         </form>
+            <form action="index.php?ctrl=categoryController" method="post">
+                <button type="submit">Quay lại</button>
+            </form>
     </div>
 </body>
 

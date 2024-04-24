@@ -23,14 +23,15 @@
 
     <h2>Danh sách người dùng</h2>
 
-    <?php
-    // include_once('../model/userModel.php'); // Đảm bảo file này được require để có thể sử dụng class UserModel
-    // $userModel = new UserModel();
-    // $users = $userModel->getAllUsers(); // Lấy dữ liệu người dùng  
 
-    ?>
-    <form action="index.php?ctrl=userController&action=viewAddUser" method="post">
-        <button type="submit">Thêm người dùng</button>
+    <form class="search-form-user">
+        <label for="search">Tìm kiếm người dùng:</label>
+        <input type="text" id="search" name="search" placeholder="Nhập tên người dùng cần tìm kiếm">
+        <button type="submit">Tìm kiếm</button> <br>
+
+
+        <a href="index.php?ctrl=userController&action=viewAddUser">Thêm người dùng</a>
+
         <table>
             <thead>
                 <tr>
@@ -38,6 +39,7 @@
                     <th>Tên đăng nhập</th>
                     <th>Mật khẩu</th>
                     <th>Vai trò</th>
+                    <th>Trạng thái</th>
                     <th>Thao tác</th>
                 </tr>
             </thead>
@@ -49,6 +51,29 @@
                         <td><?php echo $user['mat_khau']; ?></td>
                         <td><?php echo $user['vai_tro']; ?></td>
                         <td>
+                            <!-- <form action="index.php?ctrl=userController&action=toggleUserStatus" method="POST">
+                                <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
+                                <?php
+                                if ($user['trang_thai'] == '1') echo "<button type='submit'>Khóa</button>";
+                                else if ($user['trang_thai'] == '0') echo "<button type='submit'>Mở Khóa</button>";
+                                ?>
+                            </form> -->
+
+
+                            <a href="index.php?ctrl=userController&action=toggleUserStatus&id=<?php echo $user['id']; ?>&status=<?php echo $user['trang_thai']; ?>">
+                                <?php
+                                if ($user['trang_thai'] == 1) {
+                                    echo "Khóa";
+                                } else {
+                                    echo "Mở khóa";
+                                }
+                                ?>
+                            </a>
+                        </td>
+
+
+
+                        <td>
                             <a href="index.php?ctrl=userController&action=deleteUser&id=<?php echo $user['id']; ?>">Xóa</a>
                             <a href="index.php?ctrl=userController&action=updateUserView&id=<?php echo $user['id']; ?>&vai_tro=<?php echo $user['vai_tro']; ?>">Sửa</a>
                         </td>
@@ -59,7 +84,6 @@
         </table>
 
 
-    </form>
 
 </body>
 

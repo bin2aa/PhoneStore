@@ -16,6 +16,14 @@ class WarrantyController
             exit("Bạn không có quyền truy cập vào trang này!");
         }
         $warranties = $this->warrantyModel->getAllWarranties();
+
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            if (isset($_GET['search'])) {
+                $keyword = $_GET['search'];
+                $warranties = $this->warrantyModel->searchWarranty($keyword);
+            }
+        }
+
         include __DIR__ . '/../view/warrantyView.php';
     }
 

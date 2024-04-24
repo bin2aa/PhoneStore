@@ -18,6 +18,12 @@ class orderController
         if ($_SESSION['qldon_hang'] != 1) {
             exit("Bạn không có quyền truy cập vào trang này!");
         }
+
+        if (isset($_GET['search'])) {
+            $keyword = $_GET['search'];
+            $orders = $this->orderModel->searchOrder($keyword);
+        }
+
         include __DIR__ . '/../view/orderView.php';
     }
 
@@ -122,10 +128,10 @@ class orderController
                 // $newStatus = ($order['tinh_trang'] == 'Chờ xác nhận') ? 'Giao thành công' : 'Chờ xác nhận';
 
                 if ($order['tinh_trang'] == 'Chờ xác nhận') {
-                    $newStatus = 'Đang giao';
-                } else if ($order['tinh_trang'] == 'Đang giao') {
                     $newStatus = 'Đang xử lý';
                 } else if ($order['tinh_trang'] == 'Đang xử lý') {
+                    $newStatus = 'Đang giao';
+                } else if ($order['tinh_trang'] == 'Đang giao') {
                     $newStatus = 'Thành công';
                 }
 

@@ -5,23 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Danh sách nhà cung cấp</title>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
 
-        table,
-        th,
-        td {
-            border: 1px solid black;
-        }
-    </style>
 </head>
 
 <body>
 
     <h2>Danh sách nhà cung cấp</h2>
+
+
+    <form class="search-form-supplier">
+        <label for="search">Tìm kiếm nhà cung cấp:</label>
+        <input type="text" id="search" name="search" placeholder="Nhập tên nhà cung cấp cần tìm kiếm">
+        <button type="submit">Tìm kiếm</button>
+    </form>
+
     <form action="index.php?ctrl=supplierController&action=viewAddSupplier" method="post">
         <button type="submit">Thêm nhà cung cấp</button>
         <table>

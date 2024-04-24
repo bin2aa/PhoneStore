@@ -97,3 +97,10 @@ button:hover {
 .register-btn:hover {
     color: #2b0398;
 }
+
+/* báo lỗi mật khẩu */
+.error-message {
+    color: red;
+    font-size: 12px;
+    display: none; /* Ẩn thông báo lỗi ban đầu */
+}

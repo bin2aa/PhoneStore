@@ -1,121 +1,119 @@
 /* Reset default styles */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 /* Body styles */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
 }
 
 /* Header styles */
 .header {
-  background-color: #333;
-  color: #fff;
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo img {
-  height: 100px;
-  width: 100px;
+    height: 100px;
+    width: 100px;
 }
 
 .menu ul {
-  list-style-type: none;
-  display: flex;
+    list-style-type: none;
+    display: flex;
 }
 
 .menu-item {
-  text-decoration: none;
-  color: #fff;
-  padding: 10px;
-  margin-right: 10px;
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+    margin-right: 10px;
 }
 
 .menu-item:hover {
-  background-color: #555;
-  border-radius: 5px;
+    background-color: #555;
+    border-radius: 5px;
 }
 
 
 /* Content styles */
 #footer {
-  background-color: #343a40;
-  color: #fff;
-  padding: 60px 0;
+    background-color: #343a40;
+    color: #fff;
+    padding: 60px 0;
 }
 
 .footer-title {
-  color: #fff;
-  font-size: 24px;
-  margin-bottom: 20px;
+    color: #fff;
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
 .footer-text {
-  color: #ccc;
-  font-size: 16px;
-  line-height: 1.6;
+    color: #ccc;
+    font-size: 16px;
+    line-height: 1.6;
 }
 
 .footer-form input[type="text"] {
-  padding: 12px;
-  border: none;
-  border-radius: 5px 0 0 5px;
-  width: calc(100% - 120px);
-  font-size: 16px;
-  background-color: #fff;
-  color: #333;
+    padding: 12px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    width: calc(100% - 120px);
+    font-size: 16px;
+    background-color: #fff;
+    color: #333;
 }
 
 .footer-form button {
-  padding: 12px 24px;
-  border: none;
-  background-color: #007bff;
-  color: #fff;
-  border-radius: 0 5px 5px 0;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+    padding: 12px 24px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .footer-form button:hover {
-  background-color: #0056b3;
+    background-color: #0056b3;
 }
 
 .footer-links {
-  padding: 0;
+    padding: 0;
 }
 
 .footer-links li {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 .footer-links a {
-  color: #ccc;
-  text-decoration: none;
-  font-size: 16px;
+    color: #ccc;
+    text-decoration: none;
+    font-size: 16px;
 }
 
 .footer-links a:hover {
-  color: #fff;
-  text-decoration: underline;
+    color: #fff;
+    text-decoration: underline;
 }
 
 .copyright {
-  background-color: #222;
-  color: #ccc;
-  padding: 15px 0;
-  font-size: 14px;
+    background-color: #222;
+    color: #ccc;
+    padding: 15px 0;
+    font-size: 14px;
 }
 
 .footer-link {
-  color: #007bff;
+    color: #007bff;
 }
-
-

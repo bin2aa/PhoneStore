@@ -11,7 +11,7 @@ class UserModel
 
     public function getAllUsers()
     {
-        $query = "SELECT * FROM nguoi_dung";
+        $query = "SELECT * FROM nguoi_dung ";
         return $this->db->select($query);
     }
 
@@ -25,13 +25,25 @@ class UserModel
         return $result[0];
     }
 
-    public function createUser($ten_dang_nhap, $mat_khau, $vai_tro)
+    public function checkUsernameExists($username)
+    {
+        $query = "SELECT * FROM nguoi_dung WHERE ten_dang_nhap = '$username'";
+        $result = $this->db->select($query);
+        if ($result && count($result) > 0) {
+            return true; // Trả về true nếu tìm thấy người dùng
+        } else {
+            return false;
+        }
+    }
+
+    public function createUser($ten_dang_nhap, $mat_khau, $vai_tro, $trang_thai)
     {
         $hashedPassword = md5($mat_khau); // Mã hóa mật khẩu
-        $query = "INSERT INTO nguoi_dung(ten_dang_nhap, mat_khau, vai_tro)
-    VALUE ('$ten_dang_nhap','$hashedPassword','$vai_tro')"; // Lưu mật khẩu đã mã hóa
+        $query = "INSERT INTO nguoi_dung(ten_dang_nhap, mat_khau, vai_tro, trang_thai) 
+              VALUES ('$ten_dang_nhap', '$hashedPassword', '$vai_tro', '$trang_thai')"; // Lưu mật khẩu đã mã hóa
         return $this->db->execute($query);
     }
+
 
     public function deleteUser($id)
     {
@@ -39,7 +51,7 @@ class UserModel
         return $this->db->execute($query);
     }
 
-    public function updateUser($id, $ten_dang_nhap, $mat_khau, $vai_tro)
+    public function updateUser($id, $ten_dang_nhap, $mat_khau, $vai_tro, $trang_thai)
     {
         $user = $this->getUserById($id); // Lấy thông tin người dùng từ cơ sở dữ liệu
 
@@ -55,7 +67,8 @@ class UserModel
         $query = "UPDATE nguoi_dung SET
         ten_dang_nhap = '$ten_dang_nhap',
         mat_khau = '$hashedPassword', 
-        vai_tro = '$vai_tro'
+        vai_tro = '$vai_tro',
+        trang_thai = $trang_thai
         WHERE id = $id";
         return $this->db->execute($query);
     }
@@ -79,5 +92,18 @@ class UserModel
     {
         $query = "SELECT * FROM phan_quyen";
         return $this->db->select($query);
+    }
+
+
+    public function searchUser($keyword)
+    {
+        $query = "SELECT * FROM nguoi_dung WHERE ten_dang_nhap LIKE '%$keyword%'";
+        return $this->db->select($query);
+    }
+
+    public function updateUserStatus($id, $newStatus)
+    {
+        $query = "UPDATE nguoi_dung SET trang_thai = $newStatus WHERE id = $id";
+        return $this->db->execute($query);
     }
 }

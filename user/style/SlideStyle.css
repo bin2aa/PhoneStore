@@ -3,22 +3,35 @@
     height: 700px;
     width: 100%;
     margin: 0 auto;
-  }
-  
-  .slide-wrapper {
-    width: 200%; /* Change width to accommodate both slides */
-    display: flex; /* Make slides inline */
+}
+
+.slide-wrapper {
+    width: 200%;
+    /* Change width to accommodate both slides */
+    display: flex;
+    /* Make slides inline */
     -webkit-animation: slide 12s ease infinite;
-  }
-  
-  .slide {
-    flex: 1; /* Occupy equal space */
+}
+
+.slide {
+    flex: 1;
+    /* Occupy equal space */
     height: 700px;
-  }
-  
-  @-webkit-keyframes slide {
-    0% { margin-left: 0; }
-    50% { margin-left: -1920px; } /* Move to the second slide */
-    100% { margin-left: 0; } /* Return to the first slide */
-  }
-  
+}
+
+@-webkit-keyframes slide {
+    0% {
+        margin-left: 0;
+    }
+
+    50% {
+        margin-left: -1920px;
+    }
+
+    /* Move to the second slide */
+    100% {
+        margin-left: 0;
+    }
+
+    /* Return to the first slide */
+}

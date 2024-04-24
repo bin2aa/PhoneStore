@@ -11,62 +11,62 @@
 
 <body>
     <div class="CartContent">
-    <h1>Giỏ hàng</h1>
-    
-    <div class="cart-items">
-    <a href="index.php?ctrl=cartController&action=clearCart">Xóa toàn bộ giỏ hàng</a>
-        <?php if (!empty($cartItems)) : ?>
-            <?php foreach ($cartItems as $productId => $quantity) : ?>
-                <div class="cart-item">
-            <div class="item-image">
-                <img src="/image/<?php echo $productImages[$productId]; ?>" alt="Hình ảnh sản phẩm" width="100">
-            </div>
-            <div class="item-details">
-                <span class="item-name">Tên sản phẩm: <?php echo $productNames[$productId]; ?></span>
-                <div class="quantity-section">
-                    <span>Số lượng:</span>
-                    <div class="quantity-buttons">
-                        <button onclick="decrease(<?php echo $productId; ?>, -1)">-</button>
-                        <span id="quantity_<?php echo $productId; ?>"><?php echo $quantity; ?></span>
-                        <button onclick="addToCart(<?php echo $productId; ?>, 1)">+</button>
+        <h1>Giỏ hàng</h1>
+
+        <div class="cart-items">
+            <a href="index.php?ctrl=cartController&action=clearCart">Xóa toàn bộ giỏ hàng</a>
+            <?php if (!empty($cartItems)) : ?>
+                <?php foreach ($cartItems as $productId => $quantity) : ?>
+                    <div class="cart-item">
+                        <div class="item-image">
+                            <img src="/image/<?php echo $productImages[$productId]; ?>" alt="Hình ảnh sản phẩm" width="100">
+                        </div>
+                        <div class="item-details">
+                            <span class="item-name">Tên sản phẩm: <?php echo $productNames[$productId]; ?></span>
+                            <div class="quantity-section">
+                                <span>Số lượng:</span>
+                                <div class="quantity-buttons">
+                                    <button onclick="decrease(<?php echo $productId; ?>, -1)">-</button>
+                                    <span id="quantity_<?php echo $productId; ?>"><?php echo $quantity; ?></span>
+                                    <button onclick="addToCart(<?php echo $productId; ?>, 1)">+</button>
+                                </div>
+                            </div>
+                            <span>Giá: <?php echo number_format($productPrices[$productId]); ?>,000đ</span>
+                        </div>
+                        <div class="item-total">
+                            <span>Tổng tiền: <?php echo number_format($quantity * $productPrices[$productId]); ?>,000đ</span>
+                            <a href="index.php?ctrl=cartController&action=removeFromCart&cart_id=<?php echo $productId; ?>"><i class="fa fa-trash"></i></a>
+                        </div>
                     </div>
-                </div>
-                <span>Giá: <?php echo number_format($productPrices[$productId]); ?>,000đ</span>
-            </div>
-            <div class="item-total">
-                <span>Tổng tiền: <?php echo number_format($quantity * $productPrices[$productId]); ?>,000đ</span>
-                <a href="index.php?ctrl=cartController&action=removeFromCart&cart_id=<?php echo $productId; ?>"><i class="fa fa-trash"></i></a>
-            </div>
-            </div>
 
-            <?php endforeach; ?>
-            <!-- Thêm nút button để mua toàn bộ giỏ hàng -->
-        <?php else : ?>
-            <!-- Hiển thị thông báo khi giỏ hàng trống -->
-            <p>Giỏ hàng của bạn đang trống.</p>
-        <?php endif; ?>
-        <p>Tổng số lượng sản phẩm: <?php echo $totalQuantity; ?></p>
-        <p>Tổng tiền: <?php echo number_format($totalPrice); ?> đ</p>
-
-        <form method="post" action="index.php?ctrl=cartController&action=createOrder" onsubmit='return checkLoggedIn()'>
-            <?php if (isset($_SESSION['id_khach_hang'])) : ?>
-                <input type="hidden" name="id_khach_hang" value="<?php echo $_SESSION['id_khach_hang']; ?>">
-                <input type="hidden" name="tong_tien" value="<?php echo $totalPrice; ?>">
+                <?php endforeach; ?>
+                <!-- Thêm nút button để mua toàn bộ giỏ hàng -->
+            <?php else : ?>
+                <!-- Hiển thị thông báo khi giỏ hàng trống -->
+                <p>Giỏ hàng của bạn đang trống.</p>
             <?php endif; ?>
-            <input type="text" style="width: 30%; height: 50px" name="ghi_chu" placeholder="Ghi chú"><br>
-            <button type="submit">Mua</button>
-        </form>
+            <p>Tổng số lượng sản phẩm: <?php echo $totalQuantity; ?></p>
+            <p>Tổng tiền: <?php echo number_format($totalPrice); ?> đ</p>
 
-        <!-- <button onclick="buyAll()">Mua</button> <br><br> -->
+            <form method="post" action="index.php?ctrl=cartController&action=createOrder" onsubmit='return checkLoggedIn()'>
+                <?php if (isset($_SESSION['id_khach_hang'])) : ?>
+                    <input type="hidden" name="id_khach_hang" value="<?php echo $_SESSION['id_khach_hang']; ?>">
+                    <input type="hidden" name="tong_tien" value="<?php echo $totalPrice; ?>">
+                <?php endif; ?>
+                <input type="text" style="width: 30%; height: 50px" name="ghi_chu" placeholder="Ghi chú"><br>
+                <button type="submit">Mua</button>
+            </form>
 
-        <h3>Ưu đải khi mua hàng: </h3>
-        <p>Giảm giá 10% cho đơn hàng từ 1.000.000đ trở lên</p>
-        <p>Giảm giá 20% cho đơn hàng từ 2.000.000đ trở lên</p>
-        <p>Giảm giá 30% cho đơn hàng từ 3.000.000đ trở lên</p>
-        <p>Giảm giá 40% cho đơn hàng từ 4.000.000đ trở lên</p>
-        <p>Giảm giá 50% cho đơn hàng từ 5.000.000đ trở lên</p>
-        <h4>Tất cả sản phẩm khi mua ỏ SGOP sẽ được bảo hành 3 tháng</h4>
-    </div>
+            <!-- <button onclick="buyAll()">Mua</button> <br><br> -->
+
+            <h3>Ưu đải khi mua hàng: </h3>
+            <p>Giảm giá 10% cho đơn hàng từ 1.000.000đ trở lên</p>
+            <p>Giảm giá 20% cho đơn hàng từ 2.000.000đ trở lên</p>
+            <p>Giảm giá 30% cho đơn hàng từ 3.000.000đ trở lên</p>
+            <p>Giảm giá 40% cho đơn hàng từ 4.000.000đ trở lên</p>
+            <p>Giảm giá 50% cho đơn hàng từ 5.000.000đ trở lên</p>
+            <h4>Tất cả sản phẩm khi mua ỏ SGOP sẽ được bảo hành 3 tháng</h4>
+        </div>
     </div>
 
     <script>
@@ -92,7 +92,6 @@
             }
             return true;
         }
-
     </script>
 </body>
 

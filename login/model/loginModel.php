@@ -25,7 +25,8 @@ class loginModel
         $hashedPassword = md5($mat_khau); // Mã hóa mật khẩu
         $vai_tro = "Khách hàng"; // Đặt vai trò mặc định là 1
         // Thêm người dùng vào bảng nguoi_dung
-        $query = "INSERT INTO nguoi_dung(ten_dang_nhap, mat_khau, vai_tro) VALUES ('$ten_dang_nhap','$hashedPassword','$vai_tro')";
+        $query = "INSERT INTO nguoi_dung(ten_dang_nhap, mat_khau, vai_tro, trang_thai)
+                 VALUES ('$ten_dang_nhap','$hashedPassword','$vai_tro', 1)";
         $userInserted = $this->db->execute($query);
         if ($userInserted) {
             // Lấy ID của người dùng vừa được thêm vào
@@ -75,6 +76,56 @@ class loginModel
             return $permissions;
         } else {
             return false; // Trả về false nếu không có quyền nào được tìm thấy
+        }
+    }
+
+    public function checkEmailExists($email)
+    {
+        $query = "SELECT COUNT(*) as count FROM khach_hang WHERE email = '$email'";
+        $result = $this->db->select($query);
+        return $result[0]['count'] > 0;
+    }
+
+    public function checkUserNameExists($ten_dang_nhap)
+    {
+        $query = "SELECT COUNT(*) as count FROM nguoi_dung WHERE ten_dang_nhap = '$ten_dang_nhap'";
+        $result = $this->db->select($query);
+        return $result[0]['count'] > 0;
+    }
+
+
+    public function saveResetToken($email, $token)
+    {
+        $query = "INSERT INTO password_resets (email, token, created_at) VALUES ('$email', '$token', NOW())";
+        return $this->db->execute($query);
+    }
+
+    public function updatePassword($token, $new_password)
+    {
+        $query = "SELECT * FROM password_resets WHERE token = '$token'";
+        $result = $this->db->select($query);
+
+        if ($result && count($result) > 0) {
+            $email = $result[0]['email'];
+            $hashedPassword = md5($new_password);
+
+            // Cập nhật mật khẩu trong bảng nguoi_dung
+            $query = "UPDATE nguoi_dung 
+                  JOIN khach_hang ON nguoi_dung.id = khach_hang.id_nguoi_dung
+                  SET nguoi_dung.mat_khau = '$hashedPassword'
+                  WHERE khach_hang.email = '$email'";
+            $updateResult = $this->db->execute($query);
+
+            // Sau đó mới xóa token từ bảng password_resets
+            if ($updateResult) {
+                $deleteQuery = "DELETE FROM password_resets WHERE token = '$token'";
+                $this->db->execute($deleteQuery);
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
         }
     }
 }

@@ -43,12 +43,50 @@
 // });
 
 
+
+
 $(document).ready(function () {
+
+
+
+    // ------------------- Đăng nhập -------------------
+
+
+    $('.login_form').submit(function (event) {
+        event.preventDefault(); // Ngăn chặn gửi form mặc định
+        var formData = $(this).serialize();
+        $.ajax({
+            type: 'POST',
+            url: 'index.php?ctrl=loginController&action=login',
+            data: formData,
+            success: function (response) {
+                var error = response.match(/Tên đăng nhập hoặc mật khẩu không đúng./);
+                var susses = response.match(/Đăng nhập thành công/);
+                if (error) {
+                    $('#login-error').text('Tên tài khoản hoặc mật khẩu không chính xác.').show();
+                }
+                else {
+                    $('#login-error').hide();
+                }
+                if (susses) {
+                    alert("Đăng nhập thành công!");
+                    window.location.href = '/user/index.php?ctrl=productControllerUser';
+                }
+
+
+            },
+            error: function (xhr, status, error) {
+                alert("Có lỗi xảy ra. Vui lòng thử lại sau.");
+            }
+        });
+    });
+
+
+
+
+    // ------------------- Đăng ký -------------------
     $('.register_form').submit(function (event) {
         event.preventDefault(); // Ngăn chặn gửi form mặc định
-
-
-
         var password = $('#password').val();
         var confirmPassword = $('#confirm_password').val();
 
@@ -86,6 +124,8 @@ $(document).ready(function () {
                     alert("Đăng ký thành công!");
                     window.location.href = 'index.php?ctrl=loginController';
                 }
+
+
             },
             error: function (xhr, status, error) {
                 alert("Có lỗi xảy ra. Vui lòng thử lại sau.");

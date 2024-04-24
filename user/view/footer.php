@@ -1,7 +1,4 @@
 </main>
-<!-- !start #main-site -->
-
-<!-- start #footer -->
 <footer id="footer" class="bg-dark text-white py-5">
     <div class="container">
         <div class="row">
@@ -59,4 +56,5 @@
 <!-- Custom Javascript -->
 <script src="index.js"></script>
 </body>
+
 </html>

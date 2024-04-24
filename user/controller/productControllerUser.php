@@ -16,11 +16,59 @@ class ProductControllerUser
     {
         $products = $this->productModel->getAllProducts();
         $categories = $this->productModel->getAllCategoriesPR();
+        $maxPrice = $this->productModel->getProductsPriceMax();
 
+        //Sắp xếp sản phẩm theo giá tăng dần hoặc giảm dần
+        if (isset($_GET['action'])) {
+            if ($_GET['action'] == 'sortProductsByPriceAsc') {
+                $products = $this->productModel->sortProductsByPriceAsc();
+            } elseif ($_GET['action'] == 'sortProductsByPriceDesc') {
+                $products = $this->productModel->sortProductsByPriceDesc();
+            }
+        }
+
+        //Lọc theo danh mục
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
             $products = $this->productModel->getProductByCategory($id);
         }
+
+
+        //Locc theo giá từ n đến m
+        if (isset($_GET['price_min']) && isset($_GET['price_max'])) {
+            $price_min = $_GET['price_min'];
+            $price_max = $_GET['price_max'];
+            $products = $this->productModel->sortProductsByPriceRange($price_min, $price_max);
+        } else {
+            $products = $this->productModel->getAllProducts();
+        }
+
+
+
+        //---------------------------Phân trang-----------------------------    
+        $item_per_page = 6; //Số lượng sản phẩm hiển thị trên mỗi trang
+        $current_page = isset($_GET['page']) ? $_GET['page'] : 1; //Trang hiện tại
+
+        //lấy tổng số sản phẩm
+        $total_products = count($products);
+
+        //Tính offset (vị trí bắt đầu của mỗi trang)
+        $offset = ($current_page - 1) * $item_per_page;
+        // $products = $this->productModel->getProductsByPage($item_per_page, $offset);
+        $products = array_slice($products, $offset, $item_per_page);
+
+
+
+        // --- Tìm kiếm sản phẩm ---
+
+        if (isset($_GET['search'])) {
+            $keyword = $_GET['search'];
+            $products = $this->productModel->searchProducts($keyword);
+        }
+
+
+
+
         include __DIR__ . '/../view/productViewUser.php';
     }
 
@@ -29,7 +77,17 @@ class ProductControllerUser
         if (isset($_GET['id'])) {
             $productId = $_GET['id'];
             $product = $this->productModel->getProductById($productId);
-            $comments = $this->commentModel->getCommentsByProductId($productId);
+            // Số lượng bình luận hiển thị trên mỗi trang
+            $item_per_page = 5;
+            // Tính trang hiện tại
+            $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+
+            // Lấy tổng số bình luận
+            $total_comments = $this->commentModel->getCommentCountByProductId($product['id']);
+
+            // Tính offset (vị trí bắt đầu của mỗi trang)
+            $offset = ($current_page - 1) * $item_per_page;
+            $comments = $this->commentModel->getCommentsByProductId($productId, $item_per_page, $offset);
 
             if ($product) {
                 include __DIR__ . '/../view/product_detail.php';
