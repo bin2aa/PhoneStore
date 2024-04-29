@@ -1,0 +1,21 @@
+Admin
+	TK: admin
+	MK: Admin123
+
+Nhân viên bán hàng
+	TK:banhang01
+	MK:Banhang01
+
+	TK:banhang02
+	MK:Banhang02
+
+Tư vấn viên:
+	TK: tuvan01
+	MK: Tuvan01
+
+	TK: tuvan02
+	MK: Tuvan02
+
+Khách Hàng
+	TK: levanan07
+	MK: levanan00

@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 24, 2024 at 03:48 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th4 29, 2024 lúc 12:47 PM
+-- Phiên bản máy phục vụ: 10.4.24-MariaDB
+-- Phiên bản PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `phonestore`
+-- Cơ sở dữ liệu: `phonestore`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `binh_luan`
+-- Cấu trúc bảng cho bảng `binh_luan`
 --
 
 CREATE TABLE `binh_luan` (
@@ -36,25 +36,17 @@ CREATE TABLE `binh_luan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `binh_luan`
+-- Đang đổ dữ liệu cho bảng `binh_luan`
 --
 
 INSERT INTO `binh_luan` (`id`, `id_san_pham`, `id_khach_hang`, `noi_dung`, `ngay_gio_binh_luan`) VALUES
-(1, 17, 5, '132\r\n', '2024-04-13 22:13:09'),
-(2, 17, 5, '31412\r\n', '2024-04-13 22:22:17'),
-(10, 17, 10, '123123', '2024-04-15 11:54:06'),
-(11, 17, 5, '1', '2024-04-20 17:25:40'),
-(12, 17, 5, '1\r\n', '2024-04-20 17:34:31'),
-(13, 17, 5, '2\r\n', '2024-04-20 17:35:12'),
-(14, 17, 5, 'haha\r\n', '2024-04-20 17:50:13'),
-(15, 41, 5, '1\r\n', '2024-04-20 17:52:06'),
-(16, 17, 5, 'Hàng rất tốt', '2024-04-21 00:03:42'),
-(17, 17, 5, 'Sanr pham kem chat luong\r\n', '2024-04-23 13:28:18');
+(18, 4, 3, 'Sản phẩm tốt, nhân viên nhiệt tình, sẽ quay lại lần sau', '2024-04-05 19:16:45'),
+(19, 53, 103, 'Tuyệt vời', '2024-04-01 14:20:00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `chi_tiet_don_hang`
+-- Cấu trúc bảng cho bảng `chi_tiet_don_hang`
 --
 
 CREATE TABLE `chi_tiet_don_hang` (
@@ -66,46 +58,21 @@ CREATE TABLE `chi_tiet_don_hang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `chi_tiet_don_hang`
+-- Đang đổ dữ liệu cho bảng `chi_tiet_don_hang`
 --
 
 INSERT INTO `chi_tiet_don_hang` (`id`, `id_don_hang`, `id_san_pham`, `so_luong`, `gia`) VALUES
-(26, NULL, 39, 11, '3.00'),
-(27, NULL, 26, 2, '3.00'),
-(28, NULL, 16, 1, '100.00'),
-(29, NULL, 44, 1, '3.00'),
-(30, NULL, 16, 1, '100.00'),
-(31, NULL, 16, 1, '100.00'),
-(32, 61, 16, 1, '100.00'),
-(33, 66, 16, 1, '100.00'),
-(34, 66, 18, 1, '123.00'),
-(35, 66, 19, 1, '1.00'),
-(36, 67, 44, 3, '3.00'),
-(37, 68, 45, 1, '3.00'),
-(38, 69, 16, 1, '100.00'),
-(39, 70, 26, 2, '3.00'),
-(40, 71, 16, 2, '100.00'),
-(41, 72, 16, 1, '100.00'),
-(42, 73, 16, 1, '100.00'),
-(43, 74, 16, 1, '100.00'),
-(44, 75, 16, 2, '100.00'),
-(45, 76, 16, 3, '100.00'),
-(46, 77, 16, 1, '100.00'),
-(47, 78, 16, 1, '100.00'),
-(48, 79, 16, 1, '100.00'),
-(49, 80, 16, 2, '100.00'),
-(50, 81, 40, 4, '3.00'),
-(51, 82, 17, 2, '133.00'),
-(52, 83, 17, 1, '133.00'),
-(53, 84, 17, 1, '133.00'),
-(54, 85, 17, 1, '133.00'),
-(55, 86, 17, 1, '133.00'),
-(56, 87, 16, 3, '100.00');
+(57, 88, 53, 1, '34990000.00'),
+(58, 89, 2, 1, '1590000.00'),
+(59, 89, 4, 1, '10990000.00'),
+(60, 70, 48, 1, '6990000.00'),
+(61, 91, 69, 1, '4790000.00'),
+(62, 92, 1, 1, '22990000.00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `chi_tiet_nhap_kho`
+-- Cấu trúc bảng cho bảng `chi_tiet_nhap_kho`
 --
 
 CREATE TABLE `chi_tiet_nhap_kho` (
@@ -113,49 +80,25 @@ CREATE TABLE `chi_tiet_nhap_kho` (
   `id_nhap_kho` int(11) DEFAULT NULL,
   `id_san_pham` int(11) DEFAULT NULL,
   `so_luong` int(11) DEFAULT NULL,
-  `gia` decimal(10,2) DEFAULT NULL
+  `gia` decimal(15,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `chi_tiet_nhap_kho`
+-- Đang đổ dữ liệu cho bảng `chi_tiet_nhap_kho`
 --
 
 INSERT INTO `chi_tiet_nhap_kho` (`id`, `id_nhap_kho`, `id_san_pham`, `so_luong`, `gia`) VALUES
-(33, 67, 39, 12, '4.00'),
-(34, 68, 16, 2, '3.00'),
-(35, 69, 16, 123, '3.00'),
-(36, 70, 16, 123, '3.00'),
-(37, 71, 26, 123, '3.00'),
-(38, 72, 26, 123, '3.00'),
-(39, 73, 16, 3, '3.00'),
-(40, 74, 16, 3, '3.00'),
-(41, 75, 46, 13, '13.00'),
-(42, 76, 16, 2, '31.00'),
-(43, 77, 16, 1, '987.00'),
-(44, 78, 16, 2, '23.00'),
-(45, 79, 16, 2, '32.00'),
-(46, 79, 16, 3, '5.00'),
-(47, 79, 16, 4, '6.00'),
-(48, 80, 16, 2, '3.00'),
-(49, 80, 16, 3, '4.00'),
-(50, 80, 16, 5, '6.00'),
-(51, 81, 16, 3, '4.00'),
-(52, 81, 17, 5, '6.00'),
-(53, 81, 18, 7, '8.00'),
-(54, 81, 26, 9, '10.00'),
-(55, 82, 16, 3, '3.00'),
-(56, 82, 16, 3, '2.00'),
-(57, 82, 16, 4, '3.00'),
-(58, 83, 26, 5, '100.00'),
-(59, 83, 26, 10, '200.00'),
-(60, 84, 16, 2, '123.00'),
-(61, 84, 40, 3, '31.00'),
-(62, 84, 41, 3, '41.00');
+(63, 85, 1, 30, '689700000.00'),
+(64, 85, 4, 20, '219800000.00'),
+(65, 86, 2, 50, '79500000.00'),
+(66, 86, 63, 20, '19800000.00'),
+(67, 87, 53, 21, '734790000.00'),
+(68, 87, 55, 30, '884970000.00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `danh_muc_san_pham`
+-- Cấu trúc bảng cho bảng `danh_muc_san_pham`
 --
 
 CREATE TABLE `danh_muc_san_pham` (
@@ -164,18 +107,21 @@ CREATE TABLE `danh_muc_san_pham` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `danh_muc_san_pham`
+-- Đang đổ dữ liệu cho bảng `danh_muc_san_pham`
 --
 
 INSERT INTO `danh_muc_san_pham` (`id`, `ten`) VALUES
-(4, 'b'),
-(5, 'n'),
-(6, '1');
+(1, 'SamSung\r\n'),
+(2, 'iPhone'),
+(3, 'Oppo\n'),
+(4, 'realme'),
+(5, 'Xiaomi'),
+(6, 'Nokia');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `don_dat_hang`
+-- Cấu trúc bảng cho bảng `don_dat_hang`
 --
 
 CREATE TABLE `don_dat_hang` (
@@ -188,41 +134,20 @@ CREATE TABLE `don_dat_hang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `don_dat_hang`
+-- Đang đổ dữ liệu cho bảng `don_dat_hang`
 --
 
 INSERT INTO `don_dat_hang` (`id`, `id_khach_hang`, `ngay`, `tong_tien`, `ghi_chu`, `tinh_trang`) VALUES
-(61, 5, '2024-04-07 11:53:59', '100000.00', '', 'Thành công'),
-(62, 5, '2024-04-10 17:01:00', '3.00', 'adasdasdasdTHinhj', 'Thành công'),
-(64, 5, '2024-04-19 17:04:00', '30132.00', '4124124', 'Thành công'),
-(65, 5, '2024-04-18 17:07:00', '31312.00', '3', 'Chờ xác nhận'),
-(66, 5, '2024-04-07 19:51:49', '224000.00', '4321', 'Chờ xác nhận'),
-(67, 5, '2024-04-07 23:34:38', '9000.00', '', 'Chờ xác nhận'),
-(68, 5, '2024-04-07 23:36:31', '3000.00', '', 'Chờ xác nhận'),
-(69, 5, '2024-04-07 23:40:01', '100000.00', '', 'Chờ xác nhận'),
-(70, 5, '2024-04-08 01:29:59', '6000.00', '', 'Chờ xác nhận'),
-(71, 5, '2024-04-08 01:48:21', '200000.00', '', 'Chờ xác nhận'),
-(72, 5, '2024-04-08 02:03:51', '100000.00', '', 'Chờ xác nhận'),
-(73, 5, '2024-04-08 02:04:16', '100000.00', '', 'Chờ xác nhận'),
-(74, 5, '2024-04-08 02:07:21', '100000.00', '', 'Chờ xác nhận'),
-(75, 5, '2024-04-08 02:08:42', '200000.00', '', 'Chờ xác nhận'),
-(76, 5, '2024-04-08 02:09:19', '300000.00', '', 'Chờ xác nhận'),
-(77, 5, '2024-04-08 02:11:55', '100000.00', '', 'Chờ xác nhận'),
-(78, 5, '2024-04-08 02:13:00', '100000.00', '', 'Chờ xác nhận'),
-(79, 5, '2024-04-08 02:13:32', '100000.00', '', 'Chờ xác nhận'),
-(80, 5, '2024-04-08 02:13:54', '200000.00', '', 'Chờ xác nhận'),
-(81, 5, '2024-04-08 12:49:47', '12000.00', '', 'Chờ xác nhận'),
-(82, 5, '2024-04-10 14:56:39', '266000.00', '123', 'Chờ xác nhận'),
-(83, 5, '2024-03-12 01:17:04', '133000.00', '', 'Chờ xác nhận'),
-(84, 5, '2024-05-14 14:22:57', '133000.00', '', 'Chờ xác nhận'),
-(85, 5, '2024-04-16 09:21:00', '133000.00', '', 'Chờ xác nhận'),
-(86, 5, '2024-04-23 13:32:00', '133000.00', '', 'Chờ xác nhận'),
-(87, 5, '2024-04-24 20:29:15', '300000.00', '123123', 'Chờ xác nhận');
+(70, 104, '2023-02-10 15:28:49', '6990000.00', '1 Samsung Galaxy A25 5G', 'Đang xử lý'),
+(88, 103, '2024-03-22 15:15:56', '34990000.00', '1 iPhone 15 Pro Max', 'Đang xử lý'),
+(89, 3, '2024-04-02 13:24:34', '12580000.00', '1 Nokia 8210 4G, 1 OPPO Reno11 5G', 'Đang xử lý'),
+(91, 2, '2024-04-28 13:33:57', '4790000.00', '1 realme C67', 'Chờ xác nhận'),
+(92, 1, '2024-03-20 14:37:12', '22990000.00', '1 Samsung Galaxy S24 5G', 'Đang xử lý');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `khach_hang`
+-- Cấu trúc bảng cho bảng `khach_hang`
 --
 
 CREATE TABLE `khach_hang` (
@@ -235,97 +160,72 @@ CREATE TABLE `khach_hang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `khach_hang`
+-- Đang đổ dữ liệu cho bảng `khach_hang`
 --
 
 INSERT INTO `khach_hang` (`id`, `ten`, `so_dien_thoai`, `email`, `dia_chi`, `id_nguoi_dung`) VALUES
-(5, '1', '113131', 'asjdasdasdsd@gmail.com', '11', 1),
-(7, 'Con', '0000003012', 'Con@gmail.com', 'c', 9),
-(8, 'd', 'd', 'd@gmail.com', 'd', 12),
-(9, 'e', '03371476884', 'e@gmail.com', 'e', 13),
-(10, '2', '2', '2@gmail.com', '2', 21),
-(11, '9', '9', '9@gmail.com', '9', 24),
-(12, 'Nguyen Thanh Thinh', '03033714611', 'nguyenThanhThinh@gmail.com', '284/Lý La', 25),
-(88, 'BinvaTHinh', '0339192541', 'binzxss2@gmail.com', '666 âu cơ', 152),
-(94, '123123mm', '1231231231', '123123mm@gmail.com', '123', 161),
-(95, '1231231231', '1231231231', '12@gmail.com', '1', 163);
+(1, 'Nguyễn Văn A', '0123456789', 'nguyenvana@gmail.com', '333 Âu Cơ', 2),
+(2, 'Nguyễn Thị B', '0987654321', 'nguyenthib@gmail.com', '273 An Dương Vương', 3),
+(3, 'Lê Văn An', '0123459876', 'levanan@gmail.com', '284 Lê Văn Lương', 6),
+(102, 'Trần Thị Nga', '0123465987', 'tranthinga@gmail.com', '77 Hùng Vương', 172),
+(103, 'Bùi Lê Bích Nhung', '0987651234', 'builebichnhung123@gmail.com', '412 Lê Hồng Phong', 173),
+(104, 'Mai Thị Ngân', '0258369147', 'maithingan@gmail.com', '25 Nguyễn Thị Thập', 174);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nguoi_dung`
+-- Cấu trúc bảng cho bảng `nguoi_dung`
 --
 
 CREATE TABLE `nguoi_dung` (
   `id` int(11) NOT NULL,
   `ten_dang_nhap` varchar(255) DEFAULT NULL,
   `mat_khau` varchar(255) DEFAULT NULL,
-  `vai_tro` varchar(255) DEFAULT NULL,
-  `trang_thai` int(11) DEFAULT NULL
+  `vai_tro` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `nguoi_dung`
+-- Đang đổ dữ liệu cho bảng `nguoi_dung`
 --
 
-INSERT INTO `nguoi_dung` (`id`, `ten_dang_nhap`, `mat_khau`, `vai_tro`, `trang_thai`) VALUES
-(1, 'aa', '0cc175b9c0f1b6a831c399e269772661', 'Quản trị viên', 1),
-(9, 'c', '4a8a08f09d37b73795649038408b5f33', 'Quản trị viên', 0),
-(12, 'd', '8277e0910d750195b448797616e091ad', 'Khách hàng', 0),
-(13, 'e', 'e1671797c52e15f763380b45e841ec32', 'Khách hàng', 1),
-(18, '1', 'c4ca4238a0b923820dcc509a6f75849b', 'Quản trị viên', 1),
-(19, '2', 'c81e728d9d4c2f636f067f89cc14862c', 'Nhân viên bán hàng', 1),
-(21, '3', 'eccbc87e4b5ce2fe28308fd9f2a7baf3', 'Khách hàng', 1),
-(24, '9', '45c48cce2e2d7fbdea1afc51c7c6ad26', 'Nhân viên bán hàng', 1),
-(25, 'thinh2', 'e10adc3949ba59abbe56e057f20f883e', 'Khách hàng', 1),
-(152, 'binzx002', '4697e111e1554aa51afce1991db7458e', 'Khách hàng', 1),
-(158, '4141', 'c81e728d9d4c2f636f067f89cc14862c', 'Biinh luan', 1),
-(161, 'mmm', '4697e111e1554aa51afce1991db7458e', 'Khách hàng', 1),
-(162, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Khách hàng', 1),
-(163, '123', '4697e111e1554aa51afce1991db7458e', 'Khách hàng', 1);
+INSERT INTO `nguoi_dung` (`id`, `ten_dang_nhap`, `mat_khau`, `vai_tro`) VALUES
+(1, 'admin', 'e64b78fc3bc91bcbc7dc232ba8ec59e0', 'Quản trị viên'),
+(2, 'banhang01', '738d3ac8c49c3e1c2e82c872fe2d86d5', 'Nhân viên bán hàng'),
+(3, 'banhang02', '2d8d039e4a2fa345d436f8ca995e5915', 'Nhân viên bán hàng'),
+(4, 'tuvan01', '018e799fe88082b283956e5e1889d754', 'Tư vấn'),
+(5, 'tuvan02', '7ef881dccc10c461cdad78eb06750d46', 'Tư vấn'),
+(6, 'levanan07', '39b733d61703b743353d6856a0b4a79a', 'Khách hàng'),
+(172, 'tranthinga', '433ca31db793eebcb29f54d62da27b33', 'Khách hàng'),
+(173, 'blbnhung03', 'fd25276a214a52cf16539cf7b38b8749', 'Khách hàng'),
+(174, 'maithingan01', 'fca10650a7043e06bd42174ad8d473c2', 'Khách hàng');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nhap_kho`
+-- Cấu trúc bảng cho bảng `nhap_kho`
 --
 
 CREATE TABLE `nhap_kho` (
   `id` int(11) NOT NULL,
   `id_nha_cung_cap` int(11) DEFAULT NULL,
   `ngay` datetime DEFAULT NULL,
-  `tong_tien` decimal(10,3) DEFAULT NULL,
+  `tong_tien` decimal(15,3) DEFAULT NULL,
   `ghi_chu` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `nhap_kho`
+-- Đang đổ dữ liệu cho bảng `nhap_kho`
 --
 
 INSERT INTO `nhap_kho` (`id`, `id_nha_cung_cap`, `ngay`, `tong_tien`, `ghi_chu`) VALUES
-(67, 6, '2024-04-24 00:00:00', '48.000', '1231123123'),
-(68, 6, '2024-04-12 00:00:00', '6.000', '123'),
-(69, 6, '2024-04-12 00:00:00', '369.000', '3'),
-(70, 6, '2024-04-12 00:00:00', '369.000', ''),
-(71, 6, '2024-04-12 00:00:00', '369.000', ''),
-(72, 6, '2024-04-11 00:00:00', '369.000', ''),
-(73, 6, '2024-04-02 00:00:00', '9.000', '3'),
-(74, 6, '2024-04-02 00:00:00', '9.000', '3'),
-(75, 6, '2024-04-11 17:51:00', '169.000', '13'),
-(76, 6, '2024-04-10 17:52:00', '62.000', '13'),
-(77, 6, '2024-04-20 17:56:00', '987.000', ''),
-(78, 6, '2024-04-06 18:02:00', '46.000', '3'),
-(79, 6, '2024-04-12 21:02:00', '103.000', '123'),
-(80, 6, '2024-04-11 18:03:00', '48.000', '33333333333333333333333333'),
-(81, 6, '2024-04-13 18:04:00', '188.000', ''),
-(82, 6, '2024-04-24 18:14:00', '27.000', '123'),
-(83, 6, '2024-05-14 12:57:00', '2500.000', '123'),
-(84, 7, '2024-04-12 17:28:00', '462.000', '123');
+(85, 8, '2024-03-09 09:46:51', '909500000.000', '30 chiếc Samsung Galaxy S24 5G và 20 chiếc OPPO Reno11 5G'),
+(86, 9, '2024-03-15 10:59:54', '99300000.000', '20 chiếc Nokia 215 4G và 50 chiêc Nokia 8210 4G'),
+(87, 14, '2024-03-29 14:04:48', '1619760000.000', '21 iPhone 15 Pro Max, 30 iPhone 14 Pro Max');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nha_cung_cap`
+-- Cấu trúc bảng cho bảng `nha_cung_cap`
 --
 
 CREATE TABLE `nha_cung_cap` (
@@ -337,17 +237,20 @@ CREATE TABLE `nha_cung_cap` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `nha_cung_cap`
+-- Đang đổ dữ liệu cho bảng `nha_cung_cap`
 --
 
 INSERT INTO `nha_cung_cap` (`id`, `ten`, `so_dien_thoai`, `email`, `dia_chi`) VALUES
-(6, 'Thịnh', '0337147684', 'asjdasdasdsd@gmail.com', '333 Âu cơ'),
-(7, 'Bin', '123123123', 'binbinddd@gmail.com', '1213/313');
+(8, 'Thế giới di động', '02835100100', 'lienhe@thegioididong.com', '364 Cộng Hòa'),
+(9, 'Nokia', '02838236894', 'chau.nguyen@nokia.com', '235 Đông Khởi'),
+(10, 'Điện Thử Kim Thiên Bảo', '0907225889', 'letandanh999@gmail.com', '22-24 Đường Số 10'),
+(14, 'Thương Mại Công Nghệ Bạch Long', '0869287135', 'marketing@bachlongmobile.com', '134 Trần Phú'),
+(15, 'Bao La', '02835119060', NULL, '8/38 Đinh Bộ Lĩnh');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `password_resets`
+-- Cấu trúc bảng cho bảng `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -358,16 +261,16 @@ CREATE TABLE `password_resets` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `password_resets`
+-- Đang đổ dữ liệu cho bảng `password_resets`
 --
 
 INSERT INTO `password_resets` (`id`, `email`, `token`, `created_at`) VALUES
-(52, 'asjdasdasdsd@gmail.com', '5342ff177cd145853aba14fdc16c8e0b', '2024-04-21 20:32:21');
+(53, 'builebichnhung123@gmail.com', '844c77f1f0e43225b41598ea94a6bee0', '2024-04-29 17:44:46');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `phan_quyen`
+-- Cấu trúc bảng cho bảng `phan_quyen`
 --
 
 CREATE TABLE `phan_quyen` (
@@ -384,11 +287,11 @@ CREATE TABLE `phan_quyen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `phan_quyen`
+-- Đang đổ dữ liệu cho bảng `phan_quyen`
 --
 
 INSERT INTO `phan_quyen` (`vai_tro`, `qlnhap_kho`, `qlnha_cung_cap`, `qlnguoi_dung`, `qlkhach_hang`, `qldon_hang`, `qlsan_pham`, `qldanh_muc`, `qlbao_hanh`, `qlbinh_luan`) VALUES
-('Biinh luan', 0, 0, 0, 0, 0, 0, 0, 0, 1),
+('Bình luận', 0, 0, 0, 0, 0, 0, 0, 0, 1),
 ('Khách hàng', 0, 0, 0, 0, 0, 0, 0, 0, 0),
 ('Nhân viên bán hàng', 1, 1, 1, 1, 1, 1, 1, 1, 1),
 ('Quản trị viên', 1, 1, 1, 1, 1, 1, 1, 1, 1),
@@ -397,7 +300,7 @@ INSERT INTO `phan_quyen` (`vai_tro`, `qlnhap_kho`, `qlnha_cung_cap`, `qlnguoi_du
 -- --------------------------------------------------------
 
 --
--- Table structure for table `phieu_bao_hanh`
+-- Cấu trúc bảng cho bảng `phieu_bao_hanh`
 --
 
 CREATE TABLE `phieu_bao_hanh` (
@@ -411,43 +314,21 @@ CREATE TABLE `phieu_bao_hanh` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `phieu_bao_hanh`
+-- Đang đổ dữ liệu cho bảng `phieu_bao_hanh`
 --
 
 INSERT INTO `phieu_bao_hanh` (`id`, `id_san_pham`, `id_don_hang`, `ngay_lap`, `ngay_het_han`, `tinh_trang`, `ghi_chu`) VALUES
-(1, 17, NULL, '2024-04-01 00:00:00', '2024-04-07 00:00:00', 'Hết hạn bảo hành', 'áudbkasjdkasadasdasdasdasd\r\nádasd\r\náda'),
-(3, 16, NULL, '2024-04-01 00:00:00', '2024-04-04 00:00:00', 'Hết hạn bảo hành', 'h'),
-(4, 16, NULL, '2024-04-07 00:00:00', '2024-07-07 00:00:00', 'Đang bảo hành', ''),
-(5, 16, 61, '2024-04-07 00:00:00', '2024-07-07 00:00:00', 'Đang bảo hành', ''),
-(6, 16, 66, '2024-04-07 19:51:49', '2024-07-07 00:00:00', 'Đang bảo hành', '322 '),
-(7, 18, 66, '2024-04-07 19:51:49', '2024-07-07 00:00:00', 'Chờ xử lý', '  '),
-(8, 19, 66, '2024-04-07 19:51:49', '2024-07-07 00:00:00', 'Đang bảo hành', ''),
-(9, 44, 67, '2024-04-07 23:34:38', '2024-07-07 00:00:00', 'Đang bảo hành', ''),
-(10, 45, 68, '2024-04-07 23:36:31', '2024-07-07 00:00:00', 'Chờ xử lý', 'may huuuuu'),
-(11, 16, 69, '2024-04-07 23:40:01', '2024-07-07 00:00:00', 'Chờ xử lý', 'aa'),
-(12, 26, 70, '2024-04-08 01:29:59', '2024-07-08 00:00:00', 'Đang bảo hành', ''),
-(13, 16, 71, '2024-04-08 01:48:21', '2024-07-08 00:00:00', 'Đang bảo hành', ''),
-(14, 16, 72, '2024-04-08 02:03:51', '2024-07-08 00:00:00', 'Đang bảo hành', ''),
-(15, 16, 73, '2024-04-08 02:04:16', '2024-07-08 00:00:00', 'Đang bảo hành', ''),
-(16, 16, 74, '2024-04-08 02:07:21', '2024-07-08 00:00:00', 'Đang bảo hành', ''),
-(17, 16, 75, '2024-04-08 02:08:42', '2024-07-08 00:00:00', 'Đang bảo hành', ''),
-(18, 16, 76, '2024-04-08 02:09:19', '2024-07-08 00:00:00', 'Đang bảo hành', ''),
-(19, 16, 77, '2024-04-08 02:11:55', '2024-07-08 00:00:00', 'Đang bảo hành', ''),
-(20, 16, 78, '2024-04-08 02:13:00', '2024-07-08 00:00:00', 'Đang bảo hành', ''),
-(21, 16, 79, '2024-04-08 02:13:32', '2024-07-08 00:00:00', 'Đang bảo hành', ''),
-(22, 16, 80, '2024-04-08 02:13:54', '2024-07-08 00:00:00', 'Đang bảo hành', ''),
-(23, 40, 81, '2024-04-08 12:49:47', '2024-07-08 00:00:00', 'Chờ xử lý', 'Máy hư màng hình'),
-(24, 17, 82, '2024-04-10 14:56:39', '2024-07-10 00:00:00', 'Đang bảo hành', ''),
-(25, 17, 83, '2024-04-12 01:17:04', '2024-07-12 00:00:00', 'Hết hạn bảo hành', 'màng hình'),
-(26, 17, 84, '2024-04-14 14:22:57', '2024-07-14 00:00:00', 'Đang bảo hành', ''),
-(27, 17, 85, '2024-04-16 09:21:00', '2024-07-16 00:00:00', 'Hết hạn bảo hành', 'Hư loa'),
-(28, 17, 86, '2024-04-23 13:32:00', '2024-07-23 00:00:00', 'Đang bảo hành', ''),
-(29, 16, 87, '2024-04-24 20:29:15', '2024-07-24 00:00:00', 'Đang bảo hành', '');
+(28, 48, 70, '2023-02-10 15:29:56', '2024-02-10 22:59:59', 'Hết hạn bảo hành', NULL),
+(30, 53, 88, '2024-03-22 15:21:12', '2024-09-22 23:59:59', 'Đang bảo hành', NULL),
+(31, 4, 89, '2024-04-02 13:24:58', '2025-04-02 23:59:59', 'Chờ xử lý', 'Lỗi màn hình'),
+(32, 2, 89, '2024-04-02 13:27:25', '2025-04-02 23:59:59', 'Đang bảo hành', NULL),
+(34, 69, 91, '2024-04-28 13:35:23', '2025-04-28 23:59:59', 'Đang bảo hành', NULL),
+(35, 1, 92, '2024-03-20 14:38:00', '2024-12-20 14:59:59', 'Chờ xử lý', 'Lỗi pin');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `san_pham`
+-- Cấu trúc bảng cho bảng `san_pham`
 --
 
 CREATE TABLE `san_pham` (
@@ -461,28 +342,50 @@ CREATE TABLE `san_pham` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `san_pham`
+-- Đang đổ dữ liệu cho bảng `san_pham`
 --
 
 INSERT INTO `san_pham` (`id`, `ten`, `anh`, `id_danh_muc`, `gia`, `so_luong`, `mo_ta`) VALUES
-(16, 'a', 'Screenshot 2024-03-01 221351.png', NULL, '100.00', 309, 'a'),
-(17, 'ád', '31214010040-theSV.jpg', NULL, '133.00', 148, '3'),
-(18, 'Aa', '', NULL, '123.00', 4, 'a'),
-(19, '1', 'abc.png', 5, '1.00', 123123, ''),
-(26, '3', 'abc.png', 5, '3.00', 281, ''),
-(39, '3', '', NULL, '3.00', 141, '3'),
-(40, '3', '', NULL, '3.00', 6, '3'),
-(41, '3', '', NULL, '3.00', 6, '3'),
-(44, '3', 'abc.png', NULL, '3.00', -1, '3\r\n'),
-(45, '3', 'abc.png', NULL, '3.00', 2, '3'),
-(46, '13', '433444400-409819921659146-4550568050512038390-n.webp', 4, '123.00', 13, '123');
+(1, 'Samsung Galaxy S24 5G', 'Samsung_Galaxy_S24_5G.jpg', 1, '22990000.00', 200, NULL),
+(2, 'Nokia 8210 4G', 'Nokia_8210_4G.jpg', 6, '1590000.00', 50, NULL),
+(3, 'iPhone 15', 'iPhone_15.jpg', 2, '22990000.00', 96, NULL),
+(4, 'OPPO Reno11 5G', 'OPPO_Reno11_5G.jpg', 3, '10990000.00', 158, NULL),
+(7, 'Samsung Galaxy S24 Ultra 5G', 'Samsung_Galaxy_S24_Ultra_5G.jpg', 1, '37490000.00', 50, NULL),
+(48, 'Samsung Galaxy A25 5G', 'Samsung_Galaxy_A25_5G.jpg', 1, '6990000.00', 120, NULL),
+(49, 'Samsung Galaxy Z Flip5 5G', 'Samsung_Galaxy_Z_Flip5_5G.jpg', 1, '25990000.00', 36, NULL),
+(50, 'Samsung Galaxy Z Fold5 5G', 'Samsung_Galaxy_Z_Fold5_5G.jpg', 1, '40990000.00', 56, NULL),
+(51, 'Samsung Galaxy M34 5G', 'Samsung_Galaxy_M34_5G.jpg', 1, '7990000.00', 106, NULL),
+(52, 'Samsung Galaxy S23 FE 5G', 'Samsung_Galaxy_S23_FE_5G.jpg', 1, '14890000.00', 93, NULL),
+(53, 'iPhone 15 Pro Max', 'iPhone_15_Pro_Max.jpg', 2, '34990000.00', 256, NULL),
+(55, 'iPhone 14 Pro Max', 'iPhone_14_Pro_Max.jpg', 2, '29490000.00', 76, NULL),
+(56, 'iPhone 11', 'iPhone_11.ipg', 2, '11790000.00', 61, NULL),
+(57, 'iPhone 12', 'iPhone_12.jpg', 2, '14890000.00', 75, NULL),
+(59, 'OPPO Reno11 F 5G', 'OPPO_Reno11_F_5G.jpg', 3, '8990000.00', 126, NULL),
+(60, 'OPPO Reno10 Pro 5G', 'OPPO_Reno10_Pro_5G.jpg', 3, '13990000.00', 78, NULL),
+(61, 'OPPO Find N3 Flip 5G', 'OPPO_Find_N3_Flip_5G.jpg', 3, '22990000.00', 96, NULL),
+(62, 'OPPO Reno8 T 5G', 'OPPO_Reno8_T_5G.jpg', 3, '10990000.00', 84, NULL),
+(63, 'Nokia 215 4G', 'Nokia_215_4G.jpg', 6, '990000.00', 158, NULL),
+(64, 'Nokia 110 4G Pro', 'Nokia_110_4G_Pro.jpg', 6, '720000.00', 93, NULL),
+(65, 'Nokia 105 4G Pro', 'Nokia_105_4G_Pro.jpg', 6, '680000.00', 29, NULL),
+(66, 'Nokia 105', 'Nokia_105.jpg', 6, '590000.00', 76, NULL),
+(67, 'realme Note 50', 'realme_Note_50.jpg', 4, '2490000.00', 168, NULL),
+(68, 'realme C55', 'realme_C55.jpg', 3, '4990000.00', 79, NULL),
+(69, 'realme C67', 'realme_C67.jpg', 4, '4790000.00', 161, NULL),
+(70, 'realme 11', 'realme_11.jpg', 4, '7990000.00', 73, NULL),
+(71, 'realme 11 Pro+ 5G', 'realme_11_Pro_Plus.jpg', 4, '14990000.00', 99, NULL),
+(72, 'Xiaomi 14 5G', 'Xiaomi_14_5G.jpg', 5, '24490000.00', 59, NULL),
+(73, 'Xiaomi Redmi Note 13 Pro 5G', 'Xiaomi_Redmi_Note_13_Pro_5G.jpg', 5, '9490000.00', 49, NULL),
+(74, 'Xiaomi 13T Pro 5G', 'Xiaomi_13T_Pro_5G.jpg', 5, '14990000.00', 156, NULL),
+(75, 'Xiaomi Redmi Note 13', 'Xiaomi_Redmi_Note_13.jpg', 5, '5290000.00', 43, NULL),
+(76, 'Xiaomi Redmi 12', 'Xiaomi_Redmi_12.jpg', 5, '3490000.00', 76, NULL),
+(77, 'iPhone 15', 'iPhone_15.jpg', 2, '22990000.00', 76, NULL);
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `binh_luan`
+-- Chỉ mục cho bảng `binh_luan`
 --
 ALTER TABLE `binh_luan`
   ADD PRIMARY KEY (`id`),
@@ -490,7 +393,7 @@ ALTER TABLE `binh_luan`
   ADD KEY `id_san_pham_ibfk_1` (`id_san_pham`);
 
 --
--- Indexes for table `chi_tiet_don_hang`
+-- Chỉ mục cho bảng `chi_tiet_don_hang`
 --
 ALTER TABLE `chi_tiet_don_hang`
   ADD PRIMARY KEY (`id`),
@@ -498,7 +401,7 @@ ALTER TABLE `chi_tiet_don_hang`
   ADD KEY `chi_tiet_don_hang_ibfk_2` (`id_san_pham`);
 
 --
--- Indexes for table `chi_tiet_nhap_kho`
+-- Chỉ mục cho bảng `chi_tiet_nhap_kho`
 --
 ALTER TABLE `chi_tiet_nhap_kho`
   ADD PRIMARY KEY (`id`),
@@ -506,20 +409,20 @@ ALTER TABLE `chi_tiet_nhap_kho`
   ADD KEY `chi_tiet_nhap_kho_ibfk_1` (`id_nhap_kho`);
 
 --
--- Indexes for table `danh_muc_san_pham`
+-- Chỉ mục cho bảng `danh_muc_san_pham`
 --
 ALTER TABLE `danh_muc_san_pham`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `don_dat_hang`
+-- Chỉ mục cho bảng `don_dat_hang`
 --
 ALTER TABLE `don_dat_hang`
   ADD PRIMARY KEY (`id`),
   ADD KEY `don_dat_hang_ibfk_1` (`id_khach_hang`);
 
 --
--- Indexes for table `khach_hang`
+-- Chỉ mục cho bảng `khach_hang`
 --
 ALTER TABLE `khach_hang`
   ADD PRIMARY KEY (`id`),
@@ -527,7 +430,7 @@ ALTER TABLE `khach_hang`
   ADD KEY `khach_hang_ibfk_1` (`id_nguoi_dung`);
 
 --
--- Indexes for table `nguoi_dung`
+-- Chỉ mục cho bảng `nguoi_dung`
 --
 ALTER TABLE `nguoi_dung`
   ADD PRIMARY KEY (`id`),
@@ -535,32 +438,32 @@ ALTER TABLE `nguoi_dung`
   ADD KEY `fk_vai_tro` (`vai_tro`);
 
 --
--- Indexes for table `nhap_kho`
+-- Chỉ mục cho bảng `nhap_kho`
 --
 ALTER TABLE `nhap_kho`
   ADD PRIMARY KEY (`id`),
   ADD KEY `nhap_kho_ibfk_1` (`id_nha_cung_cap`);
 
 --
--- Indexes for table `nha_cung_cap`
+-- Chỉ mục cho bảng `nha_cung_cap`
 --
 ALTER TABLE `nha_cung_cap`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `password_resets`
+-- Chỉ mục cho bảng `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `phan_quyen`
+-- Chỉ mục cho bảng `phan_quyen`
 --
 ALTER TABLE `phan_quyen`
   ADD PRIMARY KEY (`vai_tro`);
 
 --
--- Indexes for table `phieu_bao_hanh`
+-- Chỉ mục cho bảng `phieu_bao_hanh`
 --
 ALTER TABLE `phieu_bao_hanh`
   ADD PRIMARY KEY (`id`),
@@ -568,146 +471,146 @@ ALTER TABLE `phieu_bao_hanh`
   ADD KEY `phieu_bao_hanh_ibfk_2` (`id_don_hang`);
 
 --
--- Indexes for table `san_pham`
+-- Chỉ mục cho bảng `san_pham`
 --
 ALTER TABLE `san_pham`
   ADD PRIMARY KEY (`id`),
   ADD KEY `san_pham_ibfk_1` (`id_danh_muc`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `binh_luan`
+-- AUTO_INCREMENT cho bảng `binh_luan`
 --
 ALTER TABLE `binh_luan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT for table `chi_tiet_don_hang`
+-- AUTO_INCREMENT cho bảng `chi_tiet_don_hang`
 --
 ALTER TABLE `chi_tiet_don_hang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
-
---
--- AUTO_INCREMENT for table `chi_tiet_nhap_kho`
---
-ALTER TABLE `chi_tiet_nhap_kho`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
--- AUTO_INCREMENT for table `danh_muc_san_pham`
+-- AUTO_INCREMENT cho bảng `chi_tiet_nhap_kho`
 --
-ALTER TABLE `danh_muc_san_pham`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+ALTER TABLE `chi_tiet_nhap_kho`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
--- AUTO_INCREMENT for table `don_dat_hang`
+-- AUTO_INCREMENT cho bảng `danh_muc_san_pham`
+--
+ALTER TABLE `danh_muc_san_pham`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT cho bảng `don_dat_hang`
 --
 ALTER TABLE `don_dat_hang`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+
+--
+-- AUTO_INCREMENT cho bảng `khach_hang`
+--
+ALTER TABLE `khach_hang`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+
+--
+-- AUTO_INCREMENT cho bảng `nguoi_dung`
+--
+ALTER TABLE `nguoi_dung`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=175;
+
+--
+-- AUTO_INCREMENT cho bảng `nhap_kho`
+--
+ALTER TABLE `nhap_kho`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
--- AUTO_INCREMENT for table `khach_hang`
---
-ALTER TABLE `khach_hang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
-
---
--- AUTO_INCREMENT for table `nguoi_dung`
---
-ALTER TABLE `nguoi_dung`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=166;
-
---
--- AUTO_INCREMENT for table `nhap_kho`
---
-ALTER TABLE `nhap_kho`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
-
---
--- AUTO_INCREMENT for table `nha_cung_cap`
+-- AUTO_INCREMENT cho bảng `nha_cung_cap`
 --
 ALTER TABLE `nha_cung_cap`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT for table `password_resets`
+-- AUTO_INCREMENT cho bảng `password_resets`
 --
 ALTER TABLE `password_resets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
--- AUTO_INCREMENT for table `phieu_bao_hanh`
+-- AUTO_INCREMENT cho bảng `phieu_bao_hanh`
 --
 ALTER TABLE `phieu_bao_hanh`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
--- AUTO_INCREMENT for table `san_pham`
+-- AUTO_INCREMENT cho bảng `san_pham`
 --
 ALTER TABLE `san_pham`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `binh_luan`
+-- Các ràng buộc cho bảng `binh_luan`
 --
 ALTER TABLE `binh_luan`
   ADD CONSTRAINT `id_khach_hang_ibfk_1` FOREIGN KEY (`id_khach_hang`) REFERENCES `khach_hang` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `id_san_pham_ibfk_1` FOREIGN KEY (`id_san_pham`) REFERENCES `san_pham` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `chi_tiet_don_hang`
+-- Các ràng buộc cho bảng `chi_tiet_don_hang`
 --
 ALTER TABLE `chi_tiet_don_hang`
   ADD CONSTRAINT `chi_tiet_don_hang_ibfk_1` FOREIGN KEY (`id_don_hang`) REFERENCES `don_dat_hang` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   ADD CONSTRAINT `chi_tiet_don_hang_ibfk_2` FOREIGN KEY (`id_san_pham`) REFERENCES `san_pham` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
--- Constraints for table `chi_tiet_nhap_kho`
+-- Các ràng buộc cho bảng `chi_tiet_nhap_kho`
 --
 ALTER TABLE `chi_tiet_nhap_kho`
   ADD CONSTRAINT `chi_tiet_nhap_kho_ibfk_1` FOREIGN KEY (`id_nhap_kho`) REFERENCES `nhap_kho` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `chi_tiet_nhap_kho_ibfk_2` FOREIGN KEY (`id_san_pham`) REFERENCES `san_pham` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
--- Constraints for table `don_dat_hang`
+-- Các ràng buộc cho bảng `don_dat_hang`
 --
 ALTER TABLE `don_dat_hang`
   ADD CONSTRAINT `don_dat_hang_ibfk_1` FOREIGN KEY (`id_khach_hang`) REFERENCES `khach_hang` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
--- Constraints for table `khach_hang`
+-- Các ràng buộc cho bảng `khach_hang`
 --
 ALTER TABLE `khach_hang`
   ADD CONSTRAINT `khach_hang_ibfk_1` FOREIGN KEY (`id_nguoi_dung`) REFERENCES `nguoi_dung` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `nguoi_dung`
+-- Các ràng buộc cho bảng `nguoi_dung`
 --
 ALTER TABLE `nguoi_dung`
   ADD CONSTRAINT `fk_vai_tro` FOREIGN KEY (`vai_tro`) REFERENCES `phan_quyen` (`vai_tro`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `nhap_kho`
+-- Các ràng buộc cho bảng `nhap_kho`
 --
 ALTER TABLE `nhap_kho`
   ADD CONSTRAINT `nhap_kho_ibfk_1` FOREIGN KEY (`id_nha_cung_cap`) REFERENCES `nha_cung_cap` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
--- Constraints for table `phieu_bao_hanh`
+-- Các ràng buộc cho bảng `phieu_bao_hanh`
 --
 ALTER TABLE `phieu_bao_hanh`
   ADD CONSTRAINT `phieu_bao_hanh_ibfk_1` FOREIGN KEY (`id_san_pham`) REFERENCES `san_pham` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   ADD CONSTRAINT `phieu_bao_hanh_ibfk_2` FOREIGN KEY (`id_don_hang`) REFERENCES `don_dat_hang` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
--- Constraints for table `san_pham`
+-- Các ràng buộc cho bảng `san_pham`
 --
 ALTER TABLE `san_pham`
   ADD CONSTRAINT `san_pham_ibfk_1` FOREIGN KEY (`id_danh_muc`) REFERENCES `danh_muc_san_pham` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
