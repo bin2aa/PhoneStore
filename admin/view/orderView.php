@@ -11,13 +11,14 @@
 <body>
 
 
-
-
     <h2>Danh sách đơn đặt hàng</h2>
     <?php
     date_default_timezone_set('Asia/Ho_Chi_Minh');
     echo date('Y-m-d H:i:s'); ?></p>
 
+    <div id="addOrderContainer"></div>
+    <div id="updateOrderContainer"></div>
+    <div class="overlay"></div>
 
 
     <form class="search-form-order">
@@ -26,7 +27,7 @@
         <button type="submit">Tìm kiếm</button>
     </form>
 
-    <a href="index.php?ctrl=orderController&action=viewAddOrder">Thêm đơn đặt hàng</a>
+    <a class="addOrderLink" href="index.php?ctrl=orderController&action=viewAddOrder">Thêm đơn đặt hàng</a>
     <table>
 
         <thead>
@@ -58,7 +59,7 @@
                             else if ($order['tinh_trang'] == 'Đang xử lý') echo "<button type='submit'>Đang xử lý</button>";
                             else if ($order['tinh_trang'] == 'Đang giao') echo "<button type='submit'>Hoàn tất</button>";
                             else if ($order['tinh_trang'] == 'Thành công') echo "<button type='submit' disabled>Thành công</button>";
-                            
+
                             ?>
                         </form>
                     </td>
@@ -70,7 +71,7 @@
 
                     <td>
                         <a href="index.php?ctrl=orderController&action=deleteOrder&id=<?php echo $order['id']; ?>">Xóa</a>
-                        <a href="index.php?ctrl=orderController&action=updateOrderView&id=<?php echo $order['id']; ?>&tinh_trang=<?php echo $order['tinh_trang']; ?>">Sửa</a>
+                        <a class="updateOrderLink" href="index.php?ctrl=orderController&action=updateOrderView&id=<?php echo $order['id']; ?>&tinh_trang=<?php echo $order['tinh_trang']; ?>">Sửa</a>
                         <a href="index.php?ctrl=orderController&action=viewOrderDetail&id=<?php echo $order['id']; ?>">Xem chi tiết</a>
                     </td>
 

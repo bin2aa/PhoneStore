@@ -12,6 +12,9 @@
 
     <h2>Danh sách phiếu nhập kho</h2>
 
+    <div id="addWarehouseReceiptContainer"></div>
+    <div id="updateWarehouseReceiptContainer"></div>
+    <div class="overlay"></div>
 
     <form class="search-form-warehouse">
         <label for="search">Tìm kiếm phiếu nhập kho:</label>
@@ -19,8 +22,7 @@
         <button type="submit">Tìm kiếm</button>
     </form>
 
-    <a href="index.php?ctrl=warehouseController&action=showAddWarehouseReceiptForm">Thêm hàng vào kho</a>
-
+    <a class="addWareHouseReceiptLink" href="index.php?ctrl=warehouseController&action=showAddWarehouseReceiptForm">Thêm hàng vào kho </a>
     <table>
         <tr>
             <th>ID</th>
@@ -42,7 +44,7 @@
                 <td><?php echo $warehouseReceipt['ghi_chu']; ?></td>
                 <td>
                     <a href="index.php?ctrl=warehouseController&action=deleteWarehouseReceipt&id=<?php echo $warehouseReceipt['id']; ?>">Xóa</a>
-                    <a href="index.php?ctrl=warehouseController&action=showUpdateWarehouseReceiptForm&id=<?php echo $warehouseReceipt['id']; ?>">Cập nhật</a>
+                    <a class="updateWarehouseReceiptLink" href="index.php?ctrl=warehouseController&action=showUpdateWarehouseReceiptForm&id=<?php echo $warehouseReceipt['id']; ?>">Cập nhật</a>
                     <a href="index.php?ctrl=warehouseController&action=viewWarehouseDetail&id=<?php echo $warehouseReceipt['id']; ?>">Chi tiết</a>
                 </td>
             </tr>

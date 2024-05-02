@@ -105,7 +105,7 @@ class CartModel
         if ($result) {
             // Lấy giá sản phẩm từ kết quả truy vấn
             $product_price = $result[0]['gia'];
-            return $product_price * 1000;
+            return $product_price * 1;
         } else {
             // Trong trường hợp không có kết quả, có thể xử lý bằng cách trả về một giá trị mặc định hoặc thông báo lỗi
             return 0; // hoặc return null;

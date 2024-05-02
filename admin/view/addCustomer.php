@@ -8,36 +8,36 @@
 </head>
 
 <body>
+    <div class="addCustomer">
+        <h2>Thêm khách hàng</h2>
 
-    <h2>Thêm khách hàng</h2>
-
-    <form action="index.php?ctrl=customerController&action=addCustomer" method="post">
+        <form action="index.php?ctrl=customerController&action=addCustomer" method="post">
 
 
-        <label for="id_nguoi_dung">Chọn id người dùng:</label>
-        <select name="id_nguoi_dung" required>
-            <?php foreach ($users as $user) : ?>
-                <option value="<?php echo $user['id']; ?>"><?php echo $user['id']; ?></option>
-            <?php endforeach; ?>
-        </select><br>
+            <label for="id_nguoi_dung">Chọn id người dùng:</label>
+            <select name="id_nguoi_dung" required>
+                <?php foreach ($users as $user) : ?>
+                    <option value="<?php echo $user['id']; ?>"><?php echo $user['id']; ?></option>
+                <?php endforeach; ?>
+            </select><br>
 
-        <label for="ten">Tên:</label>
-        <input type="text" name="ten" required><br>
+            <label for="ten">Tên:</label>
+            <input type="text" name="ten" required><br>
 
-        <label for="so_dien_thoai">Số điện thoại:</label>
-        <input type="text" name="so_dien_thoai" required><br>
+            <label for="so_dien_thoai">Số điện thoại:</label>
+            <input type="text" name="so_dien_thoai" required><br>
 
-        <label for="email">email:</label>
-        <input type="email" name="email" required><br>
+            <label for="email">email:</label>
+            <input type="email" name="email" required><br>
 
-        <label for="dia_chi">Địa chỉ:</label>
-        <input type="text" name="dia_chi" required><br><br>
+            <label for="dia_chi">Địa chỉ:</label>
+            <input type="text" name="dia_chi" required><br><br>
 
-        
 
-        <button type="submit">Thêm khách hàng</button>
-    </form>
 
+            <button type="submit">Thêm khách hàng</button>
+        </form>
+    </div>
 </body>
 
 </html>

@@ -8,6 +8,17 @@ class loginModel
     {
         $this->db = new Database();
     }
+
+    public function getUserById($id)
+    {
+        $query = "SELECT * FROM nguoi_dung WHERE id = $id";
+        $result = $this->db->select($query);
+        if ($result && count($result) > 0) {
+            return $result[0]; // Trả về dữ liệu người dùng nếu tìm thấy
+        } else {
+            return null;
+        }
+    }
     public function getUserByUsernameAndPassword($username, $password)
     {
         $hashedPassword = md5($password); // Mã hóa mật khẩu trước khi so sánh

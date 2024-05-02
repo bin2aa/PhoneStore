@@ -12,6 +12,10 @@
     <form action="index.php?ctrl=loginController&action=changePassword" method="POST">
         <input type="hidden" name="id_nguoi_dung" value="<?php echo $id_nguoi_dung; ?>">
 
+        <label for="old_password">Mật khẩu cũ:</label>
+        <input type="password" id="old_password" name="old_password" required><br>
+        
+
         <label for="new_password">Mật khẩu mới:</label>
         <input type="password" id="new_password" name="new_password" required><br>
 

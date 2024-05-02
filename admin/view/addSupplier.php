@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -9,26 +8,26 @@
 </head>
 
 <body>
+    <div class="addSupplier">
+        <h2>Thêm nhà cung cấp</h2>
 
-    <h2>Thêm nhà cung cấp</h2>
+        <form action="index.php?ctrl=supplierController&action=addSupplier" method="post">
 
-    <form action="index.php?ctrl=supplierController&action=addSupplier" method="post">
+            <label for="ten">Tên nhà cung cấp:</label>
+            <input type="text" name="ten" required><br>
 
-        <label for="ten">Tên nhà cung cấp:</label>
-        <input type="text" name="ten" required><br>
+            <label for="so_dien_thoai">Số điện thoại:</label>
+            <input type="text" name="so_dien_thoai" required><br>
 
-        <label for="so_dien_thoai">Số điện thoại:</label>   
-        <input type="text" name="so_dien_thoai" required><br>
+            <label for="email">Email:</label>
+            <input type="email" name="email" required><br>
 
-        <label for="email">Email:</label>
-        <input type="email" name="email" required><br>
+            <label for="dia_chi">Địa chỉ:</label>
+            <input type="text" name="dia_chi" required><br><br>
 
-        <label for="dia_chi">Địa chỉ:</label>
-        <input type="text" name="dia_chi" required><br><br>
-
-        <button type="submit">Thêm khách hàng</button>
-    </form>
-
+            <button type="submit">Thêm khách hàng</button>
+        </form>
+    </div>
 </body>
 
 </html>

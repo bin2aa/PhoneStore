@@ -16,6 +16,10 @@
 <body>
     <h1>Danh sách phiếu bảo hành</h1>
 
+    <div id="updateWarrantyContainer"></div>
+    <div id="addWarrantyContainer"></div>
+    <div class="overlay"></div>
+
     <form class='search-form-warranty'>
         <label for="search">Tìm tình trạng bảo hành:</label>
         <select id="search" name="search">
@@ -33,7 +37,7 @@
 
 
 
-    <a href="index.php?ctrl=warrantyController&action=viewAddWarranty">Thêm phiếu bảo hành</a>
+    <a class="addWarrantyLink" href="index.php?ctrl=warrantyController&action=viewAddWarranty">Thêm phiếu bảo hành</a>
     <table border="1">
         <thead>
             <tr>
@@ -58,7 +62,7 @@
                     <td><?php echo $warranty['tinh_trang']; ?></td>
                     <td><?php echo $warranty['ghi_chu']; ?></td>
                     <td>
-                        <a href="index.php?ctrl=warrantyController&action=updateWarrantyView&id=<?php echo $warranty['id']; ?>&id_san_pham=<?php echo $warranty['id_san_pham']; ?> &id_don_hang=<?php echo $warranty['id_don_hang'];  ?> &tinh_trang=<?php echo $warranty['tinh_trang'];  ?>">Sửa</a>
+                        <a class="updateWarrantyLink" href="index.php?ctrl=warrantyController&action=updateWarrantyView&id=<?php echo $warranty['id']; ?>&id_san_pham=<?php echo $warranty['id_san_pham']; ?> &id_don_hang=<?php echo $warranty['id_don_hang'];  ?> &tinh_trang=<?php echo $warranty['tinh_trang'];  ?>">Sửa</a>
                         <a href="index.php?ctrl=warrantyController&action=deleteWarranty&id=<?php echo $warranty['id']; ?>" onclick="return confirm('Bạn có chắc chắn muốn xóa phiếu bảo hành này không?')">Xóa</a>
                     </td>
                 </tr>

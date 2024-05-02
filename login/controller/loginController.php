@@ -93,12 +93,12 @@ class loginController
             if ($email_exists) {
                 $errors[] = 'email_exists';
             }
-    
+
             $ten_dang_nhap_exists = $this->loginModel->checkUsernameExists($ten_dang_nhap);
             if ($ten_dang_nhap_exists) {
                 $errors[] = 'username_exists';
             }
-    
+
             if (!empty($errors)) {
                 echo json_encode($errors);
                 return;
@@ -127,8 +127,22 @@ class loginController
         Session::startSession();
         $id_nguoi_dung = Session::getSessionValue('login_id');
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $old_password = $_POST['old_password'];
             $mat_khau_moi = $_POST['new_password'];
             $confirm_password = $_POST['confirm_password'];
+
+
+            $current_user = $this->loginModel->getUserById($id_nguoi_dung);
+            $current_password = $current_user['mat_khau'];
+
+
+
+            // Kiểm tra xem mật khẩu cũ có đúng không
+            if (md5($old_password) !== $current_password) {
+                echo '<script>alert("Mật khẩu cũ không đúng"); window.location.href = "index.php?ctrl=loginController&action=viewChangePassword";</script>';
+                exit; // Dừng việc thực thi tiếp nếu mật khẩu cũ không đúng
+            }
+
             // Kiểm tra xem mật khẩu mới và mật khẩu nhập lại có khớp nhau không
             if ($mat_khau_moi !== $confirm_password) {
                 echo '<script>alert("Nhập lại mật khẩu không khớp"); window.location.href = "index.php?ctrl=loginController&action=viewChangePassword";</script>';

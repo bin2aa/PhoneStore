@@ -27,15 +27,13 @@ class ProductControllerUser
             }
         }
 
-        //Lọc theo danh mục
+        //loc theo danh muc
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
             $products = $this->productModel->getProductByCategory($id);
         }
-
-
         //Locc theo giá từ n đến m
-        if (isset($_GET['price_min']) && isset($_GET['price_max'])) {
+        elseif (isset($_GET['price_min']) && isset($_GET['price_max'])) {
             $price_min = $_GET['price_min'];
             $price_max = $_GET['price_max'];
             $products = $this->productModel->sortProductsByPriceRange($price_min, $price_max);
@@ -77,6 +75,10 @@ class ProductControllerUser
         if (isset($_GET['id'])) {
             $productId = $_GET['id'];
             $product = $this->productModel->getProductById($productId);
+
+            // Sản phẩm liên quan
+            $suggestedProducts = $this->productModel->getSuggestedProducts($productId);
+
             // Số lượng bình luận hiển thị trên mỗi trang
             $item_per_page = 5;
             // Tính trang hiện tại

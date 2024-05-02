@@ -59,4 +59,26 @@ class customerUserModel
     WHERE id = '$id'";
         return $this->db->execute($query);
     }
+
+    //phân trang
+
+    //lấy tổng số đơn hàng theo id người dùng
+    public function getTotalOrdersByCustomerId($customerId)
+    {
+        $sql = "SELECT COUNT(*) as total FROM don_dat_hang WHERE id_khach_hang = $customerId";
+        $result = $this->db->select($sql);
+        return $result[0]['total'];
+    }
+
+    //lấy danh sách đơn hàng theo id người dùng
+    public function getOrdersByCustomerIdPage($customerId, $limit, $offset)
+    {
+        $sql = "SELECT * FROM don_dat_hang 
+        WHERE id_khach_hang = $customerId 
+        Order by id desc
+        LIMIT $limit OFFSET $offset";
+
+        $result = $this->db->select($sql);
+        return $result;
+    }
 }
