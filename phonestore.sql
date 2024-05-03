@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 02, 2024 at 12:10 PM
+-- Generation Time: May 03, 2024 at 06:52 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -192,7 +192,8 @@ INSERT INTO `chi_tiet_nhap_kho` (`id`, `id_nhap_kho`, `id_san_pham`, `so_luong`,
 (59, 83, 26, 10, '200.00'),
 (60, 84, 16, 2, '123.00'),
 (61, 84, 40, 3, '31.00'),
-(62, 84, NULL, 3, '41.00');
+(63, 85, 80, 3, '3.00'),
+(64, 85, 16, 123, '123.00');
 
 -- --------------------------------------------------------
 
@@ -213,7 +214,9 @@ INSERT INTO `danh_muc_san_pham` (`id`, `ten`) VALUES
 (4, 'b'),
 (5, 'n'),
 (6, '1'),
-(7, '123');
+(7, '123'),
+(57, 'test'),
+(59, '1');
 
 -- --------------------------------------------------------
 
@@ -282,7 +285,8 @@ INSERT INTO `don_dat_hang` (`id`, `id_khach_hang`, `ngay`, `tong_tien`, `ghi_chu
 (152, 5, '2024-04-29 00:52:08', '90.000', '123( Giảm 10đ với chương trình TƯNG BỪNG KHAI TRƯƠNG.)', 'Chờ xác nhận'),
 (153, 5, '2024-04-29 00:52:49', '90.000', '123( Giảm 10đ với chương trình TƯNG BỪNG KHAI TRƯƠNG.)', 'Chờ xác nhận'),
 (154, 5, '2024-04-29 00:53:10', '100.000', '', 'Chờ xác nhận'),
-(155, 5, '2024-04-29 00:53:25', '320.400', '( Giảm 35.6đ với chương trình TƯNG BỪNG KHAI TRƯƠNG.)', 'Chờ xác nhận');
+(155, 5, '2024-04-29 00:53:25', '320.400', '( Giảm 35.6đ với chương trình TƯNG BỪNG KHAI TRƯƠNG.)', 'Chờ xác nhận'),
+(157, 5, '2024-05-03 22:40:00', '1.000', '1', 'Chờ xác nhận');
 
 -- --------------------------------------------------------
 
@@ -305,7 +309,8 @@ CREATE TABLE `giam_gia` (
 
 INSERT INTO `giam_gia` (`id`, `ten`, `dieu_kien_mua`, `phan_tram_giam_gia`, `ngay_bat_dau`, `ngay_ket_thuc`) VALUES
 (1, 'TƯNG BỪNG KHAI TRƯƠNG', '1.000', '10.00', '2024-04-01 00:00:00', '2024-04-30 00:00:00'),
-(3, 'Giỗ tổ Hùng Vương', '9999.000', '20.00', '2024-04-01 00:00:00', '2024-04-30 00:00:00');
+(3, 'Giỗ tổ Hùng Vương', '9999.000', '20.00', '2024-04-01 00:00:00', '2024-04-30 00:00:00'),
+(6, 'test', '300.000', '999.99', '2024-05-03 22:44:00', '2024-05-31 22:44:00');
 
 -- --------------------------------------------------------
 
@@ -336,7 +341,8 @@ INSERT INTO `khach_hang` (`id`, `ten`, `so_dien_thoai`, `email`, `dia_chi`, `id_
 (12, 'Nguyen Thanh Thinh', '03033714611', 'nguyenThanhThinh@gmail.com', '284/Lý La', 25),
 (88, 'BinvaTHinh', '0339192541', 'binzxss2@gmail.com', '666 âu cơ', 152),
 (94, '123123mm', '1231231231', '123123mm@gmail.com', '123', 161),
-(95, '1231231231', '1231231231', '12@gmail.com', '1', 163);
+(97, 'thnh', 'a', '12312312312ddad@gmail.com', '123', 1),
+(98, 'asd', '1231231231', 'asjdasdasdsd@mail.com', '123', 1);
 
 -- --------------------------------------------------------
 
@@ -369,8 +375,7 @@ INSERT INTO `nguoi_dung` (`id`, `ten_dang_nhap`, `mat_khau`, `vai_tro`, `trang_t
 (152, 'binzx002', '4697e111e1554aa51afce1991db7458e', 'Khách hàng', 1),
 (158, '4141', 'c81e728d9d4c2f636f067f89cc14862c', 'Biinh luan', 1),
 (161, 'mmm', '4697e111e1554aa51afce1991db7458e', 'Khách hàng', 1),
-(162, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Khách hàng', 0),
-(163, '123', '4697e111e1554aa51afce1991db7458e', 'Khách hàng', 1);
+(162, 'a', '0cc175b9c0f1b6a831c399e269772661', 'Khách hàng', 0);
 
 -- --------------------------------------------------------
 
@@ -408,7 +413,8 @@ INSERT INTO `nhap_kho` (`id`, `id_nha_cung_cap`, `ngay`, `tong_tien`, `ghi_chu`)
 (81, 6, '2024-04-13 18:04:00', '188.000', ''),
 (82, 6, '2024-04-24 18:14:00', '27.000', '123'),
 (83, 6, '2024-05-14 12:57:00', '2500.000', '123'),
-(84, 7, '2024-04-12 17:28:00', '462.000', '123');
+(84, 7, '2024-04-12 17:28:00', '339.000', '123'),
+(85, 6, '2024-05-22 22:42:00', '15138.000', '1haha');
 
 -- --------------------------------------------------------
 
@@ -430,7 +436,8 @@ CREATE TABLE `nha_cung_cap` (
 
 INSERT INTO `nha_cung_cap` (`id`, `ten`, `so_dien_thoai`, `email`, `dia_chi`) VALUES
 (6, 'Thịnh', '0337147684', 'asjdasdasdsd@gmail.com', '333 Âu cơ'),
-(7, 'Bin', '123123123', 'binbinddd@gmail.com', '1213/313');
+(7, 'Bin', '123123123', 'binbinddd@gmail.com', '1213/313'),
+(8, 'Khan', '0337147689', 'khandz@gmail.com', 'ấp bình tân, xã Bình châu');
 
 -- --------------------------------------------------------
 
@@ -482,6 +489,7 @@ INSERT INTO `phan_quyen` (`vai_tro`, `qlnhap_kho`, `qlnha_cung_cap`, `qlnguoi_du
 ('Khách hàng', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 ('Nhân viên bán hàng', 1, 1, 1, 1, 1, 1, 1, 1, 1, 0),
 ('Quản trị viên', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+('test', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 ('Tư vấn', 0, 0, 0, 0, 0, 0, 0, 1, 1, 0);
 
 -- --------------------------------------------------------
@@ -567,7 +575,8 @@ INSERT INTO `phieu_bao_hanh` (`id`, `id_san_pham`, `id_don_hang`, `ngay_lap`, `n
 (61, 16, 154, '2024-04-29 00:53:10', '2024-07-29 00:00:00', 'Đang bảo hành', ''),
 (62, 17, 155, '2024-04-29 00:53:25', '2024-07-29 00:00:00', 'Đang bảo hành', ''),
 (63, 18, 155, '2024-04-29 00:53:25', '2024-07-29 00:00:00', 'Đang bảo hành', ''),
-(64, 16, 155, '2024-04-29 00:53:25', '2024-07-29 00:00:00', 'Đang bảo hành', '');
+(64, 16, 155, '2024-04-29 00:53:25', '2024-07-29 00:00:00', 'Đang bảo hành', ''),
+(65, 19, 61, '2024-05-03 22:44:00', '2024-05-31 22:44:00', 'Đang bảo hành', '');
 
 -- --------------------------------------------------------
 
@@ -590,15 +599,26 @@ CREATE TABLE `san_pham` (
 --
 
 INSERT INTO `san_pham` (`id`, `ten`, `anh`, `id_danh_muc`, `gia`, `so_luong`, `mo_ta`) VALUES
-(16, 'a', 'Screenshot 2024-03-01 221351.png', 4, '100.000', 277, 'a'),
-(17, 'ád', '31214010040-theSV.jpg', 4, '133.000', 123, '3'),
-(18, 'Aa', '', 4, '123.000', 3, 'a'),
-(19, '1', 'abc.png', 5, '1.000', 123119, ''),
-(26, '3', 'abc.png', 5, '3.000', 280, ''),
-(39, '3', '', 4, '3.000', 141, '3'),
-(40, '3', '', NULL, '3.000', 6, '3'),
-(44, '3', 'abc.png', NULL, '3.000', -1, '3\r\n'),
-(46, '13', '433444400-409819921659146-4550568050512038390-n.webp', 4, '123.000', 13, '123');
+(16, 'a', '4.png', 5, '100.000', 400, 'a'),
+(17, 'ád', '15.png', 4, '133.000', 123, '3'),
+(18, 'Aa', '13.png', 4, '123.000', 3, 'a'),
+(19, '1', '5.png', 4, '1.000', 123119, ''),
+(26, 'thinh', '15.png', 4, '3.000', 280, ''),
+(39, '3', '4.png', 4, '3.000', 141, '3'),
+(40, '3', '13.png', 4, '3.000', 6, '3'),
+(44, '3', '5.png', 4, '3.000', 0, '3\r\n'),
+(46, '13', '12.png', 4, '123.000', 13, '123'),
+(73, 'haha', '11.png', 4, '123.000', 0, '123'),
+(75, '1tesst', '11.png', 4, '1.000', 0, '1'),
+(76, 'thinh', '10.png', 4, '123.000', 0, '123'),
+(77, 'thinh', '10.png', 4, '123.000', 0, '123'),
+(78, '1', '2.png', 4, '1.000', 0, '1'),
+(79, '1', '2.png', 6, '1.000', 0, '1'),
+(80, '1', '2.png', 6, '1.000', 3, '1'),
+(91, '1', '2.png', 4, '1.000', 0, '1'),
+(92, 'tesst', '4.png', 4, '1.000', 0, '1'),
+(93, 'thinhTesst', '15.png', 4, '1.000', 0, '1'),
+(94, 't', '10.png', 5, '1.000', 0, 'a');
 
 --
 -- Indexes for dumped tables
@@ -723,31 +743,31 @@ ALTER TABLE `chi_tiet_don_hang`
 -- AUTO_INCREMENT for table `chi_tiet_nhap_kho`
 --
 ALTER TABLE `chi_tiet_nhap_kho`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT for table `danh_muc_san_pham`
 --
 ALTER TABLE `danh_muc_san_pham`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `don_dat_hang`
 --
 ALTER TABLE `don_dat_hang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=156;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=158;
 
 --
 -- AUTO_INCREMENT for table `giam_gia`
 --
 ALTER TABLE `giam_gia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `khach_hang`
 --
 ALTER TABLE `khach_hang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 
 --
 -- AUTO_INCREMENT for table `nguoi_dung`
@@ -759,13 +779,13 @@ ALTER TABLE `nguoi_dung`
 -- AUTO_INCREMENT for table `nhap_kho`
 --
 ALTER TABLE `nhap_kho`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
 -- AUTO_INCREMENT for table `nha_cung_cap`
 --
 ALTER TABLE `nha_cung_cap`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `password_resets`
@@ -777,13 +797,13 @@ ALTER TABLE `password_resets`
 -- AUTO_INCREMENT for table `phieu_bao_hanh`
 --
 ALTER TABLE `phieu_bao_hanh`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `san_pham`
 --
 ALTER TABLE `san_pham`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 
 --
 -- Constraints for dumped tables

@@ -1,10 +1,13 @@
 $(document).ready(function () {
+
+
+    // Xử lý sự kiện click vào nút sửa, thêm, chi tiết
     $("a.updateCategoryLink, a.updateProductLink, a.updateOrderLink, a.updateCustomerLink,\
     a.updateUserLink, a.updateSupplierLink, a.updateWarehouseReceiptLink, a.updateWarrantyLink,\
     a.updatePermissionLink, a.updateDiscountLink,\
     a.addCategoryLink, a.addProductLink, a.addOrderLink, a.addCustomerLink,\
     a.addUserLink, a.addSupplierLink, a.addWareHouseReceiptLink, a.addWarrantyLink,\
-    a.addPermissionLink, a.addDiscountLink")
+    a.addPermissionLink, a.addDiscountLink, a.detailOrderLink, a.detailWarehouseReceiptLink, a.productsByCategoryViewLink")
         .click(function (e) {
             e.preventDefault();
             var href = $(this).attr("href");
@@ -72,6 +75,15 @@ $(document).ready(function () {
             } if ($(this).hasClass('addDiscountLink')) {
                 containerId = '#addDiscountContainer';
                 contentClass = '.addDiscount';
+            } if ($(this).hasClass('detailOrderLink')) {
+                containerId = '#detailOrderContainer';
+                contentClass = '.detailOrder';
+            } if ($(this).hasClass('detailWarehouseReceiptLink')) {
+                containerId = '#detailWarehouseReceiptContainer';
+                contentClass = '.detailWarehouseReceipt';
+            } if ($(this).hasClass('productsByCategoryViewLink')) {
+                containerId = '#productsByCategoryViewContainer';
+                contentClass = '.productsByCategoryView';
             }
 
 
@@ -90,6 +102,38 @@ $(document).ready(function () {
                 }
             });
         });
+
+
+    // Xử lý sự kiện submit form thêm, sửa
+    $(document).on('submit', 'form.categorySubmitAdd, form.productSubmitAdd, form.orderSubmitAdd,\
+        form.customerSubmitAdd, form.userSubmitAdd, form.supplierSubmitAdd, form.warehouseReceiptSubmitAdd,\
+        form.warrantySubmitAdd, form.permissionSubmitAdd, form.discountSubmitAdd, \
+        form.categorySubmitUd, form.productSubmitUd, form.orderSubmitUd,\
+        form.customerSubmitUd, form.userSubmitUd, form.supplierSubmitUd, form.warehouseReceiptSubmitUd,\
+        form.warrantySubmitUd, form.permissionSubmitUd, form.discountSubmitUd ', function (e) {
+        e.preventDefault();
+        var formData = new FormData(this); // Tạo đối tượng FormData chứa dữ liệu form (Sử dụng cho file ảnh)
+        $.ajax({
+            url: $(this).attr('action'), // Lấy đường dẫn action của form
+            type: $(this).attr('method'), // Lấy phương thức của form (POST)
+            data: formData, // Dữ liệu cần gửi
+            processData: false, // Không xử lý dữ liệu trước khi gửi  (Sử dụng cho file ảnh)
+            contentType: false, // Không thiết lập kiểu dữ liệu nội dung (Sử dụng cho file ảnh)
+            success: function (response) {
+                // Xử lý phản hồi từ server
+                location.reload();
+                alert("Thêm thành công");
+                // console.log();
+            },
+            error: function (xhr, status, error) {
+                // Xử lý lỗi
+                console.error(error);
+            }
+        });
+    });
+
+
+
 
     $(document).on('click', function (e) {
         if (!$(e.target).closest('#updateCategoryContainer').length &&
@@ -111,7 +155,10 @@ $(document).ready(function () {
             !$(e.target).closest('#addWarehouseReceiptContainer').length &&
             !$(e.target).closest('#addWarrantyContainer').length &&
             !$(e.target).closest('#addPermissionContainer').length &&
-            !$(e.target).closest('#addDiscountContainer').length) {
+            !$(e.target).closest('#addDiscountContainer').length &&
+            !$(e.target).closest('#detailOrderContainer').length &&
+            !$(e.target).closest('#detailWarehouseReceiptContainer').length &&
+            !$(e.target).closest('#productsByCategoryViewContainer').length) {
             $('#updateCategoryContainer').hide();
             $('#updateProductContainer').hide();
             $('#updateOrderContainer').hide();
@@ -132,6 +179,9 @@ $(document).ready(function () {
             $('#addWarrantyContainer').hide();
             $('#addPermissionContainer').hide();
             $('#addDiscountContainer').hide();
+            $('#detailOrderContainer').hide();
+            $('#detailWarehouseReceiptContainer').hide();
+            $('#productsByCategoryViewContainer').hide();
             $(".overlay").hide();
         }
     });

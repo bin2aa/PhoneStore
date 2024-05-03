@@ -126,7 +126,7 @@ class ProductModel
     }
 
 
-
+    // Gợi ý sản phẩm
     public function getSuggestedProducts($currentProductId, $limit = 4)
     {
         // Lấy danh mục của sản phẩm hiện tại

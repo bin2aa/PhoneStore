@@ -8,47 +8,33 @@
 </head>
 
 <body>
-
-    <h2>Chi tiết nhập kho</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>ID </th>
-                <th>ID nhập kho</th>
-                <th>ID sản phẩm</th>
-                <th>Số lượng</th>
-                <th>Đơn giá</th>
-                <th>Thao tác</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($warehousess as $warehouses) : ?>
+    <div class="detailWarehouseReceipt">
+        <h2>Chi tiết nhập kho</h2>
+        <table>
+            <thead>
                 <tr>
-                    <td><?php echo $warehouses['id']; ?></td>
-                    <td><?php echo $warehouses['id_nhap_kho']; ?></td>
-                    <td><?php echo $warehouses['id_san_pham']; ?></td>
-                    <td><?php echo $warehouses['so_luong']; ?></td>
-                    <td><?php echo $warehouses['gia']; ?></td>
-                    <td><a href="#" onclick="confirmDelete(<?php echo $warehouses['id']; ?>)">Xóa</a></td>
-
+                    <th>ID </th>
+                    <th>ID nhập kho</th>
+                    <th>ID sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Đơn giá</th>
+                    <!-- <th>Thao tác</th> -->
                 </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-    <script>
-        function confirmDelete(id) {
-            // Sử dụng hàm confirm() để hiển thị hộp thoại xác nhận
-            var confirmDelete = confirm("Bạn có chắc chắn muốn xóa kho này?");
-            // Nếu người dùng nhấn OK, chuyển hướng đến trang xóa và truyền id
-            if (confirmDelete) {
-                window.location.href = "index.php?ctrl=warehouseController&action=deleteWarehouseDetail&id=" + id;
-            } else {
-                // Nếu người dùng nhấn Cancel hoặc không xác nhận xóa, không làm gì cả
-                return false;
-            }
-        }
-    </script>
-
+            </thead>
+            <tbody>
+                <?php foreach ($warehousess as $warehouses) : ?>
+                    <tr>
+                        <td><?php echo $warehouses['id']; ?></td>
+                        <td><?php echo $warehouses['id_nhap_kho']; ?></td>
+                        <td><?php echo $warehouses['id_san_pham']; ?></td>
+                        <td><?php echo $warehouses['so_luong']; ?></td>
+                        <td><?php echo $warehouses['gia']; ?></td>
+                        <!-- <td><a href="index.php?ctrl=warehouseController&action=deleteWarehouseDetail&id=<?php echo $warehouses['id']; ?>">Xóa</a></td> -->
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 </body>
 
 </html>

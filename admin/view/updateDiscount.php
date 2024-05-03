@@ -11,7 +11,7 @@
 
     <div class="updateDiscount">
         <h2>Cập nhật khuyến mãi</h2>
-        <form method="post" action="index.php?ctrl=discountController&action=updateDiscount">
+        <form class="discountSubmitUd" method="post" action="index.php?ctrl=discountController&action=updateDiscount">
             <input type="hidden" name="id" value="<?php echo $discount['id']; ?>">
 
             <label for="ten">Tên khuyến mãi:</label><br>

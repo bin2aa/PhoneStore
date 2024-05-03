@@ -12,7 +12,7 @@
 
         <h1>Thêm mới phiếu bảo hành</h1>
 
-        <form action="index.php?ctrl=warrantyController&action=addWarranty" method="post">
+        <form class="warrantySubmitAdd" action="index.php?ctrl=warrantyController&action=addWarranty" method="post">
             <label for="id_san_pham">Sản phẩm:</label>
             <select name="id_san_pham" id="id_san_pham">
                 <?php foreach ($products as $product) : ?>

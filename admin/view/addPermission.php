@@ -27,7 +27,7 @@
 <body>
     <div class="addPermission">
         <h2>Thêm quyền mới</h2>
-        <form method="POST" action="index.php?ctrl=permissionController&action=addPermission">
+        <form class="permissionSubmitAdd" method="POST" action="index.php?ctrl=permissionController&action=addPermission">
             <label for="role">Vai trò:</label>
             <input type="text" id="role" name="role" required> <br>
 

@@ -14,7 +14,7 @@
     <div class="addOrder">
         <h2>Thêm đơn hàng</h2>
 
-        <form action="index.php?ctrl=orderController&action=addOrder" method="post">
+        <form class="orderSubmitAdd" action="index.php?ctrl=orderController&action=addOrder" method="post">
 
             <label for="id_khach_hang">Chọn khách hàng:</label>
             <select name="id_khach_hang" required>

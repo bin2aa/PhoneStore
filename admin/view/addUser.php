@@ -13,7 +13,7 @@
     <div class="addUser">
         <h2>Thêm người dùng</h2>
 
-        <form action="index.php?ctrl=userController&action=addUser" method="post">
+        <form class="userSubmitAdd" action="index.php?ctrl=userController&action=addUser" method="post">
 
             <label for="ten_dang_nhap">Tên đăng nhập:</label>
             <input type="text" name="ten_dang_nhap" required><br>

@@ -27,7 +27,7 @@
 <body>
     <div class="updatePermission">
         <h2>Cập nhật quyền</h2>
-        <form method="POST" action="index.php?ctrl=permissionController&action=updatePermission">
+        <form class="permissionSubmitUd" method="POST" action="index.php?ctrl=permissionController&action=updatePermission">
             <input type="hidden" name="role" value="<?php echo $permission['vai_tro']; ?>">
 
             <label>Vai trò:</label>

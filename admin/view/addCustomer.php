@@ -11,8 +11,7 @@
     <div class="addCustomer">
         <h2>Thêm khách hàng</h2>
 
-        <form action="index.php?ctrl=customerController&action=addCustomer" method="post">
-
+        <form class="customerSubmitAdd" action="index.php?ctrl=customerController&action=addCustomer" method="post">
 
             <label for="id_nguoi_dung">Chọn id người dùng:</label>
             <select name="id_nguoi_dung" required>

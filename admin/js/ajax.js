@@ -16,28 +16,28 @@ $(document).ready(function () {
 
 
     // Cập nhật sản phẩm
-    $('form').submit(function (event) {
-        if ($(this).hasClass('update-product-btn')) {
-            event.preventDefault();
-            var formData = new FormData($(this)[0]);
-            $.ajax({
-                url: 'index.php?ctrl=productController&action=updateProduct',
-                method: 'POST',
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function (response) {
-                    console.log(response);
-                    alert('Cập nhật sản phẩm thành công!');
+    // $('form').submit(function (event) {
+    //     if ($(this).hasClass('update-product-btn')) {
+    //         event.preventDefault();
+    //         var formData = new FormData($(this)[0]);
+    //         $.ajax({
+    //             url: 'index.php?ctrl=productController&action=updateProduct',
+    //             method: 'POST',
+    //             data: formData,
+    //             contentType: false,
+    //             processData: false,
+    //             success: function (response) {
+    //                 console.log(response);
+    //                 alert('Cập nhật sản phẩm thành công!');
 
-                },
-                error: function () {
-                    console.error('Có lỗi khi gửi yêu cầu AJAX.');
-                    alert('Có lỗi khi cập nhật sản phẩm.');
-                }
-            });
-        }
-    });
+    //             },
+    //             error: function () {
+    //                 console.error('Có lỗi khi gửi yêu cầu AJAX.');
+    //                 alert('Có lỗi khi cập nhật sản phẩm.');
+    //             }
+    //         });
+    //     }
+    // });
 
     //Xóa sản phẩm
     // $('a.deleteProductLink').click(function (event) {

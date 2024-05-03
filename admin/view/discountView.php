@@ -36,7 +36,7 @@
                 <td><?php echo $discount['ngay_ket_thuc']; ?></td>
                 <td>
                     <a class="updateDiscountLink" href="index.php?ctrl=discountController&action=showUpdateDiscountForm&id=<?php echo $discount['id']; ?>">Sửa</a>
-                    <a href="index.php?ctrl=discountController&action=deleteDiscount&id=<?php echo $discount['id']; ?>" onclick="return confirm('Bạn có chắc chắn muốn xóa khuyến mãi này không?')">Xóa</a>
+                    <a class="deleteDiscountLink" href="index.php?ctrl=discountController&action=deleteDiscount&id=<?php echo $discount['id']; ?>">Xóa</a>
                 </td>
             </tr>
         <?php endforeach; ?>

@@ -13,7 +13,7 @@
 
             <h2>Thêm phiếu nhập kho</h2>
 
-            <form action="index.php?ctrl=warehouseController&action=addWarehouseReceipt" method="post">
+            <form class="warehouseReceiptSubmitAdd" action="index.php?ctrl=warehouseController&action=addWarehouseReceipt" method="post">
 
                 <label for="id_nha_cung_cap">Chọn nhà cung cấp:</label>
                 <select name="id_nha_cung_cap" required>

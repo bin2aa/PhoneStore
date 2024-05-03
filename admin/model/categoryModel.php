@@ -53,4 +53,5 @@ class CategoryModel
         $query = "SELECT * FROM danh_muc_san_pham WHERE ten LIKE '%$keyword%' ";
         return $this->db->select($query);
     }
+
 }

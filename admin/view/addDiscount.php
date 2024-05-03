@@ -10,7 +10,7 @@
 <body>
     <div class="addDiscount">
         <h2>Thêm khuyến mãi mới</h2>
-        <form method="post" action="index.php?ctrl=discountController&action=addDiscount">
+        <form class="discountSubmitAdd" method="post" action="index.php?ctrl=discountController&action=addDiscount">
 
             <label for="ten">Tên khuyến mãi:</label><br>
             <input type="text" id="ten" name="ten" required><br>

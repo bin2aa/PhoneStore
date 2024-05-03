@@ -11,7 +11,7 @@
     <div class="addSupplier">
         <h2>Thêm nhà cung cấp</h2>
 
-        <form action="index.php?ctrl=supplierController&action=addSupplier" method="post">
+        <form class="supplierSubmitAdd" action="index.php?ctrl=supplierController&action=addSupplier" method="post">
 
             <label for="ten">Tên nhà cung cấp:</label>
             <input type="text" name="ten" required><br>

@@ -13,7 +13,7 @@
 
         <h2>Cập nhật danh mục sản phẩm</h2>
 
-        <form action="index.php?ctrl=categoryController&action=updateCategory" method="post">
+        <form class="categorySubmitUd" action="index.php?ctrl=categoryController&action=updateCategory" method="post">
 
             <input type="hidden" name="category_id" value="<?php echo $category['id']; ?>">
 

@@ -12,7 +12,7 @@
     <div class="updateProduct">
 
         <h2>Cập nhật sản phẩm</h2>
-        <form action="index.php?ctrl=productController&action=updateProduct" method="post" class="update-product-btn">
+        <form class="productSubmitUd" action="index.php?ctrl=productController&action=updateProduct" method="post" class="update-product-btn">
 
             <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
 
@@ -30,9 +30,12 @@
             <select name="id_danh_muc" required>
                 <?php
                 foreach ($categorys as $category) {
-                    echo '<option value="' . $category['id'] . '">' . $category['ten'] . '</option>';
+                    $selected = ($category['id'] == $product['id_danh_muc']) ? 'selected' : '';
+                    echo '<option value="' . $category['id'] . '" ' . $selected . '>' . $category['ten'] . '</option>';
                 }
                 ?>
+            </select><br>
+
             </select><br>
 
             <label for="gia">Giá:</label>

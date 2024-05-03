@@ -39,7 +39,7 @@ $qlgiam_gia = $_SESSION['qlgiam_gia'];
     <title>Index</title>
     <!-- css -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/formAdd.css">
+    <link rel="stylesheet" href="css/formUpdate-Add.css">
     <!-- Thư viện ajax -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
@@ -94,7 +94,7 @@ $qlgiam_gia = $_SESSION['qlgiam_gia'];
                         echo '<li><a href="index.php?ctrl=permissionController">Phân quyền</a></li>';
                     }
                     ?>
-                    <li><a href="/login/index.php?ctrl=loginController&action=logout">Đăng xuất</a></li>
+                    <li><a href="/login/index.php?ctrl=loginController&action=logout" onclick="return confirm('Bạn có chắc chắn muốn đăng xuất không?');">Đăng xuất</a></li>
                 </ul>
             </nav>
 

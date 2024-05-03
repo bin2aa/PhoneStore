@@ -18,6 +18,7 @@
 
     <div id="addOrderContainer"></div>
     <div id="updateOrderContainer"></div>
+    <div id="detailOrderContainer"></div>
     <div class="overlay"></div>
 
 
@@ -70,9 +71,9 @@
 
 
                     <td>
-                        <a href="index.php?ctrl=orderController&action=deleteOrder&id=<?php echo $order['id']; ?>">Xóa</a>
+                        <a class="deleteOrderLink" href="index.php?ctrl=orderController&action=deleteOrder&id=<?php echo $order['id']; ?>">Xóa</a>
                         <a class="updateOrderLink" href="index.php?ctrl=orderController&action=updateOrderView&id=<?php echo $order['id']; ?>&tinh_trang=<?php echo $order['tinh_trang']; ?>">Sửa</a>
-                        <a href="index.php?ctrl=orderController&action=viewOrderDetail&id=<?php echo $order['id']; ?>">Xem chi tiết</a>
+                        <a class="detailOrderLink" href="index.php?ctrl=orderController&action=viewOrderDetail&id=<?php echo $order['id']; ?>">Chi tiết</a>
                     </td>
 
                 </tr>

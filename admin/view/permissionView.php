@@ -43,7 +43,7 @@
                 <td><?php echo $permission['qlgiam_gia'] ? 'Có' : 'Không'; ?></td>
                 <td>
                     <a class="updatePermissionLink" href="index.php?ctrl=permissionController&action=updatePermissionView&role=<?php echo $permission['vai_tro']; ?>">Sửa</a>
-                    <a href="index.php?ctrl=permissionController&action=deletePermission&role=<?php echo $permission['vai_tro']; ?>" onclick="return confirm('Bạn có chắc chắn muốn xóa quyền này?')">Xóa</a>
+                    <a class="deletePermissionLink" href="index.php?ctrl=permissionController&action=deletePermission&role=<?php echo $permission['vai_tro']; ?>">Xóa</a>
                 </td>
             </tr>
         <?php endforeach; ?>

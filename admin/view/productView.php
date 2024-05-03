@@ -49,7 +49,7 @@
                 <td><?php echo $product['mo_ta']; ?></td>
                 <td>
                     <a class="deleteProductLink" href="index.php?ctrl=productController&action=deleteProduct&id=<?php echo $product['id']; ?>">Xóa</a>
-                    <a class="updateProductLink" href="index.php?ctrl=productController&action=updateProductView&id=<?php echo $product['id']; ?>">Cập nhật</a>
+                    <a class="updateProductLink" href="index.php?ctrl=productController&action=updateProductView&id=<?php echo $product['id']; ?>&id_danh_muc=<?php echo $product['id_danh_muc']; ?>">Cập nhật</a>
                 </td>
             </tr>
         <?php endforeach; ?>

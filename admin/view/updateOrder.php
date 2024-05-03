@@ -11,7 +11,7 @@
     <div class="updateOrder">
         <h2>Cập nhật đơn hàng</h2>
 
-        <form action="index.php?ctrl=orderController&action=updateOrder" method="post">
+        <form class="orderSubmitUd" action="index.php?ctrl=orderController&action=updateOrder" method="post">
 
             <input type="hidden" name="id" value="<?php echo $order['id']; ?>">
 

@@ -14,6 +14,7 @@
 
     <div id="addWarehouseReceiptContainer"></div>
     <div id="updateWarehouseReceiptContainer"></div>
+    <div id="detailWarehouseReceiptContainer"></div>
     <div class="overlay"></div>
 
     <form class="search-form-warehouse">
@@ -43,9 +44,9 @@
                 <td><?php echo  number_format($warehouseReceipt['tong_tien']); ?></td>
                 <td><?php echo $warehouseReceipt['ghi_chu']; ?></td>
                 <td>
-                    <a href="index.php?ctrl=warehouseController&action=deleteWarehouseReceipt&id=<?php echo $warehouseReceipt['id']; ?>">Xóa</a>
+                    <a class="deleteWarehouseReceiptLink" href="index.php?ctrl=warehouseController&action=deleteWarehouseReceipt&id=<?php echo $warehouseReceipt['id']; ?>">Xóa</a>
                     <a class="updateWarehouseReceiptLink" href="index.php?ctrl=warehouseController&action=showUpdateWarehouseReceiptForm&id=<?php echo $warehouseReceipt['id']; ?>">Cập nhật</a>
-                    <a href="index.php?ctrl=warehouseController&action=viewWarehouseDetail&id=<?php echo $warehouseReceipt['id']; ?>">Chi tiết</a>
+                    <a class="detailWarehouseReceiptLink" href="index.php?ctrl=warehouseController&action=viewWarehouseDetail&id=<?php echo $warehouseReceipt['id']; ?>">Chi tiết</a>
                 </td>
             </tr>
         <?php endforeach; ?>

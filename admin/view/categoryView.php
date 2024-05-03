@@ -17,6 +17,7 @@
 
         <div id="addCategoryContainer"></div>
         <div id="updateCategoryContainer"></div>
+        <div id="productsByCategoryViewContainer"></div>
         <div class="overlay"></div>
 
 
@@ -43,7 +44,9 @@
                         <td><?php echo $category['ten']; ?></td>
                         <td>
                             <a class="deleteCategoryLink btn btn-danger" href="index.php?ctrl=categoryController&action=deleteCategory&id=<?php echo $category['id']; ?>">Xóa</a>
-                            <a class="addCategoryLink btn btn-primary" href="index.php?ctrl=categoryController&action=updateCategoryView&id=<?php echo $category['id']; ?>">Cập nhật</a>
+                            <a class="updateCategoryLink btn btn-primary" href="index.php?ctrl=categoryController&action=updateCategoryView&id=<?php echo $category['id']; ?>">Cập nhật</a>
+                            <a class="productsByCategoryViewLink btn btn-success" href="index.php?ctrl=categoryController&action=viewProduct&id=<?php echo $category['id']; ?>">Xem sản phẩm</a>
+
                         </td>
                     </tr>
                 <?php endforeach; ?>

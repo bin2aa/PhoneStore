@@ -12,7 +12,7 @@
 
         <h2>Thêm sản phẩm</h2>
 
-        <form action="index.php?ctrl=productController&action=addProduct" method="post">
+        <form class="productSubmitAdd" action="index.php?ctrl=productController&action=addProduct" method="post" enctype="multipart/form-data" >
 
             <label for="ten">Tên:</label>
             <input type="text" name="ten" required><br>

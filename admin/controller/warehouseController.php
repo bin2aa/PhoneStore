@@ -145,7 +145,7 @@ switch ($action) {
         break;
     case 'viewWarehouseDetail':
         $warehouseController->viewWarehouseDetail();
-        // break;
+        break;
     default:
         $warehouseController->showWarehouseReceiptList();
 }

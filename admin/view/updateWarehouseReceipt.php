@@ -13,7 +13,7 @@
         <?php
         if (isset($warehouseReceipt)) {
         ?>
-            <form action="index.php?ctrl=warehouseController&action=updateWarehouseReceipt" method="post">
+            <form class="warehouseReceiptSubmitUd" action="index.php?ctrl=warehouseController&action=updateWarehouseReceipt" method="post">
                 <input type="hidden" name="id" value="<?php echo $warehouseReceipt['id']; ?>">
                 <label for="id_nha_cung_cap">Nhà cung cấp:</label>
                 <select name="id_nha_cung_cap" required>

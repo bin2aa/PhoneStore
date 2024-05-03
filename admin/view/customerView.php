@@ -59,7 +59,7 @@
                     <td><?php echo $customer['dia_chi']; ?></td>
 
                     <td>
-                        <a href="index.php?ctrl=customerController&action=deleteCustomer&id=<?php echo $customer['id']; ?>">Xóa</a>
+                        <a class="deleteCustomerLink" href="index.php?ctrl=customerController&action=deleteCustomer&id=<?php echo $customer['id']; ?>">Xóa</a>
                         <a class="updateCustomerLink" href="index.php?ctrl=customerController&action=updateCustomerView&id=<?php echo $customer['id']; ?>">Sửa</a>
                     </td>
 

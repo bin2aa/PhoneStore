@@ -14,7 +14,7 @@
     <div class="updateUser">
 
         <h2>Cập nhật người dùng</h2>
-        <form action="index.php?ctrl=userController&action=updateUser" method="post">
+        <form class="userSubmitUd" action="index.php?ctrl=userController&action=updateUser" method="post">
 
             <input type="hidden" name="user_id" value="<?php echo $user['id']; ?>">
 

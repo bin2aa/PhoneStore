@@ -12,7 +12,7 @@
     <div class="updateSupplier">
 
         <h2>Cập nhật nhà cung cấp</h2>
-        <form action="index.php?ctrl=supplierController&action=updateSupplier" method="post">
+        <form class="supplierSubmitUd" action="index.php?ctrl=supplierController&action=updateSupplier" method="post">
 
             <input type="hidden" name="id" value="<?php echo $supplier['id']; ?>">
 

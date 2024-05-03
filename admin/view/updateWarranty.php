@@ -13,7 +13,7 @@
 
         <h1>Cập nhật phiếu bảo hành</h1>
 
-        <form action="index.php?ctrl=warrantyController&action=updateWarranty" method="post">
+        <form class="warrantySubmitUd" action="index.php?ctrl=warrantyController&action=updateWarranty" method="post">
             <input type="hidden" name="warranty_id" value="<?php echo $warranty['id']; ?>">
 
             <label for="id_san_pham">Sản phẩm:</label>
