@@ -10,8 +10,6 @@ class OrderModel
         $this->db = new Database();
     }
 
-
-
     public function getAllOrders()
     {
         $query = "SELECT don_dat_hang.*,khach_hang.ten AS ten_khach_hang

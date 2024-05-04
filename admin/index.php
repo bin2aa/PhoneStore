@@ -26,6 +26,7 @@ $qldon_hang = $_SESSION['qldon_hang'];
 $qlsan_pham = $_SESSION['qlsan_pham'];
 $qldanh_muc = $_SESSION['qldanh_muc'];
 $qlbao_hanh = $_SESSION['qlbao_hanh'];
+$qlgiam_gia = $_SESSION['qlgiam_gia'];
 
 ?>
 
@@ -36,11 +37,21 @@ $qlbao_hanh = $_SESSION['qlbao_hanh'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index</title>
+    <!-- css -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/formUpdate-Add.css">
+    <!-- Thư viện ajax -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <!-- Thư viện BootStrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- JavaScript -->
     <script src="js/ajax.js"></script>
     <script src="js/searchAjax.js"></script>
+    <script src="js/showUpdate-Add.js"></script>
+    <script src="js/delete.js"></script>
+
 
 </head>
 
@@ -49,8 +60,8 @@ $qlbao_hanh = $_SESSION['qlbao_hanh'];
         <div class="header">
             <nav>
                 <ul>
-                    <li><a href="index.php?ctrl=statsController">Nguyễn Thanh Thịnh</a></li>
                     <li><a href="/user/index.php">PhoneStore</a></li>
+                    <li><a href="index.php?ctrl=statsController">Nguyễn Thanh Thịnh</a></li>
                     <?php
                     if ($qldanh_muc == 1) {
                         echo '<li><a href="index.php?ctrl=categoryController">Danh mục</a></li>';
@@ -76,11 +87,15 @@ $qlbao_hanh = $_SESSION['qlbao_hanh'];
                     if ($qlbao_hanh == 1) {
                         echo '<li><a href="index.php?ctrl=warrantyController">Bảo hành</a></li>';
                     }
+                    if ($qlgiam_gia == 1) {
+                        echo '<li><a href="index.php?ctrl=discountController">Giảm giá</a></li>';
+                    }
                     if ($vai_tro == "Quản trị viên") {
                         echo '<li><a href="index.php?ctrl=permissionController">Phân quyền</a></li>';
                     }
                     ?>
-                    <li><a href="/login/index.php?ctrl=loginController&action=logout">Đăng xuất</a></li>
+                    <li><a href="/login/index.php?ctrl=loginController&action=logout"
+                            onclick="return confirm('Bạn có chắc chắn muốn đăng xuất không?');">Đăng xuất</a></li>
                 </ul>
             </nav>
 

@@ -1,0 +1,91 @@
+#addCategoryContainer,
+#addProductContainer,
+#addOrderContainer,
+#addCustomerContainer,
+#addUserContainer,
+#addSupplierContainer,
+#addWarehouseReceiptContainer,
+#addWarrantyContainer,
+#addPermissionContainer,
+#addDiscountContainer,
+#updateCategoryContainer,
+#updateProductContainer,
+#updateOrderContainer,
+#updateCustomerContainer,
+#updateUserContainer,
+#updateSupplierContainer,
+#updateWarehouseReceiptContainer,
+#updateWarrantyContainer,
+#updatePermissionContainer,
+#updateDiscountContainer,
+#detailOrderContainer,
+#detailWarehouseReceiptContainer,
+#productsByCategoryViewContainer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    display: none;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    z-index: 9999;
+    max-width: 80%;
+    /* Giới hạn chiều rộng của frame */
+    max-height: 80%;
+    overflow-y: auto;
+    /* Cho phép cuộn nếu nội dung quá dài */
+}
+
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Màu nền mờ */
+    z-index: 9998;
+    /* Đảm bảo lớp overlay hiển thị trên container */
+    display: none;
+    /* Ban đầu ẩn overlay */
+}
+
+
+/* addWarehouseReceipt.php */
+#chi-tiet {
+    max-height: 300px;
+    /* Đặt chiều cao tối đa của phần chi tiết */
+    overflow-y: auto;
+    /* Tạo thanh cuộn dọc khi cần thiết */
+}
+
+#chi-tiet .hang:not(:last-child) {
+    border-bottom: 1px solid black;
+    /* Đặt dấu gạch ngang giữa các hàng */
+}
+
+#chi-tiet .hang {
+    display: flex;
+    align-items: center;
+    /* Căn chỉnh các phần tử trong hàng theo chiều dọc */
+    margin-bottom: 10px;
+    /* Khoảng cách giữa các hàng */
+    flex-direction: row;
+    /* Căn chỉnh các phần tử trong hàng theo chiều ngang */
+}
+
+#chi-tiet .hang label {
+    margin-right: 20px;
+    /* Khoảng cách giữa các nhãn và các phần tử nhập liệu */
+    white-space: nowrap;
+    /* Ngăn các từ bên trong label bị ngắt xuống dòng */
+}
+
+#chi-tiet .hang select,
+#chi-tiet .hang input {
+    flex: 1;
+    /* Phần tử nhập liệu sẽ mở rộng để lấp đầy không gian còn lại trong hàng */
+}

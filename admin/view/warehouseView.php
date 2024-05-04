@@ -12,6 +12,10 @@
 
     <h2>Danh sách phiếu nhập kho</h2>
 
+    <div id="addWarehouseReceiptContainer"></div>
+    <div id="updateWarehouseReceiptContainer"></div>
+    <div id="detailWarehouseReceiptContainer"></div>
+    <div class="overlay"></div>
 
     <form class="search-form-warehouse">
         <label for="search">Tìm kiếm phiếu nhập kho:</label>
@@ -19,8 +23,8 @@
         <button type="submit">Tìm kiếm</button>
     </form>
 
-    <a href="index.php?ctrl=warehouseController&action=showAddWarehouseReceiptForm">Thêm hàng vào kho</a>
-
+    <a class="addWareHouseReceiptLink" href="index.php?ctrl=warehouseController&action=showAddWarehouseReceiptForm">Thêm
+        hàng vào kho </a>
     <table>
         <tr>
             <th>ID</th>
@@ -33,19 +37,24 @@
         </tr>
 
         <?php foreach ($warehouseReceipts as $warehouseReceipt) : ?>
-            <tr>
-                <td><?php echo $warehouseReceipt['id']; ?></td>
-                <td><?php echo $warehouseReceipt['id_nha_cung_cap']; ?></td>
-                <td><?php echo $warehouseReceipt['ten_ncc']; ?></td>
-                <td><?php echo $warehouseReceipt['ngay']; ?></td>
-                <td><?php echo  number_format($warehouseReceipt['tong_tien']); ?></td>
-                <td><?php echo $warehouseReceipt['ghi_chu']; ?></td>
-                <td>
-                    <a href="index.php?ctrl=warehouseController&action=deleteWarehouseReceipt&id=<?php echo $warehouseReceipt['id']; ?>">Xóa</a>
-                    <a href="index.php?ctrl=warehouseController&action=showUpdateWarehouseReceiptForm&id=<?php echo $warehouseReceipt['id']; ?>">Cập nhật</a>
-                    <a href="index.php?ctrl=warehouseController&action=viewWarehouseDetail&id=<?php echo $warehouseReceipt['id']; ?>">Chi tiết</a>
-                </td>
-            </tr>
+        <tr>
+            <td><?php echo $warehouseReceipt['id']; ?></td>
+            <td><?php echo $warehouseReceipt['id_nha_cung_cap']; ?></td>
+            <td><?php echo $warehouseReceipt['ten_ncc']; ?></td>
+            <td><?php echo $warehouseReceipt['ngay']; ?></td>
+            <td><?php echo  number_format($warehouseReceipt['tong_tien']); ?></td>
+            <td><?php echo $warehouseReceipt['ghi_chu']; ?></td>
+            <td>
+                <a class="deleteWarehouseReceiptLink"
+                    href="index.php?ctrl=warehouseController&action=deleteWarehouseReceipt&id=<?php echo $warehouseReceipt['id']; ?>">Xóa</a>
+                <a class="updateWarehouseReceiptLink"
+                    href="index.php?ctrl=warehouseController&action=showUpdateWarehouseReceiptForm&id=<?php echo $warehouseReceipt['id']; ?>">Cập
+                    nhật</a>
+                <a class="detailWarehouseReceiptLink"
+                    href="index.php?ctrl=warehouseController&action=viewWarehouseDetail&id=<?php echo $warehouseReceipt['id']; ?>">Chi
+                    tiết</a>
+            </td>
+        </tr>
         <?php endforeach; ?>
 
     </table>

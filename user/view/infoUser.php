@@ -6,33 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thông tin khách hàng</title>
     <style>
-        /* Style cho thông tin khách hàng */
-        .customer-info {
-            width: 400px;
-            margin: 0 auto;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-        }
+    /* Style cho thông tin khách hàng */
+    .customer-info {
+        width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
 
-        .customer-info h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+    .customer-info h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
 
-        .customer-info ul {
-            list-style-type: none;
-            padding: 0;
-        }
+    .customer-info ul {
+        list-style-type: none;
+        padding: 0;
+    }
 
-        .customer-info li {
-            margin-bottom: 10px;
-        }
+    .customer-info li {
+        margin-bottom: 10px;
+    }
 
-        .customer-info label {
-            font-weight: bold;
-        }
+    .customer-info label {
+        font-weight: bold;
+    }
     </style>
 </head>
 
@@ -51,7 +51,9 @@
         echo '</ul>';
         ?>
         <div style="display: flex; justify-content: center; margin-top: 20px;">
-            <a href="index.php?ctrl=customerUserController&action=showUpdateCustomerForm&id=<?php echo $customer[0]['id']; ?>">Chỉnh sửa thông tin</a>
+            <a
+                href="index.php?ctrl=customerUserController&action=showUpdateCustomerForm&id=<?php echo $customer[0]['id']; ?>">Chỉnh
+                sửa thông tin</a>
             <span style="margin: 0 10px;">|</span>
             <a href="index.php?ctrl=customerUserController&action=viewOrderList">Danh sách đơn hàng</a>
         </div>

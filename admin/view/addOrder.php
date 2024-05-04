@@ -11,34 +11,34 @@
 </head>
 
 <body>
+    <div class="addOrder">
+        <h2>Thêm đơn hàng</h2>
 
-    <h2>Thêm đơn hàng</h2>
+        <form class="orderSubmitAdd" action="index.php?ctrl=orderController&action=addOrder" method="post">
 
-    <form action="index.php?ctrl=orderController&action=addOrder" method="post">
+            <label for="id_khach_hang">Chọn khách hàng:</label>
+            <select name="id_khach_hang" required>
+                <?php
+                foreach ($customers as $customer) {
+                    echo '<option value="' . $customer['id'] . '">' . $customer['ten'] . '</option>';
+                }
+                ?>
+            </select><br>
 
-        <label for="id_khach_hang">Chọn khách hàng:</label>
-        <select name="id_khach_hang" required>
-            <?php
-            foreach ($customers as $customer) {
-                echo '<option value="' . $customer['id'] . '">' . $customer['ten'] . '</option>';
-            }
-            ?>
-        </select><br>
+            <label for="ngay">Ngày:</label>
+            <input type="datetime-local" name="ngay" required><br>
 
-        <label for="ngay">Ngày:</label>
-        <input type="datetime-local" name="ngay" required><br>
+            <label for="tong_tien">Tổng tiền:</label>
+            <input type="number" name="tong_tien" required><br>
 
-        <label for="tong_tien">Tổng tiền:</label>
-        <input type="number" name="tong_tien" required><br>
+            <label for="ghi_chu">Ghi chú:</label>
+            <textarea name="ghi_chu" rows="5"></textarea><br><br>
 
-        <label for="ghi_chu">Ghi chú:</label>
-        <textarea name="ghi_chu" rows="5"></textarea><br><br>
+            <input type="hidden" name="tinh_trang">
 
-        <input type="hidden" name="tinh_trang">
-
-        <button type="submit">Thêm đơn hàng</button>
-    </form>
-
+            <button type="submit">Thêm đơn hàng</button>
+        </form>
+    </div>
 </body>
 
 </html>

@@ -9,18 +9,11 @@ class CommentModel
         $this->db = new Database();
     }
 
-
-
-
-
     public function getAllComments()
     {
         $query = "SELECT * FROM binh_luan";
         return $this->db->select($query);
     }
-
-
-
 
     public function getCommentById($id)
     {

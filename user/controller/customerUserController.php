@@ -25,7 +25,26 @@ class CustomerUserController
     {
         $customer = $this->customerModel->getCustomerByIdNguoiDung();
         $customerId = $customer[0]['id']; // Lấy ID khách hàng
+
+        // Lấy danh sách đơn hàng của khách hàng
         $orders = $this->customerModel->getOrdersByCustomerId($customerId);
+
+        //số lượng đơn hàng hiển thị trên trang
+        $item_per_page = 5;
+
+        // Trang hiện tại
+        $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+
+        //lấy tổng tố đơn hàng theo id người dùng
+        $total_orders = $this->customerModel->getTotalOrdersByCustomerId($customerId);
+
+        // Tính offset (vị trí bắt đầu của mỗi trang)
+        $offset = ($current_page - 1) * $item_per_page;
+
+        // Lấy danh sách đơn hàng theo trang
+        $orders = $this->customerModel->getOrdersByCustomerIdPage($customerId, $item_per_page, $offset);
+
+
         include __DIR__ . '/../view/orderList.php';
     }
 
@@ -73,29 +92,28 @@ class CustomerUserController
 
 
     public function updateWarrantyInfo()
-{
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $id = $_GET['id'];
-        $warranty_id = $_POST['warranty_id'];
-        $ghi_chu = trim($_POST['ghi_chu']);
-        $tinh_trang = 'Chờ xử lý';
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $id = $_GET['id'];
+            $warranty_id = $_POST['warranty_id'];
+            $ghi_chu = trim($_POST['ghi_chu']);
+            $tinh_trang = 'Chờ xử lý';
 
-        if ($ghi_chu == '') {
-            echo "<script>alert('Ghi chú không được để trống!')</script>";
-            
-        } else {
-            // Cập nhật thông tin bảo hành
-            $result = $this->cartModel->updateWarrantyInfo($warranty_id, $tinh_trang, $ghi_chu);
-            if ($result) {
-                echo "<script>alert('Cập nhật thông tin bảo hành thành công!')</script>";
+            if ($ghi_chu == '') {
+                echo "<script>alert('Ghi chú không được để trống!')</script>";
             } else {
-                echo "<script>alert('Cập nhật thông tin bảo hành không thành công.')</script>";
+                // Cập nhật thông tin bảo hành
+                $result = $this->cartModel->updateWarrantyInfo($warranty_id, $tinh_trang, $ghi_chu);
+                if ($result) {
+                    echo "<script>alert('Cập nhật thông tin bảo hành thành công!')</script>";
+                } else {
+                    echo "<script>alert('Cập nhật thông tin bảo hành không thành công.')</script>";
+                }
             }
-        }
 
-        echo "<script>window.location.href = 'index.php?ctrl=customerUserController&action=viewOrderDetail&id=$id';</script>";
+            echo "<script>window.location.href = 'index.php?ctrl=customerUserController&action=viewOrderDetail&id=$id';</script>";
+        }
     }
-}
 
 
 

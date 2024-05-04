@@ -23,10 +23,10 @@ class PermissionModel
         return $result[0];
     }
 
-    public function createPermission($role, $qlnhap_kho, $qlnha_cung_cap, $qlnguoi_dung, $qlkhach_hang, $qldon_hang, $qlsan_pham, $qldanh_muc, $qlbao_hanh, $qlbinh_luan)
+    public function createPermission($role, $qlnhap_kho, $qlnha_cung_cap, $qlnguoi_dung, $qlkhach_hang, $qldon_hang, $qlsan_pham, $qldanh_muc, $qlbao_hanh, $qlbinh_luan, $qlgiam_gia)
     {
-        $query = "INSERT INTO phan_quyen(vai_tro, qlnhap_kho, qlnha_cung_cap, qlnguoi_dung, qlkhach_hang, qldon_hang, qlsan_pham, qldanh_muc, qlbao_hanh, qlbinh_luan) 
-                  VALUES ('$role', $qlnhap_kho, $qlnha_cung_cap, $qlnguoi_dung, $qlkhach_hang, $qldon_hang, $qlsan_pham, $qldanh_muc, $qlbao_hanh, $qlbinh_luan)";
+        $query = "INSERT INTO phan_quyen(vai_tro, qlnhap_kho, qlnha_cung_cap, qlnguoi_dung, qlkhach_hang, qldon_hang, qlsan_pham, qldanh_muc, qlbao_hanh, qlbinh_luan, qlgiam_gia) 
+                  VALUES ('$role', $qlnhap_kho, $qlnha_cung_cap, $qlnguoi_dung, $qlkhach_hang, $qldon_hang, $qlsan_pham, $qldanh_muc, $qlbao_hanh, $qlbinh_luan, $qlgiam_gia)";
         return $this->db->execute($query);
     }
 
@@ -36,7 +36,7 @@ class PermissionModel
         return $this->db->execute($query);
     }
 
-    public function updatePermission($role, $qlnhap_kho, $qlnha_cung_cap, $qlnguoi_dung, $qlkhach_hang, $qldon_hang, $qlsan_pham, $qldanh_muc, $qlbao_hanh, $qlbinh_luan)
+    public function updatePermission($role, $qlnhap_kho, $qlnha_cung_cap, $qlnguoi_dung, $qlkhach_hang, $qldon_hang, $qlsan_pham, $qldanh_muc, $qlbao_hanh, $qlbinh_luan, $qlgiam_gia)
     {
         $query = "UPDATE phan_quyen SET qlnhap_kho = $qlnhap_kho, 
         qlnha_cung_cap = $qlnha_cung_cap, 
@@ -46,7 +46,8 @@ class PermissionModel
         qlsan_pham = $qlsan_pham, 
         qldanh_muc = $qldanh_muc, 
         qlbao_hanh = $qlbao_hanh, 
-        qlbinh_luan = $qlbinh_luan
+        qlbinh_luan = $qlbinh_luan,
+        qlgiam_gia = $qlgiam_gia
         WHERE vai_tro = '$role'";
         return $this->db->execute($query);
     }

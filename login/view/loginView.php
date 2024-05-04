@@ -9,10 +9,10 @@
 
 
 <style>
-    #login-error {
-        color: red;
-        display: none;
-    }
+#login-error {
+    color: red;
+    display: none;
+}
 </style>
 
 <body>

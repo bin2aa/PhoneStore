@@ -179,7 +179,7 @@ switch ($action) {
         break;
     case 'viewOrderDetail':
         $orderController->viewOrderDetail();
-        // break;
+        break;
     default:
         $orderController->showOrderList();
 }

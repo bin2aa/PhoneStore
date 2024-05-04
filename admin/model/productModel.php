@@ -124,4 +124,27 @@ class ProductModel
         $query = "SELECT MAX(gia) as maxPrice FROM san_pham";
         return $this->db->select($query)[0]['maxPrice'];
     }
+
+
+    // Gợi ý sản phẩm
+    public function getSuggestedProducts($currentProductId, $limit = 4)
+    {
+        // Lấy danh mục của sản phẩm hiện tại
+        $queryCategory = "SELECT id_danh_muc FROM san_pham WHERE id = $currentProductId";
+        $currentProductCategory = $this->db->select($queryCategory);
+
+        // Kiểm tra xem có kết quả trả về từ truy vấn không và sản phẩm có danh mục hay không
+        // thêm && isset($currentProductCategory[0]['id_danh_muc']) tránh bị lỗi trống danh mụcs
+        if ($currentProductCategory && isset($currentProductCategory[0]['id_danh_muc'])) {
+            $currentProductCategoryId = $currentProductCategory[0]['id_danh_muc'];
+
+            // Lấy danh sách sản phẩm gợi ý trong cùng danh mục (ngoại trừ sản phẩm hiện tại)
+            //Đề xuất sản phẩm ngẫu nhiên
+            $querySuggested = "SELECT * FROM san_pham WHERE id_danh_muc = $currentProductCategoryId AND id != $currentProductId ORDER BY RAND() LIMIT $limit";
+
+            $suggestedProducts = $this->db->select($querySuggested);
+
+            return $suggestedProducts;
+        }
+    }
 }

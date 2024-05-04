@@ -86,8 +86,6 @@ class customerController
             }
         }
     }
-
-    
 }
 
 $action = 'index';

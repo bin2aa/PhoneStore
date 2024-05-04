@@ -48,8 +48,9 @@ class PermissionController
             $qldanh_muc = isset($_POST['qldanh_muc']) ? 1 : 0;
             $qlbao_hanh = isset($_POST['qlbao_hanh']) ? 1 : 0;
             $qlbinh_luan = isset($_POST['qlbinh_luan']) ? 1 : 0;
+            $qlgiam_gia = isset($_POST['qlgiam_gia']) ? 1 : 0;
 
-            $result = $this->permissionModel->createPermission($role, $qlnhap_kho, $qlnha_cung_cap, $qlnguoi_dung, $qlkhach_hang, $qldon_hang, $qlsan_pham, $qldanh_muc, $qlbao_hanh, $qlbinh_luan);
+            $result = $this->permissionModel->createPermission($role, $qlnhap_kho, $qlnha_cung_cap, $qlnguoi_dung, $qlkhach_hang, $qldon_hang, $qlsan_pham, $qldanh_muc, $qlbao_hanh, $qlbinh_luan, $qlgiam_gia);
 
             if ($result) {
                 echo "Thêm quyền thành công!";
@@ -106,8 +107,9 @@ class PermissionController
             $qldanh_muc = isset($_POST['qldanh_muc']) ? 1 : 0;
             $qlbao_hanh = isset($_POST['qlbao_hanh']) ? 1 : 0;
             $qlbinh_luan = isset($_POST['qlbinh_luan']) ? 1 : 0;
+            $qlgiam_gia = isset($_POST['qlgiam_gia']) ? 1 : 0;
 
-            $result = $this->permissionModel->updatePermission($role, $qlnhap_kho, $qlnha_cung_cap, $qlnguoi_dung, $qlkhach_hang, $qldon_hang, $qlsan_pham, $qldanh_muc, $qlbao_hanh, $qlbinh_luan);
+            $result = $this->permissionModel->updatePermission($role, $qlnhap_kho, $qlnha_cung_cap, $qlnguoi_dung, $qlkhach_hang, $qldon_hang, $qlsan_pham, $qldanh_muc, $qlbao_hanh, $qlbinh_luan, $qlgiam_gia);
 
             if ($result) {
                 echo "Cập nhật quyền thành công!";

@@ -38,14 +38,16 @@ class ProductController
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $ten = $_POST['ten'];
-            $anh = $_POST['anh'];
+            // $anh = $_POST['anh'];
             $id_danh_muc = $_POST['id_danh_muc'];
             $gia = $_POST['gia'];
             // $so_luong = $_POST['so_luong'];
             // Set số lượng mặc định là 0
             $so_luong = 0;
             $mo_ta = $_POST['mo_ta'];
-
+            $anh = $_FILES['anh']['name']; // Tên của tệp ảnh
+            $anh_tmp = $_FILES['anh']['tmp_name']; // Đường dẫn tạm thời của tệp ảnh
+            move_uploaded_file($anh_tmp, __DIR__ . '../../image/' . $anh); // Di chuyển tệp ảnh vào thư mục lưu trữ
 
             $result = $this->productModel->createProduct($ten, $anh, $id_danh_muc, $gia, $so_luong, $mo_ta);
         }
@@ -71,31 +73,28 @@ class ProductController
 
     public function updateProduct()
     {
+
+        //cayyyy hàm nàyyyyyyyyyyyyyyyyyyyy 
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            // Nhận dữ liệu từ form
             $product_id = $_POST['product_id'];
             $ten = $_POST['ten'];
+            $anh = $_FILES['anh']['name']; // Tên của tệp ảnh
+            $anh_tmp = $_FILES['anh']['tmp_name']; // Đường dẫn tạm thời của tệp ảnh
+            move_uploaded_file($anh_tmp, __DIR__ . '../../image/' . $anh); // Di chuyển tệp ảnh vào thư mục lưu trữ
             $id_danh_muc = $_POST['id_danh_muc'];
             $gia = $_POST['gia'];
             $so_luong = $_POST['so_luong'];
             $mo_ta = $_POST['mo_ta'];
-            // Kiểm tra xem có tệp tin ảnh mới được tải lên không
-            if (isset($_FILES['anh']) && $_FILES['anh']['error'] == UPLOAD_ERR_OK) {
-                $anh = $_FILES['anh']['name']; // Tên tệp hình ảnh
-                $tmp_name = $_FILES['anh']['tmp_name']; // Đường dẫn tạm thời của tệp hình ảnh
-                $upload_dir = '../image/'; // Thư mục lưu trữ hình ảnh
 
-                // Di chuyển tệp hình ảnh vào thư mục lưu trữ
-                if (move_uploaded_file($tmp_name, $upload_dir . $anh)) {
-                    $result = $this->productModel->updateProduct($product_id, $ten, $anh, $id_danh_muc, $gia, $so_luong, $mo_ta);
-                }
-            } else {
-                // Nếu không có tệp hình ảnh mới được tải lên, sử dụng ảnh cũ từ cơ sở dữ liệu
+
+            //Nếu ảnh trống thì giữ nguyên ảnh cũ
+            if ($anh == '') {
                 $product = $this->productModel->getProductById($product_id);
                 $anh = $product['anh'];
-                // Gọi phương thức updateProduct từ model để cập nhật thông tin sản phẩm
-                $result = $this->productModel->updateProduct($product_id, $ten, $anh, $id_danh_muc, $gia, $so_luong, $mo_ta);
             }
+
+            $result = $this->productModel->updateProduct($product_id, $ten, $anh, $id_danh_muc, $gia, $so_luong, $mo_ta);
         }
     }
 }

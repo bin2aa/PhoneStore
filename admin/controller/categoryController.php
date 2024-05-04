@@ -23,8 +23,21 @@ class CategoryController
             $keyword = $_GET['search'];
             $categories = $this->categoryModel->searchCategory($keyword);
         }
+
         include __DIR__ . '/../view/categoryView.php';
     }
+
+    //xem sản phẩm theo danh mục
+
+    public function showProductByCategory()
+    {
+        if (isset($_GET['id'])) {
+            $category_id = $_GET['id'];
+            $products = $this->categoryModel->getProductByCategory($category_id);
+            include __DIR__ . '/../view/productsByCategoryView.php';
+        }
+    }
+
 
 
     public function showAddCategoryForm()
@@ -105,6 +118,9 @@ switch ($action) {
         break;
     case 'updateCategory':
         $categoryController->updateCategory();
+        break;
+    case 'viewProduct':
+        $categoryController->showProductByCategory();
         break;
     default:
         $categoryController->showCategoryList();
