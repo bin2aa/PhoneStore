@@ -123,7 +123,7 @@
             <h2 class="product-name"><?php echo $product['ten']; ?></h2>
             <a href="index.php?ctrl=productControllerUser&action=detail&id=<?php echo $product['id']; ?>"
                 class="product-image-link">
-                <img src="/image/<?php echo $product['anh']; ?>" alt="Hình ảnh sản phẩm" width="200"><br>
+                <img src="../image/SanPham/<?php echo $product['anh']; ?>" alt="Hình ảnh sản phẩm" width="200"><br>
             </a>
             <p class="product-price">Giá: <?php echo $product['gia']; ?> đ</p>
             <p class="product-stock">Còn lại: <?php echo $product['so_luong']; ?></p>
@@ -244,10 +244,10 @@ $(document).ready(function() {
         clearTimeout(timeoutId);
         var newNotification = $('<div id="notification' + notificationId +
             '" class="notification" style="top: ' + ((notificationId % 5) * 50 + 60) + 'px;"></div>'
-            );
+        );
         newNotification.html(
             '<span id="notification-text">Sản phẩm đã được thêm vào giỏ hàng thành công!</span><div class="loading-bar"></div>'
-            ); // Thêm nội dung thông báo và thanh tiến trình
+        ); // Thêm nội dung thông báo và thanh tiến trình
         notifications.push(newNotification); // Thêm thông báo mới vào mảng
         $('body').append(newNotification); // Hiển thị thông báo mới lên màn hình
         newNotification.addClass('show'); // Thêm lớp CSS .show để hiển thị thông báo
@@ -260,7 +260,7 @@ $(document).ready(function() {
             success: function(response) {
                 setTimeout(function() {
                     newNotification.removeClass(
-                    'show'); // Xóa lớp CSS .show để ẩn thông báo
+                        'show'); // Xóa lớp CSS .show để ẩn thông báo
                     var index = notifications.indexOf(newNotification);
 
                     for (var i = index; i < notifications.length; i++) {

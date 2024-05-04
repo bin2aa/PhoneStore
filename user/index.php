@@ -50,16 +50,14 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                     echo 'Xin chào: ' . $ten_dang_nhap  . '<br>';
                     echo 'Vai trò: ' . $vai_tro . '<br>';
                     echo '<li><a href="index.php?ctrl=customerUserController" class="menu-item" >Thông tin cá nhân</a></li>';
-                    echo '<li><a href="/login/index.php?ctrl=loginController&action=viewChangePassword" class="menu-item">Đổi mật khẩu</a></li>';
-                    echo '<li><a href="/login/index.php?ctrl=loginController&action=logout" class="menu-item" >Đăng xuất</a></li>';
-
-
+                    echo '<li><a href="../login/index.php?ctrl=loginController&action=viewChangePassword" class="menu-item">Đổi mật khẩu</a></li>';
+                    echo '<li><a href="../login/index.php?ctrl=loginController&action=logout" class="menu-item" >Đăng xuất</a></li>';
 
                     if ($vai_tro !== 'Khách hàng') {
-                        echo '<li><a href="/admin/index.php" class="menu-item">Quản lý</a></li>';
+                        echo '<li><a href="../admin/index.php" class="menu-item">Quản lý</a></li>';
                     }
                 } else {
-                    echo '<li><a href="/login/index.php?ctrl=loginController" class="menu-item">Đăng nhập</a></li>';
+                    echo '<li><a href="../login/index.php?ctrl=loginController" class="menu-item">Đăng nhập</a></li>';
                 }
                 ?>
                 <li> <a href="index.php?ctrl=cartController&action=showCart" class="menu-item">Giỏ hàng</a></li>

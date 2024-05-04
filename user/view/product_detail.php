@@ -61,11 +61,11 @@
 <body>
     <div class="product-detail">
         <div class="left-column">
-            <img src="/image/<?php echo $product['anh']; ?>" alt="<?php echo $product['ten']; ?>">
+            <img src="../image/SanPham/<?php echo $product['anh']; ?>" alt="<?php echo $product['ten']; ?>">
         </div>
         <div class="right-column">
             <h1><?php echo $product['ten']; ?></h1>
-            <img src="/image/<?php echo $product['anh']; ?>" alt="<?php echo $product['ten']; ?>">
+            <img src="../image/SanPham/<?php echo $product['anh']; ?>" alt="<?php echo $product['ten']; ?>">
             <p>Giá: <?php echo $product['gia']; ?> đ</p>
             <p>Số lượng còn lại: <?php echo $product['so_luong']; ?></p>
             <p><?php echo $product['mo_ta']; ?></p>
@@ -138,7 +138,7 @@
                         <div class="product-item">
                             <a
                                 href="index.php?ctrl=productControllerUser&action=detail&id=<?php echo $suggestedProduct['id']; ?>">
-                                <img src="/image/<?php echo $suggestedProduct['anh']; ?>"
+                                <img src="../image/SanPham/<?php echo $suggestedProduct['anh']; ?>"
                                     alt="<?php echo $suggestedProduct['ten']; ?>">
                                 <h3><?php echo $suggestedProduct['ten']; ?></h3>
                                 <p>Giá: <?php echo number_format($suggestedProduct['gia'], 0, ',', '.'); ?> đ</p>
