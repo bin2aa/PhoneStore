@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 29, 2024 lúc 12:47 PM
+-- Thời gian đã tạo: Th5 04, 2024 lúc 08:07 PM
 -- Phiên bản máy phục vụ: 10.4.24-MariaDB
 -- Phiên bản PHP: 8.1.6
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `storephone`
+-- Cơ sở dữ liệu: `phonestore`
 --
 
 -- --------------------------------------------------------
@@ -143,6 +143,30 @@ INSERT INTO `don_dat_hang` (`id`, `id_khach_hang`, `ngay`, `tong_tien`, `ghi_chu
 (89, 3, '2024-04-02 13:24:34', '12580000.00', '1 Nokia 8210 4G, 1 OPPO Reno11 5G', 'Đang xử lý'),
 (91, 2, '2024-04-28 13:33:57', '4790000.00', '1 realme C67', 'Chờ xác nhận'),
 (92, 1, '2024-03-20 14:37:12', '22990000.00', '1 Samsung Galaxy S24 5G', 'Đang xử lý');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `giam_gia`
+--
+
+CREATE TABLE `giam_gia` (
+  `id` int(11) NOT NULL,
+  `ten` varchar(255) DEFAULT NULL,
+  `dieu_kien_mua` decimal(10,3) DEFAULT NULL,
+  `phan_tram_giam_gia` decimal(5,2) DEFAULT NULL,
+  `ngay_bat_dau` datetime DEFAULT NULL,
+  `ngay_ket_thuc` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `giam_gia`
+--
+
+INSERT INTO `giam_gia` (`id`, `ten`, `dieu_kien_mua`, `phan_tram_giam_gia`, `ngay_bat_dau`, `ngay_ket_thuc`) VALUES
+(1, 'TƯNG BỪNG KHAI TRƯƠNG', '2000000.000', '5.00', '2024-03-15 00:00:00', '2024-03-25 23:59:59'),
+(2, '30/4 - 1/5', '4000000.000', '10.00', '2024-04-27 00:00:00', '2024-05-02 23:59:59'),
+(3, 'ĐÓN HÈ RỰC RỠ', '8000000.000', '9.99', '2024-05-05 00:00:00', '2024-05-15 23:59:59');
 
 -- --------------------------------------------------------
 
@@ -422,6 +446,12 @@ ALTER TABLE `don_dat_hang`
   ADD KEY `don_dat_hang_ibfk_1` (`id_khach_hang`);
 
 --
+-- Chỉ mục cho bảng `giam_gia`
+--
+ALTER TABLE `giam_gia`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Chỉ mục cho bảng `khach_hang`
 --
 ALTER TABLE `khach_hang`
@@ -510,6 +540,12 @@ ALTER TABLE `danh_muc_san_pham`
 --
 ALTER TABLE `don_dat_hang`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+
+--
+-- AUTO_INCREMENT cho bảng `giam_gia`
+--
+ALTER TABLE `giam_gia`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `khach_hang`
