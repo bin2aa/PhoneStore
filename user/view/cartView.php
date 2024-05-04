@@ -124,6 +124,7 @@
                 type: 'POST',
                 data: data,
                 success: function(response) {
+                    console.log(response);
                     alert("Tạo đơn hàng thành công");
                     $('.cart-items-form').html($(response).find('.cart-items-form').html());
                     location.reload();

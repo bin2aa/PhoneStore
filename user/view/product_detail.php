@@ -69,11 +69,9 @@
             <p>Giá: <?php echo $product['gia']; ?> đ</p>
             <p>Số lượng còn lại: <?php echo $product['so_luong']; ?></p>
             <p><?php echo $product['mo_ta']; ?></p>
-            <?php if ($product['so_luong'] > 0) { ?>
-                <a href="index.php?ctrl=cartController&action=addToCart&cart_id=<?php echo $product['id']; ?>&quantity=1" class="buy-button">Thêm vào giỏ hàng</a>
-            <?php } else { ?>
-                <p>Hiện tại sản phẩm đã hết hàng.</p>
-            <?php } ?>
+            <a href="#" class="buy-button" data-product-id="<?php echo $product['id']; ?>" data-product-status="<?php echo $product['so_luong'] > 0 ? 'in-stock' : 'out-of-stock'; ?>">
+                <?php echo $product['so_luong'] > 0 ? 'Thêm vào giỏ hàng' : 'Tạm hết hàng'; ?>
+            </a>
 
 
             <!-- ---------------------------------------------------------------------------------- -->
@@ -126,26 +124,7 @@
                 ?>
 
 
-                <!-- -------------------------  -->
-                <?php if (!empty($suggestedProducts)) { ?>
-                    <div class="suggested-products">
-                        <h2>BẠN CÓ THỂ THÍCH</h2>
-                        <div class="product-list">
-                            <?php foreach ($suggestedProducts as $suggestedProduct) { ?>
-                                <div class="product-item">
-                                    <a href="index.php?ctrl=productControllerUser&action=detail&id=<?php echo $suggestedProduct['id']; ?>">
-                                        <img src="/image/<?php echo $suggestedProduct['anh']; ?>" alt="<?php echo $suggestedProduct['ten']; ?>">
-                                        <h3><?php echo $suggestedProduct['ten']; ?></h3>
-                                        <p>Giá: <?php echo number_format($suggestedProduct['gia'], 0, ',', '.'); ?> đ</p>
-                                    </a>
-                                </div>
-                            <?php } ?>
-                        </div>
-                    </div>
-                <?php } ?>
 
-
-                <!-- -------------- -->
 
                 <!-- số trang -->
                 <div class="paginationComment">
@@ -184,7 +163,24 @@
                 </div>
             </div>
 
-
+            <!-- -------------------------  -->
+            <?php if (!empty($suggestedProducts)) { ?>
+                <div class="suggested-products">
+                    <h2>BẠN CÓ THỂ THÍCH</h2>
+                    <div class="product-list">
+                        <?php foreach ($suggestedProducts as $suggestedProduct) { ?>
+                            <div class="product-item">
+                                <a href="index.php?ctrl=productControllerUser&action=detail&id=<?php echo $suggestedProduct['id']; ?>">
+                                    <img src="/image/<?php echo $suggestedProduct['anh']; ?>" alt="<?php echo $suggestedProduct['ten']; ?>">
+                                    <h3><?php echo $suggestedProduct['ten']; ?></h3>
+                                    <p>Giá: <?php echo number_format($suggestedProduct['gia'], 0, ',', '.'); ?> đ</p>
+                                </a>
+                            </div>
+                        <?php } ?>
+                    </div>
+                </div>
+            <?php } ?>
+            <!-- -------------- -->
 
 
         </div>

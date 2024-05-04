@@ -1,3 +1,39 @@
+.notification {
+    display: none;
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: mediumseagreen;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 300px;
+    z-index: 9999;
+    transition: top 0.5s ease-out;
+}
+
+.notification.show {
+    display: block;
+}
+
+.loading-bar {
+    height: 4px;
+    background-color: #fff;
+    width: 0%;
+    animation: loading 0.5s linear;
+}
+
+@keyframes loading {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+
 /* Resetting default margin and padding */
 * {
     margin: 0;

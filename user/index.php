@@ -20,16 +20,26 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="jsUser/price.js"></script>
     <script src="jsUser/comment.js"></script>
     <script src="jsUser/productView.js"></script>
     <script src="jsUser/cart.js"></script>
 
     <link rel="stylesheet" href="style/homeStyle.css">
+    <link rel="stylesheet" href="style/productViewStyle.css">
+    <link rel="stylesheet" href="style/SlideStyle.css">
 
 </head>
 
 <body>
+
+
+    <!-- Container Hiển thị thông báo khi thêm vào giỏ hàng -->
+    <div id="notification" class="notification">
+        <span id="notification-text"></span>
+        <div class="loading-bar"></div>
+    </div>
+
+
     <div class="header">
         <a href="" class="logo">
             <img src="../image/logo.jpg" alt="" height=100px width=100px>
@@ -50,7 +60,6 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                     echo 'Xin chào: ' . $ten_dang_nhap  . '<br>';
                     echo 'Vai trò: ' . $vai_tro . '<br>';
                     echo '<li><a href="index.php?ctrl=customerUserController" class="menu-item" >Thông tin cá nhân</a></li>';
-                    echo '<li><a href="/login/index.php?ctrl=loginController&action=viewChangePassword" class="menu-item">Đổi mật khẩu</a></li>';
                     echo '<li><a href="/login/index.php?ctrl=loginController&action=logout" class="menu-item" >Đăng xuất</a></li>';
 
 

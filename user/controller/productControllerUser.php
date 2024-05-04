@@ -18,32 +18,35 @@ class ProductControllerUser
         $categories = $this->productModel->getAllCategoriesPR();
         $maxPrice = $this->productModel->getProductsPriceMax();
 
-        //Sắp xếp sản phẩm theo giá tăng dần hoặc giảm dần
-        if (isset($_GET['action'])) {
+        // Lọc theo danh mục
+        if (isset($_GET['filter']) && $_GET['filter'] == 'category' && isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $products = $this->productModel->getProductByCategory($id);
+        }
+        // Lọc theo giá từ n đến m
+        elseif (isset($_GET['price_min']) && isset($_GET['price_max'])) {
+            $price_min = $_GET['price_min'];
+            $price_max = $_GET['price_max'];
+            $products = $this->productModel->sortProductsByPriceRange($price_min, $price_max);
+        }
+        // --- Tìm kiếm sản phẩm ---
+        elseif (isset($_GET['search'])) {
+            $keyword = $_GET['search'];
+            $products = $this->productModel->searchProducts($keyword);
+        }
+        // Sắp xếp sản phẩm theo giá
+        elseif (isset($_GET['action'])) {
             if ($_GET['action'] == 'sortProductsByPriceAsc') {
                 $products = $this->productModel->sortProductsByPriceAsc();
             } elseif ($_GET['action'] == 'sortProductsByPriceDesc') {
                 $products = $this->productModel->sortProductsByPriceDesc();
             }
-        }
-
-        //loc theo danh muc
-        if (isset($_GET['id'])) {
-            $id = $_GET['id'];
-            $products = $this->productModel->getProductByCategory($id);
-        }
-        //Locc theo giá từ n đến m
-        elseif (isset($_GET['price_min']) && isset($_GET['price_max'])) {
-            $price_min = $_GET['price_min'];
-            $price_max = $_GET['price_max'];
-            $products = $this->productModel->sortProductsByPriceRange($price_min, $price_max);
         } else {
             $products = $this->productModel->getAllProducts();
         }
 
 
-
-        //---------------------------Phân trang-----------------------------    
+        //---------------------------Phân trang-----------------------------
         $item_per_page = 6; //Số lượng sản phẩm hiển thị trên mỗi trang
         $current_page = isset($_GET['page']) ? $_GET['page'] : 1; //Trang hiện tại
 
@@ -52,18 +55,7 @@ class ProductControllerUser
 
         //Tính offset (vị trí bắt đầu của mỗi trang)
         $offset = ($current_page - 1) * $item_per_page;
-        // $products = $this->productModel->getProductsByPage($item_per_page, $offset);
         $products = array_slice($products, $offset, $item_per_page);
-
-
-
-        // --- Tìm kiếm sản phẩm ---
-
-        if (isset($_GET['search'])) {
-            $keyword = $_GET['search'];
-            $products = $this->productModel->searchProducts($keyword);
-        }
-
 
 
 

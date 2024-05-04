@@ -8,7 +8,7 @@
     <style>
         /* Style cho thông tin khách hàng */
         .customer-info {
-            width: 400px;
+            width: 500px;
             margin: 0 auto;
             padding: 20px;
             border: 1px solid #ccc;
@@ -49,8 +49,13 @@
         echo '<li><label>Email:</label> ' . $customerData['email'] . '</li>';
         echo '<li><label>Địa chỉ:</label> ' . $customerData['dia_chi'] . '</li>';
         echo '</ul>';
+
         ?>
+
+
         <div style="display: flex; justify-content: center; margin-top: 20px;">
+            <a href="/login/index.php?ctrl=loginController&action=viewChangePassword">Đổi mật khẩu</a>
+            <span style="margin: 0 10px;">|</span>
             <a href="index.php?ctrl=customerUserController&action=showUpdateCustomerForm&id=<?php echo $customer[0]['id']; ?>">Chỉnh sửa thông tin</a>
             <span style="margin: 0 10px;">|</span>
             <a href="index.php?ctrl=customerUserController&action=viewOrderList">Danh sách đơn hàng</a>
