@@ -207,7 +207,7 @@
             // Chuyển đổi loại biểu đồ
             
             if (currentChartType === 'bar') {
-                currentChartType = 'doughnut';
+                currentChartType = 'line';
             } else {
                 currentChartType = 'bar';
             }

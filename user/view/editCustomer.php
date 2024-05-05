@@ -61,19 +61,22 @@
             <input type="text" id="ten" name="ten" value="<?php echo $customer['ten']; ?>">
 
             <label for="so_dien_thoai">Số điện thoại:</label>
-            <input type="tel" id="so_dien_thoai" name="so_dien_thoai" value="<?php echo $customer['so_dien_thoai']; ?>">
+            <input type="tel" id="so_dien_thoai" name="so_dien_thoai" pattern="[0-9]{10,11}" value="<?php echo $customer['so_dien_thoai']; ?>">
 
             <label for="email">Email:</label>
-<input type="email" id="email" name="email" value="<?php echo $customer['email']; ?>" readonly style="background-color: #f0f0f0; color: #666; cursor: not-allowed;">
+            <input type="email" id="email" name="email" value="<?php echo $customer['email']; ?>" >
 
             <label for="dia_chi">Địa chỉ:</label>
             <input type="text" id="dia_chi" name="dia_chi" value="<?php echo $customer['dia_chi']; ?>">
 
             <input type="hidden" name="id_nguoi_dung" value="<?php echo $id_nguoi_dung; ?>">
 
-            
+
             <input type="submit" value="Lưu chỉnh sửa">
         </form>
+
+        <a href="javascript:history.go(-1)">Quay lại</a>
+
     </div>
 </body>
 

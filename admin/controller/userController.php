@@ -39,6 +39,7 @@ class UserController
             $vai_tro = $_POST['vai_tro'];
             $trang_thai = $_POST['trang_thai'];
 
+            
             if ($this->userModel->checkUsernameExists($ten_dang_nhap)) {
                 echo "Tên đăng nhập đã tồn tại. Vui lòng chọn tên đăng nhập khác.";
                 return; // Dừng lại và không thực hiện thêm người dùng mới

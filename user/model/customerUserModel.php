@@ -81,4 +81,11 @@ class customerUserModel
         $result = $this->db->select($sql);
         return $result;
     }
+
+    public function checkEmailExists($email, $id)
+    {
+        $query = "SELECT COUNT(*) as count FROM khach_hang WHERE email = '$email' AND id !='$id'";
+        $result = $this->db->select($query);
+        return $result[0]['count'] > 0;
+    }
 }

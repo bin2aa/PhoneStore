@@ -163,24 +163,24 @@ $(document).ready(function () {
     });
 
     function filterProducts(minPrice, maxPrice) {
+        var url = 'index.php?ctrl=productControllerUser'; // Đường dẫn tới file xử lý ajax
         $.ajax({
-            url: 'index.php?ctrl=productControllerUser', // Đường dẫn tới file xử lý ajax
+            url: url,
             type: 'GET',
             data: {
                 price_min: minPrice,
                 price_max: maxPrice
             },
             success: function (response) {
-
                 console.log(response);
-                // Hiển thị danh sách sản phẩm đã lọc
-                // $('#product-list').html(response);
-
                 $('#product-list').html($(response).find('.product-list').html());
                 $('.paginationProduct').html($(response).find('.paginationProduct').html());
+
+                var newUrl = url + '&price_min=' + minPrice + '&price_max=' + maxPrice;
+
+                history.pushState({}, '', newUrl);
             },
             error: function (xhr, status, error) {
-                // Xử lý lỗi nếu có
                 console.error(xhr.responseText);
             }
         });

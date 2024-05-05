@@ -139,21 +139,26 @@ class loginController
 
             // Kiểm tra xem mật khẩu cũ có đúng không
             if (md5($old_password) !== $current_password) {
-                echo '<script>alert("Mật khẩu cũ không đúng"); window.location.href = "index.php?ctrl=loginController&action=viewChangePassword";</script>';
-                exit; // Dừng việc thực thi tiếp nếu mật khẩu cũ không đúng
+                $errors[] = 'paswordOldErrorMatch';
             }
 
-            // Kiểm tra xem mật khẩu mới và mật khẩu nhập lại có khớp nhau không
+            // Kiểm tra mật khẩu mới và mật khẩu xác nhận có trùng khớp không
             if ($mat_khau_moi !== $confirm_password) {
-                echo '<script>alert("Nhập lại mật khẩu không khớp"); window.location.href = "index.php?ctrl=loginController&action=viewChangePassword";</script>';
-                exit; // Dừng việc thực thi tiếp nếu mật khẩu không khớp
+                $errors[] = 'confirm-password-error';
             }
+
+
+            if (!empty($errors)) {
+                echo json_encode($errors);
+                return;
+            }
+
             $result = $this->loginModel->changePassword($id_nguoi_dung, $mat_khau_moi);
-            if ($result) {
-                echo '<script>alert("Đổi mật khẩu thành công"); window.location.href = "/user/index.php?ctrl=productControllerUser";</script>';
-            } else {
-                echo '<script>alert("Đổi mật khẩu không thành công"); window.location.href = "index.php?ctrl=loginController";</script>';
-            }
+            // if ($result) {
+            // echo '<script>alert("Đổi mật khẩu thành công"); window.location.href = "/user/index.php?ctrl=productControllerUser";</script>';
+            // } else {
+            // echo '<script>alert("Đổi mật khẩu không thành công"); window.location.href = "index.php?ctrl=loginController";</script>';
+            // }
         }
     }
 

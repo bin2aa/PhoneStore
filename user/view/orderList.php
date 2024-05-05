@@ -98,7 +98,7 @@
 
 
         </div>
-
+        <a href="javascript:history.go(-1)">Quay lại</a>
     </div>
 </body>
 

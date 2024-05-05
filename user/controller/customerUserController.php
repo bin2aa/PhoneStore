@@ -66,6 +66,11 @@ class CustomerUserController
             $dia_chi = $_POST['dia_chi'];
             $id_nguoi_dung = $_POST['id_nguoi_dung'];
 
+            $email_exists = $this->customerModel->checkEmailExists($email, $customer_id);
+            if ($email_exists) {
+                echo "email_exists";
+                return;
+            }
             $result = $this->customerModel->updateCustomer($customer_id, $ten, $so_dien_thoai, $email, $dia_chi);
 
             if ($result) {

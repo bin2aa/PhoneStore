@@ -23,6 +23,8 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
     <script src="jsUser/comment.js"></script>
     <script src="jsUser/productView.js"></script>
     <script src="jsUser/cart.js"></script>
+    <script src="jsUser/infoUser.js"></script>
+
 
     <link rel="stylesheet" href="style/homeStyle.css">
     <link rel="stylesheet" href="style/productViewStyle.css">
@@ -60,10 +62,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                     echo 'Xin chào: ' . $ten_dang_nhap  . '<br>';
                     echo 'Vai trò: ' . $vai_tro . '<br>';
                     echo '<li><a href="index.php?ctrl=customerUserController" class="menu-item" >Thông tin cá nhân</a></li>';
-                    echo '<li><a href="/login/index.php?ctrl=loginController&action=logout" class="menu-item" >Đăng xuất</a></li>';
-
-
-
+                    echo '<li><a href="/login/index.php?ctrl=loginController&action=logout" class="menu-item" onclick="return confirm(\'Bạn có chắc chắn muốn đăng xuất không?\');">Đăng xuất</a></li>';
                     if ($vai_tro !== 'Khách hàng') {
                         echo '<li><a href="/admin/index.php" class="menu-item">Quản lý</a></li>';
                     }

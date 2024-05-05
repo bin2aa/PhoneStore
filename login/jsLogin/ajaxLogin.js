@@ -1,49 +1,3 @@
-// $(document).ready(function () {
-//     $('.register_form').on('submit', function (e) {
-//         e.preventDefault();
-//         var formData = {
-//             ten_dang_nhap: $('#ten_dang_nhap').val(),
-//             password: $('#password').val(),
-//             confirm_password: $('#confirm_password').val(),
-//             ho_ten: $('#ho_ten').val(),
-//             email: $('#email').val(),
-//             dia_chi: $('#dia_chi').val(),
-//             so_dien_thoai: $('#so_dien_thoai').val()
-//         };
-//         // Kiểm tra xác nhận mật khẩu
-//         if (password !== confirmPassword) {
-//             $('#confirm-password-error').text('Mật khẩu và xác nhận mật khẩu không khớp.').show();
-//             return;
-//         }else{
-//             $('#confirm-password-error').text('').hide();
-//         }
-
-//         $.ajax({
-//             type: "POST",
-//             url: "index.php?ctrl=loginController&action=register",
-//             data: formData,
-//             success: function (response) {
-//                 if (response === 'success') {
-//                     alert("Đăng ký thành công!");
-//                 }
-//                 else if (response.trim() === 'user_exists') {
-//                     alert("Tài khoản đã tồn tại. Vui lòng chọn tên đăng nhập khác.");
-//                 }
-//                 else if (response.trim() === 'email_exists') {
-//                     alert("Email đã tồn tại. Vui lòng chọn email khác.");
-//                 }
-
-
-//             },
-//             error: function () {
-//                 alert("Có lỗi xảy ra. Vui lòng thử lại sau.");
-//             }
-//         });
-//     });
-// });
-
-
-
 
 $(document).ready(function () {
 
@@ -132,4 +86,47 @@ $(document).ready(function () {
             }
         });
     });
+
+
+
+
+    $('.changePassword').on('submit', function (e) {
+        e.preventDefault();
+        var url = $(this).attr('action');
+        var data = $(this).serialize();
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: data,
+            success: function (response) {
+                var confirmpassworderror = response.match(/confirm-password-error/);
+                if (confirmpassworderror) {
+                    $('#confirm-password-error').text('Mật khẩu không khớp.').show();
+                } else {
+                    $('#confirm-password-error').hide();
+                }
+
+                // Kiểm tra nếu có lỗi mật khẩu cũ không đúng
+                var paswordOldErrorMatch = response.match(/paswordOldErrorMatch/);
+                if (paswordOldErrorMatch) {
+                    $('#paswordOldErrorMatch').text('Mật khẩu củ không đúng!').show();
+                }
+                else {
+                    $('#paswordOldErrorMatch').hide();
+                }
+
+                if (!paswordOldErrorMatch && !confirmpassworderror) {
+                    $('#paswordOldErrorMatch').hide();
+                    $('#confirm-password-errore').hide();
+                    alert("Đăng ký thành công!");
+                    window.location.href = '/user/index.php?ctrl=customerUserController';
+                }
+                console.log(response);
+            },
+            error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+            }
+        });
+    });
+
 });

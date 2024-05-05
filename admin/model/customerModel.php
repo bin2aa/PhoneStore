@@ -71,4 +71,6 @@ class CustomerModel
         $query = "SELECT * FROM khach_hang WHERE ten LIKE '%$keyword%' ";
         return $this->db->select($query);
     }
+
+  
 }

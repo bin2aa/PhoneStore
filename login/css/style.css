@@ -17,7 +17,7 @@ body {
     align-items: center;
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 400% 400%;
-    animation: spin 10s linear infinite;
+    animation: spin 5s linear infinite;
 }
 
 form {
@@ -102,5 +102,6 @@ button:hover {
 .error-message {
     color: red;
     font-size: 12px;
-    display: none; /* Ẩn thông báo lỗi ban đầu */
+    display: none;
+    /* Ẩn thông báo lỗi ban đầu */
 }
