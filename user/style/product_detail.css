@@ -1,130 +1,117 @@
-/* Reset CSS */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.product-detail,
+.product-detail p,
+.product-detail h2 {
+    color: #ffffff;
 }
 
-/* Body Styles */
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f9f9f9;
+
+/* Phần ảnh sản phẩm */
+.right-column {
+    float: right; /* Đưa phần tử sang bên phải */
+    width: 40%; /* Thiết lập chiều rộng cho phần tử */
     padding: 20px;
-}
-
-/* Product Detail Container */
-.product-detail {
-    display: flex;
-    flex-wrap: wrap;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 20px;
-}
-
-/* Left Column (Image) */
-.product-detail .left-column {
-    flex: 1;
-    margin-right: 20px;
-}
-
-/* Right Column (Text Content) */
-.product-detail .right-column {
-    flex: 2;
+    box-sizing: border-box; /* Tính cả padding và border vào chiều rộng và chiều cao */
+    background-color: rgba(84, 83, 83, 0.8); /* Màu nền với độ trong suốt */
+    border-top-left-radius: 300px; /* Bo tròn góc của phần tử */
 }
 
 
-/* Product Title */
-.product-detail h1 {
+
+
+.right-column img {
+    max-width: 250px;
+    height: auto;
+    margin-bottom: 10px;
+    transition: box-shadow 0.3s ease;
+    /* Thêm transition cho hiệu ứng shadow */
+    border-radius: 200px;
+}
+
+.right-column img:hover {
+    background-image: linear-gradient(45deg, #ff0000, #ff8400, #ffe600, #ff8400, #ff0000);
+    /* Gradient màu sắc rực lửa */
+    background-size: 400% 400%;
+    /* Kích thước gradient */
+    animation: animateGradient 5s linear infinite;
+    /* Thêm animation */
+    border-end-end-radius: 10px;
+}
+
+@keyframes animateGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.right-column h1 {
     font-size: 24px;
     margin-bottom: 10px;
 }
 
-/* Product Image */
-.product-detail img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 20px;
-    border-radius: 5px;
+.right-column p {
+    margin-bottom: 5px;
 }
 
-/* Product Price */
-.product-detail p {
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-/* Buy Button */
 .buy-button {
     display: inline-block;
-    padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #ff8a00;
     color: #fff;
-    text-decoration: none;
+    padding: 10px 20px;
+    border: none;
     border-radius: 5px;
+    text-decoration: none;
     transition: background-color 0.3s ease;
 }
 
 .buy-button:hover {
-    background-color: #0056b3;
+    background-color: #da1b60;
 }
 
-/* Comment Section */
-.comment-section {
-    margin-top: 30px;
-}
 
-.comment-section h2 {
-    font-size: 20px;
-    margin-bottom: 15px;
-}
 
-.comment {
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 15px;
-    margin-bottom: 15px;
-}
 
-.comment p.author {
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.comment button {
-    background-color: transparent;
-    border: none;
-    color: #007bff;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.comment button:hover {
-    color: #0056b3;
-}
-
-/* Comment Form */
+/* Phần thêm bình luận */
 .comment-form {
-    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .comment-form h3 {
     font-size: 20px;
-    margin-bottom: 15px;
+    color: #00ff00;
+    margin-bottom: 10px;
 }
 
 .comment-form textarea {
-    width: 100%;
+    width: 35%;
+    height: 100px;
     padding: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #000000;
     border-radius: 5px;
+    resize: vertical;
+    background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08);
+    transition: box-shadow 0.3s ease-in-out, background 0.3s ease-in-out;
+    outline: none;
+}
+
+.comment-form textarea:focus {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    background: linear-gradient(120deg, #84fab0 0%, #1fd1f9 50%, #5c33f6 100%);
 }
 
 .comment-form button {
-    padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #ff8a00;
     color: #fff;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -132,5 +119,161 @@ body {
 }
 
 .comment-form button:hover {
-    background-color: #0056b3;
+    background-color: #da1b60;
+}
+
+/* Phần bình luận */
+.comment-heading {
+    font-size: 24px;
+    color: #da1b60;
+    /* Màu hồng sinh động */
+    margin-bottom: 20px;
+
+}
+
+.comment-section {
+    margin-top: 20px;
+
+}
+
+.comment {
+    width: 30%;
+    margin-bottom: 20px;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    padding: 10px;
+    /* background-color: #f9f9f9; */
+    /* Màu nền nhẹ */
+}
+
+.comment p {
+    margin: 0;
+}
+
+.author {
+    font-weight: bold;
+    color: #333;
+}
+
+.content {
+    margin-top: 5px;
+    color: #666;
+    /* Màu văn bản nhẹ nhàng */
+}
+
+.no-comments {
+    color: #999;
+    /* Màu văn bản nhạt */
+}
+
+.deleteComment button {
+    background-color: #da1b60;
+    /* Màu nền đỏ */
+    color: #fff;
+    /* Màu văn bản trắng */
+    border: none;
+    padding: 1px 6px;
+    /* Độ lớn của nút */
+    border-radius: 5px;
+    /* Góc bo tròn */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    /* Hiệu ứng hover */
+}
+
+.deleteComment button:hover {
+    background-color: #b01dce;
+    /* Màu nền hồng khi hover */
+}
+
+
+
+/* Phân trang */
+.paginationComment {
+    margin-top: 20px;
+}
+
+.paginationComment a {
+    display: inline-block;
+    background-color: #ff8a00;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.paginationComment a.active {
+    background-color: #da1b60;
+}
+
+.paginationComment a:hover {
+    background-color: #da1b60;
+}
+
+/* Sản phẩm gợi ý */
+.suggested-products {
+    margin-bottom: 30px;
+    padding-top: 150px;
+    /* Khoảng cách dưới phần sản phẩm gợi ý */
+}
+
+.suggested-products h2 {
+    font-size: 20px;
+    /* Cỡ chữ lớn hơn */
+    color: #ffffff;
+    /* Màu chữ đậm hơn */
+    margin-bottom: 10px;
+    /* Khoảng cách dưới tiêu đề */
+    font-family: Arial, sans-serif;
+    /* Đổi font chữ */
+
+}
+
+.product-list {
+    display: flex;
+    /* Hiển thị các sản phẩm theo hàng ngang */
+    flex-wrap: wrap;
+    /* Cho phép các sản phẩm xuống dòng khi không đủ không gian */
+    gap: 20px;
+    /* Khoảng cách giữa các sản phẩm */
+    justify-content: space-between;
+    /* Căn chỉnh các sản phẩm theo hàng ngang với khoảng trống đều nhau giữa chúng */
+}
+
+.product-item {
+
+    flex-basis: calc(25% - 20px);
+    /* Độ rộng cơ bản của mỗi sản phẩm, với khoảng cách 20px */
+    margin-bottom: 20px;
+    /* Khoảng cách dưới mỗi sản phẩm */
+    border: 1px solid #ccc;
+    /* Đống khung cho từng ô */
+    border-radius: 5px;
+    /* Bo tròn các góc của ô */
+    overflow: hidden;
+    /* Ẩn bất kỳ nội dung nào vượt ra ngoài khung */
+    transition: transform 0.3s;
+    /* Hiệu ứng chuyển động khi hover */
+}
+
+.product-item h3,
+.product-item p,
+.product-item a {
+    color: #ffffff;
+    text-decoration: none;
+    /* Thay đổi màu chữ thành màu xanh dương, bạn có thể thay đổi mã màu tùy thích */
+}
+
+.product-item:hover {
+    transform: translateY(-5px);
+    /* Dịch chuyển ô lên trên khi hover */
+}
+
+.product-item img {
+    width: 100%;
+    /* Đảm bảo hình ảnh điền đầy khung */
+    height: auto;
+    /* Tự động tính toán chiều cao dựa trên tỷ lệ khung hình */
 }

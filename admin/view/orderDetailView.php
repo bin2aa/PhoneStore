@@ -20,6 +20,7 @@
 </head>
 
 <body>
+<div class="container mt-5">
     <div class=detailOrder>
         <h2>Chi tiết đơn hàng</h2>
         <table>

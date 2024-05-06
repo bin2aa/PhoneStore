@@ -47,7 +47,7 @@ class ProductControllerUser
 
 
         //---------------------------Phân trang-----------------------------
-        $item_per_page = 6; //Số lượng sản phẩm hiển thị trên mỗi trang
+        $item_per_page = 8; //Số lượng sản phẩm hiển thị trên mỗi trang
         $current_page = isset($_GET['page']) ? $_GET['page'] : 1; //Trang hiện tại
 
         //lấy tổng số sản phẩm

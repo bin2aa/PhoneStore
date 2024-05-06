@@ -1,126 +1,107 @@
-/* Reset CSS */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Body Styles */
 .CartContent {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f9f9f9;
+    max-width: 800px;
+    margin: 0 auto;
     padding: 20px;
 }
 
-/* Page Title */
 h1 {
-    font-size: 28px;
+    text-align: center;
     margin-bottom: 20px;
 }
 
-/* Cart Items Container */
 .cart-item {
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 20px;
     display: flex;
     align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 20px;
 }
 
 .item-image {
-    flex: 1;
+    flex: 0 0 100px;
     margin-right: 20px;
 }
 
 .item-image img {
-    border-radius: 5px;
+    max-width: 100%;
 }
 
 .item-details {
-    flex: 3;
-}
-
-.item-name {
-    display: block;
-    margin-bottom: 5px;
+    flex-grow: 1;
 }
 
 .quantity-section {
-    display: flex;
-    align-items: center;
-}
-
-.quantity-buttons {
-    display: flex;
+    margin-bottom: 10px;
 }
 
 .quantity-buttons button {
-    padding: 5px 10px;
-    background-color: #007bff;
+    background-color: #ff8a00;
     color: #fff;
     border: none;
-    border-radius: 3px;
+    border-radius: 5px;
+    padding: 5px 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
 .quantity-buttons button:hover {
-    background-color: #0056b3;
+    background-color: #da1b60;
 }
 
 .item-total {
-    flex: 2;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    margin-top: 10px;
 }
 
 .item-total a {
-    color: #007bff;
+    color: #da1b60;
     text-decoration: none;
+    margin-left: 10px;
 }
 
 .item-total a:hover {
-    color: #0056b3;
+    color: #b01dce;
 }
 
+.cart-items-form p {
+    margin-bottom: 10px;
+}
 
-/* Order Form */
-form {
+.buyAllForm {
     margin-top: 20px;
 }
 
-form input[type="text"] {
-    width: 100%;
-    padding: 10px;
+.buyAllForm h3 {
     margin-bottom: 10px;
-    border-radius: 5px;
 }
 
-form button {
-    padding: 10px 20px;
-    background-color: #007bff;
+.buyAllForm select,
+.buyAllForm input[type="text"],
+.buyAllForm button {
+    margin-bottom: 10px;
+}
+
+.buyAllForm select {
+    width: 100%;
+    padding: 5px;
+}
+
+.buyAllForm input[type="text"] {
+    width: 100%;
+    padding: 5px;
+}
+
+.buyAllForm button {
+    background-color: #ff8a00;
     color: #fff;
     border: none;
     border-radius: 5px;
+    padding: 10px 20px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-form button:hover {
-    background-color: #0056b3;
+.buyAllForm button:hover {
+    background-color: #da1b60;
 }
 
-/* Discount Information */
-h3 {
-    font-size: 20px;
-    margin-top: 20px;
-}
-
-h4 {
-    font-size: 18px;
-    margin-top: 10px;
+.error-message {
+    color: red;
 }

@@ -16,6 +16,8 @@ $(document).ready(function () {
             success: function (response) {
                 var error = response.match(/Tên đăng nhập hoặc mật khẩu không đúng./);
                 var susses = response.match(/Đăng nhập thành công/);
+                var lock = response.match(/Khoa tai khoan/);
+
                 if (error) {
                     $('#login-error').text('Tên tài khoản hoặc mật khẩu không chính xác.').show();
                 }
@@ -25,6 +27,9 @@ $(document).ready(function () {
                 if (susses) {
                     alert("Đăng nhập thành công!");
                     window.location.href = '/user/index.php?ctrl=productControllerUser';
+                }
+                if (lock) {
+                    alert("Tài khoản của bạn đã bị khóa!");
                 }
 
 

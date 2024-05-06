@@ -31,7 +31,9 @@ class loginController
 
             if ($login) {
                 if ($login['trang_thai'] == 0 && $login['vai_tro'] !== 'Quản trị viên') {
-                    echo "Tài khoản của bạn đã bị khóa. Vui lòng liên hệ quản trị viên để biết thêm thông tin.; </script>";
+
+                    // echo "Tài khoản của bạn đã bị khóa. Vui lòng liên hệ quản trị viên để biết thêm thông tin.; </script>";
+                    echo "Khoa tai khoan";
                     exit;
                 }
                 // Đăng nhập thành công, lưu thông tin người dùng vào session

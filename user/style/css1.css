@@ -1,0 +1,169 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to right, #ff8a00, #da1b60, #ff0066);
+    color: #fff;
+    position: fixed;
+    padding: 10px 0;
+
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    transition: padding 0.3s, background 0.3s; /* Thêm transition cho padding và background */
+}
+
+/* CSS cho phần content */
+.content {
+    height: 100%; /* Chiều cao của nội dung để thử nghiệm */
+    padding-top: 150px; /* Đảm bảo nội dung không bị che khuất bởi header */
+}
+
+/* Thêm class .header-scrolled cho header khi người dùng cuộn trang */
+.header-scrolled {
+    padding: 10px 0;
+    background: linear-gradient(to right, #ff8a00, #da1b60, #ff0066); /* Màu nền mới khi cuộn */
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+}
+
+.menu-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.menu-item {
+    margin: 0 15px;
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+}
+
+.menu-item:hover {
+    color: #ffd700;
+}
+
+.menu-item::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0%;
+    height: 2px;
+    background-color: #ffd700;
+    transition: width 0.3s;
+}
+
+.menu-item:hover::after {
+    width: 100%;
+}
+
+/* Footer */
+#footer {
+    background: linear-gradient(to right, #ff8a00, #da1b60, #ff0066);
+}
+
+#footer h4 {
+    color: #fff;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#footer .form-control {
+    width: calc(20% - 40px);
+    border-radius: 30px;
+    padding: 15px 20px;
+    border: none;
+    background-color: #eee;
+    margin-bottom: 20px;
+}
+
+#footer .btn-primary {
+    border-radius: 30px;
+    padding: 10px 30px;
+    border: none;
+    background: #fff;
+    color: #333;
+    transition: background 0.3s, color 0.3s;
+}
+
+#footer .btn-primary:hover {
+    background: #ffd700;
+    color: #fff;
+}
+
+#footer a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+#footer a:hover {
+    color: #ffd700;
+}
+
+/* Copyright */
+.copyright {
+    background-color: #946d6d;
+    color: #fff;
+    padding: 15px 0;
+}
+
+/* Background video */
+
+video#bg-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1000;
+    filter: brightness(70%);
+}
+
+
+
+/* Thêm hiệu ứng bóng */
+body {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.5s ease-in-out;
+
+}
+
+/* Khi hover, tăng độ sáng của video */
+body:hover video#bg-video {
+    filter: brightness(80%);
+}
+
+/* Sử dụng màu sáng cho các phần tử */
+header {
+    background-color: #FFF;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    background-color: #E6E6E6;
+}
+
+main {
+    background-color: #F5F5F5;
+}
+
+footer {
+    background-color: #EFEFEF;
+}

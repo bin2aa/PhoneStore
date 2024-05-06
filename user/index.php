@@ -26,9 +26,52 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
     <script src="jsUser/infoUser.js"></script>
 
 
-    <link rel="stylesheet" href="style/homeStyle.css">
-    <link rel="stylesheet" href="style/productViewStyle.css">
-    <link rel="stylesheet" href="style/SlideStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style/css1.css">
+    <link rel="stylesheet" href="style/productViewUser.css">
+    <link rel="stylesheet" href="style/product_detail.css">
+    <link rel="stylesheet" href="style/cartStyle.css">
+    <!-- <link rel="stylesheet" href="style/homeStyle.css"> -->
+    <!-- <link rel="stylesheet" href="style/productViewStyle.css"> -->
+    <!-- <link rel="stylesheet" href="style/SlideStyle.css"> -->
+
+
+    <style>
+        .notification {
+            display: none;
+            position: fixed;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: mediumseagreen;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 300px;
+            z-index: 9999;
+            transition: top 0.5s ease-out;
+        }
+
+        .notification.show {
+            display: block;
+        }
+
+        .loading-bar {
+            height: 4px;
+            background-color: #fff;
+            width: 0%;
+            animation: loading 0.5s linear;
+        }
+
+        @keyframes loading {
+            0% {
+                width: 0%;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+    </style>
 
 </head>
 
@@ -42,13 +85,14 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
     </div>
 
 
+
     <div class="header">
-        <a href="" class="logo">
-            <img src="../image/logo.jpg" alt="" height=100px width=100px>
+        <a href="index.php?ctrl=productControllerUser" class="logo">
+            <img src="../image/logo.jpg"  alt="" height=100px width=100px>
         </a>
         <div class="menu">
             <ul class="menu-list">
-                <li><a href="index.php?ctrl=productControllerUser" class="menu-item">Trang chủ</a></li>
+                <!-- <li><a href="index.php?ctrl=productControllerUser" class="menu-item">Trang chủ</a></li> -->
                 <?php
                 // Kiểm tra xem người dùng đã đăng nhập hay chưa
                 $ten_dang_nhap = Session::getSessionValue('ten_dang_nhap');
@@ -58,10 +102,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                 // Lấy danh sách quyền từ session
 
                 if ($ten_dang_nhap) {
-                    echo 'Id khách hàng: ' . $id_khach_hang . '<br>';
-                    echo 'Xin chào: ' . $ten_dang_nhap  . '<br>';
-                    echo 'Vai trò: ' . $vai_tro . '<br>';
-                    echo '<li><a href="index.php?ctrl=customerUserController" class="menu-item" >Thông tin cá nhân</a></li>';
+                    echo '<li><a href="index.php?ctrl=customerUserController" class="menu-item" >Tên:' . $ten_dang_nhap . " - " . $vai_tro . '</a></li><br>';
                     echo '<li><a href="/login/index.php?ctrl=loginController&action=logout" class="menu-item" onclick="return confirm(\'Bạn có chắc chắn muốn đăng xuất không?\');">Đăng xuất</a></li>';
                     if ($vai_tro !== 'Khách hàng') {
                         echo '<li><a href="/admin/index.php" class="menu-item">Quản lý</a></li>';
@@ -75,7 +116,6 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
         </div>
 
     </div>
-
     <div class="content">
         <?php
         if (!isset($_GET['ctrl'])) {
