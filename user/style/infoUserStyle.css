@@ -1,0 +1,67 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 20px;
+}
+
+/* Container styles */
+.customer-info-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.customer-info {
+    max-width: 600px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Heading styles */
+.customer-info h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* List styles */
+.customer-info ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.customer-info ul li {
+    margin-bottom: 10px;
+}
+
+.customer-info ul li label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* Link styles */
+.customer-info-links a {
+    text-decoration: none;
+    color: #007bff;
+    transition: color 0.3s;
+}
+
+.customer-info-links a:hover {
+    color: #0056b3;
+}

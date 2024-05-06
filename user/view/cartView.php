@@ -14,7 +14,7 @@
         <h1>Giỏ hàng</h1>
 
         <div class="cart-items-form">
-            <a href="index.php?ctrl=cartController&action=clearCart" onclick="return confirm('Bạn có chắc chắn muốn xóa toàn bộ giỏ hàng?');">Xóa toàn bộ giỏ hàng</a>
+            <a class="deleteAll" href="index.php?ctrl=cartController&action=clearCart" onclick="return confirm('Bạn có chắc chắn muốn xóa toàn bộ giỏ hàng?');">Xóa toàn bộ</a>
             <?php if (!empty($cartItems)) : ?>
                 <?php foreach ($cartItems as $productId => $quantity) : ?>
                     <div class="cart-item" id="cart-item">
@@ -22,7 +22,7 @@
                             <img src="/image/<?php echo $productImages[$productId]; ?>" alt="Hình ảnh sản phẩm" width="100">
                         </div>
                         <div class="item-details">
-                            <span class="item-name">Tên sản phẩm: <?php echo $productNames[$productId]; ?></span>
+                            <div class="item-name">Tên sản phẩm: <?php echo $productNames[$productId]; ?></div>
                             <div class="quantity-section">
                                 <span>Số lượng:</span>
                                 <div class="quantity-buttons">
@@ -76,7 +76,7 @@
                 </select><br><br>
 
                 <input type="text" style="width: 30%; height: 50px" name="ghi_chu" placeholder="Ghi chú"><br>
-                <button type="submit">Mua</button>
+                <div class="buyAllForm"><button type="submit">Mua</button></div>
             </form>
             <!-- ------------------------------------------------------------------------------------- -->
 

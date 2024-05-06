@@ -7,78 +7,27 @@
     <title>Chi Tiết Sản Phẩm</title>
     <link rel="stylesheet" href="style/product_detail.css">
 </head>
-<Style>
-    .suggested-products {
-        margin-bottom: 20px;
-        /* Khoảng cách dưới */
-    }
 
-    .suggested-products h2 {
-        font-size: 18px;
-        /* Kích thước font */
-        margin-bottom: 10px;
-        /* Khoảng cách dưới */
-    }
-
-    .product-list {
-        display: flex;
-        /* Hiển thị các sản phẩm theo hàng ngang */
-        flex-wrap: wrap;
-        /* Cho phép sản phẩm xuống dòng khi không đủ không gian */
-    }
-
-    .product-item {
-        width: 25%;
-        /* Chiều rộng của mỗi sản phẩm (sử dụng 25% để có 4 sản phẩm trên mỗi hàng) */
-        padding: 10px;
-        /* Khoảng cách giữa các sản phẩm */
-        box-sizing: border-box;
-        /* Đảm bảo rằng padding không làm thay đổi kích thước của sản phẩm */
-    }
-
-    .product-item img {
-        max-width: 100%;
-        /* Đảm bảo hình ảnh không vượt quá kích thước của phần tử cha */
-        height: auto;
-        /* Chiều cao tự động để giữ tỷ lệ khung hình */
-    }
-
-    .product-item h3 {
-        font-size: 16px;
-        /* Kích thước font */
-        margin: 5px 0;
-        /* Khoảng cách trên và dưới */
-    }
-
-    .product-item p {
-        font-size: 14px;
-        /* Kích thước font */
-        margin: 5px 0;
-        /* Khoảng cách trên và dưới */
-    }
-</Style>
 
 <body>
     <div class="product-detail">
-        <div class="left-column">
-            <img src="/image/<?php echo $product['anh']; ?>" alt="<?php echo $product['ten']; ?>">
+        <div class="content">
+            <div class="right-content">
+                <h1><?php echo $product['ten']; ?></h1>
+                <div class="price"><?php echo $product['gia']; ?> đ</div>
+                <p>Số lượng còn lại: <?php echo $product['so_luong']; ?></p>
+                <p>Mô tả:<br><?php echo $product['mo_ta']; ?></p>
+                <a href="#" class="buy-button" data-product-id="<?php echo $product['id']; ?>" data-product-status="<?php echo $product['so_luong'] > 0 ? 'in-stock' : 'out-of-stock'; ?>">
+                    <?php echo $product['so_luong'] > 0 ? 'Thêm vào giỏ hàng' : 'Tạm hết hàng'; ?>
+                </a>
+            </div>
+            <div class="left-content">
+                <img src="/image/<?php echo $product['anh']; ?>" alt="<?php echo $product['ten']; ?>">
+            </div>
         </div>
-        <div class="right-column">
-            <h1><?php echo $product['ten']; ?></h1>
-            <img src="/image/<?php echo $product['anh']; ?>" alt="<?php echo $product['ten']; ?>">
-            <p>Giá: <?php echo $product['gia']; ?> đ</p>
-            <p>Số lượng còn lại: <?php echo $product['so_luong']; ?></p>
-            <p><?php echo $product['mo_ta']; ?></p>
-            <a href="#" class="buy-button" data-product-id="<?php echo $product['id']; ?>" data-product-status="<?php echo $product['so_luong'] > 0 ? 'in-stock' : 'out-of-stock'; ?>">
-                <?php echo $product['so_luong'] > 0 ? 'Thêm vào giỏ hàng' : 'Tạm hết hàng'; ?>
-            </a>
-
-
-            <!-- ---------------------------------------------------------------------------------- -->
-
-
-            <!-- Form để thêm bình luận mới -->
-            <div class="comment-form">
+        
+        <!-- Form để thêm bình luận mới -->
+        <div class="comment-form">
                 <h3>Thêm bình luận mới</h3>
                 <form class='addComment'>
                     <input type="hidden" name="id_san_pham" value="<?php echo $product['id']; ?>">
@@ -126,7 +75,7 @@
 
 
 
-                <!-- số trang -->
+                <!-- số trang bình luận -->
                 <div class="paginationComment">
                     <?php
                     // Tính tổng số trang
@@ -162,28 +111,28 @@
                     ?>
                 </div>
             </div>
-
-            <!-- -------------------------  -->
-            <?php if (!empty($suggestedProducts)) { ?>
-                <div class="suggested-products">
-                    <h2>BẠN CÓ THỂ THÍCH</h2>
-                    <div class="product-list">
-                        <?php foreach ($suggestedProducts as $suggestedProduct) { ?>
-                            <div class="product-item">
-                                <a href="index.php?ctrl=productControllerUser&action=detail&id=<?php echo $suggestedProduct['id']; ?>">
-                                    <img src="/image/<?php echo $suggestedProduct['anh']; ?>" alt="<?php echo $suggestedProduct['ten']; ?>">
-                                    <h3><?php echo $suggestedProduct['ten']; ?></h3>
-                                    <p>Giá: <?php echo number_format($suggestedProduct['gia'], 0, ',', '.'); ?> đ</p>
-                                </a>
-                            </div>
-                        <?php } ?>
+            <div class="suggestProduct">
+                    <!-- -------------------------  -->
+                <?php if (!empty($suggestedProducts)) { ?>
+                    <div class="suggested-products">
+                        <h2>BẠN CÓ THỂ THÍCH</h2>
+                        <div class="product-list">
+                            <?php foreach ($suggestedProducts as $suggestedProduct) { ?>
+                                <div class="product-item">
+                                    <a href="index.php?ctrl=productControllerUser&action=detail&id=<?php echo $suggestedProduct['id']; ?>">
+                                        <img src="/image/<?php echo $suggestedProduct['anh']; ?>" alt="<?php echo $suggestedProduct['ten']; ?>">
+                                        <h3><?php echo $suggestedProduct['ten']; ?></h3>
+                                        <p>Giá: <?php echo number_format($suggestedProduct['gia'], 0, ',', '.'); ?> đ</p>
+                                    </a>
+                                </div>
+                            <?php } ?>
+                        </div>
                     </div>
-                </div>
-            <?php } ?>
-            <!-- -------------- -->
+                <?php } ?>
+                <!-- -------------- -->
+            </div>
+            
 
-
-        </div>
     </div>
 
     <script>
