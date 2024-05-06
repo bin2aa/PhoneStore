@@ -4,21 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/admin/css/common.css">
+    <!-- Thư viện BootStrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Thêm danh mục sản phẩm</title>
 </head>
 
 <body>
     <div class="addCategory">
-        <!-- <div class="text-end">
-            <button type="button" id="closeContainer">
-                <span>&times;</span>
-            </button>
-        </div> -->
         <h2>Thêm danh mục sản phẩm</h2>
         <form class="categorySubmitAdd" action="index.php?ctrl=categoryController&action=addCategory" method="post">
-            <label for="ten">Tên danh mục:</label>
-            <input type="text" name="ten" required><br><br>
-            <button type="submit">Thêm danh mục</button>
+            <div class="mb-3">
+                <label for="ten" class="form-label">Tên danh mục:</label>
+                <input type="text" name="ten" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Thêm danh mục</button>
         </form>
     </div>
 </body>
