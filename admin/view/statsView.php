@@ -164,6 +164,7 @@
                 currentChartType = 'bar';
             }
 
+            // <!-- Thư viện biểu đồ chart.js (bar, line, pie, radar, scatter, doughnut, polarArea) -->
             // Cập nhật loại biểu đồ
             myBarChart.config.type = currentChartType;
             // Vẽ lại biểu đồ

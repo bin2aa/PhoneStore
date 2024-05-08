@@ -137,12 +137,20 @@ class orderController
 
 
                 $result = $this->orderModel->updateOrderStatus($orderId, $newStatus);
-                if ($result) {
-                    return header('Location: index.php?ctrl=orderController');
-                } else {
-                    echo 'error';
-                }
             }
+        }
+    }
+
+    //Lọc sản phẩm từ ngày này đến ngày kia
+    public function filterOrder()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['from_date']) && isset($_GET['to_date'])) {
+            $fromDate = $_GET['from_date'];
+            $toDate = $_GET['to_date'];
+            $orders = $this->orderModel->filterOrders($fromDate, $toDate);
+            include __DIR__ . '/../view/orderView.php';
+        } else {
+            echo "Vui lòng nhập đầy đủ khoảng thời gian!";
         }
     }
 }
@@ -179,6 +187,9 @@ switch ($action) {
         break;
     case 'viewOrderDetail':
         $orderController->viewOrderDetail();
+        break;
+    case 'filterOrder':
+        $orderController->filterOrder();
         break;
     default:
         $orderController->showOrderList();

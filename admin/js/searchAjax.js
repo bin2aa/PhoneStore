@@ -38,8 +38,8 @@ $(document).ready(function () {
 
     // Tìm kiếm bảo hành
     handleSearchForm('form.search-form-warranty', 'warrantyController');
-    
-// --------------------------   NOTE   ---------------------
+
+    // --------------------------   NOTE   ---------------------
     // Tìm kiếm danh mục
     // $('form.search-form-product').submit(function (event) {
     //     event.preventDefault();
@@ -67,4 +67,25 @@ $(document).ready(function () {
     //     });
     // });
 
+    $('form.filterOrder').submit(function (event) {
+        event.preventDefault();
+        var fromDate = $('input[name="from_date"]').val();
+        var toDate = $('input[name="to_date"]').val();
+        $.ajax({
+            url: 'index.php',
+            method: 'GET',
+            data: {
+                ctrl: 'orderController',
+                action: 'filterOrder',
+                from_date: fromDate,
+                to_date: toDate
+            },
+            success: function (data) {
+                $('table').html($(data).find('table').html());
+            }
+        });
+    });
+
+
 });
+

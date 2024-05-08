@@ -18,7 +18,7 @@
                 <?php foreach ($cartItems as $productId => $quantity) : ?>
                     <div class="cart-item" id="cart-item">
                         <div class="item-image">
-                            <img src="/image/<?php echo $productImages[$productId]; ?>" alt="Hình ảnh sản phẩm" width="100">
+                            <img src="/image/SanPham/<?php echo $productImages[$productId]; ?>" alt="Hình ảnh sản phẩm" width="100">
                         </div>
                         <div class="item-details">
                             <span class="item-name">Tên sản phẩm: <?php echo $productNames[$productId]; ?></span>

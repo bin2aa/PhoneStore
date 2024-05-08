@@ -25,11 +25,12 @@
             <source src="../image/vd3.mp4" type="video/mp4">
             Your browser does not support HTML5 video.
         </video>
-        <h1 class="product-list-title">Danh sách sản phẩm</h1>
+        <h1 class="product-list-title">DANH SÁCH SẢN PHẨM</h1>
 
         <div id="price_slider"></div>
-        <p>Từ giá: <span id="price_min_value"></span> - Đến giá: <span id="price_max_value"></span></p>
-
+        <div class="price_slider-content">
+            <p>Từ giá: <span id="price_min_value"></span> - Đến giá: <span id="price_max_value"></span></p>
+        </div>
 
         <div class="price-MintoMaxlink">
             <form action="index.php" method="GET">
@@ -70,10 +71,11 @@
                 <input type="hidden" name="ctrl" value="productControllerUser">
                 <select name="action">
                     <option value="index">Tất cả</option>
-                    <option value="sortProductsByPriceAsc">Sắp xếp tăng dần</option>
-                    <option value="sortProductsByPriceDesc">Sắp xếp giảm dần</option>
+                    <option value="sortProductsByPriceAsc">Giá tăng dần</option>
+                    <option value="sortProductsByPriceDesc">Giá giảm dần</option>
+                    <option value="topSelling">Topseller</option>
                 </select>
-                <input type="submit" value="Xác nhận">
+                <input type="submit" value="Sắp xếp">
             </form>
         </div>
 
@@ -91,12 +93,15 @@
             ?>
                     <div class="product">
                         <h2 class="product-name"><?php echo $product['ten']; ?></h2>
+
                         <a href="index.php?ctrl=productControllerUser&action=detail&id=<?php echo $product['id']; ?>" class="product-image-link">
-                            <img src="/image/<?php echo $product['anh']; ?>" alt="Hình ảnh sản phẩm" width="200"><br>
+                            <img src="/image/SanPham/<?php echo $product['anh']; ?>" alt="Hình ảnh sản phẩm" width="200"><br>
                         </a>
                         <p class="product-price">Giá: <?php echo $product['gia']; ?> đ</p>
                         <p class="product-stock">Còn lại: <?php echo $product['so_luong']; ?></p>
                         <!-- <p class="product-description">Mô tả: <?php echo $product['mo_ta']; ?></p> -->
+
+                        
                         <a href="#" class="buy-button" data-product-id="<?php echo $product['id']; ?>" data-product-status="<?php echo $product['so_luong'] > 0 ? 'in-stock' : 'out-of-stock'; ?>">
                             <?php echo $product['so_luong'] > 0 ? 'Thêm vào giỏ hàng' : 'Tạm hết hàng'; ?>
                         </a>
@@ -111,7 +116,8 @@
             }
             ?>
         </div>
-
+        <?php //include 'cssOnTop1.php';  
+        ?>
         <div class="paginationProduct">
             <?php
             // Tính tổng số trang
@@ -130,7 +136,11 @@
 
             // Hiển thị các trang giữa
             for ($i = max(1, $current_page - $num_links_side); $i <= min($current_page + $num_links_side, $total_pages); $i++) {
-                echo "<a href='#' data-page='$i'>$i</a>";
+                if ($i == $current_page) {
+                    echo "<a href='#' data-page='$i' class='active'>$i</a>";
+                } else {
+                    echo "<a href='#' data-page='$i'>$i</a>";
+                }
             }
 
 
@@ -147,7 +157,6 @@
             }
             ?>
         </div>
-
 
 
 

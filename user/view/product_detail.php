@@ -21,7 +21,7 @@
         <div class="parent">
             <div class="right-column">
                 <h1><?php echo $product['ten']; ?></h1>
-                <img src="/image/<?php echo $product['anh']; ?>" alt="<?php echo $product['ten']; ?>">
+                <img src="/image/SanPham/<?php echo $product['anh']; ?>" alt="<?php echo $product['ten']; ?>">
                 <p>Giá: <?php echo $product['gia']; ?> đ</p>
                 <p>Số lượng còn lại: <?php echo $product['so_luong']; ?></p>
                 <p>Mô tả: <?php echo $product['mo_ta']; ?></p>
@@ -128,7 +128,7 @@
                     <?php foreach ($suggestedProducts as $suggestedProduct) { ?>
                         <div class="product-item">
                             <a href="index.php?ctrl=productControllerUser&action=detail&id=<?php echo $suggestedProduct['id']; ?>">
-                                <img src="/image/<?php echo $suggestedProduct['anh']; ?>" alt="<?php echo $suggestedProduct['ten']; ?>">
+                                <img src="/image/SanPham/<?php echo $suggestedProduct['anh']; ?>" alt="<?php echo $suggestedProduct['ten']; ?>">
                                 <h3><?php echo $suggestedProduct['ten']; ?></h3>
                                 <p>Giá: <?php echo number_format($suggestedProduct['gia'], 0, ',', '.'); ?> đ</p>
                             </a>

@@ -40,11 +40,13 @@ $qlgiam_gia = $_SESSION['qlgiam_gia'];
     <!-- css -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/formUpdate-Add.css">
+    <link rel="stylesheet" href="css/adminIndex.css">
     <!-- Thư viện ajax -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <!-- Thư viện BootStrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-vkA4tf+gfRnJlz9+L0V5kiYcG7Bi4JF3x04fX5uU5fWVJ+u9PwIZgecokFm5P1C5" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <!-- JavaScript -->
     <script src="js/ajax.js"></script>
     <script src="js/searchAjax.js"></script>
@@ -55,7 +57,7 @@ $qlgiam_gia = $_SESSION['qlgiam_gia'];
 
 <body style="margin: 0;">
     <div class="backgroundHolder">
-        <img src="/admin/img/icon/bg.jpg"alt="background">
+        <img src="/admin/img/icon/bg.jpg" alt="background">
     </div>
 
     <div class="header">
@@ -64,8 +66,7 @@ $qlgiam_gia = $_SESSION['qlgiam_gia'];
                 <a class="navbar-brand" href="/user/index.php">
                     <img src="/admin/img/icon/home2.png" alt="logo" width="30" height="30" class="d-inline-block align-top" style="filter: invert(80%);">
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
@@ -73,60 +74,60 @@ $qlgiam_gia = $_SESSION['qlgiam_gia'];
                         <li class="nav-item manageSector">
                             <a class="nav-link" href="index.php?ctrl=statsController">Thống kê</a>
                         </li>
-                <?php if ($qldanh_muc == 1): ?>
-                    <li class="nav-item manageSector">
-                        <a class="nav-link" href="index.php?ctrl=categoryController">Danh mục</a>
-                    </li>
-                <?php endif; ?>
-                <?php if ($qlsan_pham == 1): ?>
-                    <li class="manageSector">
-                        <a href="index.php?ctrl=productController">Sản phẩm</a>
-                    </li>
-                <?php endif; ?>
-                <?php if ($qldon_hang == 1): ?>
-                    <li class="manageSector">
-                        <a href="index.php?ctrl=orderController">Đơn hàng</a>
-                    </li>
-                <?php endif; ?>
-                <?php if ($qlkhach_hang == 1): ?>
-                    <li class="manageSector">
-                        <a href="index.php?ctrl=customerController">Khách hàng</a>
-                    </li>
-                <?php endif; ?>
-                <?php if ($qlnguoi_dung == 1): ?>
-                    <li class="manageSector">
-                        <a href="index.php?ctrl=userController">Người dùng</a>
-                    </li>
-                <?php endif; ?>
-                <?php if ($qlnha_cung_cap == 1): ?>
-                    <li class="manageSector">
-                        <a href="index.php?ctrl=supplierController">Nhà C.Cấp</a>
-                    </li>
-                <?php endif; ?>
-                <?php if ($qlnhap_kho == 1): ?>
-                    <li class="manageSector">
-                        <a href="index.php?ctrl=warehouseController">Nhập kho</a>
-                    </li>
-                <?php endif; ?>
-                <?php if ($qlbao_hanh == 1): ?>
-                    <li class="manageSector">
-                        <a href="index.php?ctrl=warrantyController">Bảo hành</a>
-                    </li>
-                <?php endif; ?>
-                <?php if ($qlgiam_gia == 1): ?>
-                    <li class="manageSector">
-                        <a href="index.php?ctrl=discountController">Giảm giá</a>
-                    </li>
-                <?php endif; ?>
-                <?php if ($vai_tro == "Quản trị viên"): ?>
-                    <li class="manageSector">
-                        <a href="index.php?ctrl=permissionController">Phân quyền</a>
-                    </li>
-                <?php endif; ?>
-                <li class="logout">
-                    <a href="/login/index.php?ctrl=loginController&action=logout" onclick="return confirm('Bạn có chắc chắn muốn đăng xuất không?');">Đăng xuất</a>
-                </li>
-            </ul>
+                        <?php if ($qldanh_muc == 1) : ?>
+                            <li class="nav-item manageSector">
+                                <a class="nav-link" href="index.php?ctrl=categoryController">Danh mục</a>
+                            </li>
+                        <?php endif; ?>
+                        <?php if ($qlsan_pham == 1) : ?>
+                            <li class="manageSector">
+                                <a href="index.php?ctrl=productController">Sản phẩm</a>
+                            </li>
+                        <?php endif; ?>
+                        <?php if ($qldon_hang == 1) : ?>
+                            <li class="manageSector">
+                                <a href="index.php?ctrl=orderController">Đơn hàng</a>
+                            </li>
+                        <?php endif; ?>
+                        <?php if ($qlkhach_hang == 1) : ?>
+                            <li class="manageSector">
+                                <a href="index.php?ctrl=customerController">Khách hàng</a>
+                            </li>
+                        <?php endif; ?>
+                        <?php if ($qlnguoi_dung == 1) : ?>
+                            <li class="manageSector">
+                                <a href="index.php?ctrl=userController">Người dùng</a>
+                            </li>
+                        <?php endif; ?>
+                        <?php if ($qlnha_cung_cap == 1) : ?>
+                            <li class="manageSector">
+                                <a href="index.php?ctrl=supplierController">Nhà C.Cấp</a>
+                            </li>
+                        <?php endif; ?>
+                        <?php if ($qlnhap_kho == 1) : ?>
+                            <li class="manageSector">
+                                <a href="index.php?ctrl=warehouseController">Nhập kho</a>
+                            </li>
+                        <?php endif; ?>
+                        <?php if ($qlbao_hanh == 1) : ?>
+                            <li class="manageSector">
+                                <a href="index.php?ctrl=warrantyController">Bảo hành</a>
+                            </li>
+                        <?php endif; ?>
+                        <?php if ($qlgiam_gia == 1) : ?>
+                            <li class="manageSector">
+                                <a href="index.php?ctrl=discountController">Giảm giá</a>
+                            </li>
+                        <?php endif; ?>
+                        <?php if ($vai_tro == "Quản trị viên") : ?>
+                            <li class="manageSector">
+                                <a href="index.php?ctrl=permissionController">Phân quyền</a>
+                            </li>
+                        <?php endif; ?>
+                        <li class="logout">
+                            <a href="/login/index.php?ctrl=loginController&action=logout" onclick="return confirm('Bạn có chắc chắn muốn đăng xuất không?');">Đăng xuất</a>
+                        </li>
+                    </ul>
         </nav>
 
     </div>
@@ -134,6 +135,7 @@ $qlgiam_gia = $_SESSION['qlgiam_gia'];
     <div class="container">
         <div class="home">
             <?php
+
             if (isset($_GET['ctrl'])) {
                 $ctrl = $_GET['ctrl'];
                 include 'controller/' . $ctrl . '.php';
@@ -143,33 +145,32 @@ $qlgiam_gia = $_SESSION['qlgiam_gia'];
     </div>
 
     <script>
-    const sectors = document.getElementsByClassName('manageSector');
-    const controllerIndexMap = {
-        'statsController': 0,
-        'categoryController': 1,
-        'productController': 2,
-        'orderController': 3,
-        'customerController': 4,
-        'userController': 5,
-        'supplierController': 6,
-        'warehouseController': 7,
-        'warrantyController': 8,
-        'discountController': 9,
-        'permissionController': 10
-    };
+        const sectors = document.getElementsByClassName('manageSector');
+        const controllerIndexMap = {
+            'statsController': 0,
+            'categoryController': 1,
+            'productController': 2,
+            'orderController': 3,
+            'customerController': 4,
+            'userController': 5,
+            'supplierController': 6,
+            'warehouseController': 7,
+            'warrantyController': 8,
+            'discountController': 9,
+            'permissionController': 10
+        };
 
-    var currentUrl = window.location.href;
+        var currentUrl = window.location.href;
 
-    for (let i = 0; i < sectors.length; i++) {
-        if (sectors[i].classList.contains('selected'))
-            sectors[i].classList.remove('selected');
-    }
-
-    for (const controller in controllerIndexMap)
-        if (currentUrl.includes(controller)) {
-            sectors[controllerIndexMap[controller]].classList.add('selected');
-            break;
+        for (let i = 0; i < sectors.length; i++) {
+            if (sectors[i].classList.contains('selected'))
+                sectors[i].classList.remove('selected');
         }
 
+        for (const controller in controllerIndexMap)
+            if (currentUrl.includes(controller)) {
+                sectors[controllerIndexMap[controller]].classList.add('selected');
+                break;
+            }
     </script>
 </body>

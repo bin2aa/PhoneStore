@@ -10,6 +10,18 @@
     <title>Danh sách phiếu nhập kho</title>
 
 </head>
+<style>
+    .filter-and-refresh {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .filter-and-refresh .filterOrder,
+    .filter-and-refresh .refresh {
+        flex: 1;
+        margin: 0 10px;
+    }
+</style>
 
 <body>
     <div class="containerr">
@@ -43,11 +55,23 @@
                 </div>
             </form>
         </div>
-
+        <div class="filter-and-refresh">
+            <form class="filterOrder" method="GET" action="index.php">
+                <input type="hidden" name="ctrl" value="warehouseController">
+                <input type="hidden" name="action" value="filterOrder">
+                Từ ngày: <input type="date" name="from_date" required>
+                Đến ngày: <input type="date" name="to_date" required>
+                <input type="submit" value="Lọc">
+            </form>
+            <!-- refresh -->
+            <div class="refresh">
+                <a href="index.php?ctrl=warehouseController" class="btn btn-light btn-outline-secondary">Làm mới</a>
+            </div>
+        </div>
         <div class="addNew btn btn-primary">
             <a class="addWareHouseReceiptLink" href="index.php?ctrl=warehouseController&action=showAddWarehouseReceiptForm">Thêm hàng vào kho </a>
         </div>
-        
+
         <table class="table">
             <tr class="bg-dark text-white">
                 <th>ID</th>

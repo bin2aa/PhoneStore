@@ -156,4 +156,13 @@ class WarehouseModel
         WHERE nha_cung_cap.ten LIKE '%$search%'";
         return $this->db->select($query);
     }
+
+    // //Lọc nhập kho từ ngày này đến ngày kia
+    public function filterWarehouse($fromDate, $toDate)
+    {
+        $query = "SELECT nhap_kho
+               FROM don_dat_hang
+               WHERE ngay >= '$fromDate' AND ngay <= '$toDate'";
+        return $this->db->select($query);
+    }
 }

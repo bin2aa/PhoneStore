@@ -22,7 +22,7 @@
                 <div class="mb-3">
                     <label for="anh" class="form-label">Hình ảnh:</label>
                     <input type="file" name="anh" accept="image/*" class="form-control">
-                    <img src="/image/<?php echo $product['anh']; ?>" alt="Hình ảnh sản phẩm" width="200" class="mt-2">
+                    <img src="/image/SanPham/<?php echo $product['anh']; ?>" alt="Hình ảnh sản phẩm" width="200" class="mt-2">
                     <input type="hidden" name="old_image" value="<?php echo $product['anh']; ?>">
                 </div>
                 <div class="mb-3">

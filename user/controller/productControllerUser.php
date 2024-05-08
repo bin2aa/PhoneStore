@@ -40,8 +40,13 @@ class ProductControllerUser
                 $products = $this->productModel->sortProductsByPriceAsc();
             } elseif ($_GET['action'] == 'sortProductsByPriceDesc') {
                 $products = $this->productModel->sortProductsByPriceDesc();
+            } elseif ($_GET['action'] == 'topSelling') {
+                $products = $this->productModel->getTopSellingProducts();
             }
-        } else {
+        }
+
+
+        else {
             $products = $this->productModel->getAllProducts();
         }
 

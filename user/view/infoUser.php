@@ -6,16 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thông tin khách hàng</title>
     <style>
-        /* Style cho thông tin khách hàng */
-        .customer-info {
-            width: 500px;
-            margin: 0 auto;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-        }
-
         .customer-info h2 {
             text-align: center;
             margin-bottom: 20px;
@@ -33,11 +23,41 @@
         .customer-info label {
             font-weight: bold;
         }
+
+        /* Định nghĩa animation cho border */
+        .customer-info {
+            width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            position: relative;
+            animation: border-animation 2s infinite;
+        }
+
+        /* Định nghĩa animation cho border */
+        @keyframes border-animation {
+            0% {
+                border: 5px solid rgba(0, 0, 255, 0.3);
+                /* Màu xanh dương, độ trong suốt 0.3 */
+            }
+
+            50% {
+                border: 5px solid rgba(0, 0, 255, 0.6);
+                /* Màu xanh dương, độ trong suốt 0.6 */
+            }
+
+            100% {
+                border: 5px solid rgba(0, 0, 255, 0.3);
+                /* Màu xanh dương, độ trong suốt 0.3 */
+            }
+        }
     </style>
 </head>
 
 <body>
     <div class="customer-info">
+
         <h2>Thông tin khách hàng</h2>
         <?php
         // Kiểm tra xem đã có thông tin khách hàng hay chưa
@@ -60,6 +80,7 @@
             <span style="margin: 0 10px;">|</span>
             <a href="index.php?ctrl=customerUserController&action=viewOrderList">Danh sách đơn hàng</a>
         </div>
+
     </div>
 </body>
 

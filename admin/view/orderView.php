@@ -11,6 +11,19 @@
 
 </head>
 
+<style>
+    .filter-and-refresh {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .filter-and-refresh .filterOrder,
+    .filter-and-refresh .refresh {
+        flex: 1;
+        margin: 0 10px;
+    }
+</style>
+
 <body>
     <div class="containerr">
         <div class="header-box">
@@ -20,9 +33,9 @@
             <h2 class="mt-0 mb-0">DANH SÁCH ĐƠN ĐẶT HÀNG</h2>
         </div>
         <p class="time">Bây giờ là:
-        <?php
-        date_default_timezone_set('Asia/Ho_Chi_Minh');
-        echo date('Y-m-d H:i:s'); ?></p>
+            <?php
+            date_default_timezone_set('Asia/Ho_Chi_Minh');
+            echo date('Y-m-d H:i:s'); ?></p>
 
         <div id="addOrderContainer"></div>
         <div id="updateOrderContainer"></div>
@@ -50,8 +63,21 @@
                     </div>
                 </div>
             </form>
-        </div>
 
+        </div>
+        <div class="filter-and-refresh">
+            <form class="filterOrder" method="GET" action="index.php">
+                <input type="hidden" name="ctrl" value="orderController">
+                <input type="hidden" name="action" value="filterOrder">
+                Từ ngày: <input type="date" name="from_date" required>
+                Đến ngày: <input type="date" name="to_date" required>
+                <input type="submit" value="Lọc">
+            </form>
+            <!-- refresh -->
+            <div class="refresh">
+                <a href="index.php?ctrl=orderController" class="btn btn-light btn-outline-secondary">Làm mới</a>
+            </div>
+        </div>
         <div class="addNew btn btn-primary">
             <a class="addOrderLink" href="index.php?ctrl=orderController&action=viewAddOrder">Thêm mới</a>
         </div>
@@ -59,14 +85,14 @@
         <table class="table">
             <thead class="bg-dark text-white">
                 <tr>
-                    <th>                    ID</th>
-                    <th style="width: 5%">  ID K.Hàng</th>
-                    <th style="width: 15%">                    Tên K.Hàng</th>
+                    <th> ID</th>
+                    <th style="width: 5%"> ID K.Hàng</th>
+                    <th style="width: 15%"> Tên K.Hàng</th>
                     <th style="width: 10%"> Ngày đặt</th>
-                    <th>                    Tổng tiền</th>
+                    <th> Tổng tiền</th>
                     <th style="width: 25%"> Ghi chú</th>
-                    <th>                    Tình trạng</th>
-                    <th>                    Thao tác</th>
+                    <th> Tình trạng</th>
+                    <th> Thao tác</th>
                 </tr>
             </thead>
             <tbody>
@@ -79,35 +105,15 @@
                         <td><?php echo number_format($order['tong_tien']); ?></td>
                         <td><?php echo $order['ghi_chu']; ?></td>
                         <td>
-                            <form action="index.php?ctrl=orderController&action=toggleOrderStatus" method="POST">
+                            <form class="toggleUserStatuss" action="index.php?ctrl=orderController&action=toggleOrderStatus" method="POST">
                                 <input type="hidden" name="orderId" value="<?php echo $order['id']; ?>">
-                                <?php
-                                $buttonText = '';
-                                $buttonClass = '';
-                                switch ($order['tinh_trang']) {
-                                    case 'Chờ xác nhận':
-                                        $buttonText='Xác nhận';
-                                        $buttonClass='btn-warning';
-                                        break;
-                                    case 'Đang xử lý':
-                                        $buttonText='Đang xử lý';
-                                        $buttonClass='btn-primary';
-                                        break;
-                                    case 'Đang giao':
-                                        $buttonText='Đang giao';
-                                        $buttonClass='btn-info';
-                                        break;
-                                    case 'Thành công':
-                                        $buttonText='Thành công';
-                                        $buttonClass='btn-success';
-                                        break;
-                                }
-                                
+
+                                <?php if ($order['tinh_trang'] == 'Chờ xác nhận') echo "<button type='submit'>Xác nhận</button>";
+                                else if ($order['tinh_trang'] == 'Đang xử lý') echo "<button type='submit'>Đang xử lý</button>";
+                                else if ($order['tinh_trang'] == 'Đang giao') echo "<button type='submit'>Hoàn tất</button>";
+                                else if ($order['tinh_trang'] == 'Thành công') echo "<button type='submit' disabled>Thành công</button>";
+
                                 ?>
-                                <button type="submit" class="btn <?php echo $buttonClass; ?>" 
-                                    <?php if ($order['tinh_trang']=='Đang xử lý' || $order['tinh_trang']=='Thành công') echo 'disabled'; ?>>
-                                    <?php echo $buttonText; ?>
-                                </button>
                             </form>
                         </td>
 
@@ -127,3 +133,23 @@
 
 
 </html>
+
+<script>
+    $(document).ready(function() {
+        $(document).on('submit', '.toggleUserStatuss', function(e) {
+            e.preventDefault();
+
+            var actionUrl = $(this).attr('action');
+            var formData = $(this).serialize();
+
+            $.ajax({
+                url: actionUrl,
+                type: 'POST',
+                data: formData,
+                success: function(response) {
+                    location.reload();
+                }
+            });
+        });
+    });
+</script>

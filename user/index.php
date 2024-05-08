@@ -31,9 +31,13 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
     <link rel="stylesheet" href="style/productViewUser.css">
     <link rel="stylesheet" href="style/product_detail.css">
     <link rel="stylesheet" href="style/cartStyle.css">
+    <link rel="stylesheet" href="style/infoUser.css">
+    <link rel="stylesheet" href="style/cssOnTop.css">
     <!-- <link rel="stylesheet" href="style/homeStyle.css"> -->
     <!-- <link rel="stylesheet" href="style/productViewStyle.css"> -->
     <!-- <link rel="stylesheet" href="style/SlideStyle.css"> -->
+
+
 
 
     <style>
@@ -88,8 +92,9 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
 
     <div class="header">
         <a href="index.php?ctrl=productControllerUser" class="logo">
-            <img src="../image/logo.jpg"  alt="" height=100px width=100px>
+            <img src="../image/logo.jpg" alt="" height=100px width=100px>
         </a>
+        
         <div class="menu">
             <ul class="menu-list">
                 <!-- <li><a href="index.php?ctrl=productControllerUser" class="menu-item">Trang chủ</a></li> -->
@@ -105,7 +110,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                     echo '<li><a href="index.php?ctrl=customerUserController" class="menu-item" >Tên:' . $ten_dang_nhap . " - " . $vai_tro . '</a></li><br>';
                     echo '<li><a href="/login/index.php?ctrl=loginController&action=logout" class="menu-item" onclick="return confirm(\'Bạn có chắc chắn muốn đăng xuất không?\');">Đăng xuất</a></li>';
                     if ($vai_tro !== 'Khách hàng') {
-                        echo '<li><a href="/admin/index.php" class="menu-item">Quản lý</a></li>';
+                        echo '<li><a href="/admin/index.php?ctrl=statsController" class="menu-item">Quản lý</a></li>';
                     }
                 } else {
                     echo '<li><a href="/login/index.php?ctrl=loginController" class="menu-item">Đăng nhập</a></li>';
@@ -114,7 +119,6 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                 <li> <a href="index.php?ctrl=cartController&action=showCart" class="menu-item">Giỏ hàng</a></li>
             </ul>
         </div>
-
     </div>
     <div class="content">
         <?php

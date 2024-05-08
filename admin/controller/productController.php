@@ -97,6 +97,7 @@ class ProductController
             $result = $this->productModel->updateProduct($product_id, $ten, $anh, $id_danh_muc, $gia, $so_luong, $mo_ta);
         }
     }
+    
 }
 
 $action = 'index';

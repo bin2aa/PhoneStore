@@ -147,4 +147,16 @@ class ProductModel
             return $suggestedProducts;
         }
     }
+
+    public function getTopSellingProducts()
+    {
+        $query = "
+        SELECT sp.*, SUM(ctdh.so_luong) AS total_sold
+        FROM san_pham sp
+        LEFT JOIN chi_tiet_don_hang ctdh ON sp.id = ctdh.id_san_pham
+        GROUP BY sp.id
+        ORDER BY total_sold DESC";
+
+        return $this->db->select($query);
+    }
 }

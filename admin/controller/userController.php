@@ -39,7 +39,7 @@ class UserController
             $vai_tro = $_POST['vai_tro'];
             $trang_thai = $_POST['trang_thai'];
 
-            
+
             if ($this->userModel->checkUsernameExists($ten_dang_nhap)) {
                 echo "Tên đăng nhập đã tồn tại. Vui lòng chọn tên đăng nhập khác.";
                 return; // Dừng lại và không thực hiện thêm người dùng mới
@@ -99,12 +99,13 @@ class UserController
 
             $result = $this->userModel->updateUserStatus($user_id, $new_status);
 
-            if ($result) {
-                header('Location: index.php?ctrl=userController');
-                exit();
-            } else {
-                echo 'Đã xảy ra lỗi khi đổi trạng thái người dùng.';
-            }
+            // if ($result) {
+            //     // header('Location: index.php?ctrl=userController');
+            //     // echo "<script> window.location.href='index.php?ctrl=userController' </script>";
+            //     // exit();
+            // } else {
+            //     echo 'Đã xảy ra lỗi khi đổi trạng thái người dùng.';
+            // }
         } else {
             echo 'Thiếu tham số id hoặc status.';
         }

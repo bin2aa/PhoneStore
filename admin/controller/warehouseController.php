@@ -43,7 +43,7 @@ class WarehouseController
             while (isset($_POST['id_san_pham_' . $i])) {
                 $detail['id_san_pham'] = $_POST['id_san_pham_' . $i];
                 $detail['so_luong'] = $_POST['so_luong_' . $i];
-                $detail['gia'] = $_POST['gia_nhap_' . $i];  
+                $detail['gia'] = $_POST['gia_nhap_' . $i];
                 $details[] = $detail;
                 $i++;
             }
@@ -112,6 +112,19 @@ class WarehouseController
             $result = $this->warehouseModel->deleteWarehouseDetail($warehouseDetail_id);
         }
     }
+
+    //Lọc sản phẩm từ ngày này đến ngày kia
+    public function filterWarehouse()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['from_date']) && isset($_GET['to_date'])) {
+            $fromDate = $_GET['from_date'];
+            $toDate = $_GET['to_date'];
+            $orders = $this->warehouseModel->filterWarehouse($fromDate, $toDate);
+            include __DIR__ . '/../view/warehouseView.php';
+        } else {
+            echo "Vui lòng nhập đầy đủ khoảng thời gian!";
+        }
+    }
 }
 
 $action = 'showWarehouseReceiptList';
@@ -145,6 +158,9 @@ switch ($action) {
         break;
     case 'viewWarehouseDetail':
         $warehouseController->viewWarehouseDetail();
+        break;
+    case 'filterWarehouse':
+        $warehouseController->filterWarehouse();
         break;
     default:
         $warehouseController->showWarehouseReceiptList();

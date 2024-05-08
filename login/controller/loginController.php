@@ -257,8 +257,8 @@ class loginController
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'asjdasdasdsd@gmail.com'; // Thay bằng email của bạn
-            $mail->Password = 'frev lkfh zkxb hbez'; // Thay bằng mật khẩu email của bạn
+            $mail->Username = 'asjdasdasdsd@gmail.com'; 
+            $mail->Password = 'frev lkfh zkxb hbez'; 
             $mail->SMTPSecure = 'tls';
             $mail->Port = 587;
 

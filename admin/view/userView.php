@@ -69,19 +69,21 @@
                         <td><?php echo $user['vai_tro']; ?></td>
                         <td>
                             <!-- <form action="index.php?ctrl=userController&action=toggleUserStatus" method="POST">
-                                    <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
-                                    <?php
-                                    if ($user['trang_thai'] == '1') echo "<button type='submit'>Khóa</button>";
-                                    else if ($user['trang_thai'] == '0') echo "<button type='submit'>Mở Khóa</button>";
-                                    ?>
-                                </form> -->
-
-
-                            <a href="index.php?ctrl=userController&action=toggleUserStatus&id=<?php echo $user['id']; ?>&status=<?php echo $user['trang_thai']; ?>">
+                                <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
                                 <?php
-                                if ($user['trang_thai'] == 1)
+                                if ($user['trang_thai'] == '1') echo "<button type='submit'>Khóa</button>";
+                                else if ($user['trang_thai'] == '0') echo "<button type='submit'>Mở Khóa</button>";
+                                ?>
+                            </form> -->
+
+
+                            <a class="toggleUserStatus" href="index.php?ctrl=userController&action=toggleUserStatus&id=<?php echo $user['id']; ?>&status=<?php echo $user['trang_thai']; ?>">
+                                <?php
+                                if ($user['trang_thai'] == 1) {
                                     echo "Khóa";
-                                else echo "Mở khóa";
+                                } else {
+                                    echo "Mở khóa";
+                                }
                                 ?>
                             </a>
                         </td>
@@ -103,3 +105,19 @@
 </body>
 
 </html>
+<script>
+    $(document).ready(function() {
+        // $('.toggleUserStatus').click(function(e) {
+        $(document).on('click', '.toggleUserStatus', function(e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định của thẻ a
+            var toggleUrl = $(this).attr('href');
+            $.ajax({
+                url: toggleUrl,
+                type: 'GET',
+                success: function(response) {
+                    location.reload(); // Tải lại trang
+                }
+            });
+        });
+    });
+</script>

@@ -51,7 +51,7 @@
                 <?php foreach ($products as $product) : ?>
                     <tr class="product-item">
                         <td class="product-img">
-                            <img src="/image/<?php echo $product['anh']; ?>" alt="Hình ảnh sản phẩm" width="200">
+                            <img src="/image/SanPham/<?php echo $product['anh']; ?>" alt="Hình ảnh sản phẩm" width="200">
                         </td>
                         <td class="product-info">
                             <div class="product-name fs-3 fw-3"><?php echo $product['ten']; ?></div>
@@ -66,7 +66,7 @@
                             </div>
                         </td>
                         <td class="product-bg">
-                            <img src="/image/<?php echo $product['anh']; ?>" alt="Hình ảnh sản phẩm" width="200">
+                            <img src="/image/SanPham/<?php echo $product['anh']; ?>" alt="Hình ảnh sản phẩm" width="200">
                         </td>
                     </tr>
                 <?php endforeach; ?>

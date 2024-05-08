@@ -18,7 +18,7 @@ class Database
     // Phương thức kết nối cơ sở dữ liệu
     private function connectDB()
     {
-        $conn = mysqli_connect($this->host, $this->username, $this->password, $this->database, 3307);
+        $conn = mysqli_connect($this->host, $this->username, $this->password, $this->database);
 
         // Kiểm tra kết nối
         if (!$conn) {
