@@ -35,6 +35,12 @@ class CartController
                 // Nếu đủ, thêm vào giỏ hàng
                 $this->cartModel->addToCart($productId, $quantity);
                 echo "Thêm vào giỏ hàng thành công";
+
+                $productInfo = array(
+                    'ten' => $product['ten'],
+                    'so_luong' => $product['so_luong']
+                );
+                Session::setSessionValue('product_' . $productId, $productInfo);
             } else {
                 // Nếu không đủ, hiển thị thông báo
                 echo "Số lượng sản phẩm không đủ. Vui lòng chọn lại.";
@@ -89,8 +95,7 @@ class CartController
 
 
         // Phiếu giảm giá
-        $discountModel = new DiscountModel();
-        $discountPrograms = $discountModel->getAllDiscounts();
+        $discountPrograms = $this->discountModel->getAllDiscounts();
 
         include(__DIR__ . '/../view/cartView.php');
     }
@@ -147,16 +152,18 @@ class CartController
 
                 foreach ($cartItems as $productId => $quantity) {
                     // Lấy thông tin sản phẩm từ cơ sở dữ liệu
-                    $productInfo = $this->cartModel->getProductInfo($productId);
-                    $availableQuantity = $productInfo['so_luong'];
-                    if ($quantity > $availableQuantity) {
+                    // $productInfo = $this->cartModel->getProductInfo($productId);
+                    // $availableQuantity = $productInfo['so_luong'];
+
+                    $productInfo = Session::getSessionValue('product_' . $productId);
+                    if ($quantity > $productInfo['so_luong']) {
                         // Nếu số lượng sản phẩm trong giỏ hàng vượt quá số lượng có sẵn trong kho
                         $flag = false;
-                        echo "Sản phẩm '{$productInfo['ten']}' chỉ còn {$availableQuantity} sản phẩm trong kho. Vui lòng giảm số lượng hoặc chọn sản phẩm khác.";
+                        http_response_code(401);
+                        echo "<script>  alert('{$productInfo['ten']} chỉ còn {$productInfo['so_luong']} vui lòng giảm số lượng sản phẩm ')     </script>";
                         break; // Dừng vòng lặp khi gặp sản phẩm không đủ số lượng
                     }
                 }
-
 
 
                 // if (count($cartItems) == 0) {
@@ -172,6 +179,7 @@ class CartController
                         $ngay_het_han = date('Y-m-d', strtotime('+3 months', strtotime($ngay)));
 
                         foreach ($cartItems as $productId => $quantity) {
+
                             $productInfo = $this->cartModel->getProductInfo($productId);
                             $gia = $productInfo['gia'];
                             // Tạo chi tiết đơn hàng với thông tin sản phẩm

@@ -128,6 +128,7 @@
                 }
 
                 function xoaHang(button) {
+                    event.stopPropagation();
                     var hang = button.parentNode;
                     hang.parentNode.removeChild(hang);
                 }

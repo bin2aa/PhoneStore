@@ -18,6 +18,9 @@ class ProductControllerUser
         $categories = $this->productModel->getAllCategoriesPR();
         $maxPrice = $this->productModel->getProductsPriceMax();
 
+
+
+
         // Lọc theo danh mục
         if (isset($_GET['filter']) && $_GET['filter'] == 'category' && isset($_GET['id'])) {
             $id = $_GET['id'];
@@ -43,10 +46,7 @@ class ProductControllerUser
             } elseif ($_GET['action'] == 'topSelling') {
                 $products = $this->productModel->getTopSellingProducts();
             }
-        }
-
-
-        else {
+        } else {
             $products = $this->productModel->getAllProducts();
         }
 

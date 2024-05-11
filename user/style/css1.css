@@ -1,9 +1,17 @@
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 20px;
+}
+
 /* Header */
 .header {
     display: flex;
@@ -18,19 +26,23 @@
     left: 0;
     width: 100%;
     z-index: 999;
-    transition: padding 0.3s, background 0.3s; /* Thêm transition cho padding và background */
+    transition: padding 0.3s, background 0.3s;
+    /* Thêm transition cho padding và background */
 }
 
 /* CSS cho phần content */
 .content {
-    height: 100%; /* Chiều cao của nội dung để thử nghiệm */
-    padding-top: 150px; /* Đảm bảo nội dung không bị che khuất bởi header */
+    height: 100%;
+    /* Chiều cao của nội dung để thử nghiệm */
+    padding-top: 150px;
+    /* Đảm bảo nội dung không bị che khuất bởi header */
 }
 
 /* Thêm class .header-scrolled cho header khi người dùng cuộn trang */
 .header-scrolled {
     padding: 10px 0;
-    background: linear-gradient(to right, #ff8a00, #da1b60, #ff0066); /* Màu nền mới khi cuộn */
+    background: linear-gradient(to right, #ff8a00, #da1b60, #ff0066);
+    /* Màu nền mới khi cuộn */
 }
 
 .menu {

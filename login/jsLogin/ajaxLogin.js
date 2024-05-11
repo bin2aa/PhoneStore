@@ -123,7 +123,7 @@ $(document).ready(function () {
                 if (!paswordOldErrorMatch && !confirmpassworderror) {
                     $('#paswordOldErrorMatch').hide();
                     $('#confirm-password-errore').hide();
-                    alert("Đăng ký thành công!");
+                    alert("Đổi mật khẩu thành công!");
                     window.location.href = '/user/index.php?ctrl=customerUserController';
                 }
                 console.log(response);

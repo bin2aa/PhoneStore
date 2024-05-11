@@ -10,7 +10,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
 session_start();
 
 // Kiểm tra xem người dùng đã đăng nhập chưa
-if (!isset($_SESSION['ten_dang_nhap'])) {
+if (!isset($_SESSION['ten_dang_nhaps'])) {
     // Chưa đăng nhập, chuyển hướng đến trang đăng nhập
     header("Location: /login/index.php?ctrl=loginController");
     exit; // Dừng việc thực thi mã sau khi chuyển hướng
@@ -96,7 +96,7 @@ $qlgiam_gia = $_SESSION['qlgiam_gia'];
                         <?php endif; ?>
                         <?php if ($qlnguoi_dung == 1) : ?>
                             <li class="manageSector">
-                                <a href="index.php?ctrl=userController">Người dùng</a>
+                                <a href="index.php?ctrl=userController">USER</a>
                             </li>
                         <?php endif; ?>
                         <?php if ($qlnha_cung_cap == 1) : ?>

@@ -39,7 +39,7 @@ class loginController
                 // Đăng nhập thành công, lưu thông tin người dùng vào session
                 Session::startSession();
                 Session::setSessionValue('login_id', $login['id']);
-                Session::setSessionValue('ten_dang_nhap', $login['ten_dang_nhap']);
+                Session::setSessionValue('ten_dang_nhaps', $login['ten_dang_nhap']);
                 Session::setSessionValue('vai_tro', $login['vai_tro']);
 
                 // Lấy thông tin quyền từ bảng phan_quyen
@@ -257,8 +257,8 @@ class loginController
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'asjdasdasdsd@gmail.com'; 
-            $mail->Password = 'frev lkfh zkxb hbez'; 
+            $mail->Username = 'asjdasdasdsd@gmail.com';
+            $mail->Password = 'frev lkfh zkxb hbez';
             $mail->SMTPSecure = 'tls';
             $mail->Port = 587;
 

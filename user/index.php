@@ -94,13 +94,13 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
         <a href="index.php?ctrl=productControllerUser" class="logo">
             <img src="../image/logo.jpg" alt="" height=100px width=100px>
         </a>
-        
+
         <div class="menu">
             <ul class="menu-list">
                 <!-- <li><a href="index.php?ctrl=productControllerUser" class="menu-item">Trang chủ</a></li> -->
                 <?php
                 // Kiểm tra xem người dùng đã đăng nhập hay chưa
-                $ten_dang_nhap = Session::getSessionValue('ten_dang_nhap');
+                $ten_dang_nhap = Session::getSessionValue('ten_dang_nhaps');
                 $id_khach_hang = Session::getSessionValue('id_khach_hang');
                 $vai_tro = Session::getSessionValue('vai_tro');
 
