@@ -13,7 +13,8 @@
 <body>
     <div class="container mt-5">
         <div class="detailWarehouseReceipt">
-            <h2>Chi tiết nhập kho</h2>
+            <h2 class="lead fs-2">Chi tiết nhập kho</h2>
+            <div class="temporary-spacing" style="height: 20px; width: 100%; border-top: 1px solid black;"></div>
             <div class="table-responsive">
                 <table class="table">
                     <thead class="bg-dark text-white">
