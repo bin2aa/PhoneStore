@@ -12,7 +12,9 @@
 <body>
     <div class="container mt-5">
         <div class="detailOrder">
-            <h2>CHI TIẾT ĐƠN HÀNG</h2>
+            <h2 class="lead fs-2">CHI TIẾT ĐƠN HÀNG</h2>
+            //temporary spacing
+            <div style="height: 20px; width: 100%; border-top: 1px solid black;"></div>
             <table class="table">
                 <thead class="bg-dark text-white">
                     <tr>
