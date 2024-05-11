@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="css/common.css">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-vkA4tf+gfRnJlz9+L0V5kiYcG7Bi4JF3x04fX5uU5fWVJ+u9PwIZgecokFm5P1C5" crossorigin="anonymous">
+    <style>
+        #detailWarehouseReceiptContainer{
+            min-width: 70%;
+        }
+    </style>
 </head>
 
 <body>
