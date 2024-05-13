@@ -66,9 +66,68 @@ $qlgiam_gia = $_SESSION['qlgiam_gia'];
                 <a class="navbar-brand" href="/user/index.php">
                     <img src="/admin/img/icon/home2.png" alt="logo" width="30" height="30" class="d-inline-block align-top" style="filter: invert(80%);">
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button onclick="showDropdown()" class="navbar-toggler">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                <div class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="display: none; transition: all 0.3s ease-out;" id="navigate-dropdown">
+                    <ul>
+                        <li class="nav-item manageSector">
+                            <a class="nav-link" href="index.php?ctrl=statsController">Thống kê
+                            </a>
+                        </li>
+                        <?php if ($qldanh_muc == 1) : ?>
+                            <li class="nav-item manageSector">
+                                <a class="nav-link" href="index.php?ctrl=categoryController">Danh mục</a>
+                            </li>
+                        <?php endif; ?>
+                        <?php if ($qlsan_pham == 1) : ?>
+                            <li class="nav-item manageSector">
+                                <a href="index.php?ctrl=productController">Sản phẩm</a>
+                            </li>
+                        <?php endif; ?>
+                        <?php if ($qldon_hang == 1) : ?>
+                            <li class="nav-item manageSector">
+                                <a href="index.php?ctrl=orderController">Đơn hàng</a>
+                            </li>
+                        <?php endif; ?>
+                        <?php if ($qlkhach_hang == 1) : ?>
+                            <li class="nav-item manageSector">
+                                <a href="index.php?ctrl=customerController">Khách hàng</a>
+                            </li>
+                        <?php endif; ?>
+                        <?php if ($qlnguoi_dung == 1) : ?>
+                            <li class="nav-item manageSector">
+                                <a href="index.php?ctrl=userController">Ng.dùng</a>
+                            </li>
+                        <?php endif; ?>
+                        <?php if ($qlnha_cung_cap == 1) : ?>
+                            <li class="nav-item manageSector">
+                                <a href="index.php?ctrl=supplierController">Nhà C.Cấp</a>
+                            </li>
+                        <?php endif; ?>
+                        <?php if ($qlnhap_kho == 1) : ?>
+                            <li class="nav-item manageSector">
+                                <a href="index.php?ctrl=warehouseController">Nhập kho</a>
+                            </li>
+                        <?php endif; ?>
+                        <?php if ($qlbao_hanh == 1) : ?>
+                            <li class="nav-item manageSector">
+                                <a href="index.php?ctrl=warrantyController">Bảo hành</a>
+                            </li>
+                        <?php endif; ?>
+                        <?php if ($qlgiam_gia == 1) : ?>
+                            <li class="nav-item manageSector">
+                                <a href="index.php?ctrl=discountController">Giảm giá</a>
+                            </li>
+                        <?php endif; ?>
+                        <?php if ($vai_tro == "Quản trị viên") : ?>
+                            <li class="nav-item manageSector">
+                                <a href="index.php?ctrl=permissionController">Phân quyền</a>
+                            </li>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item manageSector">
@@ -80,47 +139,47 @@ $qlgiam_gia = $_SESSION['qlgiam_gia'];
                             </li>
                         <?php endif; ?>
                         <?php if ($qlsan_pham == 1) : ?>
-                            <li class="manageSector">
+                            <li class="nav-item manageSector">
                                 <a href="index.php?ctrl=productController">Sản phẩm</a>
                             </li>
                         <?php endif; ?>
                         <?php if ($qldon_hang == 1) : ?>
-                            <li class="manageSector">
+                            <li class="nav-item manageSector">
                                 <a href="index.php?ctrl=orderController">Đơn hàng</a>
                             </li>
                         <?php endif; ?>
                         <?php if ($qlkhach_hang == 1) : ?>
-                            <li class="manageSector">
+                            <li class="nav-item manageSector">
                                 <a href="index.php?ctrl=customerController">Khách hàng</a>
                             </li>
                         <?php endif; ?>
                         <?php if ($qlnguoi_dung == 1) : ?>
-                            <li class="manageSector">
-                                <a href="index.php?ctrl=userController">USER</a>
+                            <li class="nav-item manageSector">
+                                <a href="index.php?ctrl=userController">Ng.dùng</a>
                             </li>
                         <?php endif; ?>
                         <?php if ($qlnha_cung_cap == 1) : ?>
-                            <li class="manageSector">
+                            <li class="nav-item manageSector">
                                 <a href="index.php?ctrl=supplierController">Nhà C.Cấp</a>
                             </li>
                         <?php endif; ?>
                         <?php if ($qlnhap_kho == 1) : ?>
-                            <li class="manageSector">
+                            <li class="nav-item manageSector">
                                 <a href="index.php?ctrl=warehouseController">Nhập kho</a>
                             </li>
                         <?php endif; ?>
                         <?php if ($qlbao_hanh == 1) : ?>
-                            <li class="manageSector">
+                            <li class="nav-item manageSector">
                                 <a href="index.php?ctrl=warrantyController">Bảo hành</a>
                             </li>
                         <?php endif; ?>
                         <?php if ($qlgiam_gia == 1) : ?>
-                            <li class="manageSector">
+                            <li class="nav-item manageSector">
                                 <a href="index.php?ctrl=discountController">Giảm giá</a>
                             </li>
                         <?php endif; ?>
                         <?php if ($vai_tro == "Quản trị viên") : ?>
-                            <li class="manageSector">
+                            <li class="nav-item manageSector">
                                 <a href="index.php?ctrl=permissionController">Phân quyền</a>
                             </li>
                         <?php endif; ?>
@@ -128,6 +187,8 @@ $qlgiam_gia = $_SESSION['qlgiam_gia'];
                             <a href="/login/index.php?ctrl=loginController&action=logout" onclick="return confirm('Bạn có chắc chắn muốn đăng xuất không?');">Đăng xuất</a>
                         </li>
                     </ul>
+                </div>
+            </div>
         </nav>
 
     </div>
@@ -135,7 +196,6 @@ $qlgiam_gia = $_SESSION['qlgiam_gia'];
     <div class="container">
         <div class="home">
             <?php
-
             if (isset($_GET['ctrl'])) {
                 $ctrl = $_GET['ctrl'];
                 include 'controller/' . $ctrl . '.php';
@@ -169,8 +229,13 @@ $qlgiam_gia = $_SESSION['qlgiam_gia'];
 
         for (const controller in controllerIndexMap)
             if (currentUrl.includes(controller)) {
-                sectors[controllerIndexMap[controller]].classList.add('selected');
+                sectors[controllerIndexMap[controller]+11].classList.add('selected');
                 break;
             }
+
+        function showDropdown() {
+            var dropdown = document.getElementById('navigate-dropdown');
+            dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+        }
     </script>
 </body>

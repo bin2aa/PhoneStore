@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chi tiết đơn hàng</title>
+    <title>Chi tiết Thịnh đẹp trai</title>
     <link rel="stylesheet" href="css/common.css">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-vkA4tf+gfRnJlz9+L0V5kiYcG7Bi4JF3x04fX5uU5fWVJ+u9PwIZgecokFm5P1C5" crossorigin="anonymous">
@@ -13,7 +13,8 @@
 <body>
     <div class="container mt-5">
         <div class="detailWarehouseReceipt">
-            <h2>Chi tiết nhập kho</h2>
+            <h2 class="lead fs-2">Chi tiết nhập kho</h2>
+            <div class="temporary-spacing" style="height: 20px; width: 100%; border-top: 1px solid black;"></div>
             <div class="table-responsive">
                 <table class="table">
                     <thead class="bg-dark text-white">

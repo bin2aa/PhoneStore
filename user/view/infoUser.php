@@ -5,13 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thông tin khách hàng</title>
-   
+
 </head>
 
 <body>
-    <div class="customer-info">
 
-        <h2>Thông tin khách hàng</h2>
+    <video autoplay muted loop id="bg-video">
+        <source src="../image/vd6.mp4" type="video/mp4">
+    </video>
+    <div class="customer-info">
+        <div class="cssOnTop2">
+            <?php include 'cssOntop2.php'; ?>
+        </div>
+        <h2> Thông tin khách hàng</h2>
         <?php
         // Kiểm tra xem đã có thông tin khách hàng hay chưa
         $customerData = $customer[0]; // Lấy phần tử đầu tiên của mảng kết quả

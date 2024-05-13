@@ -68,7 +68,7 @@ body {
     color: #ffd700;
 }
 
-.menu-item::after {
+/* .menu-item::after {
     content: '';
     position: absolute;
     left: 0;
@@ -81,7 +81,8 @@ body {
 
 .menu-item:hover::after {
     width: 100%;
-}
+} */
+
 
 /* Footer */
 #footer {
@@ -126,6 +127,8 @@ body {
 #footer a:hover {
     color: #ffd700;
 }
+
+
 
 /* Copyright */
 .copyright {

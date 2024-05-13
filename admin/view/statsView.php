@@ -95,12 +95,19 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom"></script>
     <script>
+        
+        //hàm sắp xếp mảng theo tháng
+        var monthlyStats = <?php echo json_encode($statsDate['monthly_stats']); ?>;
+        monthlyStats.sort((a, b) => {
+            return new Date(a.month_year) - new Date(b.month_year);
+        });
+
         var ctx = document.getElementById('myBarChart').getContext('2d');
         var currentChartType = 'bar'; // Loại biểu đồ hiện tại
         var myBarChart = new Chart(ctx, {
             type: currentChartType, // Loại biểu đồ ban đầu
             data: {
-                labels: <?php echo json_encode(array_column($statsDate['monthly_stats'], 'month_year')); ?>,
+                labels: monthlyStats.map(item => item.month_year),
                 datasets: [{
                         label: 'Tổng số đơn hàng',
                         data: <?php echo json_encode(array_column($statsDate['monthly_stats'], 'total_orders')); ?>,
@@ -164,7 +171,7 @@
         var myBarChart2 = new Chart(ctx, {
             type: currentChartType, // Loại biểu đồ ban đầu
             data: {
-                labels: <?php echo json_encode(array_column($statsDate['monthly_stats'], 'month_year')); ?>,
+                labels: monthlyStats.map(item => item.month_year),
                 datasets: [{
                         label: 'Tổng doanh thu',
                         data: <?php echo json_encode(array_column($statsDate['monthly_stats'], 'total_revenue')); ?>,

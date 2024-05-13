@@ -20,10 +20,11 @@
 /* Định nghĩa animation cho border */
 .customer-info {
     width: 500px;
-    margin: 0 auto;
+    margin: 50px auto 50px auto;
     padding: 20px;
     border-radius: 5px;
-    background-color: #f9f9f9;
+    background-color: rgb(1,1,1,0.5);
+    color: #fff;
     position: relative;
     animation: border-animation 2s infinite;
 }
@@ -44,4 +45,33 @@
         border: 5px solid rgba(0, 0, 255, 0.3);
         /* Màu xanh dương, độ trong suốt 0.3 */
     }
+}
+
+/* Định dạng cho phần link và span */
+.customer-info a,
+.customer-info span {
+    text-decoration: none;
+    color: #007bff;
+    /* Màu chữ xanh dương */
+    transition: color 0.3s ease;
+    /* Hiệu ứng màu chữ khi hover */
+}
+
+/* Định dạng khi hover chuột */
+.customer-info a:hover,
+.customer-info span:hover {
+    color: #da1b60;
+    /* Màu chữ hồng khi hover */
+}
+
+.cssOnTop2 {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 20px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 30px;
+    border: 1px solid #ccc;
+    z-index: 1000;
 }

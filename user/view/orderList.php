@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thông tin khách hàng</title>
     <style>
-        /* Style cho thông tin khách hàng */
         .customer-info {
             width: 400px;
             margin: 0 auto;
             padding: 20px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            background-color: #f9f9f9;
+            background-color: rgb(255, 255, 255, 0.2);
+            cursor: default;
         }
 
         .customer-info h2 {
@@ -33,10 +33,18 @@
         .customer-info label {
             font-weight: bold;
         }
+
+        .paginationOrderList .active {
+            color: red;
+            font-weight: bold;
+        }
     </style>
 </head>
 
 <body>
+    <video autoplay muted loop id="bg-video">
+        <source src="../image/vd7.mp4" type="video/mp4">
+    </video>
     <div class="customer-info">
         <h2>Danh sách đơn hàng</h2>
         <?php
@@ -51,7 +59,7 @@
                 //delete không được sài
                 // echo '<a href="index.php?ctrl=customerUserController&action=deleteOrder&id=' . $order['id'] . '" class="delete-btn">Xóa</a>';
                 echo '<a href="index.php?ctrl=customerUserController&action=viewOrderDetail&id=' . $order['id'] . '">Xem chi tiết</a><br>';
-                echo '-----------------';
+                echo '<br><hr><br>';
                 echo '</li>';
             }
             echo '</ul>';
@@ -76,7 +84,7 @@
             // Hiển thị các nút trang
             for ($i = 1; $i <= $totalPages; $i++) {
                 if ($i == $current_page) {
-                    echo '<span>' . $i . '</span>';
+                    echo '<span class="active">' . $i . '</span>';
                 } else {
                     if ($i >= $current_page - $num_links_side && $i <= $current_page + $num_links_side) {
                         echo '<a href="index.php?ctrl=customerUserController&action=viewOrderList&id=' . $customerId  . '&page=' . $i . '">' . $i . '</a>';

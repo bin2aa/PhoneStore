@@ -51,15 +51,16 @@
         <div class="searchHolder">
             <form class="search-form-order mt-3">
                 <div class="row g-3 searchField">
-                    <!-- <div class="col-auto">
-                        <label for="search" class="col-form-label"></label>
-                    </div> -->
                     <div class="col-auto">
-                        <!-- <input type="hidden" name="action" value="searchProducts"> -->
-                        <input type="text" id="search" name="search" placeholder="Tên đơn đặt..." class="form-control" width="100%">
-                    </div>
-                    <div class="col-auto search">
-                        <button type="submit" class="btn btn-light btn-outline-secondary">Tìm kiếm</button>
+                        <label for="search" class="col-form-label">Tình trạng:</label>
+                        <select id="search" name="search">
+                            <option value="">Tất cả</option>
+                            <option value="Chờ xác nhận">Xác nhận</option>
+                            <option value="Đang xử lý">Đang xử lý</option>
+                            <option value="Đang giao">Hoàn tất</option>
+                            <option value="Thành công">Thành công</option>
+                        </select>
+                        <button type="submit" class="btn btn-light btn-outline-secondary">Lọc</button>
                     </div>
                 </div>
             </form>
@@ -112,7 +113,6 @@
                                 else if ($order['tinh_trang'] == 'Đang xử lý') echo "<button type='submit'>Đang xử lý</button>";
                                 else if ($order['tinh_trang'] == 'Đang giao') echo "<button type='submit'>Hoàn tất</button>";
                                 else if ($order['tinh_trang'] == 'Thành công') echo "<button type='submit' disabled>Thành công</button>";
-
                                 ?>
                             </form>
                         </td>

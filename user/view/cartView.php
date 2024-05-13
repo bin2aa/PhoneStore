@@ -79,7 +79,7 @@
             </form>
             <!-- ------------------------------------------------------------------------------------- -->
 
-            <script>
+            <!-- <script>
                 function checkLoggedIn() {
                     var isLoggedIn = <?php echo isset($_SESSION['id_khach_hang']) ? 'true' : 'false'; ?>;
                     var totalQuantity = <?php echo $totalQuantity; ?>;
@@ -93,7 +93,7 @@
                     }
                     return true;
                 }
-            </script>
+            </script> -->
         </div>
     </div>
 
@@ -138,16 +138,23 @@ foreach ($cartItems as $productId => $quantity) {
                 type: 'POST',
                 data: data,
                 success: function(response) {
-                    console.log(response);
-                    alert("Tạo đơn hàng thành công");
-                    $('.cart-items-form').html($(response).find('.cart-items-form').html());
-                    location.reload();
+                    if (response.error) {
+                        alert(response.message);
+                    } else {
+                        alert("Tạo đơn hàng thành công");
+                        $('.cart-items-form').html($(response).find('.cart-items-form').html());
+                        location.reload();
+                    }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     if (jqXHR.status == 400) {
                         alert("Không đạt điều kiện để áp dụng giảm giá");
                     } else if (jqXHR.status == 401) {
                         alert(products + " chỉ còn " + availableProducts + " sản phẩm trong kho. Vui lòng giảm số lượng sản phẩm trong giỏ hàng.");
+                    } else if (jqXHR.status == 402) {
+                        alert("Vui lòng đăng nhập trước khi mua hàng");
+                    } else if (jqXHR.status == 403) {
+                        alert("Giỏ hàng của bạn đang trống. Vui lòng chọn sản phẩm trước khi mua.");
                     } else {
                         alert('Có lỗi xảy ra');
                     }

@@ -10,6 +10,7 @@
         .order-details {
             width: 80%;
             margin: 20px auto;
+            color: #fff;
         }
 
         .order-details h2 {
@@ -102,9 +103,9 @@
                                     <?php
                                     // Kiểm tra nếu trạng thái là "Chờ xử lý" thì disabled nút Gửi bảo hành
                                     if ($warranty['tinh_trang'] == 'Chờ xử lý' ||  $warranty['tinh_trang'] == 'Hết hạn bảo hành') {
-                                        echo '<input type="submit" value="Gửi bảo hành" disabled>';
+                                        echo '<input type="submit" value="Gửi yêu cầu" disabled>';
                                     } else {
-                                        echo '<input type="submit" value="Gửi bảo hành">';
+                                        echo '<input type="submit" value="Gửi yêu cầu">';
                                     }
                                     ?>
                                     </form>

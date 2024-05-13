@@ -14,7 +14,6 @@
 
     <video autoplay muted loop id="bg-video">
         <source src="../image/vd2.mp4" type="video/mp4">
-        Your browser does not support HTML5 video.
     </video>
 
     <div class="product-detail">
@@ -25,9 +24,25 @@
                 <p>Giá: <?php echo $product['gia']; ?> đ</p>
                 <p>Số lượng còn lại: <?php echo $product['so_luong']; ?></p>
                 <p>Mô tả: <?php echo $product['mo_ta']; ?></p>
+
+
+                <div class="rating">
+                    <input value="5" name="rate" id="star5" type="radio">
+                    <label title="text" for="star5"></label>
+                    <input value="4" name="rate" id="star4" type="radio">
+                    <label title="text" for="star4"></label>
+                    <input value="3" name="rate" id="star3" type="radio" checked="">
+                    <label title="text" for="star3"></label>
+                    <input value="2" name="rate" id="star2" type="radio">
+                    <label title="text" for="star2"></label>
+                    <input value="1" name="rate" id="star1" type="radio">
+                    <label title="text" for="star1"></label>
+                </div>
+
                 <a href="#" class="buy-button" data-product-id="<?php echo $product['id']; ?>" data-product-status="<?php echo $product['so_luong'] > 0 ? 'in-stock' : 'out-of-stock'; ?>">
                     <?php echo $product['so_luong'] > 0 ? 'Thêm vào giỏ hàng' : 'Tạm hết hàng'; ?>
                 </a>
+
             </div>
 
             <!-- ---------------------------------------------------------------------------------- -->

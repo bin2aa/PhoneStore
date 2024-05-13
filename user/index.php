@@ -20,6 +20,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="jsUser/comment.js"></script>
     <script src="jsUser/productView.js"></script>
     <script src="jsUser/cart.js"></script>
@@ -32,6 +33,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
     <link rel="stylesheet" href="style/product_detail.css">
     <link rel="stylesheet" href="style/cartStyle.css">
     <link rel="stylesheet" href="style/infoUser.css">
+    <link rel="stylesheet" href="style/editCustomer.css">
     <link rel="stylesheet" href="style/cssOnTop.css">
     <!-- <link rel="stylesheet" href="style/homeStyle.css"> -->
     <!-- <link rel="stylesheet" href="style/productViewStyle.css"> -->
@@ -94,7 +96,6 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
         <a href="index.php?ctrl=productControllerUser" class="logo">
             <img src="../image/logo.jpg" alt="" height=100px width=100px>
         </a>
-
         <div class="menu">
             <ul class="menu-list">
                 <!-- <li><a href="index.php?ctrl=productControllerUser" class="menu-item">Trang chủ</a></li> -->
@@ -107,16 +108,16 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                 // Lấy danh sách quyền từ session
 
                 if ($ten_dang_nhap) {
-                    echo '<li><a href="index.php?ctrl=customerUserController" class="menu-item" >Tên:' . $ten_dang_nhap . " - " . $vai_tro . '</a></li><br>';
-                    echo '<li><a href="/login/index.php?ctrl=loginController&action=logout" class="menu-item" onclick="return confirm(\'Bạn có chắc chắn muốn đăng xuất không?\');">Đăng xuất</a></li>';
-                    if ($vai_tro !== 'Khách hàng') {
-                        echo '<li><a href="/admin/index.php?ctrl=statsController" class="menu-item">Quản lý</a></li>';
+                    echo '<li><a href="index.php?ctrl=customerUserController" class="menu-item" ><img src="/image/icon/user.png" style= "margin-right: 6px" width="40px">Tên:' . $ten_dang_nhap . " - " . $vai_tro . '</a></li><br>';
+                    echo '<li><a href="/login/index.php?ctrl=loginController&action=logout" class="menu-item" onclick="return confirm(\'Bạn có chắc chắn muốn đăng xuất không?\');"><img src="/image/icon/logout.png" style= "margin-right: 6px" width="40px">Đăng xuất</a></li>';
+                    if ($vai_tro !== 'khách hàng') {
+                        echo '<li><a href="/admin/index.php?ctrl=statsController" class="menu-item"><img src="/image/icon/pie-chart.png" style= "margin-right: 6px" width="40px">Quản lý</a></li>';
                     }
                 } else {
-                    echo '<li><a href="/login/index.php?ctrl=loginController" class="menu-item">Đăng nhập</a></li>';
+                    echo '<li><a href="/login/index.php?ctrl=loginController" class="menu-item"><img src="/image/icon/key.png" style= "margin-right: 6px" width="40px">Đăng nhập</a></li>';
                 }
                 ?>
-                <li> <a href="index.php?ctrl=cartController&action=showCart" class="menu-item">Giỏ hàng</a></li>
+                <li> <a href="index.php?ctrl=cartController&action=showCart" class="menu-item"><img src="/image/icon/trolley.png" style="filter:invert(1); margin-right: 6px" width="40px">Giỏ hàng</a></li>
             </ul>
         </div>
     </div>
@@ -134,43 +135,43 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-12">
-                    <h4 class="font-rubik font-size-20">Mobile Shopee</h4>
-                    <p class="font-size-14 font-rale text-white-50">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus, deserunt.</p>
-                </div>
-                <div class="col-lg-4 col-12">
-                    <h4 class="font-rubik font-size-20">Newslatter</h4>
-                    <form class="form-row">
+                    <h4 class="font-rubik fs-20">Phone store</h4>
+                    <p class="fs-14 text-white-50">Đồ án quản lý cửa hàng điện thoại</p>
+                    <form class="row g-2">
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="Email *">
-                        </div>
-                        <div class="col">
-                            <button type="submit" class="btn btn-primary mb-2">Subscribe</button>
+                            <button type="submit" class="btn btn-primary mb-2">Reload</button>
                         </div>
                     </form>
                 </div>
+                <div class="col-lg-4 col-12">
+                    <h4 class="font-rubik fs-20">Giáo viên hướng dẫn</h4>
+                    <p class="fs-14 text-white-50">Thầy Nguyễn Thanh Sang</p>
+                </div>
                 <div class="col-lg-2 col-12">
-                    <h4 class="font-rubik font-size-20">Information</h4>
+                    <h4 class="font-rubik fs-20">Members</h4>
                     <div class="d-flex flex-column flex-wrap">
-                        <a href="#" class="font-rale font-size-14 text-white-50 pb-1">About Us</a>
-                        <a href="#" class="font-rale font-size-14 text-white-50 pb-1">Delivery Information</a>
-                        <a href="#" class="font-rale font-size-14 text-white-50 pb-1">Privacy Policy</a>
-                        <a href="#" class="font-rale font-size-14 text-white-50 pb-1">Terms & Conditions</a>
+                        <a href="#" class="text-white-50 pb-1">Võ Duy Luân |</a>
+                        <a href="#" class="text-white-50 pb-1">Bùi Lê Bích Nhung |</a>
+                        <a href="#" class="text-white-50 pb-1">Dương Văn Minh Vy |</a>
+                        <a href="#" class="text-white-50 pb-1">Nguyễn Thanh Thịnh |</a>
+                        <a href="#" class="text-white-50 pb-1">Phạm Nguyễn Phước Thiện</a>
                     </div>
                 </div>
                 <div class="col-lg-2 col-12">
-                    <h4 class="font-rubik font-size-20">Account</h4>
+                    <h4 class="font-rubik fs-20">MSSV</h4>
                     <div class="d-flex flex-column flex-wrap">
-                        <a href="#" class="font-rale font-size-14 text-white-50 pb-1">My Account</a>
-                        <a href="#" class="font-rale font-size-14 text-white-50 pb-1">Order History</a>
-                        <a href="#" class="font-rale font-size-14 text-white-50 pb-1">Wish List</a>
-                        <a href="#" class="font-rale font-size-14 text-white-50 pb-1">Newslatters</a>
+                        <a href="#" class="text-white-50 pb-1">mssv-1</a>
+                        <a href="#" class="text-white-50 pb-1">mssv-2</a>
+                        <a href="#" class="text-white-50 pb-1">mssv-3</a>
+                        <a href="#" class="text-white-50 pb-1">3121410040 |</a>
+                        <a href="#" class="text-white-50 pb-1">3121410469</a>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
-    <div class="copyright text-center bg-dark text-white py-2">
-        <p class="font-rale font-size-14">&copy; Copyrights 2020. Desing By <a href="#" class="color-second">Daily Tuition</a></p>
+    <div class="bg-dark text-white py-2 text-center">
+        <p class="fs-14">&copy;Phone Store Web Project - Presented by 13th group, Web Advance 2024</p>
     </div>
 
 </body>

@@ -7,12 +7,17 @@
 
 /* Phần ảnh sản phẩm */
 .right-column {
-    float: right; /* Đưa phần tử sang bên phải */
-    width: 40%; /* Thiết lập chiều rộng cho phần tử */
+    float: right;
+    /* Đưa phần tử sang bên phải */
+    width: 40%;
+    /* Thiết lập chiều rộng cho phần tử */
     padding: 20px;
-    box-sizing: border-box; /* Tính cả padding và border vào chiều rộng và chiều cao */
-    background-color: rgba(84, 83, 83, 0.8); /* Màu nền với độ trong suốt */
-    border-top-left-radius: 300px; /* Bo tròn góc của phần tử */
+    box-sizing: border-box;
+    /* Tính cả padding và border vào chiều rộng và chiều cao */
+    background-color: rgba(84, 83, 83, 0.8);
+    /* Màu nền với độ trong suốt */
+    border-top-left-radius: 300px;
+    /* Bo tròn góc của phần tử */
 }
 
 
@@ -24,7 +29,7 @@
     margin-bottom: 10px;
     transition: box-shadow 0.3s ease;
     /* Thêm transition cho hiệu ứng shadow */
-    border-radius: 200px;
+    border-radius: 50px;
 }
 
 .right-column img:hover {
@@ -98,13 +103,13 @@
     border-radius: 5px;
     resize: vertical;
     background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
     transition: box-shadow 0.3s ease-in-out, background 0.3s ease-in-out;
     outline: none;
 }
 
 .comment-form textarea:focus {
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     background: linear-gradient(120deg, #84fab0 0%, #1fd1f9 50%, #5c33f6 100%);
 }
 
@@ -215,7 +220,7 @@
 /* Sản phẩm gợi ý */
 .suggested-products {
     margin-bottom: 30px;
-    padding-top: 150px;
+    padding-top: 250px;
     /* Khoảng cách dưới phần sản phẩm gợi ý */
 }
 
@@ -277,3 +282,38 @@
     height: auto;
     /* Tự động tính toán chiều cao dựa trên tỷ lệ khung hình */
 }
+
+
+.rating:not(:checked)>input {
+    position: absolute;
+    appearance: none;
+}
+
+.rating:not(:checked)>label {
+    float: right;
+    cursor: pointer;
+    font-size: 30px;
+    color: #666;
+}
+
+.rating:not(:checked)>label:before {
+    content: '★';
+}
+
+.rating>input:checked+label:hover,
+.rating>input:checked+label:hover~label,
+.rating>input:checked~label:hover,
+.rating>input:checked~label:hover~label,
+.rating>label:hover~input:checked~label {
+    color: #e58e09;
+}
+
+.rating:not(:checked)>label:hover,
+.rating:not(:checked)>label:hover~label {
+    color: #ff9e0b;
+}
+
+.rating>input:checked~label {
+    color: #ffa723;
+}
+

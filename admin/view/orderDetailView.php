@@ -10,31 +10,36 @@
 </head>
 
 <body>
-    <div class=detailOrder>
-        <h2>Chi tiết đơn hàng</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>ID đơn hàng</th>
-                    <th>(ID): Tên sản phẩm</th>
-                    <th>Số lượng</th>
-                    <th>Đơn giá</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($orderDetails as $orderDetail) : ?>
+    <div class="container mt-5">
+        <div class="detailOrder">
+            <h2 class="lead fs-2">CHI TIẾT ĐƠN HÀNG</h2>
+            <div style="height: 20px; width: 100%; border-top: 1px solid black;"></div>
+            <table class="table">
+                <thead class="bg-dark text-white">
                     <tr>
-                        <td><?php echo $orderDetail['id']; ?></td>
-                        <td><?php echo $orderDetail['id_don_hang']; ?></td>
-                        <td><?php echo '(' . $orderDetail['id_san_pham'] . ')' . ': ' . $orderDetail['ten_san_pham']; ?></td>
-                        <td><?php echo $orderDetail['so_luong']; ?></td>
-                        <td><?php echo  number_format($orderDetail['gia']) . ',000'; ?></td>
+                        <th>ID</th>
+                        <th>ID đơn hàng</th>
+                        <th>(ID): Tên sản phẩm</th>
+                        <th>Số lượng</th>
+                        <th>Đơn giá</th>
                     </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php foreach ($orderDetails as $orderDetail) : ?>
+                        <tr>
+                            <td><?php echo $orderDetail['id']; ?></td>
+                            <td><?php echo $orderDetail['id_don_hang']; ?></td>
+                            <td><?php echo '(' . $orderDetail['id_san_pham'] . ')' . ': ' . $orderDetail['ten_san_pham']; ?></td>
+                            <td><?php echo $orderDetail['so_luong']; ?></td>
+                            <td><?php echo number_format($orderDetail['gia']) . ',000'; ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
     </div>
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-NV2DWb1Wti8OY8T4O8wc4OJ1sGJ/Ocp3kiS8BRceP8OVR0sN3gkNDISPDgaFwhB3" crossorigin="anonymous"></script>
 </body>
 
 </html>

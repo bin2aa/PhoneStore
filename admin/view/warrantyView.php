@@ -46,7 +46,7 @@
                 <div class="row g-3 searchField">
                     <div class="col-auto">
                         <!-- <input type="hidden" name="action" value="searchProducts"> -->
-                        <label for="search" class="col-form-label">Tình trạng bảo hành:</label>
+                        <label for="search" class="col-form-label">Tình trạng:</label>
                         <select id="search" name="search">
                             <option value="">Tất cả</option>
                             <option value="Đang bảo hành">Đang bảo hành</option>

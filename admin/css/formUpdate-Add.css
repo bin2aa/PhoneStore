@@ -89,3 +89,7 @@
     flex: 1;
     /* Phần tử nhập liệu sẽ mở rộng để lấp đầy không gian còn lại trong hàng */
 }
+
+#chi-tiet .form-control {
+    width: 150px;
+}

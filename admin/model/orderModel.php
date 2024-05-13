@@ -92,10 +92,10 @@ class OrderModel
 
     public function searchOrder($keyword)
     {
-        $query = "SELECT don_dat_hang.*,khach_hang.ten AS ten_khach_hang
+        $query = "SELECT don_dat_hang.*, khach_hang.ten AS ten_khach_hang
               FROM don_dat_hang
               JOIN khach_hang ON don_dat_hang.id_khach_hang = khach_hang.id
-              WHERE khach_hang.ten LIKE '%$keyword%'";
+              WHERE don_dat_hang.tinh_trang LIKE '%$keyword%'";
         return $this->db->select($query);
     }
 

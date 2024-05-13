@@ -1,8 +1,9 @@
 $(document).ready(function () {
 
-    $('a.deleteProductLink, a.deleteCategoryLink, a.deleteCustomerLink, a.deleteDiscountLink,\
-    a.deleteOrderLink, a.deletePermissionLink, a.deleteSupplierLink, a.deleteWarehouseReceiptLink,a.deleteUserLink')
-        .click(function (event) {
+
+    $(document).on('click', 'a.deleteProductLink, a.deleteCategoryLink, a.deleteCustomerLink, a.deleteDiscountLink,\
+    a.deleteOrderLink, a.deletePermissionLink, a.deleteSupplierLink, a.deleteWarehouseReceiptLink,a.deleteUserLink',
+        function (event) {
             event.preventDefault();
             var deleteUrl = $(this).attr('href');
             var userConfirm = confirm('Bạn có chắc chắn muốn xóa không?');

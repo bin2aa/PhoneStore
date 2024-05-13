@@ -23,25 +23,10 @@
 
         <video autoplay muted loop id="bg-video">
             <source src="../image/vd3.mp4" type="video/mp4">
-            Your browser does not support HTML5 video.
         </video>
-        <h1 class="product-list-title">DANH SÁCH SẢN PHẨM</h1>
+        <h1 class="product-list-title">CHÀO MỪNG BẠN ĐẾN VỚI PHONESTORE</h1>
 
-        <div id="price_slider"></div>
-        <div class="price_slider-content">
-            <p>Từ giá: <span id="price_min_value"></span> - Đến giá: <span id="price_max_value"></span></p>
-        </div>
 
-        <div class="price-MintoMaxlink">
-            <form action="index.php" method="GET">
-                <input type="hidden" name="ctrl" value="productControllerUser">
-                <label for="price_min">Từ giá:</label>
-                <input type="number" name="price_min" id="price_min" min="0" required><br>
-                <label for="price_max">Đến giá:</label>
-                <input type="number" name="price_max" id="price_max" min="0" required><br>
-                <input type="submit" value="Xác nhận">
-            </form>
-        </div>
 
         <div class="category-list">
             <ul class="category-items">
@@ -66,25 +51,45 @@
             </ul>
         </div>
 
-        <div id="sortAscOrDesc" class="sortAscOrDesc">
+        <div class="price-MintoMaxlink">
             <form action="index.php" method="GET">
                 <input type="hidden" name="ctrl" value="productControllerUser">
-                <select name="action">
-                    <option value="index">Tất cả</option>
-                    <option value="sortProductsByPriceAsc">Giá tăng dần</option>
-                    <option value="sortProductsByPriceDesc">Giá giảm dần</option>
-                    <option value="topSelling">Topseller</option>
-                </select>
-                <input type="submit" value="Sắp xếp">
+                <input type="number" name="price_min" id="price_min" min="0" required placeholder="Từ giá:"><br>
+                <input type="number" name="price_max" id="price_max" min="0" required placeholder="Đến giá:"><br>
+                <input type="submit" value="Xác nhận">
             </form>
         </div>
 
-        <!-- Tìm kiếm sản phẩm theo tên -->
-        <form class="search-form-productUser">
-            <input type="text" id="search" name="search" placeholder="Tìm kiếm sản phẩm">
-            <input type="submit" value="Tìm kiếm">
-        </form>
+        <div class="align">
 
+            <div id="price_slider"> <br>
+                <div class="price_slider-content">
+                    <p>Từ giá: <span id="price_min_value"></span> - Đến giá: <span id="price_max_value"></span></p>
+                </div>
+            </div>
+
+            <!-- Tìm kiếm sản phẩm theo tên -->
+            <form class="search-form-productUser">
+                <input type="text" id="search" name="search" placeholder="Tìm kiếm sản phẩm">
+                <input type="submit" value="Tìm kiếm">
+            </form>
+
+            <div id="sortAscOrDesc" class="sortAscOrDesc">
+                <form action="index.php" method="GET">
+                    <input type="hidden" name="ctrl" value="productControllerUser">
+                    <select name="action">
+                        <option value="index">Tất cả</option>
+                        <option value="sortProductsByPriceAsc">Giá tăng dần</option>
+                        <option value="sortProductsByPriceDesc">Giá giảm dần</option>
+                        <option value="topSelling">Topseller</option>
+                    </select>
+                    <input type="submit" value="Sắp xếp">
+                </form>
+            </div>
+
+
+
+        </div>
 
         <div class="product-list" id="product-list">
             <?php
@@ -101,7 +106,7 @@
                         <p class="product-stock">Còn lại: <?php echo $product['so_luong']; ?></p>
                         <!-- <p class="product-description">Mô tả: <?php echo $product['mo_ta']; ?></p> -->
 
-                        
+
                         <a href="#" class="buy-button" data-product-id="<?php echo $product['id']; ?>" data-product-status="<?php echo $product['so_luong'] > 0 ? 'in-stock' : 'out-of-stock'; ?>">
                             <?php echo $product['so_luong'] > 0 ? 'Thêm vào giỏ hàng' : 'Tạm hết hàng'; ?>
                         </a>

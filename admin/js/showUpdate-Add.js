@@ -2,13 +2,13 @@ $(document).ready(function () {
 
 
     // Xử lý sự kiện click vào nút sửa, thêm, chi tiết
-    $("a.updateCategoryLink, a.updateProductLink, a.updateOrderLink, a.updateCustomerLink,\
+    $(document).on('click', "a.updateCategoryLink, a.updateProductLink, a.updateOrderLink, a.updateCustomerLink,\
     a.updateUserLink, a.updateSupplierLink, a.updateWarehouseReceiptLink, a.updateWarrantyLink,\
     a.updatePermissionLink, a.updateDiscountLink,\
     a.addCategoryLink, a.addProductLink, a.addOrderLink, a.addCustomerLink,\
     a.addUserLink, a.addSupplierLink, a.addWareHouseReceiptLink, a.addWarrantyLink,\
-    a.addPermissionLink, a.addDiscountLink, a.detailOrderLink, a.detailWarehouseReceiptLink, a.productsByCategoryViewLink")
-        .click(function (e) {
+    a.addPermissionLink, a.addDiscountLink, a.detailOrderLink, a.detailWarehouseReceiptLink, a.productsByCategoryViewLink",
+        function (e) {
             e.preventDefault();
             var href = $(this).attr("href");
             var containerId;

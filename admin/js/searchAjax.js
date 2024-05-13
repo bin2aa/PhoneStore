@@ -10,6 +10,7 @@ $(document).ready(function () {
                 method: 'GET',
                 success: function (data) {
                     $('table').html($(data).find('table').html());
+                    
                 }
             });
         });

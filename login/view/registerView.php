@@ -10,17 +10,14 @@
 <body>
     <h2>Đăng ký</h2>
     <form class="register_form" action="index.php?ctrl=loginController&action=register" method="POST">
-
-
-
         <!-- Các trường đăng nhập -->
         <label for="ten_dang_nhap">Tên tài khoản (ít nhất 3 ký tự):</label>
         <input type="text" id="ten_dang_nhap" name="ten_dang_nhap" minlength="3" required><br>
-        
-        <div id="username-exists-message"class="error-message" ></div>
+
+        <div id="username-exists-message" class="error-message"></div>
 
 
-        
+
         <label for="password">Mật khẩu (ít nhất 6 ký tự, ít nhất 1 ký tự viết hoa):</label>
         <input type="password" id="password" name="password" pattern="(?=.*[A-Z]).{6,}" title="Ít nhất 6 ký tự, bao gồm ít nhất một ký tự viết hoa" required><br>
 

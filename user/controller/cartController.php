@@ -104,6 +104,21 @@ class CartController
 
     public function createOrder()
     {
+
+        if (!isset($_SESSION['id_khach_hang'])) {
+            http_response_code(402);
+            exit();
+        }
+
+        $totalQuantity = $this->cartModel->getTotalQuantity();
+        $cartItems = $this->cartModel->getCartItems();
+        $totalProducts = count($cartItems);
+
+        if ($totalQuantity === 0 || $totalProducts === 0) {
+            http_response_code(403);
+            exit();
+        }
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (isset($_POST['id_khach_hang'], $_POST['tong_tien'], $_POST['ghi_chu'])) {
                 $id_khach_hang = $_POST['id_khach_hang'];

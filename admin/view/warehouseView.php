@@ -8,20 +8,12 @@
     <!-- Thư viện BootStrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Danh sách phiếu nhập kho</title>
-
+    <style>
+        #detailWarehouseReceiptContainer{
+            min-width: 70%;
+        }
+    </style>
 </head>
-<style>
-    .filter-and-refresh {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .filter-and-refresh .filterOrder,
-    .filter-and-refresh .refresh {
-        flex: 1;
-        margin: 0 10px;
-    }
-</style>
 
 <body>
     <div class="containerr">
@@ -47,7 +39,7 @@
                 <div class="row g-3 searchField">
                     <div class="col-auto">
                         <input type="hidden" name="action" value="searchProducts">
-                        <input type="text" id="search" name="search" placeholder="Tên phiếu nhập..." class="form-control" width="100%">
+                        <input type="text" id="search" name="search" placeholder="Tên nhà cung cấp..." class="form-control" width="100%">
                     </div>
                     <div class="col-auto search">
                         <button type="submit" class="btn btn-light btn-outline-secondary">Tìm kiếm</button>
@@ -71,7 +63,7 @@
         <div class="addNew btn btn-primary">
             <a class="addWareHouseReceiptLink" href="index.php?ctrl=warehouseController&action=showAddWarehouseReceiptForm">Thêm hàng vào kho </a>
         </div>
-
+        
         <table class="table">
             <tr class="bg-dark text-white">
                 <th>ID</th>
