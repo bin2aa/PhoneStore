@@ -77,6 +77,15 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                 width: 100%;
             }
         }
+        .content-container{
+            background-color: rgb(1,1,1,0.5);
+            margin: 20px;
+            margin-top: 130px;
+            padding: 10px;
+            border: 1px solid rgb(255,255,255,0.3);
+            border-radius: 10px;
+            cursor: default;
+        }
     </style>
 
 </head>
@@ -121,7 +130,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
             </ul>
         </div>
     </div>
-    <div class="content">
+    <div class="content" id="content-container">
         <?php
         if (!isset($_GET['ctrl'])) {
             include 'controller/productControllerUser.php';
@@ -173,7 +182,12 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
     <div class="bg-dark text-white py-2 text-center">
         <p class="fs-14">&copy;Phone Store Web Project - Presented by 13th group, Web Advance 2024</p>
     </div>
-
+    
+    <script>
+        var container = document.getElementById('content-container');
+        if(!container.classList.contains('content-container')){
+            container.classList.add('content-container');
+        }
+    </script>
 </body>
-
 </html>
