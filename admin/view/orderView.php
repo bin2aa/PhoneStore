@@ -18,7 +18,7 @@
     }
 
     .filter-and-refresh .filterOrder,
-    .filter-and-refresh .refresh {
+    .filter-and-refresh{
         flex: 1;
         margin: 0 10px;
     }
@@ -38,6 +38,14 @@
         border: 1px solid rgb(200,200,200);
         border-radius: 5px;
         margin: 0 10px;
+    }
+    .search-container form{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .refresh{
+        margin-right: 20%;
     }
 </style>
 
@@ -89,7 +97,7 @@
                 <input type="hidden" name="action" value="filterOrder">
                 Từ ngày: <input type="date" name="from_date" required>
                 Đến ngày: <input type="date" name="to_date" required>
-                <input type="submit" value="Lọc">
+                <input type="submit" value="Lọc" class="btn btn-primary">
             </form>
             <!-- refresh -->
             <div class="refresh">
