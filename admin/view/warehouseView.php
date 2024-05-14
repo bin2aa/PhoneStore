@@ -12,6 +12,31 @@
         #detailWarehouseReceiptContainer{
             min-width: 70%;
         }
+
+        .search-container{
+        display: flex;
+        border: 1px solid rgb(200,200,200);
+        border-radius: 5px;
+        justify-content: center;
+        align-items: center;
+        margin-block: 10px;
+        padding: 10px;
+        width: 100%;
+        }
+        .search-container input[type="date"]{
+            padding: 5px;
+            border: 1px solid rgb(200,200,200);
+            border-radius: 5px;
+            margin: 0 10px;
+        }
+        .search-container form{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .refresh{
+            margin-left: 20px;
+        }
     </style>
 </head>
 
@@ -47,13 +72,13 @@
                 </div>
             </form>
         </div>
-        <div class="filter-and-refresh">
+        <div class="filter-and-refresh search-container">
             <form class="filterOrder" method="GET" action="index.php">
                 <input type="hidden" name="ctrl" value="warehouseController">
                 <input type="hidden" name="action" value="filterOrder">
                 Từ ngày: <input type="date" name="from_date" required>
                 Đến ngày: <input type="date" name="to_date" required>
-                <input type="submit" value="Lọc">
+                <input type="submit" value="Lọc" class="btn btn-primary">
             </form>
             <!-- refresh -->
             <div class="refresh">
