@@ -22,6 +22,23 @@
         flex: 1;
         margin: 0 10px;
     }
+
+    .search-container{
+        display: flex;
+        border: 1px solid rgb(200,200,200);
+        border-radius: 5px;
+        justify-content: center;
+        align-items: center;
+        margin-block: 10px;
+        padding: 10px;
+        width: 100%;
+    }
+    .search-container input[type="date"]{
+        padding: 5px;
+        border: 1px solid rgb(200,200,200);
+        border-radius: 5px;
+        margin: 0 10px;
+    }
 </style>
 
 <body>
@@ -66,7 +83,7 @@
             </form>
 
         </div>
-        <div class="filter-and-refresh">
+        <div class="filter-and-refresh search-container">
             <form class="filterOrder" method="GET" action="index.php">
                 <input type="hidden" name="ctrl" value="orderController">
                 <input type="hidden" name="action" value="filterOrder">
@@ -109,10 +126,10 @@
                             <form class="toggleUserStatuss" action="index.php?ctrl=orderController&action=toggleOrderStatus" method="POST">
                                 <input type="hidden" name="orderId" value="<?php echo $order['id']; ?>">
 
-                                <?php if ($order['tinh_trang'] == 'Chờ xác nhận') echo "<button type='submit'>Xác nhận</button>";
-                                else if ($order['tinh_trang'] == 'Đang xử lý') echo "<button type='submit'>Đang xử lý</button>";
-                                else if ($order['tinh_trang'] == 'Đang giao') echo "<button type='submit'>Hoàn tất</button>";
-                                else if ($order['tinh_trang'] == 'Thành công') echo "<button type='submit' disabled>Thành công</button>";
+                                <?php if ($order['tinh_trang'] == 'Chờ xác nhận') echo "<button type='submit' class='btn btn-primary'>Xác nhận</button>";
+                                else if ($order['tinh_trang'] == 'Đang xử lý') echo "<button type='submit' class='btn btn-warning'>Đang xử lý</button>";
+                                else if ($order['tinh_trang'] == 'Đang giao') echo "<button type='submit' class='btn btn-secondary'>Hoàn tất</button>";
+                                else if ($order['tinh_trang'] == 'Thành công') echo "<button type='submit' disabled class='btn btn-success'>Thành công</button>";
                                 ?>
                             </form>
                         </td>
