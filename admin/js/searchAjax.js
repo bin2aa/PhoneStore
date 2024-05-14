@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    // Hàm tìm kiếm tổng quát yamatekudasai
+    // Hàm tìm kiếm tổng quát
     function handleSearchForm(formClass, controller) {
         $(formClass).submit(function (event) {
             event.preventDefault();
