@@ -92,7 +92,7 @@ $qlgiam_gia = $_SESSION['qlgiam_gia'];
                         <?php endif; ?>
                         <?php if ($qlkhach_hang == 1) : ?>
                             <li class="nav-item manageSector">
-                                <a href="index.php?ctrl=customerController">Khách hàng</a>
+                                <a href="index.php?ctrl=customerController">K.Hàng</a>
                             </li>
                         <?php endif; ?>
                         <?php if ($qlnguoi_dung == 1) : ?>
@@ -150,7 +150,7 @@ $qlgiam_gia = $_SESSION['qlgiam_gia'];
                         <?php endif; ?>
                         <?php if ($qlkhach_hang == 1) : ?>
                             <li class="nav-item manageSector">
-                                <a href="index.php?ctrl=customerController">Khách hàng</a>
+                                <a href="index.php?ctrl=customerController">K.Hàng</a>
                             </li>
                         <?php endif; ?>
                         <?php if ($qlnguoi_dung == 1) : ?>

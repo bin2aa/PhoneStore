@@ -97,7 +97,34 @@ class ProductController
             $result = $this->productModel->updateProduct($product_id, $ten, $anh, $id_danh_muc, $gia, $so_luong, $mo_ta);
         }
     }
-    
+
+    //sắp xếp theo số lượng giảm dần
+    public function sortProductsByQuantityDesc()
+    {
+        $products = $this->productModel->sortProductsByQuantityDesc();
+        include __DIR__ . '/../view/productView.php';
+    }
+
+    //sắp xếp theo số lượng tăng dần
+    public function sortProductsByQuantityAsc()
+    {
+        $products = $this->productModel->sortProductsByQuantityAsc();
+        include __DIR__ . '/../view/productView.php';
+    }
+
+    //sắp xếp theo giá giảm dần
+    public function sortProductsByPriceDesc()
+    {
+        $products = $this->productModel->sortProductsByPriceDesc();
+        include __DIR__ . '/../view/productView.php';
+    }
+
+    //sắp xếp theo giá tăng dần
+    public function sortProductsByPriceAsc()
+    {
+        $products = $this->productModel->sortProductsByPriceAsc();
+        include __DIR__ . '/../view/productView.php';
+    }
 }
 
 $action = 'index';
@@ -126,6 +153,18 @@ switch ($action) {
         break;
     case 'updateProduct':
         $productController->updateProduct();
+        break;
+    case 'sortProductsByQuantityDesc':
+        $productController->sortProductsByQuantityDesc();
+        break;
+    case 'sortProductsByQuantityAsc':
+        $productController->sortProductsByQuantityAsc();
+        break;
+    case 'sortProductsByPriceDesc':
+        $productController->sortProductsByPriceDesc();
+        break;
+    case 'sortProductsByPriceAsc':
+        $productController->sortProductsByPriceAsc();
         break;
     default:
         $productController->showProductList();

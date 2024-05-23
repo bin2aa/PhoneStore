@@ -108,4 +108,24 @@ class OrderModel
               WHERE ngay >= '$fromDate' AND ngay <= '$toDate'";
         return $this->db->select($query);
     }
+
+    //sắp xếp giá giảm dần
+    public function sortOrdersDesc($sort)
+    {
+        $query = "SELECT don_dat_hang.*, khach_hang.ten AS ten_khach_hang
+              FROM don_dat_hang
+              JOIN khach_hang ON don_dat_hang.id_khach_hang = khach_hang.id
+              ORDER BY tong_tien $sort";
+        return $this->db->select($query);
+    }
+
+    //sắp xếp giá tăng dần
+    public function sortOrdersAsc($sort)
+    {
+        $query = "SELECT don_dat_hang.*, khach_hang.ten AS ten_khach_hang
+              FROM don_dat_hang
+              JOIN khach_hang ON don_dat_hang.id_khach_hang = khach_hang.id
+              ORDER BY tong_tien $sort";
+        return $this->db->select($query);
+    }
 }

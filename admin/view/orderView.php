@@ -79,55 +79,68 @@
                 <a href="index.php?ctrl=orderController" class="btn btn-light btn-outline-secondary">Làm mới</a>
             </div>
         </div>
-        <div class="addNew btn btn-primary">
-            <a class="addOrderLink" href="index.php?ctrl=orderController&action=viewAddOrder">Thêm mới</a>
-        </div>
 
-        <table class="table">
-            <thead class="bg-dark text-white">
-                <tr>
-                    <th> ID</th>
-                    <th style="width: 5%"> ID K.Hàng</th>
-                    <th style="width: 15%"> Tên K.Hàng</th>
-                    <th style="width: 10%"> Ngày đặt</th>
-                    <th> Tổng tiền</th>
-                    <th style="width: 25%"> Ghi chú</th>
-                    <th> Tình trạng</th>
-                    <th> Thao tác</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($orders as $order) : ?>
+        <!-- sắp xếp tổng tiền tăng giảm dần -->
+        <div class="sort_total_in_orderView">
+            <form class="sortOrder" method="GET" action="index.php">
+                <input type="hidden" name="ctrl" value="orderController">
+                <select name="action">
+                    <option value="">Mặc định</option>
+                    <option value="sortOrderAsc">Tăng dần</option>
+                    <option value="sortOrderDesc">Giảm dần</option>
+                </select>
+                <input type="submit" value="Sắp xếp">
+            </form>
+
+            <div class="addNew btn btn-primary">
+                <a class="addOrderLink" href="index.php?ctrl=orderController&action=viewAddOrder">Thêm mới</a>
+            </div>
+
+            <table class="table">
+                <thead class="bg-dark text-white">
                     <tr>
-                        <td><?php echo $order['id']; ?></td>
-                        <td><?php echo $order['id_khach_hang']; ?></td>
-                        <td><?php echo $order['ten_khach_hang']; ?></td>
-                        <td><?php echo $order['ngay']; ?></td>
-                        <td><?php echo number_format($order['tong_tien']); ?></td>
-                        <td><?php echo $order['ghi_chu']; ?></td>
-                        <td>
-                            <form class="toggleUserStatuss" action="index.php?ctrl=orderController&action=toggleOrderStatus" method="POST">
-                                <input type="hidden" name="orderId" value="<?php echo $order['id']; ?>">
-
-                                <?php if ($order['tinh_trang'] == 'Chờ xác nhận') echo "<button type='submit'>Xác nhận</button>";
-                                else if ($order['tinh_trang'] == 'Đang xử lý') echo "<button type='submit'>Đang xử lý</button>";
-                                else if ($order['tinh_trang'] == 'Đang giao') echo "<button type='submit'>Hoàn tất</button>";
-                                else if ($order['tinh_trang'] == 'Thành công') echo "<button type='submit' disabled>Thành công</button>";
-                                ?>
-                            </form>
-                        </td>
-
-                        <td>
-                            <a class="btn btn-danger deleteOrderLink" href="index.php?ctrl=orderController&action=deleteOrder&id=<?php echo $order['id']; ?>">Xóa</a>
-                            <a class="btn btn-warning updateOrderLink" href="index.php?ctrl=orderController&action=updateOrderView&id=<?php echo $order['id']; ?>&tinh_trang=<?php echo $order['tinh_trang']; ?>">Sửa</a>
-                            <a class="btn btn-info detailOrderLink" href="index.php?ctrl=orderController&action=viewOrderDetail&id=<?php echo $order['id']; ?>">Chi tiết</a>
-                        </td>
-
+                        <th> ID</th>
+                        <th style="width: 5%"> ID K.Hàng</th>
+                        <th style="width: 15%"> Tên K.Hàng</th>
+                        <th style="width: 10%"> Ngày đặt</th>
+                        <th> Tổng tiền</th>
+                        <th style="width: 25%"> Ghi chú</th>
+                        <th> Tình trạng</th>
+                        <th> Thao tác</th>
                     </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    </div>
+                </thead>
+                <tbody>
+                    <?php foreach ($orders as $order) : ?>
+                        <tr>
+                            <td><?php echo $order['id']; ?></td>
+                            <td><?php echo $order['id_khach_hang']; ?></td>
+                            <td><?php echo $order['ten_khach_hang']; ?></td>
+                            <td><?php echo $order['ngay']; ?></td>
+                            <td><?php echo number_format($order['tong_tien']); ?></td>
+                            <td><?php echo $order['ghi_chu']; ?></td>
+                            <td>
+                                <form class="toggleUserStatuss" action="index.php?ctrl=orderController&action=toggleOrderStatus" method="POST">
+                                    <input type="hidden" name="orderId" value="<?php echo $order['id']; ?>">
+
+                                    <?php if ($order['tinh_trang'] == 'Chờ xác nhận') echo "<button type='submit'>Xác nhận</button>";
+                                    else if ($order['tinh_trang'] == 'Đang xử lý') echo "<button type='submit'>Đang xử lý</button>";
+                                    else if ($order['tinh_trang'] == 'Đang giao') echo "<button type='submit'>Hoàn tất</button>";
+                                    else if ($order['tinh_trang'] == 'Thành công') echo "<button type='submit' disabled>Thành công</button>";
+                                    ?>
+                                </form>
+                            </td>
+
+                            <td>
+                                <a class="btn btn-danger deleteOrderLink" href="index.php?ctrl=orderController&action=deleteOrder&id=<?php echo $order['id']; ?>">Xóa</a>
+                                <a class="btn btn-warning updateOrderLink" href="index.php?ctrl=orderController&action=updateOrderView&id=<?php echo $order['id']; ?>&tinh_trang=<?php echo $order['tinh_trang']; ?>">Sửa</a>
+                                <a class="btn btn-info detailOrderLink" href="index.php?ctrl=orderController&action=viewOrderDetail&id=<?php echo $order['id']; ?>">Chi tiết</a>
+                            </td>
+
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
 </body>
 
 
@@ -148,6 +161,26 @@
                 data: formData,
                 success: function(response) {
                     location.reload();
+                }
+            });
+        });
+
+
+        $(document).on('submit', 'form.sortOrder', function(event) {
+            event.preventDefault();
+
+            var action = $(this).find('select[name="action"]').val();
+
+            $.ajax({
+                url: "index.php?ctrl=orderController&action=" + action,
+                type: 'GET',
+                success: function(data) {
+                    console.log(this.url);
+                    $('table').html($(data).find('table').html());
+                },
+                error: function() {
+                    // console.log(url);
+                    aler('Lỗi productView.php xóa ajax mà test')
                 }
             });
         });

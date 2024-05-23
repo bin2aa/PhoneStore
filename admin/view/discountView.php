@@ -41,7 +41,7 @@
             <tr>
                 <td class="align-middle"><?php echo $discount['id']; ?></td>
                 <td class="align-middle"><?php echo $discount['ten']; ?></td>
-                <td class="align-middle"><?php echo $discount['dieu_kien_mua']; ?></td>
+                <td class="align-middle"><?php echo number_format($discount['dieu_kien_mua']); ?></td>
                 <td class="align-middle"><?php echo $discount['phan_tram_giam_gia']; ?>%</td>
                 <td class="align-middle"><?php echo $discount['ngay_bat_dau']; ?></td>
                 <td class="align-middle"><?php echo $discount['ngay_ket_thuc']; ?></td>

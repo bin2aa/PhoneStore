@@ -43,6 +43,27 @@
             </form>
         </div>
 
+        <!-- sắp xếp theo số lượng và giá tăng, giảm dần -->
+        <div class="sortHolder">
+            <form class="sort-form-product mt-3">
+                <div class="row g-3 sortField">
+                    <div class="col-auto">
+                        <input type="hidden" name="ctrl" value="productController">
+                        <select name="action" id="sort" class="form-select">
+                            <option value="">Mặc định</option>
+                            <option value="sortProductsByQuantityDesc">Sắp xếp theo số lượng giảm dần</option>
+                            <option value="sortProductsByQuantityAsc">Sắp xếp theo số lượng tăng dần</option>
+                            <option value="sortProductsByPriceDesc">Sắp xếp theo giá giảm dần</option>
+                            <option value="sortProductsByPriceAsc">Sắp xếp theo giá tăng dần</option>
+                        </select>
+                    </div>
+                    <div class="col-auto sort">
+                        <button type="submit" class="btn btn-light btn-outline-secondary">Sắp xếp</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
         <div class="addNew btn btn-primary">
             <a class="addProductLink" href="index.php?ctrl=productController&action=viewAddProduct">Thêm sản phẩm</a>
         </div>
@@ -76,3 +97,26 @@
 </body>
 
 </html>
+
+<script>
+    $(document).ready(function() {
+        $(document).on('submit', 'form.sort-form-product', function(event) {
+            event.preventDefault();
+
+            var action = $(this).find('select[name="action"]').val();
+
+            $.ajax({
+                url: "index.php?ctrl=productController&action=" + action,
+                type: 'GET',
+                success: function(data) {
+                    console.log(this.url);
+                    $('table').html($(data).find('table').html());
+                },
+                error: function() {
+                    // console.log(url);
+                    aler('Lỗi productView.php xóa ajax mà test')
+                }
+            });
+        });
+    });
+</script>

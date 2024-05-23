@@ -75,7 +75,7 @@
                 </select><br><br>
 
                 <input type="text" style="width: 30%; height: 50px" name="ghi_chu" placeholder="Ghi chú"><br>
-                <button class="buyAllForm" type="submit">Mua</button>
+                <button class="buyAllForm" type="submit" class="btn btn-primary">Mua</button>
             </form>
             <!-- ------------------------------------------------------------------------------------- -->
 

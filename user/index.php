@@ -77,6 +77,16 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                 width: 100%;
             }
         }
+
+        .content-container {
+            background-color: rgb(1, 1, 1, 0.5);
+            margin: 20px;
+            margin-top: 130px;
+            padding: 10px;
+            border: 1px solid rgb(255, 255, 255, 0.3);
+            border-radius: 10px;
+            cursor: default;
+        }
     </style>
 
 </head>
@@ -121,7 +131,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
             </ul>
         </div>
     </div>
-    <div class="content">
+    <div class="content" id="content-container">
         <?php
         if (!isset($_GET['ctrl'])) {
             include 'controller/productControllerUser.php';
@@ -150,20 +160,20 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                 <div class="col-lg-2 col-12">
                     <h4 class="font-rubik fs-20">Members</h4>
                     <div class="d-flex flex-column flex-wrap">
-                        <a href="#" class="text-white-50 pb-1">Võ Duy Luân |</a>
-                        <a href="#" class="text-white-50 pb-1">Bùi Lê Bích Nhung |</a>
-                        <a href="#" class="text-white-50 pb-1">Dương Văn Minh Vy |</a>
-                        <a href="#" class="text-white-50 pb-1">Nguyễn Thanh Thịnh |</a>
+                        <a href="#" class="text-white-50 pb-1">Võ Duy Luân </a>
+                        <a href="#" class="text-white-50 pb-1">Bùi Lê Bích Nhung </a>
+                        <a href="#" class="text-white-50 pb-1">Dương Văn Minh Vy </a>
+                        <a href="#" class="text-white-50 pb-1">Nguyễn Thanh Thịnh </a>
                         <a href="#" class="text-white-50 pb-1">Phạm Nguyễn Phước Thiện</a>
                     </div>
                 </div>
                 <div class="col-lg-2 col-12">
                     <h4 class="font-rubik fs-20">MSSV</h4>
                     <div class="d-flex flex-column flex-wrap">
-                        <a href="#" class="text-white-50 pb-1">mssv-1</a>
+                        <a href="#" class="text-white-50 pb-1">3121410307</a>
                         <a href="#" class="text-white-50 pb-1">mssv-2</a>
                         <a href="#" class="text-white-50 pb-1">mssv-3</a>
-                        <a href="#" class="text-white-50 pb-1">3121410040 |</a>
+                        <a href="#" class="text-white-50 pb-1">3121410040 </a>
                         <a href="#" class="text-white-50 pb-1">3121410469</a>
                     </div>
                 </div>
@@ -173,7 +183,12 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
     <div class="bg-dark text-white py-2 text-center">
         <p class="fs-14">&copy;Phone Store Web Project - Presented by 13th group, Web Advance 2024</p>
     </div>
-
+    <script>
+        var container = document.getElementById('content-container');
+        if (!container.classList.contains('content-container')) {
+            container.classList.add('content-container');
+        }
+    </script>
 </body>
 
 </html>

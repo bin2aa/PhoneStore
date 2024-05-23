@@ -45,7 +45,7 @@
         </div>
         <div class="stat-item">
             <h2>Tổng doanh thu</h2>
-            <p><?php echo $stats['total_revenue']; ?></p>
+            <p><?php echo number_format($stats['total_revenue']); ?></p>
         </div>
         <div class="stat-item">
             <h2>Tổng số phiếu nhập kho</h2>
@@ -53,7 +53,7 @@
         </div>
         <div class="stat-item">
             <h2>Giá trị tổng phiếu nhập kho</h2>
-            <p><?php echo $stats['total_warehouse_receipts_value']; ?></p>
+            <p><?php echo number_format ($stats['total_warehouse_receipts_value']); ?></p>
         </div>
         <div class="stat-item">
             <h2>Tổng số chi tiết phiếu nhập kho</h2>
@@ -81,8 +81,8 @@
                     <tr>
                         <td><?php echo $monthlyStats['month_year']; ?></td>
                         <td><?php echo $monthlyStats['total_orders']; ?></td>
-                        <td><?php echo $monthlyStats['total_revenue']; ?></td>
-                        <td><?php echo $monthlyStats['total_warehouse_receipts_value']; ?></td>
+                        <td><?php echo number_format($monthlyStats['total_revenue']); ?></td>
+                        <td><?php echo number_format($monthlyStats['total_warehouse_receipts_value']); ?></td>
                         <td><?php echo $monthlyStats['total_warehouse_receipt_details']; ?></td>
                         <td><?php echo $monthlyStats['total_warehouse_receipts']; ?></td>
                     </tr>
@@ -91,11 +91,10 @@
         </table>
     </div>
 
-    <!-- Thư viện biểu đồ chart.js (bar, line, pie, radar, scatter, doughnut, polarArea) -->
+    <!-- Thư viện biểu đồ chart.js (bar, 3line, pie, radar, scatter, doughnut, polarArea) -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom"></script>
     <script>
-        
         //hàm sắp xếp mảng theo tháng
         var monthlyStats = <?php echo json_encode($statsDate['monthly_stats']); ?>;
         monthlyStats.sort((a, b) => {

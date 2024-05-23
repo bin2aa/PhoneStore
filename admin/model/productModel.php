@@ -159,4 +159,19 @@ class ProductModel
 
         return $this->db->select($query);
     }
+
+
+    // sắp xếp theo số lượng giảm dần
+    public function sortProductsByQuantityDesc()
+    {
+        $query = "SELECT * FROM san_pham ORDER BY so_luong DESC";
+        return $this->db->select($query);
+    }
+
+    // sắp xếp theo số lượng tăng dần
+    public function sortProductsByQuantityAsc()
+    {
+        $query = "SELECT * FROM san_pham ORDER BY so_luong ASC";
+        return $this->db->select($query);
+    }
 }

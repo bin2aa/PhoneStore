@@ -102,7 +102,7 @@
                         <a href="index.php?ctrl=productControllerUser&action=detail&id=<?php echo $product['id']; ?>" class="product-image-link">
                             <img src="/image/SanPham/<?php echo $product['anh']; ?>" alt="Hình ảnh sản phẩm" width="200"><br>
                         </a>
-                        <p class="product-price">Giá: <?php echo $product['gia']; ?> đ</p>
+                        <p class="product-price">Giá: <?php echo number_format($product['gia']); ?> đ</p>
                         <p class="product-stock">Còn lại: <?php echo $product['so_luong']; ?></p>
                         <!-- <p class="product-description">Mô tả: <?php echo $product['mo_ta']; ?></p> -->
 

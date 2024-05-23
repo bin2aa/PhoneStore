@@ -40,7 +40,7 @@
                 <div id="chi-tiet">
                     <div class="hang">
                         <label for="id_san_pham_1" class="form-label">(ID) - Chọn sản phẩm:</label>
-                        <select name="id_san_pham_1" class="form-select" required>
+                        <select class="form-controls" name="id_san_pham_1" class="form-select" required>
                             <?php foreach ($products as $product) : ?>
                                 <option value="<?php echo $product['id']; ?>"><?php echo '(' . $product['id'] . ') - ' . $product['ten']; ?></option>
                             <?php endforeach; ?>

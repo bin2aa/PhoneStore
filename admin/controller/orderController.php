@@ -153,6 +153,22 @@ class orderController
             echo "Vui lòng nhập đầy đủ khoảng thời gian!";
         }
     }
+
+    //sắp xếp tổng tiền giảm dần
+    public function sortOrderDesc()
+    {
+        $sort = "DESC";
+        $orders = $this->orderModel->sortOrdersDesc($sort);
+        include __DIR__ . '/../view/orderView.php';
+    }
+
+    //sắp xếp tổng tiền tăng dần
+    public function sortOrderAsc()
+    {
+        $sort = "ASC";
+        $orders = $this->orderModel->sortOrdersAsc($sort);
+        include __DIR__ . '/../view/orderView.php';
+    }
 }
 
 $action = 'index';
@@ -190,6 +206,12 @@ switch ($action) {
         break;
     case 'filterOrder':
         $orderController->filterOrder();
+        break;
+    case 'sortOrderDesc':
+        $orderController->sortOrderDesc();
+        break;
+    case 'sortOrderAsc':
+        $orderController->sortOrderAsc();
         break;
     default:
         $orderController->showOrderList();

@@ -57,7 +57,7 @@
                         <tr>
                             <td><?php echo '(ID ' . $orderDetail['id_san_pham'] . "): " . $orderDetail['ten_san_pham']; ?></td>
                             <td><?php echo $orderDetail['so_luong']; ?></td>
-                            <td><?php echo $orderDetail['gia'] . ' đ'; ?></td>
+                            <td><?php echo number_format($orderDetail['gia']) . ' đ'; ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -96,7 +96,7 @@
                                         } else {
                                             echo '<input type="text" name="ghi_chu" value="' . $warranty['ghi_chu'] . '" required>';
                                         }
-                                        
+
                                         ?>
                                 </td>
                                 <td>
