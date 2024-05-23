@@ -18,9 +18,34 @@
     }
 
     .filter-and-refresh .filterOrder,
-    .filter-and-refresh .refresh {
+    .filter-and-refresh{
         flex: 1;
         margin: 0 10px;
+    }
+
+    .search-container{
+        display: flex;
+        border: 1px solid rgb(200,200,200);
+        border-radius: 5px;
+        justify-content: center;
+        align-items: center;
+        margin-block: 10px;
+        padding: 10px;
+        width: 100%;
+    }
+    .search-container input[type="date"]{
+        padding: 5px;
+        border: 1px solid rgb(200,200,200);
+        border-radius: 5px;
+        margin: 0 10px;
+    }
+    .search-container form{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .refresh{
+        margin-right: 20%;
     }
 </style>
 
@@ -66,13 +91,13 @@
             </form>
 
         </div>
-        <div class="filter-and-refresh">
+        <div class="filter-and-refresh search-container">
             <form class="filterOrder" method="GET" action="index.php">
                 <input type="hidden" name="ctrl" value="orderController">
                 <input type="hidden" name="action" value="filterOrder">
                 Từ ngày: <input type="date" name="from_date" required>
                 Đến ngày: <input type="date" name="to_date" required>
-                <input type="submit" value="Lọc">
+                <input type="submit" value="Lọc" class="btn btn-primary">
             </form>
             <!-- refresh -->
             <div class="refresh">
@@ -99,6 +124,7 @@
             <table class="table">
                 <thead class="bg-dark text-white">
                     <tr>
+<<<<<<< HEAD
                         <th> ID</th>
                         <th style="width: 5%"> ID K.Hàng</th>
                         <th style="width: 15%"> Tên K.Hàng</th>
@@ -107,6 +133,32 @@
                         <th style="width: 25%"> Ghi chú</th>
                         <th> Tình trạng</th>
                         <th> Thao tác</th>
+=======
+                        <td><?php echo $order['id']; ?></td>
+                        <td><?php echo $order['id_khach_hang']; ?></td>
+                        <td><?php echo $order['ten_khach_hang']; ?></td>
+                        <td><?php echo $order['ngay']; ?></td>
+                        <td><?php echo number_format($order['tong_tien']); ?></td>
+                        <td><?php echo $order['ghi_chu']; ?></td>
+                        <td>
+                            <form class="toggleUserStatuss" action="index.php?ctrl=orderController&action=toggleOrderStatus" method="POST">
+                                <input type="hidden" name="orderId" value="<?php echo $order['id']; ?>">
+
+                                <?php if ($order['tinh_trang'] == 'Chờ xác nhận') echo "<button type='submit' class='btn btn-primary'>Xác nhận</button>";
+                                else if ($order['tinh_trang'] == 'Đang xử lý') echo "<button type='submit' class='btn btn-warning'>Đang xử lý</button>";
+                                else if ($order['tinh_trang'] == 'Đang giao') echo "<button type='submit' class='btn btn-secondary'>Hoàn tất</button>";
+                                else if ($order['tinh_trang'] == 'Thành công') echo "<button type='submit' disabled class='btn btn-success'>Thành công</button>";
+                                ?>
+                            </form>
+                        </td>
+
+                        <td>
+                            <a class="btn btn-danger deleteOrderLink" href="index.php?ctrl=orderController&action=deleteOrder&id=<?php echo $order['id']; ?>">Xóa</a>
+                            <a class="btn btn-warning updateOrderLink" href="index.php?ctrl=orderController&action=updateOrderView&id=<?php echo $order['id']; ?>&tinh_trang=<?php echo $order['tinh_trang']; ?>">Sửa</a>
+                            <a class="btn btn-info detailOrderLink" href="index.php?ctrl=orderController&action=viewOrderDetail&id=<?php echo $order['id']; ?>">Chi tiết</a>
+                        </td>
+
+>>>>>>> 3453498e711916c247103c5e8e14941dc3f0e331
                     </tr>
                 </thead>
                 <tbody>

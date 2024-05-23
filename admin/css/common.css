@@ -176,3 +176,11 @@
     display: none;
     transition: all 0.2s ease-out;
 }
+
+tr:hover{
+    transform: scale(1.02);
+    /* background: white; */
+}
+tr{
+    transition: all 0.2s ease-out;
+}

@@ -13,6 +13,7 @@
             min-width: 70%;
         }
 
+<<<<<<< HEAD
         .search-container {
             display: flex;
             border: 1px solid rgb(200, 200, 200);
@@ -32,12 +33,35 @@
         }
 
         .search-container form {
+=======
+        .search-container{
+        display: flex;
+        border: 1px solid rgb(200,200,200);
+        border-radius: 5px;
+        justify-content: center;
+        align-items: center;
+        margin-block: 10px;
+        padding: 10px;
+        width: 100%;
+        }
+        .search-container input[type="date"]{
+            padding: 5px;
+            border: 1px solid rgb(200,200,200);
+            border-radius: 5px;
+            margin: 0 10px;
+        }
+        .search-container form{
+>>>>>>> 3453498e711916c247103c5e8e14941dc3f0e331
             display: flex;
             justify-content: center;
             align-items: center;
         }
+<<<<<<< HEAD
 
         .refresh {
+=======
+        .refresh{
+>>>>>>> 3453498e711916c247103c5e8e14941dc3f0e331
             margin-left: 20px;
         }
     </style>
